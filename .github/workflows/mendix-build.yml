@@ -1,4 +1,5 @@
-name: Opcenter Mendix CI - Build and Deploy Local
+
+name: Opcenter Mendix CI - Build, Deploy Local, Restart Runtime
 
 on:
   push:
@@ -10,8 +11,10 @@ on:
 env:
   APP_NAME: Opcenter_EXCR_MX_Core_2510_1_0_0001
   MENDIX_VERSION: 10.24.4.77222
+  JAVA_VERSION_DIR: jdk-21.0.5.11-hotspot
   VERSION: 1.0.0
-  DEPLOY_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\MDA\Core
+  PROJECT_DIR: C:\Users\Neha Kulkarni\Mendix\Opcenter_EXCR_MX_Core_2510_1_0_0001-main
+  CAMSTAR_DEPLOY_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\MDA\Core
 
 jobs:
   build:
@@ -20,12 +23,26 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Build the .mda with MxBuild
+      - name: Stop running Mendix Runtime
         shell: cmd
         run: |
-          set MXBUILD="C:\Program Files\Mendix\10.24.4.77222\modeler\mxbuild.exe"
-          set JAVA="C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\bin\java.exe"
-          set JAVAHOME="C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot"
+          echo Checking for running javaw.exe (Mendix Runtime)...
+          tasklist | findstr /i "javaw.exe"
+          if errorlevel 1 (
+            echo No running javaw.exe found.
+          ) else (
+            echo Stopping existing Mendix Runtime process...
+            taskkill /F /IM javaw.exe
+            timeout /t 5
+          )
+          exit /b 0
+
+      - name: Build .mda package
+        shell: cmd
+        run: |
+          set MXBUILD="C:\Program Files\Mendix\%MENDIX_VERSION%\modeler\mxbuild.exe"
+          set JAVA="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%\bin\java.exe"
+          set JAVAHOME="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%"
           if not exist releases mkdir releases
           echo N | %MXBUILD% --target=package ^
             --output=releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda ^
@@ -44,33 +61,35 @@ jobs:
           path: releases/*.mda
           retention-days: 30
 
-      - name: Backup existing .mda
+      - name: Backup existing Camstar .mda
         shell: cmd
         run: |
-          if not exist "%DEPLOY_DIR%\backup" mkdir "%DEPLOY_DIR%\backup"
-          for %%f in ("%DEPLOY_DIR%\*.mda") do (
+          if not exist "%CAMSTAR_DEPLOY_DIR%\backup" mkdir "%CAMSTAR_DEPLOY_DIR%\backup"
+          for %%f in ("%CAMSTAR_DEPLOY_DIR%\*.mda") do (
             echo Backing up %%~nxf
-            move "%%f" "%DEPLOY_DIR%\backup\%%~nf-backup-%GITHUB_RUN_NUMBER%.mda"
+            move "%%f" "%CAMSTAR_DEPLOY_DIR%\backup\%%~nf-backup-%GITHUB_RUN_NUMBER%.mda"
           )
 
-      - name: Replace with new .mda
+      - name: Replace Camstar .mda
         shell: cmd
         run: |
-          echo Copying new build to deployment folder...
-          copy "releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda" "%DEPLOY_DIR%\%APP_NAME%.mda"
-          echo Deployment folder contents:
-          dir "%DEPLOY_DIR%"
+          copy "releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda" "%CAMSTAR_DEPLOY_DIR%\%APP_NAME%.mda"
+          dir "%CAMSTAR_DEPLOY_DIR%"
 
-      - name: Restart Mendix App
+      - name: Build deployment folder for local runtime
         shell: cmd
         run: |
-          echo Restarting Mendix application...
-          tasklist | findstr /i "mxruntime"
-          if errorlevel 1 (
-            echo No running mxruntime process found.
-          ) else (
-            echo Stopping existing mxruntime process...
-            taskkill /F /IM mxruntime.exe
-          )
-          echo Restart step completed (placeholder - configure mxruntime path)
-          exit /b 0
+          set MXBUILD="C:\Program Files\Mendix\%MENDIX_VERSION%\modeler\mxbuild.exe"
+          set JAVA="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%\bin\java.exe"
+          set JAVAHOME="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%"
+          echo N | %MXBUILD% --target=deploy ^
+            --java-home=%JAVAHOME% ^
+            --java-exe-path=%JAVA% ^
+            "%PROJECT_DIR%\%APP_NAME%.mpr"
+
+      - name: Start Mendix Runtime (localhost:8082)
+        shell: cmd
+        run: |
+          set JAVA="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%\bin\javaw.exe"
+          set LAUNCHER="C:\Program Files\Mendix\%MENDIX_VERSION%\runtime\launcher\runtimelauncher.jar"
+          start "" %JAVA% -DMX_LOG_LEVEL=INFO -Djava.library.path="%PROJECT_DIR%\deployment\model\lib\userlib" -Dfile.encoding=UTF-8 -Djava.io.tmpdir="%PROJECT_DIR%\deployme
