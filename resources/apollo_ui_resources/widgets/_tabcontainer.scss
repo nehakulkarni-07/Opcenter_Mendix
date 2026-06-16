@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Tabcontainer
+
+   Default Mendix & Apollo tabcontainers
+========================================================================== */
+.mx-tabcontainer {
+    
+}
+
+%tabcontainer-tab {
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid transparent;
+
+    line-height: $line-height-controls;
+
+    padding: $spacing-small 0;
+
+    &:hover, &:focus {
+        color: $tabs-color-hover;
+        border-bottom-color: transparent;
+    }
+    &:active {
+        color: $tabs-color-active;
+        border-bottom-color: transparent;
+    }
+}
+
+%tabcontainer-active {
+    &, &:hover, &:focus, &:active {
+        border:none;
+        border-bottom: 4px solid $brand-default;
+        color:$tabs-color-active;
+    }
+}
+
+.mx-tabcontainer-tabs {
+    margin-bottom: 0;
+    border: none;
+
+    li {
+        margin-bottom:0;
+        padding: 0 $spacing-default;
+
+        a {
+            @extend %tabcontainer-tab;
+        }
+
+        &.active {
+
+            a {
+               @extend %tabcontainer-active;
+            }
+        }
+    }
+    
+}
+
+.tab-pane-layoutgrid {
+    padding: $spacing-large 0;
+}
+
+// for when using a scrollcontainer in a nested scrollcontainer
+%scrollcontainer-tabcontainer,
+.scrollcontainer-tabcontainer {
+    .mx-tabcontainer-tabs {
+        padding: 0 $spacing-default;
+    }
+}
+
+/* ==========================================================================
+   Page tabcontainer
+
+   Default Mendix & Apollo page tabcontainer
+========================================================================== */
+%main-tabcontainer,
+.main-tabcontainer {
+    > .mx-tabcontainer-tabs {
+        li {
+            a {
+                &:hover, &:focus {
+                    color: $brand-primary;
+                }
+                &:active {
+                    color: $brand-primary-hover;
+                }
+            }
+
+            &.active {
+                a {
+                    &, &:hover, &:focus, &:active {
+                        border-bottom-color: $brand-primary;
+                        color: $brand-primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.page-tabcontainer {
+    @extend %main-tabcontainer;
+
+    > .mx-tabcontainer-tabs {
+        background-color: $bg-color-secondary;
+        padding: 0 ($spacing-large - $spacing-default);
+    }
+}
+
+// location in a page layoutgrid (meaning it will have to align with the grid
+.page-layoutgrid {
+    .mx-tabcontainer {
+        
+    }
+    .mx-tabcontainer-tabs {
+        li {
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+    
+}
+
+/* ==========================================================================
+   Variations
+
+   Different details / design properties for a tabcontainer
+========================================================================== */
+.tabcontainer-lined {
+    .mx-tabcontainer-tabs {
+        border-bottom: 1px solid $default-border-color;
+
+        li {
+            margin-bottom: -1px;
+        }
+    }
+}
+
+/* ==========================================================================
+   Fake tabcontainer tabs
+
+   for when using a button group and separate pages as a tabcontainer
+========================================================================== */
+.tabcontainer-tabs {
+    .mx-link {
+        @extend %tabcontainer-tab;
+        color: $tabs-color;
+        margin-left: $spacing-default;
+        margin-right: $spacing-default;
+
+        &:hover, &:focus, &:active {
+            text-decoration: none;
+        }
+
+        &.active {
+            @extend %tabcontainer-active;
+            cursor: default;
+        }
+    }
+    
+}
+
+.page-tabcontainer-tabs {
+    background-color: $bg-color-secondary;
+    padding: 0 ($spacing-large - $spacing-default);
+
+    .mx-link {
+        &:hover, &:focus {
+            color: $brand-primary;
+        }
+        &:active {
+            color: $brand-primary-hover;
+        }
+
+        &.active {
+            &, &:hover, &:focus, &:active {
+                border-bottom-color: $brand-primary;
+                color: $brand-primary;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Listviewtextsearch
+
+   the settings for the text-box-search widget for custom listview search
+========================================================================== */
+.widget-text-box-search {
+    .search-bar {
+        position: relative; 
+
+        // 'faking the search button'
+        &:after {
+            //content: '\e003';
+            @extend %glyphicon;
+            @extend %control-transition;
+            
+            display: block;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+
+            border-radius: $border-radius-default;
+
+            font-size: $font-size-medium;
+            color: $gray-dark;
+
+            @if ($dense-app) {
+                padding: $spacing-small ($spacing-small + 1px);
+            } @else {
+                padding: ($spacing-small + 3px) ($spacing-small + 5px) ($spacing-small + 2px) ($spacing-small + 5px);
+            }
+
+            &[disabled], &.disabled {
+                color: $font-base-color;
+            }
+        }
+
+        .btn-transparent {
+            top: $spacing-small + $spacing-smaller;
+            right: $spacing-small;
+        }
+    }
+}

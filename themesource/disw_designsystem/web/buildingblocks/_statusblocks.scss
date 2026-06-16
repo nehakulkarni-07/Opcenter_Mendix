@@ -1,0 +1,240 @@
+/* ==========================================================================
+   Status blocks
+
+   Status patterns for lists and other types.
+========================================================================== */
+
+// status bar used in tables and listviews
+%status-bar {
+    width: $spacing-small;
+    height: 100%;
+    min-height: ($spacing-large + $spacing-small);
+    background-color: $bg-color-secondary;
+
+    margin-right: $spacing-small;
+    margin-left: -$spacing-small;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    &[data-uistatus='empty']{
+        // leave empty, building block will take care of it
+    }
+    &[data-uistatus='default']{
+        background-color: $brand-default;
+    }
+    &[data-uistatus='warning']{
+        background-color: $brand-warning;
+    }
+    &[data-uistatus='danger']{
+        background-color: $brand-danger;
+    }
+    &[data-uistatus='success']{
+        background-color: $brand-success;
+    }
+
+    // specific page template statusses
+    &[data-status='open'] {
+
+    }
+    &[data-status='inprogress'] {
+        background-color: $brand-default;
+    }
+    &[data-status='critical'],
+    &[data-status='danger'] {
+        background-color: $brand-danger;
+    }
+    &[data-status='high'],
+    &[data-status='warning'] {
+        background-color: $brand-warning;
+    }
+    &[data-status='success'] {
+        background-color: $brand-success;
+    }
+}
+
+%table-status-bar {
+    @extend %status-bar;
+
+    width: $spacing-smaller;
+    min-height: $spacing-medium;
+}
+
+// single status field implementations for form-fields that are read-only. (or at least form-control-static components
+%status-field,
+.status-field {
+    &[data-status='normal'],
+    &[data-status='inprogress'],
+    &[data-uistatus='default']  {
+        .form-control-static {
+            font-weight: 600;
+            color: $brand-default;
+        }
+    }
+
+    &[data-status='high'],
+    &[data-status='warning'],
+    &[data-uistatus='warning'] {
+        .form-control-static {
+            font-weight: 600;
+            color: $brand-warning;
+        }
+    }
+
+    &[data-status='critical'],
+    &[data-status='danger'],
+    &[data-uistatus='danger'] {
+        .form-control-static {
+            font-weight: 600;
+            color: $brand-danger;
+        }
+    }
+
+    &[data-status='success'],
+    &[data-uistatus='success'] {
+        .form-control-static {
+            font-weight: 600;
+            color: $brand-success;
+        }
+    }
+}
+
+
+// listview implementations
+.mx-listview {
+    .status-bar {
+        @extend %status-bar;
+
+        & + .field-wrapper {
+            max-width: calc(100% - (2 * #{$spacing-small}));
+        }
+    }
+}
+
+.listview-row-grid {
+    .status-bar {
+        margin-left: -$spacing-default;
+    }
+    .status-column {
+        [data-status='normal'],
+        [data-status='inprogress'],
+        [data-uistatus='default']  {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-default;
+            }
+        }
+
+        [data-status='high'],
+        [data-status='warning'],
+        [data-uistatus='warning'] {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-warning;
+            }
+        }
+
+        [data-status='critical'],
+        [data-status='danger'],
+        [data-uistatus='danger'] {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-danger;
+            }
+        }
+
+        [data-status='success'],
+        [data-uistatus='success'] {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-success;
+            }
+        }
+
+    }
+}
+
+.navigation-listview {
+    .listview-row-grid {
+        .status-bar {
+            margin-left: -$spacing-small;
+        }
+    }
+}
+
+// datagrid implementations
+.mx-datagrid {
+    .status-bar-column {
+        padding-left: $spacing-small;
+        padding-right: 0;
+
+        .mx-datagrid-data-wrapper {
+            display: none;
+        }
+
+        .mx-datagrid-sort-icon {
+            padding-left:0;
+        }
+
+        &:before {
+            content:"";
+            @extend %table-status-bar;
+
+            margin:0 0 0 $spacing-smaller;
+        }
+
+        &[title='inprogress'],
+        &[title='default'] {
+            &:before {
+                background-color: $brand-default;
+            }
+        }
+
+        &[title='high'],
+        &[title='warning'] {
+            &:before {
+                background-color: $brand-warning;
+            }
+        }
+        &[title='critical'],
+        &[title='danger'] {
+            &:before {
+                background-color: $brand-danger;
+            }
+        }
+        &[title='success'] {
+            &:before {
+                background-color: $brand-success;
+            }
+        }
+        
+    }
+    th.status-bar-column {
+        &:before {
+            content:none;
+        }
+    }
+
+    .status-column {
+        &:not(th) {
+            font-weight: 600;
+            color: $brand-default;
+
+            &[title='default'],
+            &[title='inprogress'] {
+                color: $brand-default;
+            }
+            &[title='high'],
+            &[title='warning'] {
+                color: $brand-warning;
+            }
+            &[title='critical'],
+            &[title='danger'] {
+                color: $brand-danger;
+            }
+            &[title='success'] {
+                color: $brand-success;
+            }
+        }
+    }
+}

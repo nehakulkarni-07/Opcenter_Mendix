@@ -1,0 +1,43 @@
+@import '../../../theme/web/custom-variables';
+
+.selectedRow{
+     .td{
+          background: #DAECF0 0% 0% no-repeat padding-box !important;
+          opacity: 1;
+     }
+}
+
+.noWrapCheck{
+
+     > div[class*=col-]{
+          flex-wrap: nowrap !important;
+          white-space: nowrap !important;
+     }
+}
+
+.btnImg{
+
+     > img {
+          position: relative;
+          bottom: 7px;
+     }
+}
+
+.dataViewMax{
+
+     .mx-dataview-content{
+          height: 100% !important;
+     }
+}
+
+.ux-searchBox{
+
+     .form-control{
+
+      background-image: url('/img/EXCR_DesignSystem$Icon_Repository$cmdSearch16.svg') !important;
+      background-size: 16px 16px !important;
+      background-repeat: no-repeat !important;
+      background-position: 95% 50% !important;
+      background-origin: padding-box !important;
+     }
+}

@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Calendar custom widget
+
+   Rules for the custom calendar widget
+========================================================================== */
+div.widget-calendar {
+    .rbc-header {
+        font-weight: 600;
+        background-color: $PL_Black_24;
+        border-color: $grid-border-color;
+
+        @if ($dense-app) {
+            padding: $spacing-smaller $spacing-small;
+        } @else {
+            padding: $spacing-small $spacing-default;
+        }
+    }
+
+    .rbc-month-view {
+        border-color: $grid-border-color;
+
+        .rbc-today {
+            background-color: #FFF;
+            display: flex;
+            flex-direction: column;
+            &:before {
+                content:"";
+                border:1px solid $brand-primary;
+                display: block;
+                flex:1;
+                margin: 2px;
+            }
+        }
+    }
+
+    .rbc-time-view {
+        .rbc-header {
+            &.rbc-today {
+                color: $brand-primary;
+            }
+        }
+
+        .rbc-allday-cell {
+            .rbc-today.rbc-day-bg {
+                background-color: #FFF;
+                display: flex;
+                flex-direction: column;
+                &:before {
+                    content:"";
+                    border:1px solid $brand-primary;
+                    border-bottom: none;
+                    display: block;
+                    flex:1;
+                    margin: 2px 2px 0 2px;
+                }
+            }
+        }
+
+        .rbc-time-column {
+            &.rbc-today {
+                background-color: #FFF;
+                
+                &:before {
+                    content:"";
+                    border:1px solid $brand-primary;
+                    border-top: none;
+                    display: block;
+                    flex:1;
+                    margin: 0;
+
+                    position: absolute;
+                    top:0;
+                    left: 2px;
+                    right: 2px;
+                    bottom: 2px;
+                }
+            }
+        }
+
+        .rbc-today {
+
+        }
+    }
+
+    .rbc-off-range-bg {
+        background-color: $gray-lighter;
+    }
+    .rbc-off-range {
+        color: $gray-medium;
+    }
+    
+    .rbc-now {
+        font-weight: normal;
+        color: $brand-primary;
+    }
+
+    .rbc-row-content {
+
+    }
+
+    .calendar-toolbar {
+        @extend .command-bar;
+
+        .btn {
+            &.toolbar-btn-previous,
+            &.toolbar-btn-next {
+                padding-left: ($spacing-default - 1px);
+                padding-right: ($spacing-default - 1px);
+
+                .glyphicon {
+                    margin:0;
+                }
+            }
+
+            &.toolbar-btn-day,
+            &.toolbar-btn-week,
+            &.toolbar-btn-month {
+                @if ($dense-app){
+                    padding-left: $spacing-default;
+                    padding-right: $spacing-default;
+                } @else {
+                    padding-left: $spacing-medium; 
+                    padding-right: $spacing-medium;
+                }
+
+                &.active {
+                    
+                }
+            }
+         }
+
+         
+
+         .calendar-label {
+            display: inline-block;
+
+            @if ($dense-app){
+                padding-top: $spacing-small;
+                padding-bottom: $spacing-small;
+            } @else {
+                padding-top: ($spacing-small + $spacing-smaller - 1px);
+                padding-bottom: ($spacing-small + $spacing-smaller - 1px);
+            }
+         }
+    }
+
+    
+}
+
+
+div.full-page-calendar {
+    margin-bottom:0;
+
+    div.calendar-toolbar {
+        padding-left: $spacing-smaller;
+        padding-right: $spacing-smaller;
+    }
+    
+
+    .rbc-month-view,
+    .rbc-time-view {
+        margin: $spacing-large;
+        width: calc(100% - ( 2 * #{$spacing-large}));
+    }
+
+    .rbc-month-header {
+
+    }
+
+    .rbc-header {
+        
+    }
+
+    div.calendar-toolbar {
+        border-top: none;
+    }
+}

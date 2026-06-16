@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Datepicker
+
+   Default Mendix & Apollo datepicker
+========================================================================== */
+.mx-datepicker {
+    @extend %input-group-with-button;
+}
+
+// mx-calendar part
+.mx-calendar {
+    @extend %shadow-medium;
+    border-radius: $border-radius-default;
+    padding: $spacing-small;
+
+    table {
+        border-collapse: separate;
+    }
+
+    th, td {
+        width: 40px;
+        height: 40px;
+    }
+
+    th {
+        color: $font-color-header;
+        font-weight: normal;
+    }
+
+    td {
+        border-radius: 50%;
+        border:1px solid transparent;
+
+        &:focus {
+            outline:none;
+        }
+        &:hover, &:focus, &:active {
+            background-color: $bg-color-hover;
+            color: $brand-default;
+        }
+        &:active {
+            background-color: $bg-color-active;
+        }
+    }
+
+    .mx-calendar-day-month-previous,
+    .mx-calendar-day-month-next {
+        color: $gray-light;
+    }
+    .mx-calendar-day-selected {
+        color: #FFF;
+        background-color: $brand-default;
+        border-color: $brand-default;
+
+        &:hover, &:focus, &:active {
+            color: #FFF;
+            background-color: $brand-default;
+            border-color: $brand-default;
+        }
+    }
+
+    .mx-calendar-day-today {
+        border-color: $brand-primary;
+        color: $brand-primary;
+        background-color: transparent;
+
+        &:hover, &:focus, &:active {
+            border-color: $brand-default;
+        }
+    }
+}
+.mx-calendar-month-dropdown {
+    .mx-calendar-month-current:first-child {
+        margin-right: $spacing-smaller;
+    }
+}
+
+.mx-calendar-month-header {
+    margin: (-$spacing-small) (-$spacing-small) $spacing-small (-$spacing-small);
+    .glyphicon-minus {
+        &:before {
+            content:"\e257";
+        }
+    } 
+    .glyphicon-plus {
+        &:before {
+            content:"\e258";
+        }
+    }
+    .glyphicon-chevron-down {
+        &:before {
+            content:"\e252";
+        }
+    }
+}
+.mx-calendar-month-label {
+    font-weight: 600;
+}
+.mx-calendar-month-dropdown {
+    
+}
+.mx-calendar-month-dropdown-options {
+    padding: 0;
+    border-radius: 0;
+    top:46px;
+
+    div {
+        font-size: $font-size-default;
+        padding: $spacing-smaller $spacing-default;
+
+        &:hover, &:focus, &:active {
+            background-color: $bg-color-hover;
+            color: $brand-default;
+        }
+        &:active {
+            background-color: $bg-color-active;
+        }
+    }
+}
+.mx-calendar-month-previous,
+.mx-calendar-month-next {
+    @extend %panel-btn;
+}
+
+.mx-calendar-year-switcher {
+    color: rgba($brand-default, 0.60);
+}
+.mx-calendar-year-selected {
+    color: $brand-default;
+}
+

@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Teams
+
+   Teams / groups of people / profiles building blocks
+========================================================================== */
+.team-listview {
+    li {
+        background-color: #FFF;
+        border: 1px solid $default-border-color;
+        margin-bottom: $spacing-smaller;
+    }
+
+    .listview-row-grid {
+        padding: $spacing-default;
+    }
+
+    .profile-img-block {
+        margin-right: $spacing-small;
+    }
+}

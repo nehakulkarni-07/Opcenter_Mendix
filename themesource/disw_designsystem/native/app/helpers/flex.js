@@ -1,0 +1,11 @@
+import { flexFactor } from "./_functions/sizes";
+export const flexFactorOne = flexFactor(1);
+export const flexFactorTwo = flexFactor(2);
+export const flexFactorThree = flexFactor(3);
+export const flexFactorFour = flexFactor(4);
+export const flexFactorFive = flexFactor(5);
+export const flexFactorSix = flexFactor(6);
+export const flexFactorSeven = flexFactor(7);
+export const flexFactorEight = flexFactor(8);
+export const flexFactorNine = flexFactor(9);
+export const flexFactorTen = flexFactor(10);

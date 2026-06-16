@@ -1,0 +1,22 @@
+@import '../../../theme/web/custom-variables';
+@import '_componentStyles';
+
+
+
+.component_split_pane{
+  
+    //took awhile to figure out 
+        #graphDiv {
+        width: 40vw;
+        height: 80vh;
+    }
+    .mx-name-oPCEXFNGraph1{
+        height:100%;
+        overflow: auto;
+    }
+    // .d-graph__container{
+    //     height: 70vh !important;
+    // }
+
+
+}

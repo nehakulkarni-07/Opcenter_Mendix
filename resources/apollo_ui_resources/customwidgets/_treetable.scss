@@ -1,0 +1,214 @@
+/* ==========================================================================
+   Tree Table
+
+   Rules and adjustments for the Apollo Tree Table element
+========================================================================== */
+.widget-treetable-wrapper {
+
+    .ant-table {
+        font-size: $font-size-default;
+    }
+
+    .ant-table-thead {
+        >tr {
+            border: 1px solid $grid-border-color;
+
+            >th {
+                font-weight: bold;
+                background-color: $PL_Black_24;
+                border: 1px solid $grid-border-color;
+                border-width: 1px 1px 1px 0;
+                // border: 1px solid $grid-border-color;
+
+                @if ($dense-app) {
+                    padding: $spacing-smaller $spacing-small;
+                } @else {
+                    padding: $spacing-small $spacing-default;
+                }
+            }
+
+            &:first-child {
+                >th {
+                    &:first-child {
+                        border-top-left-radius: 0;
+                        border-width: 1px;
+                    }
+
+                    &:last-child {
+                        border-top-right-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .ant-table-tbody {
+        > tr {
+            > td {
+                border: 1px solid $grid-border-color;
+                border-width: 0 0 1px 0;
+
+                @if ($dense-app) { 
+                    padding: $spacing-small;
+                } @else {
+                    padding: ($spacing-small + $spacing-smaller) $spacing-default;
+                }
+
+                &:first-child {
+                    border-top-left-radius: 0;
+                    border-width: 0 0 1px 1px;
+                }
+
+                &:last-child {
+                    border-top-right-radius: 0;
+                    border-width: 0 1px 1px 0;
+                }
+            }
+        }
+
+        > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) {
+            >td {
+                background: $grid-bg-hover;
+            }
+        }
+
+        > tr.ant-table-row-selected td {
+            background: $grid-bg-selected;
+        }
+    }
+
+    .ant-table-row-expand-icon {
+        @if ($dense-app) {
+            line-height: $font-size-default;
+            width: $font-size-default + 3px;
+            height: $font-size-default + 3px;
+        } @else {
+            line-height: $font-size-default - 2px;
+            width: $font-size-default + 1px;
+            height: $font-size-default + 1px;
+        }
+
+        border: none;
+        background-color: transparent;
+        color: $font-base-color;
+
+        &:after {
+            @extend %glyphicon;
+            content: "\e252"; // e250
+            transform-origin: center center;
+            transition: all $standard-transition-time ease-out;
+        }
+
+        &.ant-table-row-collapsed {
+            &:after {
+                content: "\e252";
+                
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    .ant-table-cell-with-icon {
+        padding-left: (18px + $spacing-small);
+        .ant-table-cell-icon.glyphicon {
+            top: 5px;
+        }
+    }
+
+    .widget-treetable-buttonbar {
+        margin-bottom: 6px;
+    }
+
+    .single-column {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.treetable-borderless {
+    .ant-table-tbody {
+        >tr {
+            >td {
+                border-width: 0 0 0 0;
+                &:first-child {
+                    border-width: 0 0 0 1px;
+                }
+                &:last-child {
+                    border-width: 0 1px 0 0;
+                }
+            }
+            &:last-child {
+                > td {
+                    border-width: 0 0 1px 0;
+                    &:first-child {
+                        border-width: 0 0 1px 1px;
+                    }
+                    &:last-child {
+                        border-width: 0 1px 1px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.treetable-borderless-outside {
+    .ant-table-tbody {
+        > tr {
+            >td {
+                &:first-child {
+                    border-left-width: 0;
+                }
+
+                &:last-child {
+                    border-right-width: 0;
+                }
+            }
+
+            &:last-child {
+                >td {
+                    border-left-width: 0;
+
+                    &:first-child {
+                        border-left-width: 0;
+                        border-bottom-width: 0;
+                    }
+
+                    &:last-child {
+                        border-right-width: 0;
+                        border-bottom-width: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.treetable-alternating {
+    .ant-table-tbody {
+        tr:nth-child(even) {
+            background: $grid-alternating-bg;
+        }
+    }
+}
+
+.treetable-hoverless {
+    .ant-table-tbody {
+        >tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) {
+            >td {
+                background: inherit;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Tree Table variants
+
+   Variants on the Apollo Treetable
+========================================================================== */
+.treeview-treetable {
+
+}

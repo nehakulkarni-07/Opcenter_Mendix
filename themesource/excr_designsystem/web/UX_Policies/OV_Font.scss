@@ -1,0 +1,17 @@
+@import "../../../../theme/web/custom-variables";
+
+//This file will be obsolete, font styling will be based on element/object
+//Common styling for text fonts
+.apply-font {
+    font-family: "Segoe UI" !important;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: normal;
+}
+
+.apply-font-medium {
+    font-family: "Segoe UI" !important;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: normal;
+}

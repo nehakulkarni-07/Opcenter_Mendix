@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Modals
+
+   Default Mendix & Apollo Modals
+========================================================================== */
+.modal-dialog {
+    .modal-content {
+        border: none;
+        border-radius: 0;
+
+       .modal-body {
+           padding: 0;
+       }
+    }
+    .modal-header {
+        border: none;
+        background-color: $brand-default; 
+        color: #FFF;
+
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        .close {
+            color: inherit;
+            font-size: 32px;
+            font-weight: 100;
+            line-height: 20px;
+            
+            margin: 0;
+            float: none;
+            position: relative;
+            top: -3px;
+            opacity: 1;
+        }
+
+        h4 {
+            color: inherit;
+        }
+    }
+
+    .modal-footer {
+        @extend %mx-dataview-controls;
+    }
+
+    .mx-placeholder > .mx-dataview {
+        > .mx-dataview-content {
+            padding: $spacing-default 0;
+        }
+
+        .page-layoutgrid {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .mx-tabcontainer {
+            .page-layoutgrid {
+                padding-top: $spacing-default;
+            }
+        }
+    }
+
+    .mx-dataview-controls {
+        padding: $spacing-default $spacing-default $spacing-small $spacing-default;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+
+        .btn {
+            margin-right:0;
+            margin-left: $spacing-small;
+            &:first-child {
+                margin-left: $spacing-small;
+            }
+        }
+    }
+
+    // fix for reference selector popups
+    .mx-placeholder > .mx-grid {
+        padding: $spacing-default;
+    }
+}
+
+.modal-content {
+    @extend %shadow-large;
+}
+
+.mx-dialog {
+    .mx-dialog-content {
+        .mx-dialog-body {
+            padding: $spacing-default $spacing-default ($spacing-default - 10px) $spacing-default;
+        }
+    }
+    .mx-dialog-footer {
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        .btn {
+            margin-bottom: $spacing-small;
+
+            & + .btn {
+                margin-left: 0;
+                margin-right: 5px;
+            }
+        }
+        
+    }
+    
+}
+
+.modal-wide {
+    width: 800px !important;
+    left: calc(50% - 400px) !important;
+}
+
+/* ==========================================================================
+   Clean modal
+
+   Modal that does not use the strong blue header bar
+========================================================================== */
+.clean-modal {
+    .modal-header {
+        background-color: transparent;
+        color: $font-color-default;
+
+        h4 {
+            font-size: $font-size-h3;
+        }
+    }
+}
+
+/* ==========================================================================
+   Side panel
+
+   Default Apollo sidepanel modal
+========================================================================== */
+.panel-popup {
+    top: $topbar-minimalheight !important;
+    bottom: 0 !important;
+    width: 360px;
+    height: calc(100% - #{$topbar-minimalheight});
+
+    // set default for right panel popup
+    right: ($toolbar-minimalwidth + 8px + 2px) !important;
+    left: auto !important;
+
+    .modal-content {
+        box-shadow: -4px 4px 8px 0 rgba(0,0,0,0.25);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body {
+        flex: 1;
+    }
+
+    .horizontal-form-section,
+    &.horizontal-form-section {
+        .control-label {
+            flex-basis: 33.333333%;
+        }
+    }
+
+    .mx-placeholder {
+        height: 100%;
+        
+        > .mx-dataview {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            > .mx-dataview-content {
+                flex: 1;
+                max-height: 100%;
+        
+                overflow: auto;
+        
+                > .mx-tabcontainer {
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    
+
+    .mx-placeholder > .mx-dataview {
+
+    }
+}
+
+.panel-popup-wide {
+    width: calc(50vw - #{$toolbar-minimalwidth});
+}
+
+.left-panel-popup {
+    left: $sidebar-minimalwidth !important;
+    right: auto !important;
+
+    .modal-content {
+        box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.25);
+    }
+
+}

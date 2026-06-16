@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Tree View
+
+   Rules and adjustments for the Apollo Tree View element
+========================================================================== */
+.treeview-widget {
+
+    .ant-tree {
+        font-size: $font-size-default;
+
+        li {
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            span.ant-tree-switcher {
+                position: relative;
+                height: auto;
+                width: auto;
+
+                @if ($dense-app) { 
+                    padding: $spacing-small;
+                    margin-right: -1 * ($spacing-small + $spacing-small + 19px); // 1 on 1 size of the expand icon
+                } @else {
+                    padding: ($spacing-small + $spacing-smaller) $spacing-default;
+                    margin-right: -1 * ($spacing-default + $spacing-small + 19px);
+                }
+                
+                padding-right: 0;
+
+                &:hover, &:focus {
+                    & + .ant-tree-node-content-wrapper {
+                        background-color: $grid-bg-hover;
+                    }
+                }
+                &:active {
+                    & + .ant-tree-node-content-wrapper {
+                        background-color: $grid-bg-selected;
+                    }
+                }
+
+                i {
+                    margin-right: $spacing-small;
+                }
+
+
+                & + .ant-tree-node-content-wrapper {
+                    @if ($dense-app) { 
+                        padding-left: ($spacing-small + $spacing-small + 19px); // 1 on 1 size of the expand icon
+                    } @else {
+                        padding-left: ($spacing-default + $spacing-small + 19px);
+                    }
+                }
+            }
+
+            .ant-tree-node-content-wrapper {
+                @extend %transition;
+                flex: 1;
+                height: auto;
+
+                @if ($dense-app) { 
+                    padding: $spacing-small;
+                } @else {
+                    padding: ($spacing-small + $spacing-smaller) $spacing-default;
+                }
+
+                &:hover, &:focus, &:active {
+                    background-color: $grid-bg-hover;
+                }
+                &:active {
+                    background-color: $grid-bg-selected;
+                }
+
+                // TODO: create selected styling
+            }
+
+            .ant-tree-child-tree {
+                flex-basis: 100%;
+            }
+
+            span.ant-tree-iconEle {
+                display: none;
+            }
+
+
+            span.ant-tree-switcher.ant-tree-switcher_close,
+            span.ant-tree-switcher.ant-tree-switcher_open {
+                i.ant-tree-switcher-icon {
+                    font-size: $font-size-default + 3px;
+                    line-height: $font-size-default + 11px;
+                }
+            }
+
+            &.selected {
+                > .ant-tree-node-content-wrapper {
+                    background-color: $grid-bg-selected;
+                }
+            }
+        }
+    }
+
+}

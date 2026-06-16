@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Tags
+
+   Default Apollo Tags & Badges
+========================================================================== */
+.tag, .badge {
+    margin: 0;
+    padding: 2px ($spacing-small + $spacing-smaller);
+    border: 1px solid $brand-default;
+    background-color: transparent;
+    border-radius: 50px;
+
+    color: $brand-default;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.badge {
+    line-height: $line-height-base;
+    font-size: $font-size-default;
+    font-weight: normal;
+}
+
+.tag {
+    display: inline-block;
+
+    .glyphicon {
+        margin-right: $spacing-small;
+    }
+
+    p {
+        margin: 0;
+        display: inline;
+    }
+
+    &.mx-link {
+        &:focus, &:hover, &:active {
+            text-decoration: none;
+            background-color: $btn-default-bg-hover;
+        }
+
+        &:active {
+            background-color: $btn-default-bg-active;
+        }
+    }
+    // remove or any button at the end
+    .mx-link {
+        margin-left: $spacing-small;
+        padding: 2px ($spacing-smaller + 2px);
+        margin: -2px -1*($spacing-small + $spacing-smaller) -2px ($spacing-small - 2px);
+        border-radius: 50px;
+
+        display: inline-block;
+
+        .glyphicon {
+            margin:0;
+            
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: $btn-default-bg-hover;
+        }
+        &:active {
+            background-color: $btn-default-bg-active;
+        }
+    }
+
+    &.checked {
+        &:after {
+            @extend %glyphicon;
+            content: "\e013";
+
+            margin-left: $spacing-small;
+        }
+    }
+
+
+    &.disabled {
+        border-color: rgba(0,0,0,0.33);
+        background-color: rgba(0,0,0,0.1);
+        color: rgba(0,0,0,0.57);
+
+        pointer-events: none;
+    }
+}
+
+.tag-toolbar {
+    margin-left: -$spacing-small;
+
+    .tag, .badge {
+        margin-left: $spacing-small;
+        margin-bottom: $spacing-small;
+    }
+}
+
+.pageheader .tag-toolbar {
+    margin-bottom: $spacing-small;
+    margin-top: $spacing-smaller;
+
+    .tag {
+        margin-bottom: $spacing-small;
+    }
+}
+
+// mx-link variant without a click
+.tag-static {
+    cursor: text;
+}
+
+.tag-icon-right {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    .glyphicon {
+        margin-right:0;
+        margin-left: $spacing-small;
+    }
+}
+
+.tag-default {
+    &.checked {
+        background-color: $Siemens_Blue_13;
+        color: #FFF;
+    }
+}
+
+.badge.label-primary,
+.tag-primary {
+    background-color: $Siemens_Blue_7;
+    border-color: $Siemens_Blue_1;
+    color: #FFF;
+}
+.tag-primary {
+    .mx-link {
+        color: #FFF;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus, &:active {
+            background-color: darken($Siemens_Blue_7, 5%);
+            border-color: $Siemens_Blue_1;
+            color: #FFF;
+        }
+        &:active {
+            background-color: darken($Siemens_Blue_7, 8%);
+        }
+    }
+    
+}
+
+.badge.label-inverse,
+.tag-inverse,
+.tag-secondary {
+    background-color: $Siemens_Blue_13;
+    border-color: $Siemens_Blue_7;
+    color: #FFF;
+}
+
+.tag-inverse,
+.tag-secondary {
+
+    .mx-link {
+        color: #FFF;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus {
+            color: #FFF;
+            background-color: $brand-default-hover;
+            border-color: $brand-default-hover;
+        }
+        &:active {
+            color: #FFF;
+            background-color: $brand-default-active;
+            border-color: $brand-default-active;
+        }
+    }
+}
+
+.badge.label-success,
+.tag-success {
+    border-color: $brand-success;
+    color: $brand-success;
+}
+.tag-success {
+    .mx-link {
+        color: $brand-success;
+    }
+
+    &.mx-link,
+    .mx-link {
+        &:hover, &:focus, &:active {
+            color: $brand-success;
+            background-color: rgba($brand-success, 0.1);
+            border-color: $brand-success;
+        }
+        &:active {
+            background-color: rgba($brand-success, 0.25);
+        }
+    }
+
+    &.checked {
+        background-color: $brand-success;
+        color: #FFF;
+    }
+}
+.badge.label-warning,
+.tag-warning {
+    border-color: $brand-warning;
+    color: $brand-warning;
+}
+.tag-warning {
+    
+
+    .mx-link {
+        color: $brand-warning;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus, &:active {
+            color: $brand-warning;
+            background-color: rgba($brand-warning, 0.1);
+            border-color: $brand-warning;
+        }
+        &:active {
+            background-color: rgba($brand-warning, 0.25);
+        }
+    }
+
+    &.checked {
+        background-color: $brand-warning;
+        color: #FFF;
+    }
+}
+
+.badge.label-danger,
+.tag-danger {
+    border-color: $brand-danger;
+    color: $brand-danger;
+}
+.tag-danger {
+    .mx-link {
+        color: $brand-danger;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus, &:active {
+            color: $brand-danger;
+            background-color: rgba($brand-danger, 0.1);
+            border-color: $brand-danger;
+        }
+        &:active {
+            background-color: rgba($brand-danger, 0.25);
+        }
+    }
+
+    &.checked {
+        background-color: $brand-danger;
+        color: #FFF;
+    }
+}
+
+.tag-primary-accent,
+.tag-cta,
+.tag-warning-accent {
+    border-color: $brand-primary;
+    background-color: $brand-primary;
+    color: #FFF;
+
+    .mx-link {
+        color: #FFF;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus, &:active {
+            background-color: darken($brand-primary, 5%);
+            color: #FFF;
+            border-color: $brand-primary;
+        }
+        &:active {
+            background-color: darken($brand-primary, 8%);
+        }
+    }
+}
+.tag-success-accent {
+    border-color: $brand-success;
+    background-color: $brand-success;
+    color: #FFF;
+
+    .mx-link {
+        color: #FFF;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus, &:active {
+            color: #FFF;
+            background-color: darken($brand-success, 5%);
+            border-color: $brand-success;
+        }
+        &:active {
+            background-color: darken($brand-success, 8%);
+        }
+    }
+}
+.tag-danger-accent {
+    border-color: $brand-danger;
+    background-color: $brand-danger;
+    color: #FFF;
+
+    .mx-link {
+        color: #FFF;
+    }
+
+    &.mx-link, .mx-link {
+        &:hover, &:focus, &:active {
+            color: #FFF;
+            background-color: darken($brand-danger, 5%);
+            border-color: $brand-danger;
+        }
+        &:active {
+            background-color: darken($brand-danger, 8%);
+        }
+    }
+}
+
+// inverse tags
+
+// see more inverse tags below
+%reverse-tag-default,
+.reverse-tag-default {
+    border-color: #FFF;
+    color: #FFF;
+}
+
+.reverse-tag-primary,
+%reverse-tag-primary {
+    background-color: #FFF;
+    color: $brand-default;
+}
+.reverse-tag-secondary,
+.reverse-tag-inverse,
+%reverse-tag-inverse {
+    border-color: $Siemens_Blue_7;
+}
+.reverse-tag-success,
+.reverse-tag-warning,
+.reverse-tag-danger,
+%reverse-tag-statusses {
+    background-color: #FFF;
+}
+
+%reverse-tag-disabled {
+    border-color: $gray;
+    color: $gray;
+    background-color: transparent;
+}
+
+// dark backgrounds
+.bg-default,
+.taskui-header {
+    .tag-default, .badge {
+        @extend %reverse-tag-default;
+    }
+    .tag-primary, .badge.label-primary {
+        @extend %reverse-tag-primary;
+    }
+    .tag-secondary, .tag-inverse, .badge.label-inverse {
+        @extend %reverse-tag-inverse;
+    }
+    .tag-success, .tag-warning, .tag-danger {
+        @extend %reverse-tag-statusses;
+    }
+    .tag.disabled {
+        @extend %reverse-tag-disabled;
+    }
+}
+
+/* ==========================================================================
+   Listview variant
+
+   rules for tag / badge listview
+========================================================================== */
+.tag-listview {
+    @extend %listview-flex;
+    @extend %listview-clean;
+    @extend %listview-static;
+}
+
+
+/* ==========================================================================
+   Container cases
+
+   rules for tags in specific containers
+========================================================================== */
+.listview-row-grid {
+    .tag {
+        min-width: 100%;
+        text-align: center;
+    }
+}

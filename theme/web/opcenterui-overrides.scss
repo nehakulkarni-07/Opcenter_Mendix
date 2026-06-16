@@ -1,0 +1,779 @@
+@import "../../themesource/datawidgets/web/datagrid-filters.scss";
+@import "./custom-variables";
+
+//Dhruv Changes -start
+
+.mx-page {
+  div[class^="col"] {
+    select {
+      min-height: 32px !important;
+      padding: 0px;
+      height: 32px;
+      text-align: left;
+      font: normal normal normal 12px/16px Segoe UI;
+      letter-spacing: 0px;
+      color: #828282;
+      opacity: 1;
+      padding: 8px;
+    }
+
+    button[aria-label="Show date picker"] {
+      padding: 0px;
+      //   border-left: 1px solid hsl(0, 0%, 80%);
+    }
+	
+	.form-control[aria-invalid="true"]
+	{
+	   border-color: #dc0000 !important;
+      background-color: rgba(220, 0, 0, 0.1019607843) !important;
+	   
+	}
+   .alert-danger {
+	   display: none;
+	 }
+	.has-error:before {
+       display: none;
+      }
+
+.container-search-bar > input[type="text"] {
+ padding-right: 25px !important;
+}
+
+    input[type="password"] {
+      //    padding: 2px 8px;
+      // font-size: 17px;
+      text-align: left;
+      font: normal normal normal 12px/16px Segoe UI;
+      letter-spacing: 0px;
+      color: #1e1e1e;
+      opacity: 1;
+      padding: 8px;
+
+      //Xi Ming Changes 2023/03/07 -start
+      background: normal 0% 0% no-repeat padding-box;
+      border: 1px solid #8c8c8c;
+      border-radius: 2px;
+      opacity: 1;
+
+      &:disabled {
+        background: #0000001a 0% 0% no-repeat padding-box;
+        border: 1px solid #0000004d;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:hover {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 2px solid #8c8c8c;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:focus {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 2px solid #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:active {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 2px solid #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      //Xi Ming Changes 2023/03/07 -end
+    }
+
+    input[type="text"] {
+      // padding: 2px 8px;
+      // font-size: 17px;
+      text-align: left;
+      font: normal normal normal 12px/16px Segoe UI;
+      letter-spacing: 0px;
+      color: #1e1e1e;
+      opacity: 1;
+      padding: 8px;
+      max-height: 32px;
+      height: 32px;
+      //Xi Ming Changes 2023/03/07 -start
+      background: normal 0% 0% no-repeat padding-box;
+      border: 1px solid #828282;
+      border-radius: 2px;
+      opacity: 1;
+
+      &:disabled {
+        background: #0000001a 0% 0% no-repeat padding-box;
+        border: 1px solid #0000004d;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:hover {
+        background: normal 0% 0% no-repeat padding-box;
+        // border: 2px solid #8C8C8C;
+        border-color: transparent;
+        box-shadow: inset 0 0 0 2px #828282;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:focus {
+        background: normal 0% 0% no-repeat padding-box;
+        // border: 2px solid #3296B9;
+        border-color: transparent;
+        box-shadow: inset 0 0 0 2px #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:active {
+        background: normal 0% 0% no-repeat padding-box;
+        // border: 2px solid #3296B9;
+        border-color: transparent;
+        box-shadow: inset 0 0 0 2px #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      //Xi Ming Changes 2023/03/07 -end
+    }
+
+    .mx-textarea .mx-textarea-noresize {
+      text-align: left;
+      font: normal normal normal 12px/16px Segoe UI;
+      letter-spacing: 0px;
+      color: #828282;
+      opacity: 1;
+      padding: 8px !important;
+    }
+
+    //Xi Ming Changes 2023/03/07 -start
+    textarea {
+      background: normal 0% 0% no-repeat padding-box;
+      border: 1px solid #828282;
+      border-radius: 2px;
+      opacity: 1;
+
+      &:disabled {
+        background: #0000001a 0% 0% no-repeat padding-box;
+        border: 1px solid #0000004d;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:hover {
+        background: normal 0% 0% no-repeat padding-box;
+        // border: 2px solid #8C8C8C;
+        border-color: transparent;
+        box-shadow: inset 0 0 0 2px #828282;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:focus {
+        background: normal 0% 0% no-repeat padding-box;
+        // border: 2px solid #3296B9;
+        border-color: transparent;
+        box-shadow: inset 0 0 0 2px #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:active {
+        background: normal 0% 0% no-repeat padding-box;
+        // border: 2px solid #3296B9;
+        border-color: transparent;
+        box-shadow: inset 0 0 0 2px #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+    }
+
+    //Xi Ming Changes 2023/03/07 -end
+    .form-control {
+      padding: 0px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+  }
+
+  //Xi Ming Changes 2023/03/03 -start
+  //radio button style
+  .mx-radiobuttons.inline .radio {
+    margin: 0 24px 0 0;
+  }
+
+  .radio {
+    &:focus {
+      border: 2px solid #0f789b;
+    }
+  }
+
+  .PrefixCustomDropdown__indicator-separator {
+    display: none;
+  }
+
+  .mx-radiobuttons input[type="radio"] {
+    margin-right: 2px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #464646;
+    opacity: 1;
+
+    &:hover {
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 4px solid #197fa2;
+      opacity: 1;
+    }
+
+    &:disabled {
+      background: #00000012 0% 0% no-repeat padding-box;
+      border: 1px solid #00000073;
+      opacity: 1;
+    }
+  }
+
+  .mx-radiobuttons input[type="radio"]:checked {
+    border: 1px solid #197fa2;
+    opacity: 1;
+
+    &::before {
+      background: #197fa2 0% 0% no-repeat padding-box;
+      opacity: 1;
+    }
+
+    &:disabled {
+      background: #00000012 0% 0% no-repeat padding-box;
+      border: 1px solid #00000073;
+
+      &::before {
+        background: #00000073 0% 0% no-repeat padding-box;
+        opacity: 1;
+      }
+    }
+  }
+
+  input[type="radio"] + label {
+    text-align: left;
+    font: normal normal normal 12px/16px Segoe UI;
+    letter-spacing: 0px;
+    color: #1e1e1e;
+    opacity: 1;
+    margin-left: 2px;
+    padding-top: 4px;
+  }
+
+  //check box style
+  .mx-checkbox {
+    padding-top: 26px;
+
+    .control-label {
+      text-align: left;
+      font: normal normal normal 12px/16px Segoe UI;
+      letter-spacing: 0px;
+      color: #1e1e1e;
+      opacity: 1;
+      padding-bottom: 1px;
+    }
+
+    & > div[class*="col-"] {
+      margin-left: 0px !important;
+
+      &:focus {
+        border: 2px solid #0f789b;
+        opacity: 1;
+      }
+    }
+  }
+
+  .mx-checkbox input[type="checkbox"] {
+    border: 1px solid #464646;
+    opacity: 1;
+
+    &:hover {
+      border: 4px solid #197fa2;
+      border-radius: 2px;
+      opacity: 1;
+    }
+
+    &:disabled {
+      background: #00000012 0% 0% no-repeat padding-box;
+      border: 1px solid #00000073;
+      opacity: 1;
+    }
+  }
+
+  .mx-checkbox input[type="checkbox"]:checked {
+    background: #197fa2 0% 0% no-repeat padding-box;
+    border: 1px solid #197fa2;
+    border-radius: 2px;
+    opacity: 1;
+
+    &::before {
+      background: #197fa2 0% 0% no-repeat padding-box;
+    }
+
+    &:disabled {
+      background: #00000012 0% 0% no-repeat padding-box;
+      border: 1px solid #00000073;
+      opacity: 1;
+    }
+  }
+
+  .widget-switch .widget-switch-btn-wrapper.un-checked {
+    width: 32px;
+    height: 16px;
+    box-shadow: #787878 0px 0px 0px 16px inset;
+    background: #787878 0% 0% no-repeat padding-box;
+    border: 1px solid #787878;
+    opacity: 1;
+    outline: none;
+
+    .widget-switch-btn.left {
+      width: 12px;
+      height: 12px;
+      margin: 2px 0 2px 2px;
+    }
+
+    &:disabled {
+      box-shadow: #0000001a 0px 0px 0px 16px inset;
+      background: #0000001a 0% 0% no-repeat padding-box;
+      border: 1px solid #0000001a;
+    }
+  }
+
+  .widget-switch .widget-switch-btn-wrapper.checked {
+    width: 32px;
+    height: 16px;
+    box-shadow: #3296b9 0px 0px 0px 16px inset;
+    background: #3296b9 0% 0% no-repeat padding-box;
+    border: 1px solid #3296b9;
+    border-radius: 25px !important;
+    opacity: 1;
+    outline: none;
+
+    .widget-switch-btn.right {
+      width: 12px;
+      height: 12px;
+      margin: 2px 0 2px -2px;
+    }
+
+    &:disabled {
+      box-shadow: #3296b940 0px 0px 0px 16px inset;
+      background: #3296b940 0% 0% no-repeat padding-box;
+      border: 1px solid #3296b940;
+    }
+  }
+
+  //Xi Ming Changes 2023/03/03 -end
+
+  //Xi Ming Changes 2023/02/23 -start
+  .filter-container {
+    height: 32px;
+    min-height: 32px !important;
+
+    //Xi Ming Changes update 2023/03/02 -start
+    input[type="text"] {
+      text-align: left;
+      font: normal normal normal 12px/16px Segoe UI;
+      letter-spacing: 0px;
+      color: #1e1e1e;
+      opacity: 1;
+      padding: 8px;
+
+      &::placeholder {
+        text-align: left;
+        font: italic normal normal 12px/16px Segoe UI;
+        letter-spacing: 0px;
+        opacity: 1;
+      }
+
+      &:disabled {
+        background: #0000001a 0% 0% no-repeat padding-box;
+        border: 1px solid #0000004d;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:hover {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 2px solid #8c8c8c;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:focus {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 2px solid #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+
+      &:enabled:active {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 2px solid #0F789B;
+        border-radius: 2px;
+        opacity: 1;
+      }
+    }
+
+    //Xi Ming Changes update 2023/03/02 -end
+  }
+
+  //Xi Ming Changes 2023/02/23 -end
+  .PrefixCustomDropdown__control {
+    height: 32px;
+    min-height: 32px;
+
+    &:focus-within {
+      box-shadow: inset 0 0 0 2px #0F789B;
+      border: transparent;
+      padding: 0 1px;
+    }
+
+    .PrefixCustomDropdown__value-container {
+      height: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 0 0 8px;
+      overflow: unset;
+
+      .PrefixCustomDropdown__single-value {
+        margin-bottom: 16px;
+
+        .PrefixCustomDropdown__name {
+          font: normal normal normal 12px/16px Segoe UI;
+        }
+      }
+
+      .css-b8ldur-Input {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .PrefixCustomDropdown__input {
+        display: flex !important;
+
+        input {
+          width: unset !important;
+          font-size: 12px !important;
+          height: 16px;
+
+          &:hover,
+          &:active,
+          &:focus {
+            box-shadow: none !important;
+          }
+        }
+      }
+
+      .PrefixCustomDropdown__input-container {
+        display: flex !important;
+
+        input {
+          width: unset !important;
+          font-size: 12px !important;
+          height: 16px;
+
+          &:hover,
+          &:active,
+          &:focus {
+            box-shadow: none !important;
+          }
+        }
+      }
+
+    }
+
+    .PrefixCustomDropdown__indicator {
+      padding: 0;
+    }
+
+    .PrefixCustomDropdown__clear-indicator {
+      margin-right: 4px;
+    }
+
+    .PrefixCustomDropdown__dropdown-indicator {
+      margin: 0 4px;
+    }
+
+    background: normal 0% 0% no-repeat padding-box;
+    border: 1px solid #828282;
+    border-radius: 2px;
+    opacity: 1;
+    box-shadow: none;
+
+    &:hover {
+      // border: 2px solid #8C8C8C;
+      border-color: transparent;
+      box-shadow: inset 0 0 0 2px #828282;
+    }
+
+    &:active {
+      // border: 2px solid #3296B9;
+      border-color: transparent;
+      box-shadow: inset 0 0 0 2px #0F789B;
+    }
+  }
+
+  .PrefixCustomDropdown__menu {
+    margin-top: 0;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004d;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+
+    .PrefixCustomDropdown__option {
+      padding: 8px;
+
+      .PrefixCustomDropdown__name {
+        font: normal normal normal 12px/16px Segoe UI;
+      }
+    }
+
+    .PrefixCustomDropdown__option--is-focused {
+      background: #CDE6EB 0% 0% no-repeat padding-box;
+    }
+
+    .PrefixCustomDropdown__option--is-selected {
+      background: #ffffff 0% 0% no-repeat padding-box;
+      color: #1e1e1e;
+
+      &:hover {
+        background: #CDE6EB 0% 0% no-repeat padding-box;
+      }
+    }
+  }
+
+  .PrefixCustomDropdown__control--menu-is-open {
+    // border: 2px solid #3296B9;
+    border-color: transparent !important;
+    box-shadow: inset 0 0 0 2px #3296b9 !important;
+
+    // &:hover {
+    //   border: none;
+    // }
+  }
+}
+
+//***
+//Commandbar - list view
+.command-bar-listview {
+  border: none;
+  display: flex;
+}
+
+// input[type=text].form-control{
+//     padding:2px 2px;
+//     line-height: 32px;
+// }
+
+//Xi Ming update 2023-02-27 -start
+.command-bar {
+  button {
+    margin: 0px !important;
+    margin-top: 2px !important;
+    // padding: 4px 16px !important;
+    // margin: 5px 0px 0px -1px !important;
+  }
+}
+
+//Xi Ming update 2023-02-27 -end
+
+//For Top bar dropdown menu
+.dropdown-menu button {
+  font-family: "Segoe UI" !important;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: normal;
+  border: none !important;
+  color: #1e1e1e;
+  padding: 4px 16px !important;
+}
+
+//For text fonts
+.apply-font {
+  font-family: "Segoe UI" !important;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: normal;
+}
+
+.apply-font-medium {
+  font-family: "Segoe UI" !important;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: normal;
+}
+
+//Grid Styling
+.custom-grid {
+  border: 0px;
+
+  .tr {
+    .column-selector-content {
+      .btn {
+        padding: 0px;
+        margin-top: -15px;
+      }
+    }
+
+    [role="columnheader"] {
+      height: 45px;
+      height: auto;
+    }
+
+    .column-header {
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-family: "Segoe UI";
+      font-size: 12px;
+      font-weight: normal;
+      // line-height: 1.5;
+      font-weight: bold;
+    }
+
+    .th {
+      padding: 4px;
+      background-color: #e6e6e6;
+      border: 1px solid #dcdcdc;
+    }
+
+    [role="main"] {
+      padding: 4px;
+    }
+
+    .td {
+      input[type="text"].form-control {
+        max-height: 32px !important;
+        margin-top: 13px;
+        text-align: left;
+        font: normal normal normal 12px/16px Segoe UI;
+        letter-spacing: 0px;
+        color: #828282;
+        opacity: 1;
+        padding: 8px;
+
+        background: normal 0% 0% no-repeat padding-box;
+        border: 1px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+
+        &:disabled {
+          background: #0000001a 0% 0% no-repeat padding-box;
+          border: 1px solid #0000004d;
+          border-radius: 2px;
+          opacity: 1;
+        }
+
+        &:enabled:hover {
+          background: normal 0% 0% no-repeat padding-box;
+          // border: 2px solid #8C8C8C;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #828282;
+          border-radius: 2px;
+          opacity: 1;
+        }
+
+        &:enabled:focus {
+          background: normal 0% 0% no-repeat padding-box;
+          // border: 2px solid #3296B9;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #0F789B;
+          border-radius: 2px;
+          opacity: 1;
+        }
+
+        &:enabled:active {
+          background: normal 0% 0% no-repeat padding-box;
+          // border: 2px solid #3296B9;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #0F789B;
+          border-radius: 2px;
+          opacity: 1;
+        }
+      }
+
+      select.form-control {
+        padding: 0px;
+        margin-top: 12px;
+        height: 38px !important;
+        //Xi Ming Changes 2023/02/10 -start
+        min-height: 38px;
+        //Xi Ming Changes 2023/02/10 -end
+      }
+
+      height: 45px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-family: "Segoe UI";
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 1.5;
+
+      div.PrefixCustomDropdown__control {
+        height: 32px;
+        min-height: 32px !important;
+
+        .PrefixCustomDropdown__indicator-separator {
+          display: none;
+        }
+
+        // .PrefixCustomDropdown__indicator {
+        //   padding-top: 6px;
+        // }
+
+        .PrefixCustomDropdown__value-container {
+          padding: 0px 8px;
+		  
+		
+
+          .PrefixCustomDropdown__single-value {
+           // margin-top: -3px;
+
+            .PrefixCustomDropdown__name {
+              text-align: left;
+              font: normal normal normal 12px/16px Segoe UI;
+              letter-spacing: 0px;
+              color: #1e1e1e;
+              opacity: 1;
+              padding: 8px;
+            }
+          }
+        }
+
+        background: normal 0% 0% no-repeat padding-box;
+        border: 1px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+
+        &:hover {
+          // border: 2px solid #8C8C8C;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #828282;
+        }
+
+        &:focus {
+          // border: 2px solid #3296B9;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #0F789B;
+        }
+
+        &:active {
+          // border: 2px solid #3296B9;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #0F789B;
+        }
+      }
+    }
+  }
+}
+
+//Dhruv Changes -end

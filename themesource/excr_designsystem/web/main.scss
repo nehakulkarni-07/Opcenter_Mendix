@@ -1,0 +1,59 @@
+@import '../../../theme/web/custom-variables';
+
+@import "./phone/Phone_Layout.scss";
+@import "./phone/Phone_Toast.scss";
+
+@import "./phone/MfgOrderManagement/MfgOrder_Overview.scss";
+@import "./phone/MfgOrderManagement/MfgOrder_Status.scss";
+@import "./phone/MfgOrderManagement/MfgOrder_TaskList.scss";
+@import "./phone/MfgOrderManagement/MfgOrder_EProc.scss";
+
+// @import "./UX_Policies/OV_Command_Bar.scss";
+// //This file will be obsolete, font styling will be based on element/object
+// // @import "./UX_Policies/OV_Font.scss";
+// @import "./UX_Policies/OV_Select_Control.scss";
+// @import "./UX_Policies/OV_Table.scss";
+// @import "./UX_Policies/OV_Table_Filter.scss";
+// @import "./UX_Policies/OV_Text_Input.scss";
+
+@import "./UX_Policies/UX_Variables.scss";
+// @import "./UX_Policies/UX_Common.scss";
+
+// @import "./UX_Policies/UX_Accordion.scss";
+// @import "./UX_Policies/UX_Buttons.scss";
+// @import "./UX_Policies/UX_Checkbox.scss";
+// @import "./UX_Policies/UX_Command_Bar.scss";
+// @import "./UX_Policies/UX_Default_Cell.scss";
+@import "./UX_Policies/UX_Empty_State.scss";
+// @import "./UX_Policies/UX_Inbox_Notifications.scss";
+// @import "./UX_Policies/UX_Information_Bar.scss";
+// @import "./UX_Policies/UX_Label.scss";
+// @import "./UX_Policies/UX_Notification_Badges.scss";
+
+// @import "./UX_Policies/UX_Panel_Section.scss";
+// @import "./UX_Policies/UX_Popup_Menu.scss";
+// @import "./UX_Policies/UX_Radio_Buttons.scss";
+// @import "./UX_Policies/UX_Scroll_Bar.scss";
+// @import "./UX_Policies/UX_Search.scss";
+// @import "./UX_Policies/UX_Select_Control.scss";
+// @import "./UX_Policies/UX_Switch.scss";
+ @import "./UX_Policies/UX_Table.scss";
+// @import "./UX_Policies/UX_Text_Area.scss";
+// @import "./UX_Policies/UX_Text_Input.scss";
+// @import "./UX_Policies/UX_Tiles_Cards.scss";
+// @import "./UX_Policies/UX_Tree.scss";
+// @import "./UX_Policies/UX_Typography.scss";
+// @import "./UX_Policies/UX_Tooltip.scss";
+
+@import "./DocumentControl.scss";
+@import "./WidgetProgressLoader.scss";
+@import "./UX_Policies/UX_Panel.scss";
+@import "./UX_Policies/UX_ComboBox.scss";
+@import "./InlineSPC.scss";
+@import "./HoldManagement.scss";
+@import "./LanguageSelector.scss";
+
+@import "./MfgDispatch.scss";
+
+@import "./OnlineQuery.scss";
+

@@ -1,0 +1,477 @@
+/* ==========================================================================
+   Buttons
+
+   Default Mendix & Apollo buttons
+========================================================================== */
+.btn, .btn-default, .mx-button {
+    @extend %control-transition;
+
+    @if ($dense-app){
+        padding: $spacing-small $spacing-default;
+    } @else {
+        padding: ($spacing-small + $spacing-smaller - 1px) $spacing-medium; 
+    }
+    
+    border-radius: $border-radius-default;
+    font-size: $font-size-default; 
+
+    line-height: $line-height-controls;
+
+    .glyphicon {
+        margin-right: $spacing-smaller;
+    }
+
+    &:hover, &:focus, &:active {
+        background-color: $btn-default-bg-hover;
+        border-color: $brand-default;
+        color: $brand-default;
+    }
+    &:active {
+        background-color: $btn-default-bg-active;
+        box-shadow: none;
+    }
+}
+
+%btn-primary,
+.btn-primary {
+    background-color: $Siemens_Blue_7;
+    border-color: $Siemens_Blue_1;
+    color: #FFF;
+
+    &:hover, &:focus, &:active {
+        background-color: darken($Siemens_Blue_7, 5%);
+        border-color: $Siemens_Blue_1;
+        color: #FFF;
+    }
+    &:active {
+        background-color: darken($Siemens_Blue_7, 8%);
+    }
+}
+
+%btn-inverse,
+.btn-inverse {
+    background-color: $Siemens_Blue_13;
+    border-color: $Siemens_Blue_7;
+    color: #FFF;
+
+    &:hover, &:focus {
+        color: #FFF;
+        background-color: $brand-default-hover;
+        border-color: $brand-default-hover;
+    }
+    &:active {
+        color: #FFF;
+        background-color: $brand-default-active;
+        border-color: $brand-default-active;
+    }
+}
+
+.btn-success {
+    border-color: $brand-success;
+    color: $brand-success;
+
+    &:hover, &:focus, &:active {
+        color: $brand-success;
+        background-color: rgba($brand-success, 0.1);
+        border-color: $brand-success;
+    }
+    &:active {
+        background-color: rgba($brand-success, 0.25);
+    }
+
+    &.accent-btn {
+        background-color: $brand-success;
+        color: #FFF;
+
+        &:hover, &:focus, &:active {
+            color: #FFF;
+            background-color: darken($brand-success, 5%);
+            border-color: $brand-success;
+        }
+        &:active {
+            background-color: darken($brand-success, 8%);
+        }
+    }
+}
+
+.btn-warning {
+    border-color: $brand-warning;
+    color: $brand-warning;
+
+    &:hover, &:focus, &:active {
+        color: $brand-warning;
+        background-color: rgba($brand-warning, 0.1);
+        border-color: $brand-warning;
+    }
+    &:active {
+        background-color: rgba($brand-warning, 0.25);
+    }
+
+    &.accent-btn {
+        background-color: $brand-warning;
+        color: #FFF;
+
+        &:hover, &:focus, &:active {
+            color: #FFF;
+            background-color: darken($brand-warning, 5%);
+            border-color: $brand-warning;
+        }
+        &:active {
+            background-color: darken($brand-warning, 8%);
+        }
+    }
+}
+
+.btn-danger {
+    border-color: $brand-danger;
+    color: $brand-danger;
+
+    &:hover, &:focus, &:active {
+        color: $brand-danger;
+        background-color: rgba($brand-danger, 0.1);
+        border-color: $brand-danger;
+    }
+    &:active {
+        background-color: rgba($brand-danger, 0.25);
+    }
+
+    &.accent-btn {
+        background-color: $brand-danger;
+        color: #FFF;
+
+        &:hover, &:focus, &:active {
+            color: #FFF;
+            background-color: darken($brand-danger, 5%);
+            border-color: $brand-danger;
+        }
+        &:active {
+            background-color: darken($brand-danger, 8%);
+        }
+    }
+}
+
+%btn-link,
+.btn-link {
+    background-color: transparent;
+    border-color: transparent;
+    color: $brand-default;
+
+    &:hover, &:focus, &:active {
+        border-color: transparent;
+        text-decoration: none;
+        background-color: rgba($brand-default, 0.1);
+        color: $brand-default;
+    }
+
+    &:active {
+        background-color: rgba($brand-default, 0.25);
+    }
+
+    &.btn-success {
+        color: $brand-success;
+
+        &:hover, &:focus, &:active {
+            color: $brand-success;
+            background-color: rgba($brand-success, 0.1);
+        }
+    
+        &:active {
+            background-color: rgba($brand-success, 0.25);
+        }
+    }
+
+    &.btn-warning {
+        color: $brand-warning;
+
+        &:hover, &:focus, &:active {
+            color: $brand-warning;
+            background-color: rgba($brand-warning, 0.1);
+        }
+    
+        &:active {
+            background-color: rgba($brand-warning, 0.25);
+        }
+    }
+
+    &.btn-danger {
+        color: $brand-danger;
+
+        &:hover, &:focus, &:active {
+            color: $brand-danger;
+            background-color: rgba($brand-danger, 0.1);
+        }
+    
+        &:active {
+            background-color: rgba($brand-danger, 0.25);
+        }
+    }
+}
+
+%cta-btn,
+.cta-btn {
+    border-color: $brand-primary;
+    background-color: $brand-primary;
+    color: #FFF;
+
+    &:hover, &:focus, &:active {
+        background-color: darken($brand-primary, 5%);
+        color: #FFF;
+        border-color: $brand-primary;
+    }
+    &:active {
+        background-color: darken($brand-primary, 8%);
+    }
+}
+
+.btn.disabled {
+    border-color: rgba(0,0,0,0.33);
+    background-color: rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.57);
+}
+
+.mx-link {
+
+}
+
+%link-btn,
+.link-btn {
+    @if ($dense-app){
+        padding: $spacing-small 0;
+    } @else {
+        padding: ($spacing-small + $spacing-smaller - 1px) 0; 
+    }
+}
+
+%btn-icon-right,
+.btn-icon-right {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    .glyphicon {
+        top:0;
+        margin-right:0;
+        margin-left: ($spacing-default - 2px);
+    }
+}
+
+%btn-icon-top,
+.btn-icon-top {
+    
+}
+
+.testing-btn {
+    .glyphicon {
+        //margin-right: 0;
+    }
+}
+
+//%icon-btn {
+    //color: red;
+//}
+
+%icon-btn,
+.icon-btn {
+    @extend %btn-link;
+    color: pink !important;
+
+    span {
+        font-size: 200px !important;
+    }
+
+    .glyphicon {
+        font-size: 100px !important;
+    }
+
+    background-color: blue;
+
+    @if ($dense-app) {
+        padding: $spacing-small ($spacing-small + 1px);
+    } @else {
+        padding: ($spacing-small + 3px) ($spacing-small + 5px) ($spacing-small + 2px) ($spacing-small + 5px);
+    }
+
+    .glyphicon {
+        top: 2px;
+        font-size: $font-size-medium;
+        margin-right: 0;
+    }
+
+    &[disabled], &.disabled {
+        color: $font-base-color;
+    }
+}
+
+%icon-btn-sm,
+.icon-btn-sm {
+    @if ($dense-app) {
+        padding: ($spacing-small - 2px) ($spacing-small + 1px);
+        .glyphicon {
+            top: 0px;
+        }
+    } @else {
+        font-size: $font-size-small; 
+        padding: ($spacing-small + 2px) ($spacing-small + 5px) ($spacing-small + 1px) ($spacing-small + 5px);
+        top: 1px;
+    }
+
+    .glyphicon {
+        font-size: inherit; 
+    }
+}
+
+%panel-btn,
+.panel-btn {
+    @extend %icon-btn;
+
+    color: $gray-dark; 
+}
+
+%nav-btn,
+.nav-btn {
+    @extend %sidebar-navigation-item;
+    
+    border-radius: 0;
+    border: none;
+
+    color: #FFF;
+
+    width: $sidebar-minimalwidth;
+    word-wrap: break-word;
+
+    &:hover, &:focus, &:active {
+        background-color: $navigation-bg-hover;
+        color: #FFF;
+    }
+    &:active {
+        background-color: $navigation-bg-active;
+    }
+}
+
+%header-nav-btn,
+.header-nav-btn {
+    color: #FFF;
+    padding: 10px ($spacing-small + $spacing-smaller);
+
+    border:none;
+    border-radius: 0;
+
+    .glyphicon {
+        margin: 0;
+        font-size: $font-size-h3;
+    }
+
+    @if ($dense-app) {
+        .glyphicon {
+            font-size: 24px;
+        }   
+    }
+
+    &:hover, &:focus, &:active {
+        background-color: $navigation-bg-hover;
+        color: #FFF;
+    }
+    &:active {
+        background-color: $navigation-bg-active;
+    }
+}
+
+// side-toolbar-btn located in sidetoolbar building block
+
+/* ==========================================================================
+   Reversed buttons
+
+   Default Mendix & Apollo buttons for dark backgrounds
+========================================================================== */
+.btn-default-reverse,
+%btn-default-reverse {
+    border-color: #FFF;
+    color: #FFF;
+
+    &:hover, &:focus, &:active {
+        background-color: rgba(255,255,255,0.1);
+    }
+    &:active {
+        background-color: rgba(255,255,255,0.25);
+    }
+}
+
+.btn-primary-reverse,
+%btn-primary-reverse {
+    background-color: #FFF;
+    color: $brand-default;
+
+    &:hover, &:focus, &:active {
+        background-color: rgba(255,255,255,0.9);
+    }
+    &:active {
+        background-color: rgba(255,255,255,0.75);
+    }
+}
+
+.btn-success-reverse,
+.btn-warning-reverse,
+.btn-danger-reverse,
+%btn-statusses-reverse {
+    background-color: #FFF;
+    &:hover, &:focus, &:active {
+        background-color: rgba(255,255,255,0.9);
+    }
+    &:active {
+        background-color: rgba(255,255,255,0.75);
+    }
+}
+
+.btn-link-reverse,
+%btn-link-reverse {
+    border-color: transparent;
+    color: $Siemens_Blue_17;
+
+    &.disabled {
+        color: $gray;
+        opacity: 1;
+    }
+}
+
+.btn-default-reverse.disabled,
+.btn-primary-reverse.disabled,
+.btn-inverse-reverse.disabled,
+.btn-success-reverse.disabled,
+.btn-warning-reverse.disabled,
+.btn-danger-reverse.disabled,
+%btn-disabled-reverse {
+    border-color: $gray;
+    background-color: transparent;
+    color: $gray;
+    opacity: 1;
+}
+
+.bg-default {
+    .btn-default {
+        @extend %btn-default-reverse;
+    }
+    .btn-primary {
+        @extend %btn-primary-reverse;
+    }
+    .btn-success, .btn-warning, .btn-danger {
+        @extend %btn-statusses-reverse;
+    }
+    .btn.disabled {
+        @extend %btn-disabled-reverse;
+    }
+    .btn-link {
+        @extend %btn-link-reverse;
+    }
+}
+
+/* ==========================================================================
+   Buttons Groups
+
+========================================================================== */
+.btn-toolbar {
+    margin-left: -$spacing-small;
+
+    > .btn, .mx-link {
+        margin-left: $spacing-small;
+    } 
+}

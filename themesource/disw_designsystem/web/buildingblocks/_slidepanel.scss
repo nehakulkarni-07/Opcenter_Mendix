@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Slide panel
+
+   The slide in panel rules
+========================================================================== */
+
+@keyframes animateSlidePanel {
+    from {
+        transform: translateX(100%);
+        max-width: 0;
+    }
+    to {
+       transform: translateX(0);
+       max-width: 600px;
+    }
+}
+
+.slidepanel {
+    animation: animateSlidePanel 0.2s ease-out 1 forwards;
+
+    flex-basis: calc(50vw - (#{$sidebar-minimalwidth} + #{$spacing-small})); 
+    max-width: 600px;
+    height: 100%;
+
+    background-color: #FFF;
+    box-shadow: -4px 4px 8px 0 rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    > .mx-dataview-content {
+        flex-basis: 100%;
+        min-height: 0;
+    }
+}
+
+.slidepanel-scrollcontainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .slidepanel-header {
+        .page-layoutgrid {
+            padding-bottom: 0;
+        }
+    }
+
+    .slidepanel-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+
+        > .mx-scrollcontainer-wrapper {
+            flex-basis: 100%;
+        }
+
+        .page-layoutgrid {
+            padding-top: $spacing-small;
+        }
+    }
+
+    .slidepanel-toolbar {
+        padding: 0 ($spacing-large - 5px) $spacing-large $spacing-large;
+    }
+
+}
+
+.slidepanel-layout-wrapper {
+    > .mx-dataview-content {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.slidepanel-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .btn {
+        margin-right: 5px;
+    }
+
+    .back-btn {
+        margin-right: auto;
+    }
+}
+
+.slidepanel-layout-main {
+    flex: 1;
+    flex-basis: 50%;
+    height: 100%;
+    overflow: auto;
+}

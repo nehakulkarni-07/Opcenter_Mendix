@@ -1,0 +1,37 @@
+
+:root {
+    --enlarge-size-number: 1;
+
+    /*Font sizet*/
+    --font-size-default: calc(12px * var(--enlarge-size-number));
+    --font-size-button: calc(14px * var(--enlarge-size-number));
+    --font-size-cell: calc(14px * var(--enlarge-size-number));
+    --font-size-command: calc(10px * var(--enlarge-size-number));
+    --font-size-empty: calc(17px * var(--enlarge-size-number));
+    --font-size-inbox: calc(17px * var(--enlarge-size-number));
+    --font-size-panel: calc(14.4px * var(--enlarge-size-number));
+    --font-size-search: calc(12px * var(--enlarge-size-number));
+    --font-size-tiles: calc(14px * var(--enlarge-size-number));
+
+    /*Line height*/
+    --line-height-default: calc(16px * var(--enlarge-size-number));
+    --line-height-button: calc(20px * var(--enlarge-size-number));
+    --line-height-cell: calc(19px * var(--enlarge-size-number));
+    --line-height-command: calc(14px * var(--enlarge-size-number));
+    --line-height-empty: calc(23px * var(--enlarge-size-number));
+    --line-height-inbox: calc(19px * var(--enlarge-size-number));
+    --line-height-panel: calc(16px * var(--enlarge-size-number));
+    --line-height-search: calc(14px * var(--enlarge-size-number));
+    --line-height-tiles: calc(26px * var(--enlarge-size-number));
+
+    /*Font weight*/
+    --font-weight-default: calc(600 * var(--enlarge-size-number));
+    --font-weight-tree: calc(400 * var(--enlarge-size-number));
+    --font-weight-segmented-buttons: calc(400 * var(--enlarge-size-number));
+
+    /*Images, Icons*/
+    --icon-width-compact: 16px;
+    --icon-height-compact: 16px;
+    --icon-width-cozy: 24px;
+    --icon-height-cozy: 24px;
+}

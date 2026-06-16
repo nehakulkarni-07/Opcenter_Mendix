@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Mobile header
+   
+   The Mendix Apollo Mobile header and components
+========================================================================== */
+.mx-header {
+    .btn,
+    .mx-link {
+        @extend %header-nav-btn;
+    }
+
+    .app-logo {
+        padding:0;
+        margin-top: ((($m-header-height - 32px) / 2) + 2px);
+        margin-bottom: ((($m-header-height - 32px) / 2) - 2px);
+        margin-left: $spacing-small;
+        margin-right: $spacing-small;
+    }
+}

@@ -1,0 +1,671 @@
+/* ==========================================================================
+   DISW layout
+   
+   The core stucture of all DISW layouts
+========================================================================== */
+.layout-atlas {
+    background-color: #006487;
+    background-image: $brand-gradient;
+
+    // Topbar region
+    .region-topbar {
+        color: #FFF; 
+
+        // IE11 fix for centering content with min-height
+        > .mx-scrollcontainer-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .topbar-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 16px;
+        min-height: $topbar-minimalheight;
+    }
+
+
+    .app-title {
+        font-size: $font-size-h3;
+        vertical-align: middle;
+        line-height: 1;
+
+        position: relative;
+        top: -2px;
+    }
+
+    .navbar-brand-wrapper {
+        margin-left: auto;
+        flex-basis: auto;
+
+        .mx-image {
+            display: inline-block;
+            vertical-align: middle;
+            width: 107px;
+        }
+    }
+
+    .app-logo {
+        display: inline-block;
+        @if ($brand-logo-official) {
+            margin: ((($topbar-minimalheight - 32px)/2) + 2px) ((($sidebar-minimalwidth - 32px)/2) + 2px) ((($topbar-minimalheight - 32px)/2) - 2px) ((($sidebar-minimalwidth - 32px)/2) - 2px);
+        } @else {
+            margin: (($topbar-minimalheight - 30px)/2) (($sidebar-minimalwidth - 30px)/2);
+        }
+    }
+
+    .app-credits {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 16px;
+
+        @if ($dense-app) {
+            font-size: $font-size-default;
+        } @else {
+            font-size: $font-size-small-default;
+        }
+    }
+
+    // Sidebar region
+    .region-sidebar {
+        position: relative;
+
+        > .mx-scrollcontainer-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-block {
+            @extend %nav-profile-block;
+            position: absolute;
+            bottom: $spacing-default + $spacing-small + 1px;
+            left: ($sidebar-minimalwidth / 2) - 17px;
+            pointer-events: none;
+        }
+
+        .back-btn {
+            @extend %nav-btn;
+        }
+
+        .notification-counter-wrapper {
+            position: absolute;
+            bottom: calc((#{$spacing-default} + (0.5 * 1.5rem)) + (#{$spacing-default} + ((#{$spacing-small} * 2) + 32px + 2px)) - 2px);
+            left: ($sidebar-minimalwidth / 2);
+
+            pointer-events: none;
+        }
+    }
+
+    .topnav-container {
+        padding-top: $topbar-minimalheight + $spacing-default;
+
+        .mx-placeholder {
+            height: auto;
+        }
+
+        .app-identity {
+            position: absolute;
+            top:0;
+            left:0;
+            width: $sidebar-minimalwidth;
+        }
+    }
+    .secondary-menu {
+        padding-bottom: $spacing-default;
+
+        .navbar-inner > ul,
+        .navbar-nav {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+
+    // Content region
+    .region-content {
+        margin-right: $spacing-small;
+        background: #FFF;
+        border-radius: $border-radius-default $border-radius-default 0 0;
+
+        .mx-dataview-controls {
+            border-left: 2px solid #FFF;
+        }
+
+    }
+
+    // set flex behaviour for main side-toolbar
+    .main-content-scrollcontainer {
+        display: flex;
+        flex-direction: row;
+
+        > .mx-scrollcontainer-center {
+            flex: 1;
+            display: block; //ie 11 fix
+            min-width:0;
+        }
+    }
+
+    .region-content-main {
+
+    }
+
+    .region-content-toolbar {
+        width: auto !important;
+        max-width: $toolbar-minimalwidth + 2px;
+        border-top-right-radius: $border-radius-default;
+
+        background-color: $bg-color-light;
+
+        .mx-placeholder > .mx-dataview {
+            
+            > .mx-dataview-content {
+                width: $toolbar-minimalwidth + 2px;
+                border-left: 2px solid #FFF;
+            }
+        }
+    }
+
+    .region-content-sidebar,
+    .region-subcontent-sidebar {
+        background-color: $bg-color-light;
+    }
+    .region-content-sidebar {
+        border-right: 2px solid #FFF;
+
+        .column-header {
+            padding: ($spacing-medium + 2px) $spacing-default ($spacing-medium + 3px) $spacing-default;
+        }
+
+        & + .mx-scrollcontainer-center {
+            .mx-dataview-controls {
+                border-left: none;
+            }
+        }
+    }
+    .region-subcontent-main {
+
+    }
+
+    .region-subcontent-sidebar {
+        .content-scrollcontainer {
+            .content-region-header {
+                border-bottom-color: #FFF;
+            }
+        }
+    }
+
+    .page-layoutgrid {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+    }
+
+    // set behaviour for flex-navbar
+    .main-scrollcontainer {
+        display: flex;
+        flex-direction: row;
+        
+        .region-sidebar {
+            flex-basis: $sidebar-minimalwidth;
+            width: auto !important;
+
+            & +  .mx-scrollcontainer-center {
+                flex: 1;
+                display: block; // iefix
+                min-width: 0;
+            }
+        }
+    }
+
+    &.bg-secondary {
+        .region-content {
+            background-color: $bg-color-secondary;
+        }
+    }
+
+    // fix for the default Mendix feedback widget
+    .sprintrFeedback {
+        color: $font-base-color;
+    }
+}
+
+.mx-scrollcontainer-wrapper {
+    padding: 0;
+}
+
+// scrollcontainer for inside main content areas
+.content-scrollcontainer {
+    .content-region-sidebar {
+
+        &:first-child {
+            border-right: 1px solid $default-border-color;
+        }
+
+        &:last-child {
+            border-left: 1px solid $default-border-color;
+        }
+
+        &.bg-secondary,
+        &.bg-light {
+            &:first-child {
+                border-right: 2px solid #FFF;
+            } 
+            &:last-child {
+                border-left: 2px solid #FFF;
+            } 
+        }
+        
+    }
+
+    .content-region-main {
+
+    }
+
+    .content-region-toolbar {
+        width: ($toolbar-minimalwidth + 2px) !important;
+        border-left: 2px solid #FFF;
+        background-color: $bg-color-light;
+    }
+
+    .content-region-header {
+        border-bottom: 1px solid $default-border-color;
+    }
+
+    .mx-scrollcontainer-wrapper {
+        > .mx-tabcontainer {
+            @extend %scrollcontainer-tabcontainer;
+        }
+    }
+}
+
+.layout-atlas-sidebar {
+    .pageheader {
+        border-bottom: 2px solid #FFF;
+    }
+}
+
+/* ==========================================================================
+   DISW device layout
+   
+   The core stucture of device layouts
+========================================================================== */
+.layout-atlas-hybridphone {
+    background-color: #006487;
+    background-image: $brand-gradient;
+
+    .region-topbar {
+        
+    }
+
+    .region-content {
+        background-color: #FFF;
+    }
+
+    .region-bottom {
+        background-color: $bg-color-secondary;
+    }
+}
+
+
+/* ==========================================================================
+   DISW EXCR Master layout
+   
+   The core stucture of EXCR Master layouts
+========================================================================== */
+//This is the global variable
+:root {
+  --zoom-scaling : 100%;
+  --header-height:48px;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --scrollbar: thin
+}
+html, body {
+  overflow: auto;
+  scrollbar-width: var(--scrollbar); /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: var(--scrollbar); /* Chrome, Safari, Edge */
+}
+
+.layout-excr-master {
+    background-color: #006487;
+    background-image: $brand-gradient;
+    min-width: 630px;
+    vertical-align: middle;
+    display: flex;
+    zoom: var(--zoom-scaling);
+    align-items: center;
+    .float-right{
+        float: right !important;
+    }
+
+	/* ==========================================================================  Page Header Starts ========================================================================== */
+    .mx-scrollcontainer-top {
+        height: var(--header-height);
+        .mx-name-header_container {
+            width: 100%;
+        }
+        .header-left-container {
+            width: 50%;
+            float: left;
+        }
+        .header-middle-container {
+            min-width: 50px;
+            left: 95px;
+            // right: 200px;
+            position: absolute;
+            // right: 210px;
+            float: left;
+        }
+        .header-right-container {
+            // width: 20%;
+            min-width: 200px;
+            float: right;
+            .siemenslogo {
+                height: 16px;
+                //height: 16px  * $size-multiplier;
+                width: 107px ;
+                margin-top: 18px;
+                float: right;
+                margin-right: 20px;
+            }
+        }
+        .header-button {
+            background: transparent;
+            width: 48px;
+            height: 48px;
+            // float:left;
+            padding: 0px;
+            box-shadow: none;
+            border: none;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1019607843) !important; // Hover
+                border: none !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
+        
+            &:focus {
+                background-color: transparent !important;
+                border: 2px solid #aae6f5 !important;
+                outline: none !important;
+                box-shadow: none !important;
+              }
+              
+              &:focus-visible {
+                background-color: transparent !important;
+                border: 2px solid #aae6f5 !important; // Focus ring
+                outline: none !important;
+                box-shadow: none !important;
+              }
+        
+            &:active {
+                background-color: rgba(0, 0, 0, 0.2) !important; // Active pressed
+                border-color: transparent !important;
+                outline: none !important;
+            }
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        .backButton{
+            position: absolute;
+            left: 96px;
+            top: 0px;
+            z-index: 40;
+        }
+        .app-logo {
+            width: 32px;
+            height: 32px;
+            display: inline;
+            position: absolute;
+            left: 8px;
+            top: 8px;
+        }
+        .app-identity {
+            position: absolute;
+            left: 90px;
+            top: 0px;
+        }
+        .mx-placeholder label {
+            color: #FFFFFF;
+            font-weight: 400;
+            font-size: 24.88px;
+            font-family: var(--font-family);
+            padding: 5px;
+            margin-left: 48px;
+        }
+        .userIcon {
+            border-radius: 50%;
+            background: #F0F0F0;
+            min-width: 35px;
+            height: 35px;
+            width: 35px;
+            margin-top: 7px;
+        }
+
+        
+    }
+
+.mx-scrollcontainer-top :has(.changeContainerIcon) .app-identity {
+    left: 192px;
+}
+
+// .mx-scrollcontainer-top :has(.backButton) .app-identity {
+//     left: 165px;
+// }
+
+	/* ==========================================================================  Page Header Ends ========================================================================== */
+    .mx-scrollcontainer-wrapper {
+        display: flex;
+    }
+
+	/* ==========================================================================  Page Left Menu Starts ========================================================================== */
+    .mx-scrollcontainer-left {
+        width: 8px !important;
+    }
+	/* ==========================================================================  Page Left Menu Ends ========================================================================== */
+	/* ==========================================================================  Page Center Starts ========================================================================== */
+    .mx-scrollcontainer-center {
+        background: white;
+    }
+	/* ==========================================================================  Page Center Ends ========================================================================== */
+	/* ==========================================================================  Page Right Menu Starts ========================================================================== */
+    .mx-scrollcontainer-right {
+        width: 8px !important;
+    }
+	/* ==========================================================================  Page Right Menu Ends ========================================================================== */
+
+}
+/* ==========================================================================  Master Menu Starts ========================================================================== */
+.menuWrapper {
+  position: relative;
+}
+
+.menuContent {
+    top: 0px;
+    position: relative;
+    left: 5px;
+    background: #005F87;
+    // border: 1px solid #ccc;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 16px;
+    width: 288px;
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        display: block;
+    }
+
+    .holdButton {
+        width: 256px;
+        height: 40px;
+        background-color: #DC6914;
+        color: #FFFFFF;
+        border: 1px solid #923D1D;
+        font-family: var(--font-family);
+        font-size: 17.28px;
+        font-weight: 600;         
+    }
+    .holdButton > img, .releaseButton > img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .holdButton:hover {
+        background-color: #B64C24;
+    }
+
+    .holdButton:active {
+        background-color: #923D1D !important;
+    }
+
+    .holdButton:focus {
+        color: #DC6914;
+        border: 1px solid #AAE6F5;
+    }
+    .releaseButton {
+        width: 256px;
+        height: 40px;
+        background-color: #0A9B00;
+        color: #FFFFFF;
+        border: 1px solid #054A00;
+        font-family: var(--font-family);
+        font-size: 17.28px;
+        font-weight: 600;         
+    }
+
+    .releaseButton:hover {
+        background-color: #1D731C;
+        border: 1px solid #054A00;
+    }
+
+    .releaseButton:active {
+        background-color: #054A00 !important;
+        border: 1px solid #054A00;
+    }
+
+    .releaseButton:focus {
+        color: #0A9B00;
+        border: 1px solid #AAE6F5;
+    }
+}
+
+/* ==========================================================================  Master Menu Ends ========================================================================== */
+
+/* ==========================================================================  User Menu Starts ========================================================================== */
+
+
+.userMenu {
+    zoom: var(--zoom-scaling);
+    width: 300px;
+    top: 40px !important;
+    right: 255px !important;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    
+    ::-webkit-scrollbar {
+        display: none;
+        }
+    .mx-dataview-content {
+        padding: 0px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-header {
+        display: none;
+    }
+
+    .userIcon {
+        border-radius: 50%;
+        background: #F0F0F0;
+        min-width: 35px;
+        height: 35px;
+        width: 35px;
+        margin-top: 7px;
+        padding: 5px;
+        border: none;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .userIcon:focus {
+        color: #0F789B;
+        border: 2px;
+    }
+
+    .userName {
+        font-family: var(--font-family);
+        font-size: 14.4px;
+        font-weight: 400;
+        color: #000000;
+        margin-top: 12px;
+        text-align: left;
+    }
+    .custom-hr {
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.15); /* soft grey via opacity */
+        margin: 10px 0;
+        width: 100%;
+        border: none;
+    }
+
+    .footer {
+        position: static;
+        padding: 0px;
+        display: flex;
+        justify-content: flex-start; /* push button to right */
+        margin-top: -10px;
+    
+        .logOut {
+            border: none;
+            box-shadow: none;
+            font-family: var(--font-family);
+            font-size: 12px;
+            font-weight: 400;
+            color: #1E1E1E;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 0;
+            width: fit-content;
+            margin-right: 10px; /* creates space from right edge */
+            margin-left: 10px;
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        .logOut:hover {
+            background-color: #EEF6F8;
+        }
+    
+        .logOut:active {
+            background-color: #CDE6EB !important;
+            // background-color: rgba(0, 0, 0, 0.2) !important; // Active pressed
+            border-color: transparent !important;
+            outline: none !important;
+        }
+    
+        .logOut:focus {
+            color: #1E1E1E;
+            border: 2px;
+        }
+    }
+}
+
+/* ==========================================================================  User Menu Ends ========================================================================== */

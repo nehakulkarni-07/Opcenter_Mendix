@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Multiselect custom widget
+
+   Rules for a multiselect dropdown widget
+========================================================================== */
+.multiSelectMainContainer {
+    .multiSelect {
+        & + .btn-group {
+            
+        }
+    }
+
+    .btn-group {
+        &.open {
+
+            .dropdown-toggle {
+                box-shadow: none;
+                border-color: $form-input-border-focus-color;
+            }
+            
+        }
+    }
+
+    .dropdown-toggle {
+        text-align: left;
+
+        .caret {
+            height: ($default-input-height - 2px);
+            width: auto;
+            font-weight: normal;
+
+            // align with most browsers default caret down symbol
+            border:none;
+            height: auto;
+            width: auto;
+
+            margin-left: 0;
+            @if ($dense-app) {
+                margin-right: -$spacing-small;
+            } @else {
+                margin-right: -($spacing-small + $spacing-smaller);
+            }
+            padding-right: ($spacing-smaller - 1px);
+
+            position: relative;
+            
+            &:before {
+                @extend %glyphicon;
+                font-family: 'Glyphicons Halflings';
+                content: "\e259";
+                font-size: 10px;
+            }
+        }
+    }
+
+    .multiselect-selected-text {
+        //color: $gray-medium; // note: there is no distinction between selected items and no selection - no placeholder identifier
+    }
+
+    .multiselect-container {
+        border-color: $default-border-color;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.125);
+
+        &:before, &:after {
+            content:  none;
+        }
+
+        .input-group {
+            display: block;
+            margin: $spacing-small;
+
+            .input-group-addon {
+                display: none;
+            }
+
+            .multiselect-search {
+                border-radius: $border-radius-default;
+                display: block;
+                float:none;
+            }
+
+            .input-group-btn {
+                display: block;
+                z-index: 2;
+                position: absolute;
+                right:1px;
+                width: auto;
+                top:1px;
+            }
+        }
+
+        .multiselect-clear-filter {
+            border:none;
+
+            @if ($dense-app) {
+                padding: $spacing-small ($spacing-small + 1px);
+            } @else {
+                padding: ($spacing-small + 3px) ($spacing-small + 5px) ($spacing-small + 2px) ($spacing-small + 5px);
+            }
+            .glyphicon {
+                top: 2px;
+                font-size: $font-size-medium;
+                margin-right: 0;
+                color: $font-base-color;
+
+                &:before {
+                    content:"\e083";
+                }
+            }
+        
+            &[disabled], &.disabled {
+                color: $font-base-color;
+            }
+        }
+
+        .divider {
+            background-color: $default-border-color;
+        }
+
+        > li {
+            > a {
+                > label {
+                    padding: $spacing-small $spacing-default;
+                    position: relative;
+    
+                    &:before {
+                        @extend %checkradiobox;
+                        border-radius: $border-radius-default;
+                        z-index: 1;
+                    }
+    
+                    &:hover, &:focus {
+                        &:before {
+                            border-color: $brand-default; 
+                        }
+                    }
+
+                    &:active {
+                        &:after {
+                            content:"";
+                            display: block;
+                            position: absolute;
+                            left: $spacing-default - ((18px + 16px)/2) + (18px/2);
+                            top: 1px;
+                            //z-index: ;
+            
+                            width: 18px + 16px;
+                            height: 18px + 16px;
+                            border-radius: 50%;
+
+                            transform-origin: center center;
+
+                            animation: checkboxFocus 0.3s ease-out 1 forwards;
+                        }
+                    }
+                }
+    
+                &:hover, &:focus {
+                    background-color: $grid-bg-hover;
+                }
+                &:active {
+                    background-color: $grid-bg-active;
+                }
+
+                &.multiselect-all {
+                    label {
+                        font-weight: normal;
+                    }
+                    
+                }
+            }
+
+            &.active {
+                > a {
+                    background-color: $grid-bg;
+                    color: $font-base-color;
+
+                    > label {
+                        &:before {
+                            border-color: $brand-default;
+                            background-color: $brand-default;
+                            background: $brand-default url('images/svg/ok-symbol.svg') no-repeat center center;
+                            background-size: 12px;
+                        }
+                    }
+
+                    &:hover, &:focus {
+                        background-color: $grid-bg-hover;
+                    }
+                    &:active {
+                        background-color: $grid-bg-active;
+                    }
+                }
+            }
+
+        } 
+
+        input[type='checkbox'] {
+            opacity: 0;
+        }
+    }
+}

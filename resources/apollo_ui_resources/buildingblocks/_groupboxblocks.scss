@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Groupbox blocks
+
+   Mendix Apollo groupbox building blocks & Panel blocks
+========================================================================== */
+// first focus on edited groupboxes inside of the contents
+.mx-groupbox-body {
+    .mx-groupbox-header {
+        margin: (-$spacing-default) (-$spacing-default) 0 (-$spacing-default);
+
+        &:nth-child(n + 2) {
+            margin: $spacing-default (-$spacing-default) 0 (-$spacing-default);
+        }
+    }
+
+    .groupbox-body {
+
+    }
+}
+.mx-groupbox-header {
+    h2 {
+        font-size: inherit;
+        line-height: inherit;
+        margin:0;
+    }
+}
+.groupbox-with-toolbar {
+    position: relative;
+
+    .mx-groupbox {
+        .mx-groupbox-header {
+            background-color: transparent;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+        }
+    }
+}
+.groupbox-header {
+    display: flex;
+    h2 {
+        flex: 1;
+    }   
+}
+
+.groupbox-collapsible, .mx-groupbox-collapsible {
+    .groupbox-header {
+        padding-left: $spacing-large + ($spacing-small + $spacing-smaller);
+    }
+}
+.groupbox-toolbar {
+    // 48px
+    margin: -9px -14px -9px $spacing-default;
+    position: relative;
+    z-index: 10;
+
+    .btn {
+        @extend %panel-btn;
+        @extend %icon-btn-sm;
+    }
+    .mx-link {
+        font-size: $font-size-default;
+        padding: 9px 0;
+
+        &:last-child {
+            margin-right: $spacing-default;
+        }
+    }
+}
+
+.dashboard-groupbox {
+    .groupbox-toolbar {
+        margin-top:-2px;
+    }
+}
+/* =========================================================================
+   Filter & groupbox panels
+
+   The Apollo filter panel building block
+========================================================================== */
+.groupbox-panel {
+    .mx-groupbox-body {
+        padding-left: $spacing-small + $spacing-smaller;
+    }
+
+    .form-group {
+        margin-bottom: $spacing-smaller;
+    }
+
+    .image-container,
+    .mx-listview {
+        margin-left: -($spacing-small + $spacing-smaller);
+    }
+}
+
+
+.filter-panel {
+
+}
+
+.filter-group {
+    .mx-checkbox {
+        margin-left: 4px;
+        margin-bottom: 4px;
+    }
+}

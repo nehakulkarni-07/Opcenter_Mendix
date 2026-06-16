@@ -1,0 +1,37 @@
+// ACTUNG!
+@import "../../atlas_core/web/variables";
+@import "../../../theme/web/custom-variables";
+
+// @import "variables";
+
+@import "bootstrap/bootstrap_3_3_4";
+@import "bootstrap/bootstrap-rtl";
+@import "bootstrap/bootstrap_grid_4_5_3";
+@import "bootstrap/bootstrap_overrides";
+@import "mxui-mendix";
+@import "base/mixins/layout-spacing";
+@import "base/mixins/spacing";
+@import "base/base";
+@import "base/reset";
+@import "base/spacing";
+@import "widgets/inputs";
+@import "widgets/alerts";
+@import "widgets/checkbox";
+@import "widgets/grid";
+@import "widgets/datagrids";
+@import "widgets/dataview";
+@import "widgets/datepicker";
+@import "widgets/header";
+@import "widgets/glyphicons";
+@import "widgets/groupbox";
+@import "widgets/listview";
+@import "widgets/modals";
+@import "widgets/navigationbar";
+@import "widgets/navigationlist";
+@import "widgets/navigationtree";
+@import "widgets/simplemenubar";
+@import "widgets/radiobuttons";
+@import "widgets/tables";
+@import "widgets/templategrids";
+@import "widgets/typography";
+@import "widgets/progress";

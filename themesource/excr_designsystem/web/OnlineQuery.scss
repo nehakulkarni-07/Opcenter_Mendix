@@ -1,0 +1,142 @@
+/*Apply Class Widget - DataView*/
+/*Target Widget - List View & Dynamic Grid*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-web-onlinequery-default{
+    margin: 8px;
+
+    .mx-dataview-content{
+        :has(.mx-listview-empty){
+            display: none;
+        }
+        
+        .mx-listview{
+            li{
+                border: unset;
+
+                &:hover, &:focus{
+                    background-color: unset;
+                }
+
+                span:first-of-type{
+                    margin-left: 12px;
+                }
+
+                .ux-empty-state{
+                    max-width: 96%;
+                    margin: 12px;
+                    // border: 1px solid rgba(0, 0, 0, 0.15);
+
+                    label:first-of-type{
+                        &:before{
+                            /*Dynamic value - Rewrite style value on own styling file*/
+                            display: none;
+                        }
+
+                        font-size: 0;
+                        line-height: 0;
+
+                        &:after{
+                            /*Dynamic value - Rewrite style value on own styling file*/
+                            content: "No data to display for this Online Query.";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .widget-hello-world{
+        border-radius: unset;
+        box-shadow: unset;
+
+        .table-wrapper{
+            box-sizing: border-box;
+            border-radius: unset;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            padding-bottom: unset;
+
+            &::-webkit-scrollbar-button{
+                display: none; /* Hides the arrows completely */
+                height: 0;
+                width: 0;
+            }
+
+            //overflow-x: scroll; /* Ensure horizontal scrolling is present */
+            //transform: rotateX(180deg); /* Flip the container upside down */
+            
+            .dynamic-grid{
+                //transform: rotateX(180deg); /* Flip the content back upright */
+
+                th, td{
+                    // box-sizing: border-box;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    min-width: 150px;
+                    max-width: 150px;
+
+                    &:hover{
+                        overflow: visible;
+                        position: relative;
+                        max-width: 600px;
+                    }
+                }
+
+                thead{
+                    tr:after{
+                        content: "";
+                        background: linear-gradient(360deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.421111) 42.11%, #000000 100%);
+                        opacity: 0.25;
+
+                        position: absolute;
+                        height: 6px;
+                        left: 13px;
+                        right: 13px;
+                        top: 46px;
+                    }
+
+                    th:first-of-type{
+                        padding-left: 24px;
+                    }
+
+                    th{
+                        height: 24px;
+                        background-color: #E6E6E6;
+                        border: 1px solid rgba(0, 0, 0, 0.15);
+                        padding: 8px;
+                        font: normal normal var(--font-weight-default) var(--font-size-default)/var(--line-height-default) Segoe UI;
+                    }
+                }
+
+                tbody{
+                    td:first-of-type{
+                        padding-left: 24px;
+                    }
+
+                    td{
+                        height: 32px;
+                        border: 1px solid rgba(0, 0, 0, 0.15);
+                        padding: 8px;
+                        font: normal normal 400 var(--font-size-default)/var(--line-height-default) Segoe UI;
+                    }
+
+                    tr:hover td{
+                        background-color: unset;
+                    }
+
+                    tr:nth-child(even) td{
+                        background-color: #F0F0F0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*Page - E Procedure*/
+.ux-web-onlinequery-eprocedure{
+    zoom: 150%;
+    margin-top: 40px;
+}

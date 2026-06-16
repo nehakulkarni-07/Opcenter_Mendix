@@ -1,0 +1,94 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .siemens-logo {
+        top: 16px;
+        left: 16px;
+    }
+
+    .version-details {
+        text-align: left;
+        letter-spacing: 0px;
+        color: var(--versionDetailsTextColor);
+        opacity: 1;
+        
+        position: absolute;
+        z-index: 2;
+        width: auto;
+
+        bottom: 16px;
+        margin: 0px 16px;
+
+        .version-number {
+            text-align: left;
+            font: normal normal normal 21px/17px Siemens Sans;
+            letter-spacing: 0px;
+            color: var(--versionDetailsTextColor);
+        }
+
+        .version-text {
+            text-align: left;
+            font: normal normal normal 12px/17px Siemens Sans;
+            letter-spacing: 0px;
+            color: var(--versionDetailsTextColor);
+        }
+
+        .version-copyright {
+            text-align: left;
+            font: normal normal normal 14px/17px Siemens Sans;
+            letter-spacing: 0px;
+            color: var(--versionDetailsTextColor);
+        }
+    }
+
+    .login-background {
+        height: 100vh;
+        position: relative;
+        background: var(--loginBackgroundColor) url('img/LoginX.png') top 12% right -66% / 88% no-repeat padding-box;
+        opacity: 1;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .siemens-logo {
+        top: 16px;
+        left: 16px;
+    }
+
+    .version-details {
+        bottom: 16px;
+        left: 16px;
+        width: auto;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .siemens-logo {
+        top: 24px;
+        left: 24px;
+    }
+
+    .version-details {
+        bottom: 24px;
+        left: 24px;
+        width: auto;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .siemens-logo {
+        top: 96px;
+        left: 72px;
+    }
+
+    .version-details {
+        bottom: 96px;
+        left: 72px;
+        width: 40%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

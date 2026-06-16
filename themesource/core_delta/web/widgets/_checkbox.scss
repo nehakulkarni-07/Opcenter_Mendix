@@ -1,0 +1,32 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Checkbox
+
+   Default Mendix Checkbox Widget
+========================================================================== */
+
+.mx-checkbox.label-after {
+    flex-wrap: wrap;
+
+    .control-label {
+        padding: 0;
+    }
+}
+
+input[type='checkbox'] {
+    position: relative; //Remove after mxui merge: NOTE: I will rewrite this
+    width: 16px;
+    height: 16px;
+    margin: 0; // Remove after mxui merge: I will rewrite this
+    cursor: pointer;
+    
+    & + .control-label {
+        margin-left: $form-label-gutter;
+    }
+}

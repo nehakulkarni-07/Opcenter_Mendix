@@ -1,0 +1,552 @@
+/* ==========================================================================
+   Navigation
+   
+   The core navigation widgets
+========================================================================== */
+%sidebar-navigation-item {
+    padding: 8px 0;
+    text-align: center;
+    
+    .glyphicon {
+        margin-right:0;
+        margin-bottom: $spacing-smaller / 2;
+        display: block;
+    }
+
+    .caret {
+        display: none;
+    }
+
+    @if ($dense-app) {
+        font-size: $font-size-small;
+        .glyphicon {
+            //font-size: $font-size-medium; // 16
+            font-size: $font-size-h2;
+        }
+    } @else {
+        font-size: $font-size-smaller;
+        .glyphicon {
+            font-size: $font-size-h3;
+        }
+    }
+
+    &.active {
+        background-color: $navigation-bg-selected;
+    }
+}
+
+.mx-navigationtree {
+    background-color: transparent;
+
+    .navbar-inner {
+
+    }
+    // general list rules
+    ul {
+
+    }
+    li {
+        border: none;
+
+        li, li li {
+            margin-left:0;
+            padding:0;
+        }
+    }
+    a {
+        @extend %sidebar-navigation-item;
+        
+    }
+    .mx-navigationtree-has-items {
+        @extend %width-transition;
+        box-shadow: $navigationtree-sub-box-shadow;
+        width: $sidebar-maxwidth + $spacing-small;
+
+        a {
+            padding: 8px 0;
+            background-color: $navigation-bg-selected;
+
+            &.active {
+                background-color: $navigation-bg-selected;
+            }
+        }
+        ul {
+            @extend %transition;
+            overflow: hidden;
+            display: block;
+            position: absolute;
+            left: $sidebar-minimalwidth;
+            top: 0;
+            bottom:0;
+            margin-right: $spacing-small;
+            padding-top: $topbar-minimalheight + $spacing-default - $spacing-smaller;
+
+            width: $sidebar-maxwidth - $sidebar-minimalwidth;
+            max-width: $sidebar-maxwidth - $sidebar-minimalwidth;
+
+
+            a {
+                text-align: left;
+                padding:$spacing-smaller $spacing-default $spacing-smaller ($spacing-default + $spacing-smaller); 
+                width: $sidebar-maxwidth - $sidebar-minimalwidth;
+                max-width: $sidebar-maxwidth - $sidebar-minimalwidth;
+                background-color: transparent;
+
+                @if ($dense-app) {
+                    font-size: $font-size-default;   
+                } @else {
+                    font-size: $font-size-smaller;
+                }
+
+                &:hover, &:focus {
+                    color: $Siemens_Yellow_20;
+                }
+                &:active {
+                    color: $Siemens_Yellow_17;
+                }
+
+                &.active {
+                    color: $Siemens_Yellow_17;
+                }
+            }
+        }
+
+        &:not(.mx-navigationtree-collapsed) {
+            display: block;
+            &:after {
+                content:"";
+                display: block;
+                height: 42px;
+                
+                width: 16px;
+                
+                position: absolute;
+                left: $sidebar-minimalwidth;
+                margin-top: -42px;
+                
+                background-color: $navigation-bg-selected;
+            }
+        }
+    }
+    .mx-navigationtree-collapsed {
+        width: $sidebar-minimalwidth;
+
+        a {
+            background-color: transparent;
+
+            &:hover, &:focus {
+                background-color: $navigation-bg-hover;
+            }
+            &:active {
+                background-color: $navigation-bg-active;
+            }
+            &.active {
+                background-color: $navigation-bg-selected;
+            }
+        }
+        
+        ul {
+            width: 0;
+            max-width: 0;
+
+            a {
+                
+            }
+            //width: $sidebar-maxwidth - $sidebar-minimalwidth;
+        }
+    }
+}
+
+// extra rules for main container layout
+.main-scrollcontainer .mx-navigationtree {
+    a {
+        max-width: $sidebar-minimalwidth;
+        width: $sidebar-minimalwidth;
+        overflow: visible;
+
+        word-wrap: break-word;
+    }
+}
+
+// secondary menu rules
+.secondary-menu {
+    a {
+        .glyphicon-user {
+            background-color: #FFF;
+            border-radius: 50%;
+
+            width: 32px;
+            height: 32px;
+            margin:0 auto 0 auto;
+
+            color: $brand-default;
+            font-size: 16px;
+            line-height: 32px;
+        }
+    }
+}
+
+/* ==========================================================================
+   Navbar
+   
+   The core menubar
+========================================================================== */
+.mx-navbar {
+    .navbar-nav {
+        float:none;
+
+        li {
+
+        }
+    }
+}
+
+%vertical-navbar {
+    position: static;
+
+    .navbar-nav {
+        
+        li {
+            float:none;
+            position: static;
+        }
+
+        a {
+            @extend %sidebar-navigation-item;
+
+            max-width: $sidebar-minimalwidth;
+            width: $sidebar-minimalwidth;
+            word-wrap: break-word;
+            overflow: visible;
+        }
+
+        .mx-navbar-item {
+            a {
+                min-height: 0;
+            }
+        }
+    }
+
+    .dropdown {
+        @extend %width-transition;
+        width: $sidebar-minimalwidth;
+        &.open {
+            width: $sidebar-maxwidth + $spacing-small;
+
+            > a {
+                background-color: $navigation-bg-selected;
+            }
+            
+        }
+    }
+
+    
+
+    .mx-navbar-submenu {
+        @extend %transition;
+
+        box-shadow: $navigationtree-sub-box-shadow;
+
+        top: 0;
+        left: $sidebar-minimalwidth;
+        bottom:0;
+        margin:0 $spacing-small 0 0;
+        padding: 60px 0 0 0;
+        width: 0;
+        max-width: 0;
+        min-width: 0;
+
+        display: block;
+        overflow: hidden;
+        z-index:0;
+
+        background-color: $navigation-sub-bg;
+        border:none;
+        border-radius:0;
+        float: none;
+
+        a {
+            width: ($sidebar-maxwidth - $sidebar-minimalwidth);
+            max-width: ($sidebar-maxwidth - $sidebar-minimalwidth);
+            text-align: left;
+
+            padding:$spacing-smaller $spacing-default $spacing-smaller ($spacing-default + $spacing-smaller); 
+            background-color: transparent;
+
+            @if ($dense-app) {
+                font-size: $font-size-default;   
+            } @else {
+                font-size: $font-size-smaller;
+            }
+        }
+
+        // add specificity to overwrite the core
+        .mx-navbar-subitem {
+            a {
+                background-color: transparent;
+
+                &:hover, &:focus {
+                    color: $Siemens_Yellow_20;
+                }
+                &:active {
+                    color: $Siemens_Yellow_17;
+                }
+            }
+
+            &.active {
+                a {
+                    color: $Siemens_Yellow_17;
+                }
+            }
+            
+        }
+    }
+
+    .open {
+        display: block;
+
+        &:after {
+            content:"";
+            display: block;
+            height: 62px;
+            
+            width: 16px;
+            
+            position: absolute;
+            left: $sidebar-minimalwidth;
+            margin-top: -62px;
+            
+            background-color: $navigation-bg-selected;
+        }
+
+        .mx-navbar-submenu {
+            width: ($sidebar-maxwidth - $sidebar-minimalwidth);
+            max-width: ($sidebar-maxwidth - $sidebar-minimalwidth);
+            min-width: ($sidebar-maxwidth - $sidebar-minimalwidth);
+        }
+        
+        a {
+            background-color: transparent
+        }
+    } 
+}
+
+.region-sidebar .mx-navbar {
+    @extend %vertical-navbar;
+
+    &.secondary-menu {
+
+        .mx-navbar-submenu {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding-bottom: $spacing-default;
+        }
+
+        .open {
+            &:after {
+                height: 42px;
+                margin-top: -42px;
+            }
+
+            &:first-child {
+                &:after {
+                    height: 50px;
+                    margin-top: -50px;
+                }            
+            }
+        }
+
+        a .glyphicon-user {
+            font-size: 16px;
+            margin-right: auto;
+        }
+    }
+}
+
+/* ==========================================================================
+   Menubar
+   
+   The core mobile simple menubar
+========================================================================== */
+.mx-menubar {
+
+}
+
+.mx-menubar-list {
+    min-height: $m-footer-height;
+
+    .mx-menubar-item {
+        float: none;
+        flex: 1;
+        flex-basis: 25%;
+        text-align: center;
+
+        a {
+            padding: $spacing-smaller $spacing-smaller 0 $spacing-smaller;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 0;
+
+            color: $font-base-color;
+
+            @if ($dense-app) {
+                font-size: $font-size-smaller;
+                .glyphicon {
+                    //font-size: $font-size-medium; // 16
+                    font-size: $font-size-h2;
+                }
+            } @else {
+                font-size: $font-size-smallest;
+                .glyphicon {
+                    font-size: $font-size-h3;
+                }
+            }
+
+            &:hover, &:focus, &:active {
+                background-color: $grid-bg-hover;
+                color: $font-base-color;
+            }
+            &:active {
+                background-color: $grid-bg-active;
+            }
+        }
+
+        &.active {
+            a {
+                &, &:hover, &:focus, &:active {
+                    color: $brand-default;
+                    background-color: $grid-bg-selected;
+                }
+            }
+        }
+        
+    }
+
+    &:before,
+    &:after {
+        content: none;
+    }
+
+    // link size settings
+    
+
+    .glyphicon {
+        margin-right: 0;
+        display: block;
+        top: 0;
+    }
+}
+
+.menu-icon-only {
+    .mx-menubar-item {
+        a {
+
+            color: transparent;
+            font-size: 0px;
+
+            .glyphicon {
+                color: $font-base-color;
+            }
+
+            @if ($dense-app) {
+                .glyphicon {
+                    //font-size: $font-size-medium; // 16
+                    font-size: $font-size-h2;
+                }
+            } @else {
+                .glyphicon {
+                    font-size: $font-size-h3;
+                }
+            }
+
+            &:hover, &:focus, &:active {
+                color: transparent;
+                .glyphicon {
+                    color: $font-base-color;
+                }
+                
+            }
+            &:active {
+                color: transparent;
+                .glyphicon {
+                    color: $font-base-color;
+                }
+            }
+        }
+
+        &.active {
+            a {
+                &, &:hover, &:focus, &:active {
+                    color: transparent;
+                    .glyphicon {
+                        color: $brand-default;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.launchpad-page {
+    .mx-menubar {
+
+    }
+
+    .mx-menubar-item {
+        a {
+            color: #FFF;
+
+            &:hover, &:focus, &:active {
+                color: #FFF;
+                background-color: rgba(255,255,255,0.08);
+                background-color: rgba($brand-info, 0.2);
+            }
+
+            &:active {
+                background-color: $brand-info;
+            }
+        }
+
+        &.active {
+            a {
+                &, &:hover, &:focus, &:active {
+                    background-color: $brand-info;
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+    .menu-icon-only {
+        .mx-menubar-item {
+            a {
+                color: transparent;
+                
+                .glyphicon {
+                    color: #FFF;
+                }
+                &:hover, &:focus, &:active {
+                    color: transparent;
+                    .glyphicon {
+                        color: #FFF;
+                    }
+                }
+            }
+
+            &.active {
+                a {
+                    &, &:hover, &:focus, &:active {
+                        color: transparent;
+                        .glyphicon {
+                            color: #FFF;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

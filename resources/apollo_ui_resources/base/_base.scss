@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Base
+
+   Default base rules
+========================================================================== */
+html {
+    font-size: $font-size-default;
+}
+
+html, body {
+
+}
+
+a:hover, a:focus {
+    color: $link-hover-color;
+}
+a:active {
+    color: $link-active-color;
+}
+
+p {
+    margin-bottom: $spacing-small;
+}
+
+label {
+    font-weight: normal;
+}
+
+/* ==========================================================================
+   Helper classes
+
+   Default helper classes and rules
+========================================================================== */
+%transition {
+    -webkit-transition: all $standard-transition-time;
+    -moz-transition: all $standard-transition-time;
+    -o-transition: all $standard-transition-time;
+    transition: all $standard-transition-time;
+}
+
+%control-transition {
+    -webkit-transition: all $standard-control-transition-time;
+    -moz-transition: all $standard-control-transition-time;
+    -o-transition: all $standard-control-transition-time;
+    transition: all $standard-control-transition-time;
+}
+%control-bg-transition {
+    -webkit-transition: background-color $standard-control-transition-time;
+    -moz-transition: background-color $standard-control-transition-time;
+    -o-transition: background-color $standard-control-transition-time;
+    transition: background-color $standard-control-transition-time; 
+}
+
+%width-transition {
+    -webkit-transition: width $standard-transition-time;
+    -moz-transition: width $standard-transition-time;
+    -o-transition: width $standard-transition-time;
+    transition: width $standard-transition-time;
+}
+
+%glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'apollo-icons', 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.shadow-minimal,
+%shadow-minimal {
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+}
+.shadow-medium,
+%shadow-medium {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
+}
+.shadow-large,
+%shadow-large {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
+}
+.shadow-medium-hover,
+%shadow-medium-hover {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.25);
+}
+
+.glyphicon {
+    font-family: 'apollo-icons', 'Glyphicons Halflings';
+}
+
+.text-sup {
+    font-size: 0.6em;
+    vertical-align: top;
+}
+.text-sub {
+    font-size: 0.6em;
+    vertical-align: bottom;
+}
+.text-small {
+    font-size: $font-size-small;
+}
+.text-smaller {
+    font-size: $font-size-smaller;
+}
+.text-smallest {
+    font-size: $font-size-smallest;
+}
+.text-primary {
+    color: $brand-primary;
+}
+.text-default {
+    color: $brand-default;
+}
+.text-primary {
+    color: $brand-primary;
+}
+.text-inverse {
+    color: $brand-inverse;
+}
+.text-warning {
+    color: $brand-warning;
+}
+.text-danger {
+    color: $brand-danger;
+}
+.text-success {
+    color: $brand-success;
+}
+
+.left-align {
+    text-align: left;
+}
+.right-align {
+    text-align: right;
+}
+.center-align {
+    text-align: center;
+}
+
+.inline {
+    display: inline;
+}
+.inline-block {
+    display: inline-block;
+}
+.block {
+    display: block;
+}
+.inline-container {
+    > * {
+        display: inline-block;
+    }
+    .mx-text + .mx-text {
+        margin-left: 0.3em;
+    }
+}
+
+.no-bottom-margin {
+    margin-bottom: 0;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+.ellipsis,
+.ellipsis .form-control-static {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// default multiline-ellipsis
+.multiline-ellipsis {
+    @include multiline-ellipsis(3);
+}
+%max-width-content,
+.max-width-content {
+    max-width: $max-width-size;
+}
+
+// TODO: refactor to styleguide part
+.full-screen-wrapper {
+    height: 100%;
+
+    .preview-container {
+        height: 100%;
+        padding: 16px;
+    }
+
+    .demo-preview-container {
+        position: relative;
+        height: 100%;
+
+        background-color: $bg-color-light;
+        border: 1px solid $default-border-color;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .preview-label {
+        font-size: $font-size-medium;
+        color: $gray-light;
+    }
+}
+// END OF TODO
+
+.bg-secondary {
+    background-color: $bg-color-secondary;
+}
+.bg-light {
+    background-color: $bg-color-light;
+}
+
+.bg-default {
+    background-color: $brand-default;
+}
+
+/* ==========================================================================
+   Flex classes
+
+   utility classes for flex layout
+========================================================================== */
+.flex-main {
+    flex: 1;
+}
+
+/* ==========================================================================
+   Bootstrap overrides
+
+   Default overrides for bootstrap
+========================================================================== */
+label {
+    font-weight: 600;
+    margin-bottom: $spacing-smaller;
+}
+
+.btn-toolbar {
+    .mx-link {
+        margin-left: 5px;
+    }
+}
+
+%inverse-btn-toolbar,
+.inverse-btn-toolbar {
+    margin-left: 0;
+    margin-right: -5px;
+
+    text-align: right;
+
+    .btn, .mx-link, .mx-dataview {
+        margin-left: 0;
+        margin-right: 5px;
+    }
+}
+
+.dropdown-menu {
+    border: 1px solid $default-border-color;
+    padding: $spacing-default;
+
+    margin-top: 16px;
+
+    &:before, &:after {
+        content:"";
+
+        position: absolute;
+        bottom: 100%;
+        left: $spacing-large;
+        height: 0;
+        width: 0;
+        border: solid transparent;
+    }
+
+    &:before {
+        border-color: rgba($default-border-color, 0);
+        border-bottom-color: $default-border-color;
+        border-width: ($spacing-small + $spacing-smaller);
+        margin-left: -($spacing-small + $spacing-smaller);
+    }
+    &:after {
+        border-color: rgba(255,255,255,0);
+        border-bottom-color: #FFF;
+        border-width: ($spacing-small + $spacing-smaller - 1px);
+        margin-left: -($spacing-small + $spacing-smaller - 1px);
+    }
+}
+
+.dropdown-menu-right {
+    &:before, &:after {
+        left: auto;
+        right: $spacing-large;
+        margin-left: auto;
+    }
+    &:before {
+        margin-right: -($spacing-small + $spacing-smaller);
+    }
+    &:after {
+        margin-right: -($spacing-small + $spacing-smaller - 1px);
+    }
+}
+
+.dropdown-menu-center {
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:before, &:after {
+        left: 50%;
+    }
+}
+
+/* ==========================================================================
+   Animations
+
+   General animations and keyframes
+========================================================================== */
+@keyframes checkboxShadowFocus {
+    0% {
+        box-shadow: none;
+        background-color: transparent;
+    }
+    90% {
+        box-shadow: 0 0 0 8px $Siemens_Blue_23; // 24
+        background-color: $Siemens_Blue_23;
+    }
+    100% {
+        box-shadow: none;
+        background-color: transparent;
+    }
+}
+
+@keyframes checkboxFocus {
+    0% {
+        transform: scale(0.45,0.45);
+        background-color: transparent;
+    }
+    90% {
+        background-color: $Siemens_Blue_23;
+        transform: scale(1,1);
+    }
+    100% {
+        background-color: transparent;
+        transform: scale(0,0);
+    }
+}

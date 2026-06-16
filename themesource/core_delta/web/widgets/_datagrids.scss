@@ -1,0 +1,61 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Datagrid Default
+
+   Default Mendix Datagrid Widget. The datagrid shows a list of objects in a grid
+========================================================================== */
+
+.mx-datagrid {
+    table {
+        border-width: 0;
+        background-color: transparent;
+    }
+    /* Table header */
+    th {
+        background-color: $grid-bg-header;
+        padding: $grid-padding-top $grid-padding-right $grid-padding-bottom $grid-padding-left;
+        vertical-align: middle;
+        .mx-datagrid-head-caption {
+            white-space: normal;
+        }
+    }
+
+    tr {
+        background-color: $grid-bg;
+
+        &.selected,
+        &.selected:hover{
+            color: $grid-selected-color;
+            background-color: $grid-bg-selected;
+        }
+    }
+
+    td {
+        padding: $grid-padding-top $grid-padding-right $grid-padding-bottom $grid-padding-left;
+        vertical-align: middle;
+        &:focus {
+            outline: none;
+        }
+    }
+    tfoot {
+        th {
+            border-width: 0;
+            background-color: $grid-footer-bg;
+        }
+        td {
+            border-width: 0;
+        }
+    }
+
+    table {
+        & *:focus {
+            outline: 0;
+        }
+    }
+}

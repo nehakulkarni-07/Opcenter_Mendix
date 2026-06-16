@@ -1,0 +1,332 @@
+/* ==========================================================================
+   Launchpad
+
+   Default Mendix & Apollo launchpad block rules
+========================================================================== */
+.launchpad-block {
+    padding: $spacing-small;
+    margin-bottom: $spacing-default;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    background-color: $brand-inverse;
+
+    color: #FFF;
+
+    &:before {
+        content:"";
+        width: 1px;
+        margin-left: -1px;
+        padding-top: 100%;
+    }
+
+    .launchpad-block-wrapper {
+        flex: 1;
+    }
+
+
+    h3 {
+        color: #FFF;
+        margin:0;
+        font-size: $font-size-default;
+
+        + .block-icon {
+            &:before {
+                top: (-1 * (($font-size-default * $line-height-base) / 2) + 3px);
+                position: relative;
+            }
+            
+        }
+        & + .block-content {
+            .metric-block {
+                position: relative;
+                top: (-1 * (($font-size-default * $line-height-base) / 2) + 3px);
+            }
+        }
+    }
+
+    .block-icon,
+    .block-content {
+        flex-grow:1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mx-link {
+        color: #FFF;
+        text-align: right;
+    }
+
+    .block-sub-icon {
+        position: absolute;
+        bottom: $spacing-small;
+        left: $spacing-small;
+        top: auto;
+
+        font-size: $font-size-large;
+    }
+
+    .multiline-text-ellipsis {
+        @include multiline-ellipsis(3, $brand-inverse);
+    }
+   
+}
+
+.launchpad-accent-block {
+    background-color: $Siemens_Blue_13;
+
+    .multiline-text-ellipsis {
+        @include multiline-ellipsis(3, $Siemens_Blue_13);
+    }
+}
+
+.launchpad-primary-block {
+    background-color: $brand-primary;
+
+    .multiline-text-ellipsis {
+        @include multiline-ellipsis(3, $brand-primary);
+    }
+}
+
+.launchpad-success-block {
+    background-color: $Siemens_Status_Green_5;
+
+    .multiline-text-ellipsis {
+        @include multiline-ellipsis(3, $Siemens_Status_Green_5);
+    }
+}
+
+.launchpad-block-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    &.mx-dataview {
+        > .mx-dataview-content {
+            height: 100% !important;
+
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.col-md-8 {
+    .launchpad-block {
+        &:before {
+            padding-top: calc(50% - (#{$spacing-default}));
+        }
+    }
+}
+
+.launchpad-page-layoutgrid {
+    padding:$spacing-large 0 0 0;
+    margin:0;
+    
+    > .row {
+        display: flex;
+        flex-direction: row;
+
+        margin-left:0;
+        margin-right:0;
+
+        &:before,
+        &:after {
+            content: none;
+        }
+
+        > [class *= 'col-'] {
+            padding:0;
+            float: none;
+            width: auto;
+            flex-basis: 630px;
+
+            flex-shrink: 1;
+            flex-grow: 0;
+
+            &:nth-child(n + 2) {
+                margin-left: $spacing-large;
+            }
+        }
+    }
+
+
+}
+
+.launchpad-grid {
+    padding:0;
+    max-width: 600px;
+    margin: 0;
+
+    > .row {
+        margin-left: 0;
+        margin-right:0;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &:before,
+        &:after {
+            content: none;
+        }
+
+        > [class *='col-'] {
+            padding:0;
+            float: none;
+        }
+
+        .col-md-4 {
+            width: calc( (100% - (2 * #{$spacing-default}))/3 );
+            padding:0;
+        }
+        .col-md-6 {
+            width: calc( (100% - (2 * #{$spacing-default}))/3 );
+            width: calc( (100% - #{$spacing-default} ) / 2 );
+
+        }
+        .col-md-8 {
+            width: calc( 2 *((100% - (2 * #{$spacing-default}))/3) + #{$spacing-default} );
+        }
+    }
+}
+
+.block-icon {
+    font-size: $spacing-xlarge;
+    text-align: center;
+}
+
+.metric-block {
+    text-align: center;
+    .metric {
+        font-size: $font-size-metric;
+        display: block;
+    }
+    label {
+        font-weight: normal;
+        font-size: $font-size-small;
+        opacity: 0.6;
+    }
+    .metric-unit {
+        color: #FFF;
+        font-size: $font-size-small;
+    }
+
+    .field-label {
+        display: block;
+        text-align: left;
+        margin-bottom: -$spacing-small - $spacing-smaller;
+        color: rgba(255,255,255,0.65);
+    }
+}
+
+.launchpad-block {
+    .metric-row-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .metric-block {
+            &:before {
+                content: "/";
+                font-size: $font-size-metric;
+    
+                position: absolute;
+                left: calc(-0.14em - #{$spacing-small});
+    
+                
+            }
+            &:first-child:before {
+                content: none;
+            }
+        }
+    }
+
+    .metric-block {
+        margin: 0 $spacing-small;
+        position: relative; 
+
+        .sub-field {
+            color: rgba(255,255,255,0.65);
+            text-align: left;
+            display: block;
+            margin-top: -10px;
+        }
+    }
+    .metric-unit {
+        position: absolute;
+        top:0;
+        right:-0.8em;
+
+        color: rgba(255,255,255,0.65);
+    }
+
+    .message-block {
+        .message-block-header,
+        .message-header {
+            h2, h3, h4 {
+                color: #FFF;
+            }
+            span {
+                color: rgba(255,255,255,0.65);
+            }
+
+            .icon-block {
+                background-color: rgba(255,255,255,0.12);
+                color: #FFF;
+            }
+        }
+    }
+
+    .notification-block {
+        .message-header {
+            h4, h5 {
+                color: #FFF;
+            }
+        }
+        .sub-field {
+            color: rgba(255,255,255,0.65);
+        }
+
+        .icon-block {
+            background-color: rgba(255,255,255,0.12);
+            color: #FFF;
+        }
+    }
+}
+
+// link
+.full-block-link {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: $spacing-small;
+}
+
+/* ==========================================================================
+   Mobile launchpad
+
+   Default mobile Mendix & Apollo launchpad block rules
+========================================================================== */
+.profile-phone,
+.layout-atlas-hybridphone {
+    .launchpad-block {
+        label {
+            font-size: $font-size-small;
+        }
+        h3 {
+            font-size: $font-size-small;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

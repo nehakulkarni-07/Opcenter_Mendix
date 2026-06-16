@@ -1,0 +1,184 @@
+@media only screen and (max-width: 600px) and (orientation: portrait), (max-width: 800px) and (orientation: landscape) {
+
+.overview-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+    .mx-name-dv_overview_mfgorder{
+        > .mx-dataview-content{
+            height: 100% !important;
+            //height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-top) - var(--max-height-toolbar)) !important;
+        }
+
+        .overview-mfgorder-info{
+            //max-height: 100%;
+            height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-top) - var(--max-height-toolbar));
+            overflow: auto;
+        }
+
+        .mx-listview li {
+            border: none;
+        }
+    }
+}
+
+// Search
+.overview-search-box{
+    //background: #f0f0f0f0;
+    //border-bottom: groove;
+    background: #F0F0F0 0% 0% no-repeat padding-box;
+    opacity: 1;
+    display: flex;
+    //align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #8C8C8C;
+    max-height: var(--max-height-top);
+}
+
+// .overview-search-label{
+//     font: normal normal 600 12px/17px Segoe UI;
+// }
+
+.overview-search-text{
+    text-align: left;
+    font: normal normal 600 12px/17px Segoe UI;
+    letter-spacing: 0px;
+    color: #1E1E1E;
+    opacity: 1;
+    margin-bottom: 1vh;
+
+    label{
+        position: absolute;
+        top: 3px;
+    }
+
+    input{
+        font: italic normal normal 12px/16px Segoe UI;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #8C8C8C;
+        border-radius: 2px;
+        opacity: 1;
+        padding-right: 10vw;
+        margin-top: 3vh;
+    }
+
+    input:focus{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 2px solid #3296B9;
+        border-radius: 2px;
+        opacity: 1;
+    }
+}
+
+.overview-scan-icon{
+    //position: absolute;
+    //top: 42%;
+    //right: 8%;
+    cursor: pointer;
+    //max-height: 55%;
+    //max-width: 55%;
+    width: 24px;
+    height: 24px;
+    // margin-left: -10vw;
+    // margin-bottom: -2vh;
+    position: absolute;
+    margin:4vh -4vh;
+}
+
+// Mfg Order Info
+.overview-mfgorder-dispatch{
+    //overflow: auto;
+    //position: relative;
+
+    ul > li{
+        border: none;
+        padding: 1px;
+    }
+
+    .mx-listview-empty{
+        letter-spacing: 0px;
+        opacity: 1;
+        margin-top: 30vh;
+
+        &:before{
+            content: "No Search Results Yet \a";
+            text-align: center;
+            font: normal normal 600 17px/23px Segoe UI;
+            letter-spacing: 0px;
+            color: #000000;
+            white-space: pre-wrap;
+        }
+        &:after{
+            content: "Type a keyword in the search box above to see the results listed here";
+            text-align: center;
+            font: italic normal normal 17px/23px Segoe UI;
+            letter-spacing: 0px;
+            color: #6E6E6E;
+        }
+
+        label{
+            display: none;
+        }
+    }
+}
+
+// Default Cell
+.overview-default-cell{
+    //border: 0.5px solid white;
+    //overflow: hidden;
+    //background: #f0f0f0f0;
+    background: #F0F0F0 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 1px 1px;
+}
+
+.overview-product-image{
+    //margin-top: 1%;
+    //margin-left: 1%;
+    //margin-bottom:1%;
+    background: #F0F0F0 0% 0% no-repeat padding-box;
+    opacity: 1;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.overview-mfgorder-content{
+    opacity: 1;
+    text-align: left;
+
+    div{
+        margin: -8px 0px;
+    }
+    .mx-name-div_overview_icons{
+        margin: 8px 0px;
+    }
+}
+
+.overview-mfgorder-title{
+    font: normal normal 600 14px/19px Segoe UI;
+    letter-spacing: 0px;
+    color: #1E1E1E;
+    opacity: 1;
+}
+
+.overview-mfgorder-label{
+    font: normal normal 600 12px/16px Segoe UI;
+    letter-spacing: 0px;
+    color: #1E1E1E;
+    opacity: 1;
+    margin-right: 5px;
+}
+
+.overview-mfgorder-text{
+    font: normal normal normal 12px/16px Segoe UI;
+    letter-spacing: 0px;
+    color: #464646;
+    opacity: 1;
+}
+
+}

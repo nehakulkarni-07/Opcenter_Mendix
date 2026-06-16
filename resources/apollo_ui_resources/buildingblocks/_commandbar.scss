@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Sidetoolbar
+
+   The default-settings for side toolbar
+========================================================================== */
+%command-bar-btn {
+    padding-left: $spacing-small;
+    padding-right: $spacing-small; 
+
+    border-radius: 0;
+    border: none;
+
+    color: $gray-dark;
+}
+
+.command-bar {
+    @extend %shadow-minimal;
+
+    position: relative;
+
+    border-bottom: 1px solid $default-border-color;
+    border-top: 1px solid $default-border-color;
+    padding: 2px 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: 1;
+    
+
+    .btn {
+        @extend %command-bar-btn;
+
+        & + .btn {
+            margin-left: $spacing-smaller;
+        }
+    }
+
+    .form-control {
+        @if ($dense-app) {
+            padding: ($spacing-small - 1px) $spacing-small;
+        } @else {
+            padding: ($spacing-small + 3px - 1px) ($spacing-small + $spacing-smaller);   
+        }
+    }
+
+    .widget-text-box-search {
+        background-color: red;
+        .search-bar {
+            padding-bottom:0;
+        }
+    } 
+}
+
+.command-bar-section {
+    padding: 0 2px;
+
+    & + .command-bar-section {
+        border-left: 1px solid $default-border-color;
+    }
+}
+
+.command-bar-search-section {
+    flex: 1;
+    padding: 0 $spacing-small;
+}
+
+.command-bar-section-title {
+    display: block;
+    margin-left: $spacing-small;
+    //line-height: 1;
+    margin-bottom: -4px;
+}

@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Tiles
+
+   Mendix Apollo tiles and similar patterns
+========================================================================== */
+.tile {
+    @extend %shadow-medium;
+    background-color: #FFF;
+
+    padding: ($spacing-small + $spacing-smaller);
+
+    .main-field {
+        color: $font-color-header;
+        font-weight: 600;
+    }
+    .sub-field {
+        margin-top: $spacing-small;
+    }
+
+    .image-container {
+        margin-bottom: ($spacing-small + $spacing-smaller);
+    }
+
+}

@@ -1,0 +1,14 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-notification-badge{
+    background: #93DCED 0% 0% no-repeat padding-box;
+    opacity: 1;
+    width: var(--icon-width-compact);
+    height: var(--icon-height-compact);
+    border-radius: 30px 30px 30px 30px;
+
+    /*Dynamic value - Rewrite style value on own styling file*/
+    // position: absolute;
+    // top: -8px;
+    // left: 16px;
+}

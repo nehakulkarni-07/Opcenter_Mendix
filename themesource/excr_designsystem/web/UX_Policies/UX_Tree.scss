@@ -1,0 +1,131 @@
+/*Widget - Tree node*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+/*HTML - ul*/
+.widget-tree-node{
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    /*HTML - li*/
+    .widget-tree-node-branch{
+        &:focus-visible > .widget-tree-node-branch-header{
+            outline: none !important;
+        }
+
+        /*This serve the selected node have an active state for parent node with one level children node*/
+        &:has(:focus):not(:has(.widget-tree-node-body a:focus)){
+            > .widget-tree-node-branch-header{
+                border: 2px solid #0F789B;
+            }
+        }
+            
+        /*HTML - span*/
+        .widget-tree-node-branch-header{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: left;
+            align-items: center;
+            padding: 0px 0px;
+            border: 2px solid transparent;
+
+            &:hover{
+                background: #EEF6F8;
+            }
+
+            &:active{
+                background: #CDE6EB;
+            }
+
+            /*HTML - span*/
+            .widget-tree-node-branch-header-value{
+                margin: 0px 0px;
+                cursor: pointer;
+                font: normal normal var(--font-weight-tree) var(--font-size-default)/var(--line-height-default) Segoe UI;
+
+                img{
+                    margin-left: 0px;
+                    margin-right: 8px;
+                }
+
+                a,
+                label,
+                span.mx-text{
+                    color: #1E1E1E;
+                }
+
+                /*This serve the custom content (Image) of nodes*/
+                .mx-image-viewer{
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    width: auto;
+
+                    /*This serve the custom content (Image) of nodes - Indicator icons (16 px)*/
+                    /*2 px space between indicators*/
+                    &:is(.widget-tree-node-branch-header-icon-indicator){
+                        img{
+                            margin-right: 2px;
+
+                            &:last-child{
+                                margin-right: 8px;
+                            }
+                        }
+                    }
+                }
+
+                /*This serve the custom content (Action Button in Render Mode = Link) for click event of nodes*/
+                a{
+                    height: 24px;
+                    padding: 3px 0px;
+                    
+                    &:hover{
+                        text-decoration: none;
+                    }
+
+                    &:focus{
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            /*HTML - span*/
+            .widget-tree-node-branch-header-icon-container{
+                height: 24px;
+                padding: 4px 8px;
+
+                img{
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            /*This serve the custom content (Image) of nodes - Type icon (24 px)*/
+            &:has(.widget-tree-node-branch-header-icon-type){
+                .mx-image-viewer,
+                .widget-tree-node-branch-header-icon-container{
+                    height: 32px;
+                }
+            }
+        }
+        
+        /*HTML - div*/
+        .widget-tree-node-body{
+            margin-left: 0px;
+
+            /*This styling affected to Child Node Level 1*/
+            &:is(.widget-tree-node-body:nth-of-type(1)){
+                &:not(:has(.widget-tree-node-branch-header-icon-container)){
+                    margin-left: 20px;
+                }
+            }
+
+            /*This styling affected to Child Node Level 2*/
+            &:is(.widget-tree-node-body:nth-of-type(2)){
+                &:not(:has(.widget-tree-node-branch-header-icon-container)){
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}

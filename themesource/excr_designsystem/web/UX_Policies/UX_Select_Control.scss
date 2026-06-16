@@ -1,0 +1,270 @@
+/*Applied Widget - Container, Targeted Widget - Custom Dropdown*/
+/*Mendix original class - Overrides style with direct take effect*/
+
+.CustomDropdown{
+    .PrefixCustomDropdown__control{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+
+        height: 32px;
+        min-height: 32px;
+        //padding-left: 8px;
+        //padding-top: 8px;
+        //padding-bottom: 8px;
+
+        &:hover{
+            border: 2px solid #828282;
+            box-shadow: none;
+        }
+
+        &:active:focus{
+            border: 2px solid #3296B9;
+            box-shadow: none;
+        }
+
+        .PrefixCustomDropdown__value-container{
+            //padding: 0;
+            //margin-top: -10px;
+            
+            .PrefixCustomDropdown__placeholder{
+                text-align: left;
+                font: italic normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+                letter-spacing: 0px;
+                color: #1E1E1E;
+                opacity: 1;
+
+                margin: 0;
+            }
+
+             div:nth-child(2){
+                margin: 0;
+                padding: 0;
+            }
+
+            .PrefixCustomDropdown__single-value{
+                margin: 0;
+
+                .PrefixCustomDropdown__container{
+                    .PrefixCustomDropdown__name{
+                        text-align: left;
+                        font: normal normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+                        letter-spacing: 0px;
+                        color: #1E1E1E;
+                        opacity: 1;
+                    }
+                    /*Revision - Start*/
+                    .PrefixCustomDropdown__divider{
+                        width: 0.3rem;
+                        line-height: var(--line-height-default);
+
+                        &:after{
+                            content: ":";
+                            line-height: var(--line-height-default);
+                            transform: translateY(-1px);
+                        }
+                    }
+                    .PrefixCustomDropdown__name.PrefixCustomDropdown--name2{
+                        transform: translateY(0px);
+                    }
+                    /*Revision - End*/
+                }
+            }
+           
+            .PrefixCustomDropdown__input{
+                input{
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        box-shadow: none !important;
+                    }
+                }
+            }
+        }
+
+        .PrefixCustomDropdown__indicators{
+            //margin-top: -10px;
+
+            .PrefixCustomDropdown__clear-indicator{
+                svg{
+
+                }
+            }
+
+            /*HTML - Span*/
+            .PrefixCustomDropdown__indicator-separator{
+                display: none;
+            }
+
+            .PrefixCustomDropdown__dropdown-indicator{
+                svg{
+                    width: var(--icon-width-compact);
+                    height: var(--icon-height-compact);
+                }
+            }
+        }
+    }
+
+    .PrefixCustomDropdown__menu{
+        .PrefixCustomDropdown__menu-list{
+            .PrefixCustomDropdown__option{
+                .PrefixCustomDropdown__container{
+                    .PrefixCustomDropdown__name{
+
+                    }
+                    /*Revision - Start*/
+                    .PrefixCustomDropdown__divider{
+                        width: 0.3rem;
+
+                        &:after{
+                            content: ":";
+                        }
+                    }
+                    .PrefixCustomDropdown__name.PrefixCustomDropdown--name2{
+                        color: unset;
+                        transform: unset;
+                    }
+                    /*Revision - End*/
+                }
+            }
+        }
+    }
+}
+
+/*Widget - Dropdown Container*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.dropdown.btn-group{
+    min-width: 162px;
+    width: inherit;
+
+    /*HTML - button*/
+    .dropdown-toggle.dropdown-button{
+        min-width: 160px;
+        width: inherit;
+        max-width: none;
+
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+
+        padding: 8px;
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+
+        text-align: left;
+        font: italic normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+        letter-spacing: 0px;
+        color: #1E1E1E;
+
+        outline: none;
+
+        &:hover{
+            border: 2px solid #828282;
+            box-shadow: none;
+        }
+
+        &:active{
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #3296B9;
+            box-shadow: none;
+        }
+
+        &:focus{
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #3296B9;
+            box-shadow: none;
+        }
+
+        /*dropdown icon*/
+        .glyphicon{
+            width: 16px;
+            height: 16px;
+
+            &:before{
+                content: '';
+            }
+        }
+
+        /*dropdown arrow*/
+        .caret{
+            position: absolute;
+            right: 10px;
+            // display: none;
+        }
+
+        // &:after{
+        //     content: url("/img/EXEL_DesignSystem$Icon_Repository$miscChevronDown16.svg");
+        //     width: var(--icon-width-compact);
+        //     height: var(--icon-height-compact);
+        //     padding: 4px 4px;
+        //     position: absolute;
+        //     right: 10px;
+        //     bottom: 12px;
+        // }
+    }
+
+    /*HTML - div*/
+    .dropdown-menu{
+        max-height: 50vh;
+        overflow: auto;
+        margin-top: 0px;
+        padding: 8px;
+        width: inherit;
+    }
+}
+
+/*Applied Widget - Container, Targeted Widget - Drop-down*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.mx-dropdown{
+    &.dropdown-no-empty > select > option:first-child{
+        display: none;
+    }
+
+    select{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+
+        height: 32px;
+        min-height: 32px;
+        padding-left: 8px !important;
+
+        /*Custom Select Arrow*/
+        appearance: none;
+        background-image: url("/img/EXEL_DesignSystem$Icon_Repository$miscChevronDown16.svg") !important;
+        background-size: 8px 8px !important;
+        background-repeat: no-repeat !important;
+        background-position: 95% 50% !important;
+        background-origin: padding-box !important;
+        
+        &:hover{
+            border: 2px solid #828282;
+            cursor: pointer;
+        }
+
+        &:active{
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #3296B9;
+            box-shadow: none;
+        }
+
+        &:focus{
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 2px solid #3296B9;
+            box-shadow: none;
+        }
+
+        option{
+            text-align: left;
+            font: normal normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+            letter-spacing: 0px;
+            color: #1E1E1E;
+            opacity: 1;
+        }
+    }
+}

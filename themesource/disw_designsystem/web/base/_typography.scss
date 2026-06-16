@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Typography
+   
+   The core typography rules
+========================================================================== */
+
+p {
+}
+
+label {
+  //padding-top: 0;
+}
+
+.mx-title {
+  margin: $font-header-margin;
+  color: $font-color-header;
+  font-size: $font-size-h1;
+  font-weight: $font-weight-header;
+}
+
+h1,
+.h1,
+.h1 > * {
+  font-size: $font-size-h1;
+}
+
+h2,
+.h2,
+.h2 > * {
+  font-size: $font-size-h2;
+}
+
+h3,
+.h3,
+.h3 > * {
+  font-size: $font-size-h3;
+}
+
+h4,
+.h4,
+.h4 > * {
+  font-size: $font-size-h4;
+}
+
+h5,
+.h5,
+.h5 > * {
+  font-size: $font-size-h5;
+}
+
+h6,
+.h6,
+.h6 > * {
+  font-size: $font-size-h6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.1;
+  margin: $font-header-margin;
+  color: $font-color-header;
+  font-weight: $font-weight-header;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.h0 {
+  font-family: $font-family-header;
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  margin: $spacing-default 0 $spacing-large 0;
+}
+
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin-top: 0;
+  margin-bottom: $spacing-small;
+}
+
+.h0 {
+  font-size: $font-size-huge;
+}
+
+%inverse-header {
+  color: #fff;
+}
+
+// dark background
+.bg-default {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  .h0 {
+    @extend %inverse-header;
+  }
+}
+
+/* ==========================================================================
+   Imports
+   
+   default imported fonts
+========================================================================== */
+@font-face {
+  font-family: "selawik";
+  src: url("fonts/selawk-webfont.eot");
+  src: url("fonts/selawk-webfont.eot#iefix") format("embedded-opentype"),
+    url("fonts/selawk.ttf") format("truetype"),
+    url("fonts/selawk-webfont.woff2") format("woff2"),
+    url("fonts/selawk-webfont.woff") format("woff"),
+    url("fonts/selawk-webfont.svg#selawik") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "selawik";
+  src: url("fonts/selawksb-webfont.eot");
+  src: url("fonts/selawksb-webfont.eot#iefix") format("embedded-opentype"),
+    url("fonts/selawksb.ttf") format("truetype"),
+    url("fonts/selawksb-webfont.woff2") format("woff2"),
+    url("fonts/selawksb-webfont.woff") format("woff"),
+    url("fonts/selawksb-webfont.svg#selawik") format("svg");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "selawik";
+  src: url("fonts/selawkb-webfont.eot");
+  src: url("fonts/selawkb-webfont.eot#iefix") format("embedded-opentype"),
+    url("fonts/selawkb.ttf") format("truetype"),
+    url("fonts/selawkb-webfont.woff2") format("woff2"),
+    url("fonts/selawkb-webfont.woff") format("woff"),
+    url("fonts/selawkb-webfont.svg#selawik") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "disw-icons";
+  src: url("fonts/disw-revamp.eot");
+  src: url("fonts/disw-revamp.eot#iefix") format("embedded-opentype"),
+    url("fonts/disw-revamp.ttf") format("truetype"),
+    url("fonts/disw-revamp.woff") format("woff"),
+    url("fonts/disw-revamp.svg#disw-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==========================================================================
+   Responsive & Device 
+   
+   The rules for smaller screens and devices
+========================================================================== */
+.profile-phone {
+  h1,
+  .h1 {
+    font-size: $font-size-h2;
+  }
+  h2,
+  .h2 {
+    font-size: $font-size-h3;
+  }
+  h3,
+  .h3 {
+    font-size: $font-size-h4;
+  }
+}

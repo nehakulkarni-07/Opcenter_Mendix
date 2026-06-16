@@ -1,0 +1,54 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-inbox-notifications-panel{
+    /*If List view applied*/
+    .mx-listview li{
+        border: none;
+        margin: 8px 0px;
+    }
+}
+
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+/*Content Only*/
+.ux-inbox-notifications{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 8px #0000004D;
+    border: 1px solid #DCDCDC;
+    opacity: 1;
+
+    padding: 16px 16px;
+
+    border-left: 4px solid #005F87;
+    border-radius: 3px 0px 0px 3px;
+
+    line-height: 0px;
+
+    /*Widget - Container*/
+    /*Primary Text*/
+    div:first-child{
+        margin-bottom: 4px;
+
+        span.mx-text{
+            text-align: left;
+            font: normal normal bold var(--font-size-inbox)/var(--line-height-inbox) Segoe UI;
+            letter-spacing: 0px;
+            color: #005F87;
+            opacity: 1;
+        }
+    }
+
+    /*Widget - Container*/
+    /*Text*/
+    div:last-child{
+        margin-bottom: 8px;
+
+        span.mx-text{
+            text-align: left;
+            font: normal normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+            letter-spacing: 0px;
+            color: #464646;
+            opacity: 1;
+        }
+    }
+}

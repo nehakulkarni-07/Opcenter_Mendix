@@ -1,0 +1,265 @@
+/* ==========================================================================
+   Apollo layout
+   
+   The core stucture of all apollo layouts
+========================================================================== */
+.layout-atlas {
+    background-color: #006487;
+    background-image: $brand-gradient;
+
+    // Topbar region
+    .region-topbar {
+        color: #FFF; 
+
+        // IE11 fix for centering content with min-height
+        > .mx-scrollcontainer-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .topbar-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 16px;
+        min-height: $topbar-minimalheight;
+    }
+
+    .app-identity {
+        
+    }
+
+    .app-title {
+        font-size: $font-size-h3;
+        vertical-align: middle;
+        line-height: 1;
+
+        position: relative;
+        top: -2px;
+    }
+
+    .navbar-brand-wrapper {
+        margin-left: auto;
+        flex-basis: auto;
+
+        .mx-image {
+            display: inline-block;
+            vertical-align: middle;
+            width: 107px;
+        }
+    }
+
+    .app-logo {
+        display: inline-block;
+        @if ($brand-logo-official) {
+            margin: ((($topbar-minimalheight - 32px)/2) + 2px) ((($sidebar-minimalwidth - 32px)/2) + 2px) ((($topbar-minimalheight - 32px)/2) - 2px) ((($sidebar-minimalwidth - 32px)/2) - 2px);
+        } @else {
+            margin: (($topbar-minimalheight - 30px)/2) (($sidebar-minimalwidth - 30px)/2);
+        }
+    }
+
+    .app-credits {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 16px;
+
+        @if ($dense-app) {
+            font-size: $font-size-default;
+        } @else {
+            font-size: $font-size-small-default;
+        }
+    }
+
+    // Sidebar region
+    .region-sidebar {
+        position: relative;
+
+        > .mx-scrollcontainer-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-block {
+            @extend %nav-profile-block;
+            position: absolute;
+            bottom: $spacing-default + $spacing-small + 1px;
+            left: ($sidebar-minimalwidth / 2) - 17px;
+            pointer-events: none;
+        }
+
+        .back-btn {
+            @extend %nav-btn;
+        }
+    }
+
+    .topnav-container {
+        padding-top: $topbar-minimalheight + $spacing-default;
+
+        .mx-placeholder {
+            height: auto;
+        }
+
+        .app-identity {
+            position: absolute;
+            top:0;
+            left:0;
+            width: $sidebar-minimalwidth;
+        }
+    }
+    .secondary-menu {
+        padding-bottom: $spacing-default;
+
+        .navbar-inner > ul,
+        .navbar-nav {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+
+    // Content region
+    .region-content {
+        margin-right: $spacing-small;
+        background: #FFF;
+        border-radius: $border-radius-default $border-radius-default 0 0;
+
+        .mx-dataview-controls {
+            border-left: 2px solid #FFF;
+        }
+
+    }
+
+    // set flex behaviour for main side-toolbar
+    .main-content-scrollcontainer {
+        display: flex;
+        flex-direction: row;
+
+        > .mx-scrollcontainer-center {
+            flex: 1;
+            display: block; //ie 11 fix
+        }
+    }
+
+    .region-content-main {
+
+    }
+
+    .region-content-toolbar {
+        width: auto !important;
+        max-width: $toolbar-minimalwidth + 2px;
+        border-top-right-radius: $border-radius-default;
+
+        background-color: $bg-color-light;
+
+        .mx-placeholder > .mx-dataview {
+            
+            > .mx-dataview-content {
+                width: $toolbar-minimalwidth + 2px;
+                border-left: 2px solid #FFF;
+            }
+        }
+    }
+
+    .region-content-sidebar,
+    .region-subcontent-sidebar {
+        background-color: $bg-color-light;
+    }
+    .region-content-sidebar {
+        border-right: 2px solid #FFF;
+
+        .column-header {
+            padding: ($spacing-medium + 2px) $spacing-default ($spacing-medium + 3px) $spacing-default;
+        }
+
+        & + .mx-scrollcontainer-center {
+            .mx-dataview-controls {
+                border-left: none;
+            }
+        }
+    }
+    .region-subcontent-main {
+
+    }
+
+    .page-layoutgrid {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+    }
+
+    // set behaviour for flex-navbar
+    .main-scrollcontainer {
+        display: flex;
+        flex-direction: row;
+        
+        .region-sidebar {
+            flex-basis: $sidebar-minimalwidth;
+            width: auto !important;
+
+            & +  .mx-scrollcontainer-center {
+                flex: 1;
+                display: block; // iefix
+            }
+        }
+    }
+
+    &.bg-secondary {
+        .region-content {
+            background-color: $bg-color-secondary;
+        }
+    }
+}
+
+.mx-scrollcontainer-wrapper {
+    padding: 0;
+}
+
+// scrollcontainer for inside main content areas
+.content-scrollcontainer {
+    .content-region-sidebar {
+
+        &:first-child {
+            border-right: 1px solid $default-border-color;
+        }
+
+        &:last-child {
+            border-left: 1px solid $default-border-color;
+        }
+        
+    }
+
+    .content-region-main {
+
+    }
+    .content-region-header {
+        border-bottom: 1px solid $default-border-color;
+    }
+
+    .mx-scrollcontainer-wrapper {
+        > .mx-tabcontainer {
+            @extend %scrollcontainer-tabcontainer;
+        }
+    }
+}
+
+/* ==========================================================================
+   Apollo device layout
+   
+   The core stucture of device layouts
+========================================================================== */
+.layout-atlas-hybridphone {
+    background-color: #006487;
+    background-image: $brand-gradient;
+
+    .region-topbar {
+        
+    }
+
+    .region-content {
+        background-color: #FFF;
+    }
+
+    .region-bottom {
+        background-color: $bg-color-secondary;
+    }
+}

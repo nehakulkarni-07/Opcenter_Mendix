@@ -1,0 +1,176 @@
+/*Widget - Data Grid 2*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-table{
+    .table{
+        .tr{
+            .th{
+                min-height: 32px;
+                padding: 0px 8px;
+                background-color: #e6e6e6;
+                border: 1px solid #dcdcdc;
+
+                &:nth-child(1){
+                    padding-left: 24px;
+                }
+
+                .column-container{
+                    padding-left: 0px;
+                    margin-left: -1px;
+
+                    .column-header{
+                        padding: 0px;
+
+                        svg{
+                            margin-left: 8px;
+                        }
+                    }
+                }
+
+                &.column-selector{
+                    padding: 0px;
+                    button{
+                        box-shadow: none;
+                        background-color: transparent;
+                        padding: 4px 8px;
+                        &:hover{
+                            background: #D9E7ED 0% 0% no-repeat padding-box;
+                            color: #555;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(odd) > .td{
+                background: #F0F0F0 0% 0% no-repeat padding-box;
+                // border-radius: 0px 0px 3px 3px;
+                opacity: 1;
+            } 
+            &:nth-child(even) > .td{
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                // border-radius: 0px 0px 3px 3px;
+                opacity: 1;
+            } 
+            &:hover > .td{
+                background: #DAECF0 0% 0% no-repeat padding-box;
+                // border-radius: 0px 0px 3px 3px;
+                opacity: 1;
+            }
+            &.tr-selected > .td{
+                background: #CDE6EB 0% 0% no-repeat padding-box;
+                // border-radius: 0px 0px 3px 3px;
+                opacity: 1;
+            }
+            &.tr-selected:hover > .td{
+                background: #BEDFE6 0% 0% no-repeat padding-box;
+                // border-radius: 0px 0px 3px 3px;
+                opacity: 1;
+            }
+
+            .td{
+                height: 32px;
+                padding: 4px 8px;
+
+                &:nth-child(1){
+                    padding-left: 24px;
+                }
+
+                .mx-textbox{
+                    margin: 0px -8px !important;
+                    padding: 0px;
+                }
+
+                .td-custom-content{
+                    flex-grow: unset;
+                }
+
+                .mx-image.img-responsive{
+                    width: var(--icon-width-cozy);
+                    height: var(--icon-width-cozy);
+                }
+            }
+        }
+    }
+}
+
+//Pagination styling 
+
+.mx-grid-pagingbar{
+    padding-right: 13px;
+    .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px;
+    color:#DCDCDC;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+
+    }
+}
+
+.mx-name-paging-next::before {
+    content: "Next";
+    font-size: 12px;
+    color: #1E1E1E;
+    display: inline-block;
+    margin-right: 5px; /* Adjust spacing between label and icon */
+}
+
+.mx-name-paging-last::before {
+    content: "Last";
+    font-size: 12px;
+    color: #1E1E1E;
+    display: inline-block;
+    margin-right: 5px; /* Adjust spacing between label and icon */
+}
+
+.mx-name-paging-previous::before {
+    content: "Previous";
+    font-size: 12px;
+    color: #1E1E1E;
+    display: inline-block;
+    margin-right: 5px; /* Adjust spacing between label and icon */
+}
+ 
+.mx-name-paging-first::before {
+    content: "First";
+    font-size: 12px;
+    color: #1E1E1E;
+    display: inline-block;
+    margin-right: 5px; /* Adjust spacing between label and icon */
+}
+
+.mx-grid-paging-status{
+    font-size: 12px;
+    color: #1E1E1E;
+}
+
+
+.mx-icon-controls-forward::before {
+     content: url("/img/EXCR_DesignSystem$Icon_Repository$miscChevronRight16.svg") !important ;
+     display: block;
+     height: 12px;
+     width: 12px;
+}
+
+
+.mx-icon-controls-step-forward::before {
+     content: url("/img/EXCR_DesignSystem$Icon_Repository$miscGoToLast16.svg")!important ;
+     display: block;
+     height: 12px;
+     width: 12px;
+
+}
+
+.mx-icon-controls-backward::before {
+     content: url("/img/EXCR_DesignSystem$Icon_Repository$miscChevronLeft16.svg")!important ;
+     display: block;
+     height: 12px;
+     width: 12px;
+}
+
+.mx-icon-controls-step-backward::before {
+     content: url("/img/EXCR_DesignSystem$Icon_Repository$miscGoToFirst16.svg")!important ;
+     display: block;
+     height: 12px;
+     width: 12px;
+}

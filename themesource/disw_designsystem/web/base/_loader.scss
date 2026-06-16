@@ -1,0 +1,23 @@
+$progress-bar-height: 4px;
+$progress-width: 300px;
+
+/*
+    Test in console: mx.ui.showProgress("Loading", true)
+    Without backdrop: mx.ui.showProgress("Loading")
+*/
+
+.mx-progress {
+    width: $progress-width;
+    .mx-progress-message {
+
+    }   
+    .mx-progress-indicator {
+        height: $progress-bar-height;
+        &::before {
+            height: $progress-bar-height;
+        }
+        &::after {
+            height: $progress-bar-height;
+        }
+    }
+}

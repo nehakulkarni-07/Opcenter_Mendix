@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Filedropper
+   
+   Rules and adjustments for the apollo file dropper element
+========================================================================== */
+.filedropper {
+    margin-bottom: $spacing-default;
+    @if ($dense-app == false) {
+        margin-bottom: $spacing-medium;
+    }
+
+    .filedropper__dropzone {
+        @extend %control-transition;
+
+        border-color: $brand-default;
+        color: $brand-default;
+
+        &:before {
+            @extend %glyphicon;
+            content: "\e198";
+
+            display: block;
+            padding-bottom: $spacing-large;
+
+            font-size: $font-size-metric;
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: $grid-bg-hover;
+        }
+    }
+
+    .filedropper__alerts {
+        margin-bottom:0;
+    }
+
+    .filedropper__list {
+        margin: 0;
+    }
+
+    .filedropper__item {
+        @extend %transition;
+
+        padding: $spacing-default;
+        margin-bottom: $spacing-small;
+        background-color: $gray-lighter;
+
+        &:hover, &:focus, &:active {
+            @extend %shadow-medium-hover;
+        }
+
+        &:active {
+            background-color: $gray-light;
+        }
+    }
+
+    .rc-progress-line-trail {
+        @extend %shadow-minimal;
+    }
+
+    .filedropper__button-zone {
+        right: $spacing-default;
+        top: $spacing-default;
+
+        .glyphicon {
+            font-size: $font-size-medium;
+        }
+
+        .glyphicon-remove-circle {
+            &:before {
+                content: "\e083";
+            }
+        }
+        .glyphicon-upload {
+            &:before {
+                content: "\e198";
+            }
+        }
+    }
+
+    .filedropper__item-info {
+        
+    }
+    .glyphicon-warning-sign {
+        color: $brand-danger;
+    }
+
+    .filedropper__item-progress {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .filedropper__item-progress__bar {
+        width: calc(100% - 4em);
+        
+    }
+    .filedropper__item-filesize__label {
+        font-weight: 600;
+    }
+
+    .filedropper__alerts {
+        .alert {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+
+            .close {
+                @extend %icon-btn;
+                border-radius: $border-radius-default;
+                border: 1px solid transparent;
+                line-height: $line-height-controls;
+                font-size: $font-size-default;
+                opacity: 1;
+                
+
+                @if ($dense-app) {
+                    padding: $spacing-small ($spacing-small + 1px);
+                    margin: -$spacing-small;
+                    
+                } @else {
+                    padding: ($spacing-small + 3px) ($spacing-small + 5px) ($spacing-small + 2px) ($spacing-small + 5px);
+                    margin: -($spacing-small + $spacing-smaller);
+                }
+                margin-left: auto;
+
+                //padding: 11px 13px 10px 13px;
+
+                span {
+                    display: none;
+                }
+
+                &:before {
+                    @extend %glyphicon;
+                    content:"\e014";
+                    font-size: $font-size-medium;
+                }
+            }
+        }
+    }
+}

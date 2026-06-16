@@ -1,0 +1,17 @@
+:root {
+    --errorColor1: #FFADAD;
+    --errorColor2: #DC00001A;
+    --errorColor3: #DC0000;
+    --versionDetailsTextColor: #9999A9;
+    --loginBackgroundColor: #000028;
+    --tealBoxLogoColor: #009797;
+    --whiteColor: #FFFFFF;
+    --tealColor: #AAE6F5;
+    --loginButtonTextShadow: #000000B3;
+    --loginButtonBoxShadow: #0000004D;
+    --loginButtonOrangeColor: #DC6914;
+    --loginButtonDarkOrangeColor: #843F0C;
+    --loginButtonMediumOrangeColor: #B05410;
+    --loginButtonDisabledBackgroundColor: #82828212;
+    --loginButtonDisabledBorderColor: #828282;
+}

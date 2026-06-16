@@ -1,0 +1,215 @@
+/* ==========================================================================
+   Datagrid
+
+   Default Mendix Apollo datagrid and tables
+========================================================================== */
+.mx-table,
+.mx-datagrid {
+    tr {
+
+    }
+    th {
+        @if ($dense-app) {
+            padding: $spacing-smaller $spacing-small;
+        } @else {
+            padding: $spacing-small $spacing-default;
+        }
+        
+        background-color: $PL_Black_24;
+        border: 1px solid $grid-border-color;
+        font-weight: 600; // TODO: check this with design repository
+    }
+
+    td {
+        @if ($dense-app) {
+            padding: $spacing-small;
+        } @else {
+            padding: ($spacing-small + $spacing-smaller) $spacing-default;
+        }
+
+        border: 1px solid transparent;
+        border-bottom-color: $grid-border-color;
+
+        &:first-child {
+            border-left-color: $grid-border-color;
+        }
+        &:last-child {
+            border-right-color: $grid-border-color;
+        }
+    }
+
+    .mx-datagrid-sort-icon,
+    .mx-datagrid-head-caption {
+        display: inline-block;
+        vertical-align: middle;
+        direction: ltr;
+    }
+
+    .mx-datagrid-sort-icon {
+        font-size: $font-size-smallest;
+        float:none;
+        
+    }
+
+    .mx-datagrid-head-caption {
+        
+    }
+}
+
+.mx-datagrid {
+    th {
+        direction: rtl;
+    }
+}
+
+// editable version
+.inlineGrid {
+
+    td {
+        padding:0;
+    }
+    .mx-datagrid-data-wrapper {
+        @if ($dense-app) {
+            padding: $spacing-small;
+        } @else {
+            padding: ($spacing-small + $spacing-smaller) $spacing-default;
+        }
+    }
+
+    .inlineEditBox {
+        
+    }
+
+    .form-control {
+        border-radius: 0;
+        position: relative;
+
+        @if ($dense-app) {
+            padding: ($spacing-small - 2px);
+        } @else {
+            padding: ($spacing-small + $spacing-smaller - 2px) ($spacing-default - 2px);
+        } 
+
+        &:hover, &:focus, &:active {
+            @extend %shadow-minimal;
+            box-shadow: 2px 4px 6px 0 rgba(0,0,0,0.3);
+        }
+    }
+
+    select {
+        /*@if ($dense-app) {
+
+        } @else {
+            min-height: 46px;
+            height: 46px;
+        }*/
+
+        height: 2 * ($spacing-small + $spacing-smaller) + ($font-size-default * $line-height-controls) - 2px;
+        min-height: 2 * ($spacing-small + $spacing-smaller) + ($font-size-default * $line-height-controls) - 2px;
+    }
+}
+
+// add interactivity to rows
+.datagrid-hover,
+.mx-datagrid {
+    &:not(.datagrid-no-hover) {
+        tbody {
+            tr {
+                @extend %transition;
+    
+                &:hover, &:focus {
+                    background-color: $grid-bg-hover;
+                }
+                &:active {
+                    background-color: $grid-bg-active;
+                }
+            }
+        }
+    }
+}
+
+.datagrid-no-hover {
+    tbody {
+        tr {
+            cursor: auto;
+        }
+    }
+}
+
+.mx-datagrid-data-wrapper {
+    text-overflow: ellipsis;
+}
+
+.datagrid-wrap {
+    .mx-datagrid-data-wrapper {
+        white-space: normal;
+    }
+}
+
+/* ==========================================================================
+   Datagrid variants
+
+   Default Mendix Apollo datagrid variants
+========================================================================== */
+.table-borderless,
+.datagrid-borderless {
+    td {
+        border-color: transparent;
+    }
+    tr:last-child {
+        td {
+            border-bottom-color: $grid-border-color;
+        }
+    }
+}
+
+.table-alternating,
+.datagrid-alternated {
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: $grid-alternating-bg;
+            }
+        }
+    }
+}
+
+.table-bordered,
+.datagrid-bordered {
+    td {
+        border-color: $grid-border-color;
+    }
+}
+
+.table-lined,
+.datagrid-lined {
+    // this already is the default
+}
+
+// main column variant
+.mx-table,
+.mx-datagrid {
+    table {
+        position: relative;
+    }
+    th, td {
+        &.main-column {
+            position: relative;
+            z-index: 10;
+            border-right-color: $grid-border-color;
+
+            //background: #FFF url('images/dropshadow-right-medium.png');
+
+            &:after {
+                content:"";
+                position: absolute;
+                right: -8px;
+                top:0;
+                bottom:-1px;
+                width: 8px;
+
+                background: transparent url('images/dropshadow-right-medium.png') repeat-y top left;
+            }
+        }
+    }
+}

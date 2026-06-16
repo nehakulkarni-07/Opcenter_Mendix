@@ -1,0 +1,296 @@
+@media only screen and (max-width: 600px) and (orientation: portrait), (max-width: 800px) and (orientation: landscape) {
+
+.tasklist-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+    .mx-name-dv_taskList_taskListInfo{
+        > .mx-dataview-content{
+            height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-footer) - var(--max-height-toolbar));
+            //overflow: auto;
+
+            div:nth-child(2) > .widget-datagrid > .table{
+                .table-content{
+                    display: block;
+                    //align-items: flex-start;
+                    height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-footer) - var(--max-height-toolbar));
+                    border: none;
+
+                    .td{
+                        min-height: auto;
+                    }
+                }
+            }
+        }
+
+        .mx-dataview-controls{
+            box-shadow: none;
+        }
+    }
+}
+
+// Data Grid
+.tasklist-table-compact .th{
+    padding: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.tasklist-table-compact .column-header{
+    padding: 0;
+}
+
+// Page alignment
+.tasklist-flex-primary{
+    width: 70%;
+    display: flex;
+    align-items: center;
+
+    span{
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+}
+
+.tasklist-flex-primary .mx-text{
+    white-space: normal;
+}
+
+.tasklist-flex-icon{
+    // width: 10%;
+    border: 1px solid #3c91af;
+    border-radius: 5px;
+    margin: 2px;
+    margin-left: auto;
+
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    span{
+        margin: 8px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        line-height: normal;
+    }
+}
+
+.tasklist-flex-justify{
+    width: 100%;
+    max-width: 100vw;
+    display: flex;
+
+    .form-group{
+        margin-bottom: 0;
+    }
+}
+
+$statusColorBar: black;
+$statusColorDefault: white;
+$statusColorCompleted: #edfbf5;
+$statusColorFailed: #fbeeed;
+$statusColorInProgress: #fff7cd;
+$statusColorNotStart: #f0f0f0;
+// Task Status Overall color
+//DO NOT CLEAR. For Future sprint
+// .tasklist-flex-status-overall{
+//     border: 3px solid $statusColorBar;
+// }
+
+.tasklist-status-notstarted .mx-compound-control{
+    .form-control{
+        //color: white;
+        background-color: $statusColorNotStart;
+    }
+
+    .form-control > option{
+        //color: black;
+        background-color: $statusColorDefault;
+    }
+}
+
+.tasklist-status-completed .mx-compound-control{
+    .form-control{
+        //color: black;
+        background-color: $statusColorCompleted;
+        
+    }
+
+    .form-control > option{
+        //color: black;
+        background-color: $statusColorDefault;
+       
+    }
+}
+
+.tasklist-status-failed .mx-compound-control{
+    .form-control{
+        //color: white;
+        background-color: $statusColorFailed;
+    }
+
+    .form-control > option{
+        //color: black;
+        background-color: $statusColorDefault;
+    }
+}
+
+.tasklist-status-inprogress .mx-compound-control{
+    .form-control{
+        //color: black;
+        background-color: $statusColorInProgress;
+    }
+    
+    .form-control > option{
+        //color: black;
+        background-color: $statusColorDefault;
+    }
+}
+
+.tasklist-status-color .mx-compound-control
+{
+    .form-control > option:nth-child(1)
+    {
+        visibility: hidden;
+        display: none;
+        //background-color: $statusColorNotStart;
+    }
+    
+    .form-control > option{
+        //color: black;
+        background-color: $statusColorDefault;
+    }
+}
+
+// Indicator Icon
+.tasklist-icon-indicator{
+    width: 10%;
+    background-position: center;
+    background-repeat: no-repeat;
+    //background-size: contain;
+    background-size: 16px 16px;
+}
+
+.tasklist-indicator-notstarted{
+    background-image: url("/img/EXCR_DesignSystem$Icon_Repository$indicatorWarningGray16.svg");
+}
+
+.tasklist-indicator-completed{
+    background-image: url("/img/EXCR_DesignSystem$Icon_Repository$indicatorStatusReady16.svg");
+}
+
+.tasklist-indicator-failed{
+    background-image: url("/img/EXCR_DesignSystem$Icon_Repository$indicatorStatusFailed16.svg");
+}
+
+.tasklist-indicator-inprogress{
+    background-image: url("/img/EXCR_DesignSystem$Icon_Repository$indicatorCircleYellow16.svg");
+}
+
+// Visual Cue
+.tasklist-content-empty{
+    display: none;
+    // visibility: hidden;
+}
+
+.mx-name-html_element_tasklist .badge {
+    position: absolute;
+    margin-left: 23px;
+    margin-bottom: 24px;
+    border: 0px;
+    padding: 0px;
+    width: 16px;
+    height: 16px;
+    background: #93DCED 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+//Task Dropdown
+.tasklist-dropdown-taskname{
+    font: normal normal 600 12px/16px Segoe UI;
+}
+
+.tasklist-dropdown-contentstatus{
+    .form-control{
+        //color: black;
+        font: normal normal normal 12px/16px Segoe UI;
+        padding: 8px;
+        min-height: auto;
+        height: auto;
+    }
+
+    .form-control > option{
+        //color: black;
+        font: normal normal normal 12px/16px Segoe UI;
+        padding: 8px;
+        min-height: auto;
+        height: auto;
+    }
+
+    .control-label
+    {
+        text-align: left;
+        font: normal normal 600 12px/16px Segoe UI;
+        letter-spacing: 0px;
+        color: #1E1E1E;
+        opacity: 1;
+    }
+}
+
+//Comment Panel
+.tasklist-comments
+{
+    .mx-name-txt_taskList_comment mx-textarea form-group no-columns{
+        font: normal normal 600 12px/16px Segoe UI;
+    }
+
+    .control-label
+    {
+        font: normal normal normal 12px/16px Segoe UI;
+    }
+
+    textarea{
+        font: normal normal normal 12px/16px Segoe UI;
+      }
+}
+
+//Instruction Panel
+.tasklist-instructions
+{
+    font: normal normal normal 12px/16px Segoe UI;
+}
+
+//Submit Error Message Panel
+.tasklist-submitmessage-pass
+{
+    word-wrap: break-word;
+    font: normal normal normal 12px/16px Segoe UI;
+    background: #E3FAFF 0% 0% no-repeat padding-box;
+    border: 1px solid #66C8DE !important;
+    border-left: 4px solid #005F87 !important;
+    padding: 16px;
+}
+
+.tasklist-submitmessage-fail
+{
+    word-wrap: break-word;
+    font: normal normal normal 12px/16px Segoe UI;
+    background: #FBEEED 0% 0% no-repeat padding-box !important;
+    border: 1px solid #E38984 !important;
+    border-left: 4px solid #DC0000 !important;
+    padding: 16px;
+}
+
+.tasklist-dialog
+{
+    font: normal normal bold 17px/23px Segoe UI;
+}
+}

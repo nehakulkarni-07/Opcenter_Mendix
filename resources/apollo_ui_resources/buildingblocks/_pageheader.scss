@@ -1,0 +1,239 @@
+/* ==========================================================================
+   Pageheader
+
+   Default Mendix & Apollo pageheaders
+========================================================================== */
+.pageheader {
+    border-radius: $border-radius-default $border-radius-default 0 0;
+    background-color: $bg-color-secondary;
+
+    .mx-title {
+        margin:0 $spacing-default $spacing-default 0;
+
+        & + p,
+        & + .mx-text {
+            margin-top: -$spacing-small;
+        }
+    }
+
+    .pageheader-pre-label {
+        position: absolute;
+        top: calc(-1 * 1em * #{$line-height-base});
+        font-size: $font-size-small;
+    }
+    .page-layoutgrid {
+        padding: $spacing-large $spacing-large $spacing-default $spacing-large;
+    }
+
+    .header-paragraph {
+        max-width: $max-width-size;
+    }
+
+    p, .header-paragraph { 
+        &:last-child {
+            margin-bottom: $spacing-default;
+        }
+    }
+
+    .form-group {
+
+    }
+    .control-label {
+        font-weight: normal;
+        color: $Siemens_Stone_7;
+    }
+
+    .progress-stepper {
+        margin-top: $spacing-large;
+    }
+
+    .alert-full-width {
+        margin-bottom: 0;
+    }
+
+    .static-listview,
+    .profile-listview {
+        li {
+            &:hover, &:focus, &:active {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.pageheader-centered {
+    text-align: center;
+
+    .page-layoutgrid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:before, &:after {
+            content: none;
+        }
+        .row {
+            max-width: 100%;
+        }
+    }
+}
+
+.pageheader-max-centered {
+    .page-layoutgrid {
+        max-width: $max-width-size + (2 * $spacing-large);
+    }
+    
+}
+
+.pageheader-with-tabs {
+    .page-layoutgrid {
+        padding-bottom: $spacing-small;
+    }
+
+    p, .header-paragraph {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.pageheader-layoutgrid {
+    background-color: $bg-color-secondary;
+    padding: $spacing-large $spacing-large $spacing-default $spacing-large;
+
+    .mx-title {
+        margin:0;
+        margin-bottom: 16px;
+    }
+}
+
+.pageheader-toolbar {
+    text-align: right;
+    margin-right: -5px;
+
+    padding-bottom: $spacing-default;
+
+    margin-left: auto;
+
+    white-space: nowrap;
+
+    .btn, .mx-link, .mx-dataview {
+        margin-right: 5px;
+    }
+}
+
+// put this class on the column that needs to flex
+.flex-pageheader {
+    display: flex;
+    flex-direction: row;
+}
+.pageheader-main {
+    display: flex;
+    flex-direction: row;
+    //align-items: center;
+    flex-wrap: wrap;
+
+    // TODO: check if pageheader main should now get the $spacing-default margin bottom
+    .mx-title {
+        //margin-bottom:0;
+    }
+    .profile-listview {
+        margin-bottom: $spacing-default;
+        margin-left: $spacing-medium;
+        padding-left: ($spacing-medium - $spacing-small);
+        border-left: 1px solid $default-border-color;
+    }
+}
+
+//combibox pageheader: check for example
+.combi-search {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .combi-separator {
+        margin: 28px $spacing-default 0 $spacing-default;
+        line-height: 44px;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 0;
+    }
+    .btn {
+        margin-top: 28px;
+    }
+}
+
+/* ==========================================================================
+   Filter headers
+   
+   The rules for normal and page- filter headers
+========================================================================== */
+.filter-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .form-group {
+        margin-left: $spacing-small;
+        margin-bottom: 0;
+    }
+    > .form-group:first-child {
+        margin-left: 0;
+    }
+    .main-filter {
+        flex-basis: 40%;
+        flex: 1;
+
+        @extend %transition;
+    }
+    .filter-group {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+
+        margin-top: calc((#{$font-size-default} * #{$line-height-base}) + #{$spacing-smaller});
+        @extend %transition;
+    }
+
+    .filter-toolbar {
+        margin-top: calc((#{$font-size-default} * #{$line-height-base}) + #{$spacing-smaller});
+        @extend %transition;
+    }
+}
+
+/* ==========================================================================
+   Modal pageheaders
+   
+   The rules for pageheaders in modals
+========================================================================== */
+.modal-dialog {
+    .pageheader {
+        margin-top: -$spacing-default;
+        border-radius: 0;
+        
+    }
+    .mx-placeholder .pageheader {
+        .page-layoutgrid {
+            padding-top: $spacing-large;
+            padding-bottom: $spacing-default;
+        }
+    }
+}
+
+/* ==========================================================================
+   Responsive & Device 
+   
+   The rules for smaller screens and devices
+========================================================================== */
+.profile-phone {
+    .pageheader {
+        .page-layoutgrid {
+            padding: ($spacing-default + 4px) $spacing-default 4px $spacing-default;
+        }
+    }
+
+    .pageheader-layoutgrid {
+        padding: ($spacing-default + 4px) $spacing-default 4px $spacing-default;
+    }
+}

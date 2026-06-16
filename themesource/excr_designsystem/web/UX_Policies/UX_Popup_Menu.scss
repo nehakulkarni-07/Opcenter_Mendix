@@ -1,0 +1,109 @@
+/*Widget - Group Box*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-popup-menu{
+    border: none;
+    margin: 0px 0px;
+    float: left;
+
+    .mx-groupbox-header{
+        /*Button effect - Start*/
+        padding: 6px 12px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 1px 2px #0000004D;
+        border: 1px solid #005F87;
+
+        &:hover{
+            background: #D9E7ED 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 6px #0000004D;
+        }
+
+        &:has(.mx-icon-substract){
+            background: #BFD7E1 0% 0% no-repeat padding-box;
+        }
+        /*Button effect - End*/
+
+        i{
+            margin-right: -3px !important;
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+            &.mx-icon-substract{
+                content: url("/img/EXCR_DesignSystem$Icon_Repository$cmdSettings16.svg");
+            }
+
+            &.mx-icon-add{
+                content: url("/img/EXCR_DesignSystem$Icon_Repository$cmdSettings16.svg");
+            }
+
+            /*color: #005F87;*/
+            filter: brightness(0) saturate(100%) invert(14%) sepia(63%) saturate(5810%) hue-rotate(184deg) brightness(95%) contrast(108%);
+        }
+    }
+
+    .mx-groupbox-body{
+        margin-top: 12px;
+        margin-right: 6px;
+        padding: 16px 16px;
+
+        position: absolute;
+        
+        z-index: 1;
+
+        border-radius: 3px;
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #0000004D;
+        border: 1px solid #DCDCDC;
+        opacity: 1;
+
+        transition: 200ms ease-out;
+
+        &:before{
+            content: "";
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid #DCDCDC;
+            left: 12px;
+            top: -20px;
+        }
+
+        &:after{
+            content: "";
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid #FFFFFF;
+            left: 12px;
+            top: -18px;
+        }
+    }
+}
+
+/*Widget - Group Box*/
+/*UX Policies class - Required apply into widgets class manually*/
+/*This Popover styling refer Table policy result on gear icon that contains Switch policy*/
+.ux-popup-menu-reverse{
+    float: right;
+
+    .mx-groupbox-body{
+        right: 8px;
+
+        &:before{
+            left: auto;
+            right: 12px;
+        }
+
+        &:after{
+            left: auto;
+            right: 12px;
+        }
+    }
+}

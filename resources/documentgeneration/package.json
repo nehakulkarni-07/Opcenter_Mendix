@@ -1,0 +1,12 @@
+{
+  "name": "mx-docgen-local",
+  "version": "2.0.0",
+  "description": "Local service for PDF Document Generation module",
+  "main": "service.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mendix Technology B.V.",
+  "license": "Mendix EULA"
+}

@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Siemens colors
+
+   The fuller set of siemens color
+========================================================================== */
+
+
+// BLACK
+$PL_Black:                                            #000000;
+$PL_Black_2:                                          #0a0a0a;
+$PL_Black_4:                                          #1e1e1e;
+$PL_Black_5:                                          #282828;
+$PL_Black_6:                                          #323232;
+$PL_Black_7:                                          #3c3c3c;
+$PL_Black_8:                                          #464646;
+$PL_Black_9:                                          #505050;
+$PL_Black_10:                                         #5a5a5a;
+$PL_Black_12:                                         #6e6e6e;
+$PL_Black_13:                                         #787878;
+$PL_Black_16:                                         #969696;
+$PL_Black_18:                                         #aaaaaa;
+$PL_Black_20:                                         #bebebe;
+$PL_Black_22:                                         #d2d2d2;
+$PL_Black_23:                                         #dcdcdc;
+$PL_Black_24:                                         #e6e6e6;
+$PL_Black_25:                                         #f0f0f0;
+$PL_Black_26:                                         #fafafa;
+
+// GREEN
+$PL_Green_24:                                         #edfbf5;
+
+// STONE
+$Siemens_Stone_25:                                    #f5f7fa;
+$Siemens_Stone_24:                                    #EBF0F5;
+$Siemens_Stone_23:                                    #E5EBF1;
+$Siemens_Stone_22:                                    #DFE6ED;
+$Siemens_Stone_20:                                    #CDD9E1;
+$Siemens_Stone_18:                                    #BECDD7;
+$Siemens_Stone_14:                                    #9BAFBE;
+$Siemens_Stone_7:                                     #5F6B75;
+
+// WHITE
+$Siemens_Snow:                                        #FFFFFF;
+
+// BLUE
+$Siemens_Blue_1:                                      #003750; // Dark Teal
+$Siemens_Blue_3:                                      #004669;
+$Siemens_Blue_7:                                      #005f87;
+$Siemens_Blue_9:                                      #0f789b;
+$Siemens_Blue_10:                                     #197fa2;
+$Siemens_Blue_11:                                     #2387aa;
+$Siemens_Blue_12:                                     #2a8eb1;
+$Siemens_Blue_13:                                     #3296b9;
+$Siemens_Blue_14:                                     #39a0c0;
+$Siemens_Blue_17:                                     #50bed7;
+$Siemens_Blue_18:                                     #66C8DE;
+$Siemens_Blue_20:                                     #93dced;
+$Siemens_Blue_22:                                     #B9EDFA;
+$Siemens_Blue_23:                                     #c8f5ff;
+$Siemens_Blue_24:                                     #e3faff;
+$Siemens_Natural_Blue_10:                             #cde6eb;
+$Siemens_Blue_Dark_Old:                               #006487;
+$Siemens_Blue_Light_Old:                              #55a0b9;
+$Siemens_Blue_8_5_Old:                                #a3d0dc;
+$Siemens_Blue_9_Old:                                  #afd7e1;
+$Siemens_Blue_9_5_Old:                                #daecf0;
+$Siemens_Blue_10_Old:                                 #cde6eb;
+
+$Siemens_Status_LightBlue_6:                          #50BED7;
+$Siemens_Status_LightBlue_4:                          #24879D;
+$Siemens_Status_Blue_4:                               #0F789B;
+$Siemens_Status_Blue_3:                               #0B546C;
+
+// YELLOW
+$Siemens_Yellow_5:                                    #b44b28;
+$Siemens_Yellow_7:                                    #C85A1E;
+$Siemens_Yellow_9:                                    #dc6914;
+$Siemens_Yellow_10:                                   #e3700f;
+$Siemens_Yellow_11:                                   #eb780a;
+$Siemens_Yellow_17:                                   #ffb900;
+$Siemens_Yellow_18:                                   #FFC328;
+$Siemens_Yellow_19:                                   #ffcd50;
+$Siemens_Yellow_20:                                   #ffd764;
+$Siemens_Yellow_24:                                   #FFF7CD;
+
+$Siemens_Status_Yellow_6:                             #FFB900;
+$Siemens_Status_Yellow_4:                             #996F00;
+$Siemens_Status_Orange_5:                             #EB780A;
+$Siemens_Status_Orange_4:                             #BA5F08;
+
+// RED
+$Siemens_Red_9:                                       #9B1E14;
+$Siemens_Red_11:                                      #AF3128;
+$Siemens_Red_13:                                      #C3443C;
+$Siemens_Red_15:                                      #D75750;
+$Siemens_Red_18:                                      #E38984;
+$Siemens_Red_24:                                      #FBEEED;
+
+$Siemens_Status_Red_5:                                #BF1B1B;
+$Siemens_Status_Red_4:                                #921515;
+
+
+// GREEN
+$Siemens_Green_24:                                    #edfbf5;
+$Siemens_Green_18:                                    #84e3b9;
+$Siemens_Status_Green_5:                              #35bb35;
+$Siemens_Status_Green_4:                              #2A932A;
+$Siemens_Status_Green_3:                              #1F6B1F;
+
+// STATUS COLORS
+$Siemens_Status_Yellow:                               $Siemens_Yellow_11;
+$Siemens_Status_Green:                                #0a9b00;
+$Siemens_Status_Red:                                  #dc0000;
+
+// GRAPH COLORS
+$Siemens_DataVis_Green_1:                             $Siemens_Status_Green_4;
+$Siemens_DataVis_Yellow_1:                            $Siemens_Status_Yellow_4;    
+$Siemens_DataVis_Orange_1:                            $Siemens_Status_Orange_5;
+$Siemens_DataVis_Red_1:                               $Siemens_Status_Red_5;
+$Siemens_DataVis_Gray_1:                              #8C8C8C;
+$Siemens_DataVis_Blue_1:                              $Siemens_Status_LightBlue_6;
+$Siemens_DataVis_DarkBlue_1:                          $Siemens_Status_Blue_4;
+
+// use #2 for texts as well
+$Siemens_DataVis_Green_2:                             $Siemens_Status_Green_3;
+$Siemens_DataVis_Yellow_2:                            $Siemens_Status_Yellow_6;    
+$Siemens_DataVis_Orange_2:                            $Siemens_Status_Orange_4;
+$Siemens_DataVis_Red_2:                               $Siemens_Status_Red_4;
+$Siemens_DataVis_Gray_2:                              #686868;
+$Siemens_DataVis_Blue_2:                              $Siemens_Status_LightBlue_4;
+$Siemens_DataVis_DarkBlue_2:                          $Siemens_Status_Blue_3;  
+
+
+// NEW VARS
+$Natural_Blue_5:                                      #2882ad;
+$Natural_Blue_6:                                      #3c91af;
+
+/*
+  END APOLLO PRIMARY COLORS
+*/

@@ -1,0 +1,67 @@
+/*Widget - Button*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.btn,
+.mx-button{
+    border-radius: 2px;
+    opacity: 1;
+
+    height: 32px;
+    min-width: 0;
+
+    img{
+        width: var(--icon-width-compact);
+        height: var(--icon-height-compact);
+        margin: 2px 0px;
+        vertical-align: text-top;
+    }
+
+    /*For text within button*/
+    padding: 6px 12px;
+    text-align: center;
+    font: normal normal var(--font-weight-default) var(--font-size-button)/var(--line-height-button) Segoe UI;
+    letter-spacing: 0px;
+
+    &:focus{
+        outline: 2px solid #0F789B;
+        outline-offset: 2px;
+    }
+
+    &.disabled{
+        background: #00000012 0% 0% no-repeat padding-box;
+        border: 1px solid #6E6E6E91;
+
+        color: #6E6E6E91;
+
+        img{
+            filter: invert(44%) sepia(0%) saturate(60%) hue-rotate(167deg) brightness(95%) contrast(90%);
+        }
+    }
+}
+
+/*Mendix original class - Overrides style with direct take effect*/
+.btn-default{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 2px #0000004D;
+    border: 1px solid #005F87;
+
+    img{
+        /*color: #005F87;*/
+        filter: brightness(0) saturate(100%) invert(23%) sepia(57%) saturate(2597%) hue-rotate(175deg) brightness(90%) contrast(101%);
+    }
+
+    /*For text within button*/
+    color: #005F87;
+
+    &:hover{
+        background: #D9E7ED 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #0000004D;
+    }
+
+    &:active{
+        background: #BFD7E1 0% 0% no-repeat padding-box;
+    }
+
+    &:focus{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+    }
+}

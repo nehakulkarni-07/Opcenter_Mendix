@@ -1,0 +1,361 @@
+/* ==========================================================================
+   Layoutgrid
+
+   Default Mendix Apollo layoutgrid
+========================================================================== */
+.mx-layoutgrid {
+    padding-left: $spacing-default;
+    padding-right: $spacing-default;
+
+    .no-spacing-row {
+        > [class*='col-'] {
+            padding:0;
+        }
+    }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.row {
+    margin-left: -$spacing-default;
+    margin-right: -$spacing-default;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: $spacing-default;
+    padding-right: $spacing-default;
+}
+
+%small-layoutgrid {
+    padding-left: $spacing-small;
+    padding-right: $spacing-small;
+
+    .row {
+        margin-left: -$spacing-small;
+        margin-right: -$spacing-small;
+    }
+    [class*='col-'] {
+        padding-left: $spacing-small;
+        padding-right: $spacing-small;
+    }
+}
+%smaller-layoutgrid {
+    padding-left: $spacing-smaller;
+    padding-right: $spacing-smaller;
+
+    .row {
+        margin-left: -$spacing-smaller;
+        margin-right: -$spacing-smaller;
+    }
+    [class*='col-'] {
+        padding-left: $spacing-smaller;
+        padding-right: $spacing-smaller;
+    }
+}
+
+
+
+/* ==========================================================================
+   Page layoutgrids
+
+   Main page Apollo layoutgrid
+========================================================================== */
+.page-layoutgrid {
+    padding-top: $spacing-large;
+    padding-bottom: $spacing-large;
+
+    .page-section {
+        margin-top: $spacing-large;
+
+        @if ($dense-app) {
+            margin-top: $spacing-default;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .page-section-header {
+        margin: $spacing-default 0;
+        > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .mx-title, h1, h2, h3, .header-wrapper {
+            flex: 1;
+            margin:0;
+        }
+
+        & + .page-section {
+            margin-top: $spacing-default;
+        }
+    }
+
+    .page-section-toolbar {
+        margin-right: -$spacing-small;
+
+        .btn, .mx-link, .form-group {
+            margin-right: $spacing-small;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+    }
+
+    // for when making sections that either have borders or background colors
+    // that need to surpass the whitespace of the layoutcontainer
+    .section-content {
+        margin-left: -$spacing-large;
+        margin-right: -$spacing-large;
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+    }
+}
+
+/* ==========================================================================
+   Flex layoutgrids
+
+   Layoutgrids using flex as a layout engine
+========================================================================== */
+%flex-layoutgrid,
+.flex-layoutgrid {
+    display: flex;
+    flex-direction: column;
+
+    &:before,
+    &:after {
+        content: none;
+    }
+
+    > .row {
+        display: flex;
+        flex-direction: row;
+
+        &:before,
+        &:after {
+            content: none;
+        }
+    }
+}
+.full-flex-layoutgrid {
+    padding:0;
+
+    > .row {
+        margin:0;
+
+        > [class*='col-'] {
+            padding:0;
+            width: auto;
+        }
+    }
+}
+
+/* ==========================================================================
+   Clean layoutgrid
+
+   Layoutgrid without any paddings
+========================================================================== */
+.clean-layoutgrid {
+    padding:0;
+
+    > .row {
+        margin:0;
+
+        > div {
+            padding:0;
+        }
+    }
+}
+/* ==========================================================================
+   Form layoutgrids
+
+   Layoutgrids used for more advanced form building
+========================================================================== */
+.form-layoutgrid {
+    @extend %small-layoutgrid;
+    padding-left:0;
+    padding-right:0;
+}
+
+.form-section {
+    padding-top: $spacing-xlarge;
+}
+
+.form-header {
+    padding-bottom: $spacing-large;
+
+    // flex-column
+    > div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .form-toolbar {
+        margin-left: auto;
+        margin-top: -8px;
+    }
+
+    h2 {
+        margin: 0;
+    }
+}
+.form-section-bordered {
+    position: relative;
+    padding-top: $spacing-large;
+    margin-top: $spacing-default;
+
+    &:before {
+        content:"";
+        display: block;
+        position: absolute;
+        left:$spacing-small;
+        right:$spacing-small;
+        top:0;
+        border-top: 1px solid $default-border-color;
+    }
+    
+}
+
+// internal layoutgrid for columns in a .form-layoutgrid
+.form-grid {
+    padding:0;
+}
+
+.form-toolbar {
+    margin-top: $spacing-medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .back-btn {
+        margin-right: auto;
+    }
+}
+
+.form-layoutgrid-boxed {
+    border: 1px solid $default-border-color;
+    padding: $spacing-default $spacing-medium;
+}
+
+.form-layoutgrid-maxed {
+    max-width: $max-width-size;
+}
+
+.form-layoutgrid-centered {
+    margin:0 auto;
+}
+
+// used for combining maxed forms together with vertical steps
+.form-layoutgrid-wrapper {
+    padding: $spacing-large;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .form-layoutgrid {
+        max-width: $max-width-size;
+        flex-basis: $max-width-size;
+        flex-shrink: 1;
+        margin-left: 0;
+    }
+    .form-layoutgrid-fullscreen {
+        max-width: none;
+        flex-basis: 100%;
+    }
+
+    .task-stepper,
+    .progress-stepper {
+        margin-right:0;
+        flex-basis: calc((100% - #{$max-width-size}) / 2);
+        margin-top: $spacing-small;
+    }
+}
+
+/* ==========================================================================
+   Card layoutgrid
+
+   Layoutgrids used for showing cards
+========================================================================== */
+.card-layoutgrid {
+    @extend %flex-layoutgrid;
+
+    .card {
+        height: 100%;
+    }
+}
+
+%dashboard-layoutgrid,
+.dashboard-layoutgrid {
+    @extend %flex-layoutgrid;
+
+    > .row {
+        margin-bottom: $spacing-large;
+    }
+    
+    .dashboard-groupbox {
+        min-height: 100%;
+    }
+}
+
+.page-layoutgrid .dashboard-layoutgrid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/* ==========================================================================
+   Metric layoutgrid
+
+   Layoutgrids used for metric and metric cards
+========================================================================== */
+.metric-grid {
+    @extend %small-layoutgrid;
+
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ==========================================================================
+   Listview layoutgrids
+
+   Layoutgrids used in listviews
+========================================================================== */
+.listview-row-grid {
+    padding: $spacing-default;
+    padding-top: $spacing-small;
+    padding-bottom: $spacing-small;
+
+    .row {
+        margin-left: -$spacing-small;
+        margin-right: -$spacing-small;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    [class*='col-'] {
+        padding-left: $spacing-small;
+        padding-right: $spacing-small;
+    }
+}
+
+/* ==========================================================================
+   Responsive & Device 
+   
+   The rules for smaller screens and devices
+========================================================================== */
+.profile-phone {
+    .page-layoutgrid {
+        padding-top: $spacing-default;
+        padding-bottom: $spacing-default;
+    }
+}

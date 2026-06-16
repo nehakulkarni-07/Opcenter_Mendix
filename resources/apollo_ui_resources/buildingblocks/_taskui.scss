@@ -1,0 +1,174 @@
+/* ==========================================================================
+   TaskUI header & Toolbar
+
+   Default settings for TaskUI header
+========================================================================== */
+.taskui-header {
+    background-color: $Siemens_Blue_1;
+    padding: $spacing-small 0;
+    color: #FFF;
+
+    display: flex;
+    flex-direction: row;
+
+    border-radius: $border-radius-default $border-radius-default 0 0;
+
+    .mx-text {
+        font-size: $font-size-small;
+    }
+
+    h1, .mx-title {
+        //margin: ($spacing-small + $spacing-smaller) 0 0 0;
+        margin: 0;
+
+        font-size: $font-size-h4;
+        color: inherit;
+    }
+
+    .field-wrapper {
+        h1, .mx-title {
+            margin-top: -3px;
+        }
+    }
+    
+    .sub-field {
+        color: rgba(255,255,255,0.6);
+        display: block;
+        margin-top: -$spacing-smaller;
+        margin-bottom: -$spacing-smaller;
+    }
+
+    .icon-block {
+        display: inline-block;
+        margin-right: $spacing-default;
+        color: #FFF;
+    }
+
+    .icon-btn {
+        padding: 1px 3px;
+        color: #FFF;
+        .glyphicon {
+            font-size: $font-size-h3;
+            top:3px;
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+            border-color: transparent;
+            color: $Siemens_Yellow_20;
+        }
+        &:active {
+            color: $Siemens_Yellow_17;
+        }
+    }
+
+    &.mx-dataview {
+        flex: 1;
+        > .mx-dataview-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
+
+.taskui-section {
+    border-right: 1px solid rgba(255,255,255,0.6);
+    padding: 0 $spacing-default;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.taskui-main-section {
+    flex: 1;
+}
+
+.taskui-toolbar {
+    margin: -$spacing-small 0;
+    padding-right: 0;
+    .icon-btn {
+        padding: 9px 11px;
+    }
+}
+
+%taskui-separation,
+.taskui-separation {
+    &:before {
+        content:"";
+        display: block;
+        height: 32px;
+        width: 1px;
+        background-color: rgba(255,255,255,0.4);
+        margin: 0 16px;
+    }
+}
+
+.taskui-fields,
+.taskui-filters {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .form-group {
+        @extend %minified-form-group;
+
+        .control-label {
+            color: rgba(255,255,255,0.6);
+        }
+    }
+}
+
+
+
+.taskui-fields {
+    .form-group {
+        @extend %minified-form-group;
+        margin-right: $spacing-large;
+        margin-bottom: 0;
+    }
+    .control-label {
+        display: block;
+        margin:-1px 0 0 0;
+    }
+}
+
+.taskui-filters {
+    .mx-datepicker {
+        .glyphicon {
+            font-size: 1em;
+            top: -2px;
+        }
+    }
+
+    .form-group {
+        @extend %minified-form-group;
+        margin-right: $spacing-small;
+        margin-bottom: $spacing-small;
+    }
+
+    .filter-btn {
+        margin-top: 19px;
+        margin-left: $spacing-small;
+
+        padding: 2px 4px;
+    }
+}
+
+.taskui-filters-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex: 1;
+    flex-wrap: wrap;
+
+    .form-group {
+        flex-basis: calc(33.333333% - #{$spacing-small});
+        flex-grow: 0;
+    }
+}

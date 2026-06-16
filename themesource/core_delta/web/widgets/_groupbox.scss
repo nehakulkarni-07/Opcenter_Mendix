@@ -1,0 +1,35 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Groupbox
+
+   Default Mendix Groupboxes
+========================================================================== */
+
+.mx-groupbox {
+    //margin: 0;
+}
+
+.mx-groupbox-header {
+    margin: 0;
+    color: $groupbox-default-color; 
+    background: $groupbox-default-bg;
+}
+.mx-groupbox-collapse-icon {
+    margin-top: 0.1em;
+}
+.mx-groupbox-body {
+    padding: 10px 15px;
+    border: 1px solid $groupbox-default-bg;
+}
+.mx-groupbox-header + .mx-groupbox-body {
+    border-top: none;
+}
+.collapsed .mx-groupbox-header {
+
+}

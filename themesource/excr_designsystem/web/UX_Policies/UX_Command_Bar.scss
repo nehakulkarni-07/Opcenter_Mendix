@@ -1,0 +1,76 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-command-bar{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 2px -2px #0000004D;
+    opacity: 1;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+    margin: 8px 0px;
+    padding: 4px 0px;
+    display: flex;
+    flex-wrap: wrap;
+
+    button{
+        border: none;
+        box-shadow: none;
+        border-radius: 2px;
+        opacity: 1;
+        text-align: left;
+        font: normal normal var(--font-weight-default) var(--font-size-command)/var(--line-height-command) Segoe UI;
+        letter-spacing: 0px;
+        color: #464646;
+
+        // max-width: 100px;
+        height: 34px;
+
+        img{
+            filter: none;
+            vertical-align: middle;
+        }
+
+        &:hover{
+            background: #DAECF0 0% 0% no-repeat padding-box;
+            box-shadow: none;
+
+            color: #464646;
+        }
+
+        &:active{
+            background: #CDE6EB 0% 0% no-repeat padding-box;
+        }
+
+        &:focus{
+            background: #CDE6EB 0% 0% no-repeat padding-box;
+            border: 2px solid #0F789B;
+
+            outline: none !important;
+        }
+
+        &.disabled{
+            color: #6E6E6E91;
+
+            background: none !important;
+            border: none !important;
+        }
+    }
+
+    /*Widget - Container*/
+    .visual-separation{
+        width: 1px;
+        height: 32px;
+
+        margin-left: 8px;
+        margin-right: 4px;
+
+        background: #DCDCDC 0% 0% no-repeat padding-box;
+        opacity: 1;
+    }
+}
+
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+/*Command bar buttons default from left side, apply this class for buttons from right side*/
+.ux-command-reverse{
+    flex-direction: row-reverse;
+}

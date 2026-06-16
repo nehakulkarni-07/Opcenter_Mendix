@@ -1,0 +1,99 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-search,
+/*Widget - Text Filter*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.filter-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    div:first-child{
+        width: 100%;
+        height: 36px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .no-columns{
+        flex-direction: row !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    input{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #8C8C8C;
+        border-radius: 2px;
+        opacity: 1;
+
+        height: 32px;
+        padding-left: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 12px;
+
+        text-align: left;
+        font: normal normal normal var(--font-size-search)/var(--line-height-search) Segoe UI;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+
+        background-image: url("/img/EXCR_DesignSystem$Icon_Repository$cmdSearch16.svg") !important;
+        background-size: var(--icon-width-compact) var(--icon-height-compact) !important;
+        background-repeat: no-repeat !important;
+        background-position: 95% 50% !important;
+        background-origin: padding-box !important;
+
+        &::placeholder{
+            text-align: left;
+            font: italic normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+            letter-spacing: 0px;
+            color: #6E6E6E;
+            opacity: 1;
+        }
+
+        &:hover{
+            border: 2px solid #828282;
+        }
+
+        &:active:focus{
+            border: 2px solid #3296B9;
+        }
+
+        &.disabled{
+            background-color: #0000001A;
+            border: 1px solid #0000004D;
+        }
+    }
+
+    &:has(div:nth-of-type(2)){
+        div:first-child{
+            width: 90%;
+            height: 36px;
+            margin-bottom: 0px;
+        }
+
+        div:last-child{
+            width: 10%;
+            height: 36px;
+            margin-bottom: 0px;
+            display: flex;
+            align-items: center;
+
+            img{
+                height: 24px;
+                width: 24px;
+                margin: 0px 8px;
+                filter: invert(17%) sepia(11%) saturate(7128%) hue-rotate(166deg) brightness(96%) contrast(103%);
+            }
+        }
+    }
+}
+
+/*Dynamic value - Rewrite style value on own styling file*/
+// .filter-selector{
+//     visibility: hidden;
+//     display: none;
+// }

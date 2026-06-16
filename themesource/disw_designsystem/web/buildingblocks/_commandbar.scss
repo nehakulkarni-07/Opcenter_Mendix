@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Sidetoolbar
+
+   The default-settings for side toolbar
+========================================================================== */
+%command-bar-btn {
+    padding-left: $spacing-small;
+    padding-right: $spacing-small; 
+
+    border-radius: 0;
+    border: none;
+
+    color: $gray-dark;
+    font-weight: normal;
+}
+
+.command-bar {
+    @extend %shadow-minimal; 
+    position: relative;
+    padding: 2px 0;
+    border-bottom: 1px solid $default-border-color;
+    border-top: 1px solid $default-border-color;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .btn {
+        @extend %command-bar-btn;
+
+        & + .btn {
+            margin-left: $spacing-smaller;
+        }
+    }
+
+    .form-control {
+        @if ($dense-app) {
+            padding: ($spacing-small - 1px) $spacing-small;
+        } @else {
+            padding: ($spacing-small + 3px - 1px) ($spacing-small + $spacing-smaller);   
+        }
+    }
+
+    .widget-text-box-search {
+        .search-bar {
+            padding-bottom:0;
+        }
+    } 
+}
+
+.command-bar-section {
+    padding: 0 2px;
+
+    & + .command-bar-section {
+        border-left: 1px solid $default-border-color;
+    }
+}
+
+.command-bar-search-section {
+    flex: 1;
+    padding: 0 $spacing-small;
+}
+
+.command-bar-section-title {
+    display: block;
+    margin-left: $spacing-small;
+    margin-bottom: -4px;
+}
+
+/* ==========================================================================
+   Specific page regions
+========================================================================== */
+.region-subcontent-sidebar {
+    .command-bar {
+        border:none;
+    }
+}

@@ -1,0 +1,194 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Inputs
+
+   The form-control class style all inputs
+========================================================================== */
+
+.form-control {
+  flex: 1;
+  height: auto;
+  padding: $form-input-padding-y $form-input-padding-x;
+  color: $form-input-color;
+  border: 1px solid $form-input-border-color;
+  border-radius: $form-input-border-radius;
+  background-color: $form-input-bg;
+
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control:focus {
+  border-color: $form-input-border-focus-color;
+  outline: 0;
+  background-color: $form-input-bg-focus;
+  //box-shadow: none; NOTE: Check if BS is still having this?
+}
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  opacity: 1;
+  background-color: #eeeeee;
+}
+
+.form-control[disabled],
+fieldset[disabled] .form-control {
+  cursor: not-allowed;
+}
+// Read only form control class
+.form-control-static {
+  flex: 1;
+  //min-height: auto;
+  padding: $form-input-padding-y $form-input-padding-x;
+
+  & + .control-label {
+    margin-left: $form-label-gutter;
+  }
+}
+
+// Dropdown input widget
+select.form-control {
+}
+
+// Not editable textarea, textarea will be rendered as a label
+.mx-textarea .control-label {
+  height: auto;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.mx-compound-control {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+
+  .mx-validation-message {
+    flex-basis: 100%;
+    margin-top: 5px;
+  }
+}
+
+// Form Group
+.form-group {
+  margin-bottom: $form-group-margin-bottom;
+
+  // Alignment content
+
+  // Label
+  .control-label {
+    color: $form-label-color;
+  }
+  .mx-validation-message {
+  }
+}
+
+.form-group.label-after {
+  .form-control-static {
+    flex: unset;
+  }
+  .control-label {
+    margin-bottom: 0;
+  }
+}
+
+// NOTE: check this: these probably need flex layout
+.mx-dateinput,
+.mx-referenceselector,
+.mx-referencesetselector {
+  flex: 1;
+}
+
+// Targets only webkit iOS devices
+.dj_webkit.dj_ios .form-control {
+  transform: translateZ(0);
+}
+
+.form-horizontal {
+  .form-group {
+    display: flex;
+    flex-direction: row;
+
+    & > div[class*="col-"] {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    & > [class*="col-"] {
+      padding-right: $form-group-gutter;
+      padding-left: $form-group-gutter;
+    }
+    &.no-columns:not(.label-after) {
+      flex-direction: column;
+    }
+    .mx-validation-message {
+      flex-basis: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: $screen-sm) {
+  .form-horizontal {
+    .control-label {
+      padding-top: $form-input-padding-y;
+      padding-bottom: $form-input-padding-y;
+      line-height: $form-input-line-height;
+      margin-bottom: 0;
+    }
+  }
+}
+//  TO MAKE THIS WORK WITH OUR MEDIA SIZES
+// @media only screen and (max-width: $screen-sm-max) {
+//     .form-group {
+//         flex-direction: column;
+//     }
+// }
+
+@media only screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 0) {
+  // Fixes alignment bug on iPads / iPhones where datefield is not aligned vertically
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    line-height: 1;
+  }
+
+  // Fix shrinking of date inputs because inability of setting a placeholder
+  input[type="time"]:not(.has-value):before,
+  input[type="date"]:not(.has-value):before,
+  input[type="month"]:not(.has-value):before,
+  input[type="datetime-local"]:not(.has-value):before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="time"].has-value:before,
+  input[type="date"].has-value:before,
+  input[type="month"].has-value:before,
+  input[type="datetime-local"].has-value:before {
+    content: "" !important;
+  }
+}
+
+@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  // Target IE10+
+  .form-group {
+    display: block;
+  }
+}
+
+[dir="rtl"] {
+  // Dropdown input widget
+  select.form-control {
+    padding-right: 0;
+    padding-left: 30px;
+    background-position: #{$form-input-padding-x} center;
+  }
+}

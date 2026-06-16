@@ -1,0 +1,72 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-tiles-cards{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 2px #0000004D;
+    border: 1px solid #DCDCDC80;
+    border-radius: 3px;
+    opacity: 1;
+    cursor: pointer;
+
+    .tiles-cards-title{
+        padding-left: 8px;
+        
+        span.mx-text{
+            font: normal normal var(--font-weight-default) var(--font-size-tiles)/var(--line-height-tiles) Segoe UI;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+    }
+
+    .tiles-cards-action{
+        text-align: right;
+        padding-right: 0px;
+
+        button{
+            border: none;
+            background-color: transparent;
+            box-shadow: none;
+
+            &:focus{
+                outline: none !important;
+            }
+
+            img{
+                filter: none;
+            }
+        }
+    }
+    
+    &:hover{
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &:focus{
+        border: 2px solid #197FA2;
+    }
+
+    &.cards-status-error
+    {
+        background: #FBEEED 0% 0% no-repeat padding-box;
+        border: 1px solid #E38984;
+    }
+    
+    &.cards-status-warning
+    {
+        background: #FFF7CD 0% 0% no-repeat padding-box;
+        border: 1px solid #FFC328;
+    }
+
+    &.cards-status-success
+    {
+        background: #EDFBF5 0% 0% no-repeat padding-box;
+        border: 1px solid #84E3B9; 
+    }
+
+    &.cards-status-general
+    {
+        background: #E3FAFF 0% 0% no-repeat padding-box;
+        border: 1px solid #66C8DE; 
+    }
+}

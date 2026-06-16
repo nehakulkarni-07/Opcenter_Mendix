@@ -1,0 +1,13 @@
+/*Widget - Label, Text, Text Input*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-field-hint:after{
+    /*Dynamic value - Rewrite style value on own styling file*/
+    content: '(ddd.)hh:mm:ss';
+    
+    display: block;
+    text-align: left;
+    font: italic normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+    letter-spacing: 0px;
+    color: #6E6E6E;
+    opacity: 1;
+}

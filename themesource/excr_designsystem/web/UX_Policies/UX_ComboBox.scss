@@ -1,0 +1,9 @@
+@import '../../../../theme/web/custom-variables';
+
+//applied for default mendix combobox
+.widget-combobox{
+    .widget-combobox-input-container
+    {
+        display:flex;
+    }
+}

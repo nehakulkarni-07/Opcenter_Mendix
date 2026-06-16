@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Sidetoolbar
+
+   The default-settings for side toolbar
+========================================================================== */
+
+%side-toolbar-btn,
+.side-toolbar-btn {
+    @extend %sidebar-navigation-item;
+
+    padding-left: $spacing-small;
+    padding-right: $spacing-small; 
+
+    border-radius: 0;
+    border: none;
+
+    width: 100%;
+    max-width: $toolbar-minimalwidth;
+    color: $gray-dark;
+
+    word-break: break-word;
+
+    .glyphicon {
+
+    }
+
+    &.active {
+        background-color: $btn-default-bg-active;
+        box-shadow: none;
+    }
+
+    &.btn-primary {
+        background-color: $brand-primary;
+        color: #FFF;
+
+        &:hover, &:focus {
+            background-color: darken($brand-primary, 5%);
+        }
+        &:active {
+            background-color: darken($brand-primary, 8%);
+        }
+    }
+    
+}
+
+.side-toolbar-section {
+    border-bottom: 2px solid #FFF;
+    width: $toolbar-minimalwidth;
+    max-width: $toolbar-minimalwidth;
+    overflow: hidden;
+
+    .btn {
+        @extend %side-toolbar-btn;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+    &:first-child {
+        margin-top: $spacing-default;
+        border-bottom:none;
+
+        & + .side-toolbar-section {
+            border-top: 2px solid #FFF;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+/*Widget - Text Box*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+input[type="text"], input[type="password"] {
+    text-align: left;
+    font: normal normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+    letter-spacing: 0px;
+    color: #1e1e1e;
+    opacity: 1;
+    padding: 8px;
+
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #828282;
+    border-radius: 2px;
+    opacity: 1;
+
+    &:disabled {
+        background: #0000001a 0% 0% no-repeat padding-box;
+        border: 1px solid #0000004d;
+        border-radius: 2px;
+        opacity: 1;
+    }
+
+    &:enabled:hover {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 2px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+    }
+
+    &:enabled:focus {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 2px solid #3296b9;
+        border-radius: 2px;
+        opacity: 1;
+    }
+
+    &:enabled:active {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 2px solid #3296b9;
+        border-radius: 2px;
+        opacity: 1;
+    }
+}

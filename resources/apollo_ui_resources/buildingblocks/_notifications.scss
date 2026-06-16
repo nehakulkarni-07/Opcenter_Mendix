@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Notifications and message
+
+   Default Mendix & Apollo notification and message blocks
+========================================================================== */
+%notification-block {
+    .notification-header,
+    .message-header {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+
+        h4, h5 {
+            font-size: $font-size-medium;
+            margin-bottom: $spacing-smaller;
+        }
+        .sub-field {
+            font-size: $font-size-small;
+        }
+    }
+
+    .icon-block {
+        @extend %icon-block-large;
+        margin-right: $spacing-default;
+    }
+
+    .message-content,
+    .notification-content {
+        margin-top: $spacing-default;
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.notification-block,
+.message-block {
+    @extend %notification-block;
+}

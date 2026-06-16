@@ -1,0 +1,54 @@
+@import "../../../datawidgets/web/datagrid-filters.scss";
+@import "../../../../theme/web/custom-variables";
+
+.mx-page {
+    //Common styling for datagrid's filter
+    .filter-container {
+        height: 32px;
+        min-height: 32px !important;
+
+        input[type="text"] {
+            text-align: left;
+            font: normal normal normal 12px/16px Segoe UI;
+            letter-spacing: 0px;
+            color: #1e1e1e;
+            opacity: 1;
+            padding: 8px;
+
+            &::placeholder {
+                text-align: left;
+                font: italic normal normal 12px/16px Segoe UI;
+                letter-spacing: 0px;
+                opacity: 1;
+            }
+
+            &:disabled {
+                background: #0000001a 0% 0% no-repeat padding-box;
+                border: 1px solid #0000004d;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:hover {
+                background: normal 0% 0% no-repeat padding-box;
+                border: 2px solid #8c8c8c;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:focus {
+                background: normal 0% 0% no-repeat padding-box;
+                border: 2px solid #3296b9;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:active {
+                background: normal 0% 0% no-repeat padding-box;
+                border: 2px solid #3296b9;
+                border-radius: 2px;
+                opacity: 1;
+            }
+        }
+    }
+}

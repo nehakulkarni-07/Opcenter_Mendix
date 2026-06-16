@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Advanced Inputs
+
+   Advanced and combined Mendix & Apollo input elements
+========================================================================== */
+.combined-form-group {
+    position: relative;
+}
+
+.form-control-toolbar {
+    position: absolute;
+    right:1px;
+    top: calc(1px + (1em * #{$line-height-base}) + #{$spacing-smaller});
+
+    .btn {
+        @extend %panel-btn;
+        border:none;
+    }
+}
+
+%horizontal-combined-form-group,
+.horizontal-combined-form-group {
+    .form-control-toolbar {
+        top: 1px;
+    }
+}
+
+.combined-form-group-nolabel {
+    .form-control-toolbar {
+        top: 0;
+    }
+}
+
+.compact-search-group {
+    @extend %horizontal-combined-form-group;
+    position: relative;
+    
+    @if ($dense-app) {
+        padding-right: calc(2 * (#{$spacing-small} + 5px) + 1em);
+    } @else {
+        padding-right: calc(2 * (#{$spacing-small} + 5px + 5px) + 1em); 
+    }
+
+    .form-control-toolbar {
+        @if ($dense-app) {
+            right: calc(2 * (#{$spacing-small} + 5px) + 1em + 1px);
+        } @else {
+            right: calc(2 * (#{$spacing-small} + 5px + 5px) + 1em + 1px); 
+        }
+    }
+
+    .search-clear-btn {
+        position: absolute;
+        color: #FFF;
+
+        @if ($dense-app) {
+            padding: $spacing-small ($spacing-small + 5px);
+        } @else {
+            padding: ($spacing-small + 3px) ($spacing-small + 5px + 5px) ($spacing-small + 3px) ($spacing-small + 5px + 5px);
+        }
+
+        &:before {
+            @extend %transition;
+            
+            content:"";
+            position: absolute;
+            top: calc(50% - (#{$font-size-medium}/2));
+            left: calc(50% - (#{$font-size-medium}/2));
+            
+
+            display: block;
+            width: $font-size-medium;
+            height: $font-size-medium;
+            border-radius: 50%;
+            background-color: $brand-info;
+        }
+
+        .glyphicon-remove {
+            font-size: $font-size-smallest;
+            top: -2px;
+            font-weight: bold;
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+            color: #FFF;
+
+            &:before {
+                background-color: $brand-default;
+            }
+        }
+        &:active {
+            &:before {
+                background-color: darken($Siemens_Blue_7, 5%);
+            }
+        }
+    }
+}
+
+.labeled-compact-search-group {
+    .form-control-toolbar {
+        top: calc(1px + (1em * #{$line-height-base}) + #{$spacing-smaller});
+    }
+}
+
+.inverse-compact-search-group {
+    .control-label {
+        color: #FFF;
+    }
+
+    .search-clear-btn {
+        color: $brand-info;
+
+        &:before {
+            background-color: #FFF;
+            border: 1px solid $brand-info
+        }
+
+        &:hover, &:focus, &:active {
+
+            &:before {
+                background-color: $brand-info;
+                border-color: $brand-info;
+            }
+            
+        }
+
+        &:active {
+            color: #FFF;
+
+            &:before {
+                background-color: $brand-primary;
+                border-color: $brand-primary;
+            }
+        }
+    }
+}
+

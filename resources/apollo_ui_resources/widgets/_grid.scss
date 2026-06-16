@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Grid rules
+
+   Default Mendix rules for grid - datagrid / templategrid
+========================================================================== */
+.mx-grid {
+
+}
+
+// Search in grids
+.mx-grid-searchbar {
+    margin: 0;
+    padding: $spacing-default 0 $spacing-default 0;
+    display: block;
+
+    border: 1px solid $grid-border-color;
+    border-bottom:none;
+}
+
+.mx-grid-search-controls {
+    padding: $spacing-small $spacing-default 0 $spacing-default;
+    flex-direction: row-reverse;
+
+    .btn {
+        margin:0 0 0 $spacing-small;
+        margin-bottom:0;
+
+        & + .btn {
+            margin-left:0;
+        }
+
+    }
+}
+.mx-grid-search-button {
+    @extend %btn-primary;
+}
+
+.mx-grid-search-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 $spacing-small $spacing-small $spacing-small;
+}
+.mx-grid-search-item {
+    display: inline-block;
+    flex-basis: 25%;
+    padding: 0 $spacing-small;
+}
+.mx-grid-search-label {
+    width: auto;
+    display: block;
+    padding:0;
+    text-align: left;
+
+    label {
+        padding-top:0;
+        margin-bottom: $spacing-smaller;
+    }
+}
+.mx-grid-search-input {
+    width: auto;
+    padding:0;
+    display: block;
+}
+
+.mx-grid-search-message {
+    @extend %alert;
+    @extend %alert-info;
+    margin: $spacing-small $spacing-small 0 $spacing-small;
+}
+
+// Controls
+.mx-grid-controlbar {
+    margin: 0;
+    padding: $spacing-small $spacing-small 0 $spacing-small;
+    border: 1px solid $grid-border-color;
+    border-bottom: none;
+}
+
+.mx-grid-pagingbar {
+    align-items: center;
+    margin-bottom: $spacing-small;
+
+    .btn {
+        @extend %icon-btn;
+        
+        border-radius: 0;
+        margin:0;
+    }
+
+    .btn + .btn {
+        margin:0;
+    }
+
+    .glyphicon-forward:before {
+        content:"\e258";
+    }
+    .glyphicon-step-forward:before {
+        content:"\e075";
+    }
+    .glyphicon-backward:before {
+        content:"\e257";
+    }
+    .glyphicon-step-backward:before {
+        content:"\e071";
+    }
+
+}
+.mx-grid-paging-status {
+    padding:0 $spacing-small;
+    @if($dense-app == false) {
+        font-size: $font-size-small;
+    }
+    
+}
+
+.datagrid-with-toolbar,
+.grid-with-toolbar {
+    .mx-grid-pagingbar {
+        margin-bottom:0;
+        border-left: 1px solid $grid-border-color;
+    }
+    .mx-grid-controlbar {
+        padding: 0;
+
+        .btn {
+            @extend %panel-btn;
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .mx-grid-toolbar {
+        display: flex;
+        flex-direction: row;
+        margin-right:0;
+        
+        .search-btn {
+            margin-left: auto;
+        }
+    }
+
+    
+}
+
+// Content
+.mx-grid-content {
+    
+}
+
+// fix from mxui
+.mx-dataview .mx-grid {
+    border: none;
+    border-radius: 0;
+}
+

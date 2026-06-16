@@ -1,0 +1,10 @@
+/* ==========================================================================
+   Dropdown div converter
+
+   Dropdown div converter custom widget
+========================================================================== */
+.dropdown-div-converter {
+    > .dropdown-menu {
+        padding: $spacing-default;
+    }
+}

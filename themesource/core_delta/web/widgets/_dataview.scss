@@ -1,0 +1,36 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Dataview
+
+   Default Mendix Dataview Widget. The data view is used for showing the contents of exactly one object
+========================================================================== */
+
+.mx-dataview {
+    /* Control bar */
+}
+
+.mx-dataview-controls {
+    // Needed to clear the bootstrap columns (get float: left)
+    clear: both;
+    padding: 8px 0;
+    background-color: $dataview-controls-bg;
+    /* Buttons */
+    .mx-button {
+        margin-left: 5px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+/* Dataview empty message */
+.mx-dataview-message {
+    color: $dataview-emptymessage-color;
+    background: $dataview-emptymessage-bg;
+}

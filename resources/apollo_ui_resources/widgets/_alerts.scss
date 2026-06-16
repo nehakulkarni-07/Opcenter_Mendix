@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Alerts & Notifications
+
+   Default Mendix & Apollo alerts & notifications
+========================================================================== */
+%alert,
+.alert {
+    border: 1px solid $Siemens_Blue_18;
+    background-color: $Siemens_Blue_24;
+    border-radius: $border-radius-default;
+    margin-bottom: $spacing-small;
+    
+
+    @if ($dense-app = false) {
+        padding: ($spacing-small + $spacing-smaller);
+    } @else {
+        padding: $spacing-small;
+    }
+}
+
+%alert-info,
+.alert-info {
+    color: $font-color-default;
+}
+
+%alert-success,
+.alert-success {
+    color: $font-color-default;
+    background-color: $Siemens_Green_24;
+    border-color: $Siemens_Green_18;
+}
+
+%alert-warning,
+.alert-warning {
+    color: $font-color-default;
+    background-color: $Siemens_Yellow_24;
+    border-color: $Siemens_Yellow_18;
+}
+
+%alert-danger,
+.alert-danger {
+    color: $font-color-default;
+    background-color: $Siemens_Red_24;
+    border-color: $Siemens_Red_18;
+}
+
+/* ==========================================================================
+   Alerts & Notifications variations
+
+   Variants on the Mendix & Apollo alerts & notifications
+========================================================================== */
+.alert-full-width {
+    border-radius:0;
+    border-left: none;
+    border-right: none;
+}
+
+.alert-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    &:before {
+        font-size: $font-size-medium;
+
+        @extend %glyphicon;
+        content: "\e086";
+        color: $brand-info;
+        margin-top: 0.1em;
+        margin-right: $spacing-small;
+
+        @if ($dense-app) {
+            margin-top: 1px;
+        }
+    }
+
+    &.alert-success {
+        &:before {
+            content: "\e089";
+            color: $brand-success;
+        }
+    }
+    &.alert-warning {
+        &:before {
+            content: "\e107";
+            color: $brand-warning;
+        }
+    }
+    &.alert-danger {
+        &:before {
+            content: "\e101";
+            color: $brand-danger;
+        }
+    }
+}
+
+/* ==========================================================================
+   Alerts & Notifications building blocks
+
+   Building blocks for Mendix & Apollo alerts & notifications
+========================================================================== */
+div.alert {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+}
+.alert-content {
+    flex:1;
+}
+.alert {
+    h3, h4, h5, h6 {
+        display: inline;
+        font-size: $font-size-default;
+        font-weight: bold;
+        color: $brand-info;
+        margin: 0;
+
+        & + p {
+            &:before {
+                content:"- ";
+                margin-left: 0.3em;
+            }
+        }
+    }
+    p {
+        display: inline-block;
+        margin-bottom:0;
+
+        & + p {
+            margin-top: $spacing-small;
+        }
+    }
+
+    &.alert-success {
+        .alert-icon { 
+            &:before {
+                 content: "\e089";
+                 color: $brand-success;
+            }
+        }
+ 
+        h3, h4, h5, h6 {
+            color: $brand-success;
+        }
+    }
+    &.alert-warning {
+        .alert-icon { 
+            &:before {
+                content: "\e107";
+                color: $brand-warning;
+            }
+        }
+ 
+        h3, h4, h5, h6 {
+            color: $brand-warning;
+        }
+    }
+    &.alert-danger {
+        .alert-icon { 
+            &:before {
+                content: "\e101";
+                color: $brand-danger;
+            }
+        }
+ 
+        h3, h4, h5, h6 {
+            color: $brand-danger;
+        }
+    }
+
+    .close-btn {
+        @extend %icon-btn;
+
+        @if ($dense-app = false) {
+            //margin: -($spacing-small + $spacing-smaller) + 4px;
+            margin: -($spacing-small + $spacing-smaller);
+        } @else {
+            //margin: -$spacing-small + 4px;
+            margin: -$spacing-small;
+        }
+        margin-left: $spacing-small;
+    }
+}

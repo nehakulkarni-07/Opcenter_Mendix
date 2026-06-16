@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Taskblocks
+
+   Default building blocks and patterns for task related patterns
+========================================================================== */
+.task-list {
+    &.mx-listview {
+        @extend %listview-clean;
+        @extend %listview-static;
+        li {
+            margin-top: $spacing-smaller;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+%task-item,
+.task-item,
+.task-step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: $bg-color-secondary;
+    padding: ($spacing-small + $spacing-smaller) $spacing-default;
+
+    .btn-toolbar {
+        @extend %inverse-btn-toolbar;
+        margin-left: auto;
+    }
+
+    &:before {
+        @extend %glyphicon;
+        top:0;
+        content:"";
+        text-align: center;
+        font-size: $font-size-smaller;
+        line-height: 18px;
+        
+        display: block; 
+
+        width: 20px;
+        padding: 0 3px;
+        height: 20px;
+        border-radius: 10px;
+        border: 1px solid $default-border-color;
+        background-color: #FFF;
+        margin-right: $spacing-small;
+    }
+
+    & + .task-item {
+        margin-top: $spacing-smaller; 
+    }
+
+    &.task-done,
+    &[data-status='done'],
+    &[data-status='completed'] {
+        &:before {
+            content:"\e013";
+            background-color: $brand-success;
+            color: #FFF;
+        }
+        
+    }
+    &.task-in-progress,
+    &[data-status='inprogress'],
+    &[data-status='started'] {
+        &:before {
+            content: "\e023";
+            background-color: $brand-info;
+            color: #FFF;
+
+            // fix visual discrep
+            font-size: 13px;
+            line-height: 20px;
+        }
+    }
+}
+
+
+/* ==========================================================================
+   Task stepper
+
+   Wizard like representation of the tasks
+========================================================================== */
+.task-stepper {
+    position: relative;
+    &:before {
+        content:"";
+        display: block;
+
+        position: absolute;
+        top: $spacing-default;
+        bottom: $spacing-default;
+        left: ((20px / 2) - 1px);
+        width: 2px;
+        background-color: $bg-color-secondary;
+    }
+}
+
+.task-step {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:first-child {
+        padding-top: 0;
+    }
+    &:last-child {
+        padding-bottom: 0;
+    }
+
+    &.active {
+        font-weight: 600;
+    }
+
+    &.task-step-visited,
+    &[data-status='done'],
+    &[data-status='completed'] {
+        &:before {
+            content:"\e013";
+            background-color: $brand-success;
+            color: #FFF;
+        }
+    }
+    &.task-step-active,
+    &[data-status='inprogress'],
+    &[data-status='started'] {
+        &:before {
+            content: "\e023";
+            background-color: $brand-info;
+            color: #FFF;
+            padding: 0 1px 0 3px;
+        }
+    }
+}
+
+.task-stepper-boxed {
+    right: -1px;
+    &:before {
+        left: ((20px / 2) - 1px) + ($spacing-small + $spacing-smaller);
+    }
+    .task-step {
+        padding-left: ($spacing-small + $spacing-smaller);
+
+        &:first-child {
+            padding-top: ($spacing-small + $spacing-smaller);
+        }
+        &:last-child {
+            padding-bottom: ($spacing-small + $spacing-smaller);
+        }
+    }
+    [data-active*='Yes'],[data-active='yes'], [data-active*='True'], [data-active*='true'],
+    .active {
+        position: relative;
+        border: 1px solid $default-border-color;
+        border-right-color: #FFF;
+        background-color: #FFF;
+    }
+}

@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Dataview
+
+   Default settings for Mendix & Apollo dataviews
+========================================================================== */
+.mx-dataview {
+
+}
+
+%mx-dataview-controls,
+.mx-dataview-controls {
+    background-color: $bg-color-light;
+    padding: $spacing-small $spacing-default 0 $spacing-default;
+    border-top: 2px solid #FFF;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .back-btn {
+        margin-right: auto;
+    }
+}
+
+.dataview-controls-max-width {
+    .mx-dataview-controls {
+        display: block;
+    }
+}
+
+.dataview-toolbar {
+    max-width: $max-width-size;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/* ==========================================================================
+   Responsive & Device 
+   
+   The rules for smaller screens and devices
+========================================================================== */
+.profile-phone {
+    .mx-dataview-controls {
+        box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.08);
+        border-top: none;
+        position: relative;
+        z-index: 100;
+    }
+}

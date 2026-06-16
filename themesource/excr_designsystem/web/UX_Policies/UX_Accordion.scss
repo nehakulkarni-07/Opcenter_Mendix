@@ -1,0 +1,31 @@
+/*Widget - Accordion*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.widget-accordion{
+    // margin: 4px 8px;
+    // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    // border-radius: 0.1875rem;
+    // border-left: 4px solid #55A0B9;
+
+    // &:hover{
+    //     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+    //     border-radius: 0.1875rem;
+    // }
+
+    section{
+        header{
+            /*Widget - Container*/
+            div.widget-accordion-group-header-button{
+                svg{
+
+                }
+            }
+        }
+        /*Widget - Container*/
+        .widget-accordion-group-content-wrapper{
+            /*Widget - Container*/
+            .widget-accordion-group-content{
+
+            }
+        }
+    }
+}

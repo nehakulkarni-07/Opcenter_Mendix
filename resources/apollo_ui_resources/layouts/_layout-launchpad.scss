@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Launchpad Layout
+
+   Default Mendix & Apollo launchpad rules
+========================================================================== */
+.launchpad-page {
+    .region-content {
+        background-color: transparent;
+    }
+}
+
+
+.layout-atlas-hybridphone {
+    &.launchpad-page {
+        .region-bottom {
+            background-color: transparent;
+            background-color: rgba($brand-inverse,0.2);
+        }
+
+        .page-layoutgrid {
+            padding-bottom:0;
+        }
+    }
+}

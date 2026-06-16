@@ -1,0 +1,157 @@
+@import '../../../theme/web/custom-variables';
+
+
+/* Instruction Start*/
+.Document_Open_NewTab{
+    min-width: 0px;
+    width: 40px;
+    height: 32px;
+    padding: 8px 12px;
+    img{
+        height: 25px;
+        margin-top: -5px;
+        margin-left: -5px;
+        vertical-align: baseline;
+    }
+    //background-image: url("/img/EXEL_DesignSystem$Icon_Repository$cmdOpenInNewTab24.svg");
+}
+
+.DocumentSet-headers {
+    .mx-table th, .mx-table .th, .mx-datagrid th, .mx-datagrid .th, .table th,
+     .table .th {
+            display: none !important;
+            padding: 0px;
+
+            .column-container{
+                padding-left: 0px;
+
+                .column-header{
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+
+                    svg{
+                        align-self: baseline;
+                    }
+                }
+            }
+        }
+    .tr:hover > .td {
+        background-color: #bedfe6 !important;
+            opacity: 1;
+    } 
+    
+}
+
+.DocumentSet-listview {
+  // Remove widget padding
+  padding: 0;
+   
+  ul {
+    margin: 0;
+    .mx-listview-empty {
+      border-style: none;
+      background-color: transparent;
+    }
+  }
+  li {
+    padding: $listview-padding-top $listview-padding-right
+      $listview-padding-bottom $listview-padding-left;
+    border-width: 1px 0 0 0;
+    border-style: none;
+    border-color: $grid-border-color;
+    background-color: $grid-bg;
+  }
+}
+/* Instruction End*/ 
+
+//Document Styling
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Pdf{
+    display: block !important;
+   // max-height: 10% !important;
+    //max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typePdf48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Txt{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typeTxt48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Html{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typeHtml48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Png{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typePng48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Bmp{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typeBMP48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Jt{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$type3D48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Gif{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typeGif48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_Jpg{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typeJpg48.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_doc{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$icon_word_32x32.svg");
+    } 
+}
+
+.mx-image-viewer.mx-image-viewer-responsive.mx-name-Img_DocumentType.Document_xls{
+    display: block !important;
+   // max-height: 10% !important;
+   // max-width: 15% !important; 
+    img {
+        content: url("/img/EXCR_DesignSystem$Icon_Repository$typeMsExcel48.svg");
+    } 
+}
+

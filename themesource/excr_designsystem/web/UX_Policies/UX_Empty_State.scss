@@ -1,0 +1,74 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-empty-state, 
+.ux-empty-listview:has(.mx-listview-empty),
+.ux-empty-listview-search:has(.mx-listview-empty),
+.ux-empty-templategrid:has(.mx-templategrid-empty){
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    label,
+    .mx-grid-controlbar{
+        text-align: center !important;
+        font: normal normal var(--font-weight-default) var(--font-size-empty)/var(--line-height-empty) Segoe UI;
+        letter-spacing: 0px;
+        color: #000000;
+
+        .mx-grid-toolbar:after{
+            content: "No items found";
+            display: block;
+            width: 100%;
+            text-align: center !important;
+            font: normal normal var(--font-weight-default) var(--font-size-empty)/var(--line-height-empty) Segoe UI;
+            letter-spacing: 0px;
+            color: #000000;
+        }
+
+        .mx-grid-pagingbar{
+            display: none;
+        }
+
+        &:before{
+            /*Dynamic value - Rewrite style value on own styling file*/
+            content: "";
+            background-image: url("/img/EXCR_DesignSystem$Icon_Repository$typeProcessResource48.svg");
+
+            display: inline-block;
+            width: 100%;
+            height: 48px;
+            background-size: 48px 48px;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            font: normal normal var(--font-weight-default) var(--font-size-empty)/var(--line-height-empty) Segoe UI;
+            letter-spacing: 0px;
+            color: #000000;
+            white-space: pre-wrap;
+        }
+        
+        &:after{
+            /*Dynamic value - Rewrite style value on own styling file*/
+            content: "Select a resource at the top to see the result here.";
+
+            display: block;
+            width: 100%;
+            text-align: center;
+            font: italic normal normal var(--font-size-empty)/var(--line-height-empty) Segoe UI;
+            letter-spacing: 0px;
+            color: #6E6E6E;
+        }
+    }
+}
+
+/*Widget - Text*/
+.ux-hint-empty-state{
+    text-align: center;
+    font: italic normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+    letter-spacing: 0px;
+    color: #6E6E6E;
+    opacity: 1;
+}

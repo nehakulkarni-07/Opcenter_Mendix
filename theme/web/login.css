@@ -1,0 +1,234 @@
+@import url(./colors.css);
+
+.mx-placeholder {
+  position: relative;
+}
+
+.siemens-logo {
+  position: absolute;
+  z-index: 2;
+  max-width: 183px;
+  max-height: 37px;
+}
+
+.version-details {
+  text-align: left;
+  letter-spacing: 0px;
+  color: var(--versionDetailsTextColor);
+  opacity: 1;
+
+  position: absolute;
+  z-index: 2;
+  width: 40%;
+
+  .version-number {
+    font: normal normal normal 30px/25px Siemens Sans Global;
+    text-align: left;
+    letter-spacing: 0px;
+    color: var(--versionDetailsTextColor);
+  }
+
+  .version-text {
+    font: normal normal normal 12px/25px Siemens Sans Global;
+    line-height: normal;
+    text-align: left;
+    letter-spacing: 0px;
+    color: var(--versionDetailsTextColor);
+  }
+
+  .version-copyright {
+    font: normal normal normal 19px/25px Siemens Sans Global;
+    text-align: left;
+    letter-spacing: 0px;
+    color: var(--versionDetailsTextColor);
+  }
+}
+
+.login-background {
+  height: 100vh;
+  position: relative;
+  background: var(--loginBackgroundColor) url(./img/LoginX.png) no-repeat bottom
+    right;
+  opacity: 1;
+}
+
+.container-fluid {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login-left-wrapper {
+  max-width: 420px;
+  margin-bottom: 70px;
+}
+
+.login-container {
+  .login-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .alert-danger {
+    display: none;
+  }
+  .sso-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .sso-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    font: normal normal 600 12px/16px Segoe UI;
+    letter-spacing: 0px;
+    color: var(--whiteColor);
+    text-decoration: underline;
+    opacity: 1;
+
+    &:hover {
+      color: var(--tealColor);
+    }
+  }
+  .sso-key-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+  .sso-container.show {
+    opacity: 1;
+    display: block;
+}
+
+.product-logo-container {
+  margin-right: 15px;
+
+  .product-logo {
+    min-width: 64px;
+  }
+}
+
+.system-name {
+  text-align: left;
+  font: normal normal 900 18px/22px Segoe UI;
+  letter-spacing: 0px;
+  color: var(--whiteColor);
+  opacity: 1;
+}
+
+.product-name {
+  text-align: left;
+  font: normal normal 900 36px/48px Segoe UI;
+  letter-spacing: -0.02px;
+  color: var(--whiteColor);
+  opacity: 1;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.label-container {
+  height: 24px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.teal-asterisk {
+  position: absolute;
+  bottom: -13px;
+  text-align: left;
+  font: normal normal bold 26px/35px Segoe UI;
+  letter-spacing: 0px;
+  color: var(--tealColor);
+  opacity: 1;
+  &.login-error {
+    color: var(--errorColor1);
+  }
+}
+
+#usernameLabel,
+#passwordLabel,
+#domainLabel {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  text-align: left;
+  font: normal normal 600 12px/16px Segoe UI;
+  letter-spacing: 0px;
+  color: var(--whiteColor);
+  opacity: 1;
+  margin-bottom: 0;
+  &.login-error {
+    color: var(--errorColor1);
+  }
+}
+
+.inputwrapper input {
+  border: 1px solid var(--whiteColor);
+  border-radius: 2px;
+  opacity: 1;
+  height: 32px;
+  background-color: transparent;
+  color: var(--whiteColor);
+  font: normal normal normal 12px/16px Segoe UI;
+  letter-spacing: 0px;
+  padding: 8px;
+
+  &:hover {
+    border: 2px solid va;
+    background-color: transparent !important;
+  }
+
+  &:active,
+  &:focus {
+    border: 2px solid var(--tealColor);
+    background-color: transparent !important;
+  }
+
+  &.login-error {
+    background: var(--errorColor2) url(./img/indicatorWarningTriangleRed16.svg)
+      right 8px center/15px no-repeat;
+    border: 1px solid var(--errorColor3);
+  }
+}
+
+#loginButton1 {
+  text-align: center;
+  font: normal normal 600 12px/16px Segoe UI;
+  letter-spacing: 0px;
+  color: var(--whiteColor);
+  text-shadow: 0px 1px 3px var(--loginButtonTextShadow);
+  opacity: 1;
+  height: 32px;
+  width: 70px;
+  padding: 0;
+  background: var(--loginButtonOrangeColor) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 2px var(--loginButtonBoxShadow);
+  border: 1px solid var(--loginButtonDarkOrangeColor);
+  border-radius: 2px;
+
+  &:hover {
+    background: var(--loginButtonMediumOrangeColor) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px var(--loginButtonBoxShadow);
+    border: 1px solid var(--loginButtonDarkOrangeColor);
+  }
+
+  &:active {
+    background: var(--loginButtonDarkOrangeColor) 0% 0% no-repeat padding-box;
+    border: 1px solid var(--loginButtonDarkOrangeColor);
+  }
+
+  &:focus {
+    background: var(--loginButtonOrangeColor) 0% 0% no-repeat padding-box;
+    border: 1px solid var(--loginButtonDarkOrangeColor);
+  }
+
+  &:disabled {
+    background: var(--loginButtonDisabledBackgroundColor) 0% 0% no-repeat
+      padding-box;
+    border: 1px solid var(--loginButtonDisabledBorderColor);
+  }
+}

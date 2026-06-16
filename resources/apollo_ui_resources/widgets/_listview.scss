@@ -1,0 +1,648 @@
+/* ==========================================================================
+   Listview
+
+   Default Mendix Apollo Listviews
+========================================================================== */
+.mx-listview {
+    li {
+        padding: 0;
+        @extend %control-transition;
+
+        &:focus {
+            outline:0;
+        }
+    }
+
+    .mx-listview-loadMore {
+        margin-top: $spacing-small;
+        margin-bottom: $spacing-small;
+    }
+
+    li.mx-listview-empty {
+        border-bottom: none;
+        font-weight: normal;
+    }
+}
+
+.mx-listview-clickable {
+
+}
+
+.mx-listview-searchbar {
+    @extend %input-group-with-button;
+    position: relative;
+    
+    margin-bottom: $spacing-default;
+
+    .glyphicon-refresh {
+        &:before {
+            content:"\e003";
+        }
+    }
+}
+
+.listview-inner-padding {
+    li {
+        padding: $spacing-default;
+    }
+}
+
+.listview-transparent {
+    li {
+        background-color: transparent;
+    }
+}
+
+%listview-clean,
+.listview-clean {
+    li {
+        background-color: transparent;
+        border:none;
+
+        &:last-child {
+            border: none;
+        }
+    }
+}
+
+%listview-static,
+.listview-static {
+    li {
+        &:hover, &:focus, &:active {
+            background-color: $grid-bg;
+        }
+    }
+
+    &.listview-transparent {
+        li {
+            &:hover, &:focus, &:active {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+%listview-single-label,
+.listview-single-label {
+    > ul {
+        margin-top: calc((1em * #{$line-height-base}) + #{$spacing-small + $spacing-smaller});
+    }
+
+    .mx-listview-searchbar {
+        padding-bottom: $spacing-small;
+
+        .btn {
+            bottom: calc(1px + #{$spacing-small});
+            height: calc(100% - 2px - #{$spacing-small});
+        }
+    }
+
+    li {
+        .control-label {
+            white-space: nowrap;
+        }
+        &:first-child {
+            .control-label {
+                position: absolute;
+                top:calc(-1 * ((1em * #{$line-height-base}) + #{$spacing-small} + #{$spacing-smaller}));
+            }
+
+            .right-align {
+                .control-label {
+                    right: $spacing-small;
+                }
+            }
+            .listview-row-grid-high {
+                .control-label {
+                    top: calc(-1 * ((1em * #{$line-height-base}) + #{$spacing-small} + #{$spacing-smaller} + #{$spacing-default}));
+                }
+            }
+        }
+        &:nth-child(n + 2) {
+            .control-label {
+                display: none;
+            }
+        }
+    }
+}
+
+%listview-flex,
+.listview-flex {
+    > ul {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+// addons
+// Main listview row elements
+.mx-listview {
+    .field-wrapper {
+        display: inline-block;
+        line-height: 1.2;
+    }
+    .main-field {
+        display: block;
+        color: $font-color-header;
+    }
+    .sub-field {
+        display: inline-block;
+        color: $gray;
+        font-size: $font-size-small;
+        margin-top: $spacing-smaller;
+
+        & + .sub-field {
+            display: block;
+        }
+    }
+}
+
+// default listview with layoutgrid and toolbar
+.listview-row-with-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .mx-layoutgrid {
+        flex: 1;
+        
+    }
+}
+
+.listview-row-toolbar {
+    .btn {
+        @extend %icon-btn;
+    }
+}
+.mx-listview {
+    .listview-row-toolbar {
+        @extend %control-transition;
+        opacity: 0.2;
+    }
+    li {
+        &:hover, &:focus, &:active {
+            .listview-row-toolbar {
+                opacity: 1;
+            }
+            
+        }
+    }
+}
+
+.listview-control-bar {
+    float: right;
+    margin-left: $spacing-default;
+    position: relative;
+    z-index: 1;
+
+    margin-right: -5px;
+    .btn, .mx-link, .mx-dataview {
+        margin-right: 5px;
+    }
+}
+
+
+/* ==========================================================================
+   Listview variants
+
+   Mendix Apollo Listviews variants
+========================================================================== */
+// note: use .listview-row-grid layoutgrids
+.listview-table {
+    @extend %listview-single-label;
+    position: relative;
+
+    > ul {
+        //margin-top: calc((1em * #{$line-height-base}) + #{$spacing-small + $spacing-smaller});
+        margin-top:0;
+
+        &:before {
+            content:"";
+            display: block;
+            background-color: $PL_Black_24;
+            height: calc((1em * #{$line-height-base}) + (2 * #{$spacing-small}));
+        }
+    }
+
+    li {
+        .control-label {
+            
+        }
+
+        &:first-child {
+            .control-label {
+                position: absolute;
+                top:calc(-1 * ((1em * #{$line-height-base}) + #{$spacing-small}));
+                font-size: $font-size-default;
+            }
+        }
+        .mx-dataview .mx-dataview {
+            position: static;
+        }  
+    }
+
+    .listview-row-grid {
+        [class*='col-'] {
+            position: static;
+        }
+    }
+}
+
+
+.navigation-listview {
+    ul {
+        li {
+            border-color: #FFF;
+            background-color: transparent;
+            padding:0;
+
+            .icon-block {
+                background-color: #FFF;
+            }
+
+            &:last-child {
+                border-color: #FFF;
+            }
+
+            &:hover, &:focus {
+                background-color: rgba(255,255,255,0.6);
+            }
+
+            &:active,
+            &.selected {
+                background-color: #FFF;
+
+                .icon-block {
+                    background-color: $Siemens_Stone_24;
+                }
+            }
+        }
+    }
+}
+
+.tile-listview {
+    margin-left: -$spacing-small;
+    margin-right: -$spacing-small;
+
+    li {
+        background-color: transparent;
+        border: none;
+        flex-basis: calc(25% - (2 * #{$spacing-small}));
+        width: calc(25% - (2 * #{$spacing-small}));
+
+        margin:0 $spacing-small $spacing-default $spacing-small;
+
+        > .mx-dataview {
+            height: 100%;
+
+            > .mx-dataview-content {
+                height: 100% !important;
+            }
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+        }
+    }
+
+    > ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .mx-listview-loadMore {
+        margin-left: $spacing-small;
+        margin-right: $spacing-small;
+        margin-top:0;
+    }
+
+    .tile {
+        height: 100%;
+    }
+
+    .field-wrapper {
+        display: block;
+    }
+
+    @media screen and (min-width: $breakpoint-lg) {
+        li {
+            flex-basis: calc(16.6666667% - (2 * #{$spacing-small}));
+            width: calc(16.6666667% - (2 * #{$spacing-small}));
+        }
+    }
+    @media screen and (max-width: $breakpoint-xs) {
+        li {
+            flex-basis: calc(50% - (2 * #{$spacing-small}));
+            width: calc(50% - (2 * #{$spacing-small}));
+        }
+    }
+}
+.tile-listview-interactive {
+    .tile {
+        &:hover, &:focus, &:active {
+            transition: box-shadow $standard-transition-time ease-out;
+            @extend %shadow-large;
+            cursor: pointer;
+        }
+        &:active {
+            box-shadow: inset 0 0 4px 2px rgba(0,0,0,0.15);
+        }        
+
+    }
+    li {
+
+    }
+}
+
+// a listview that is inside of a groupbox body but needs to fill the entire space
+.groupbox-listview {
+    margin: -$spacing-default;
+
+    .mx-list {
+
+    }
+
+    li {
+        &:first-child {
+            border-top: none;
+        }
+    }
+}
+.accent-groupbox .groupbox-listview {
+    li {
+        border-color: #FFF;
+        background-color: transparent;
+
+        &:hover, &:focus {
+            background-color: $grid-bg-hover;
+        }
+
+        &:active {
+            background-color: $grid-bg-active;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.messages-listview {
+    li {
+        background-color: transparent;
+        border:none;
+        margin-bottom: $spacing-small;
+
+        &:last-child {
+            border: none;
+            margin-bottom: 0;
+        }
+    }
+}
+
+// TODO REFACTOR EVERYTHING BELOW
+
+// move this to a building block
+.feed-listview {
+    ul {
+
+    }
+    li {
+        padding:0;
+        border:none;
+        background-color: transparent;
+        margin-bottom: $spacing-default;
+
+        &:last-child {
+            margin-bottom:0;
+            border: none;
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: rgba(255,255,255,0.3);
+            outline: solid 8px rgba(255,255,255,0.3);
+
+            .feed-content {
+                h3, h4, h5, h6 {
+                    //text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .feed-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .feed-img-block {
+        width: 50px;
+        min-width: 50px;
+        flex-basis: 50px;
+        position: relative;
+        overflow: hidden;
+
+        .mx-image {
+            transform: translateX(calc(-50% + 25px));
+        }
+    }
+
+    .feed-content {
+        margin-left: $spacing-small + $spacing-smaller;
+
+        h3, h4, h5, h6 {
+            font-size: $font-size-h4;
+            color: $brand-default;
+            margin-top: -4px;
+            margin-bottom:0;
+        }
+    }
+}
+
+// separate toolbar that blends with the search functionality of the listview
+.listview-toolbar {
+    float:right;
+    margin-right: -$spacing-small;
+    margin-left: $spacing-small;
+
+    .btn, .mx-link, .mx-dataview {
+        margin-right: $spacing-small;
+    }
+}
+
+// listview headers NOTE: make a normal header component of this
+.listview-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    h2 {
+        font-size: $font-size-h3;
+        flex: 1;
+        margin-bottom: $spacing-small + $spacing-smaller;
+    }
+
+    // REALLY Refactor this bit below
+    .listview-header-toolbar {
+        text-align: right;
+
+        .dropdown {
+            display: inline-block;
+            position: static;
+
+        }
+
+        .dropdown-sim {
+            .dropdown-menu {
+                display: block;
+                font-size: 16px;
+                padding: 16px;
+            }
+        }
+
+        .dropdown-toggle {
+            color: $Siemens_Stone_7;
+            .caret {
+                display: none;
+            }
+            .glyphicon {
+                margin-right:0;
+            }
+        }
+
+        .open  {
+            &.dropdown-toggle,
+            .dropdown-toggle {
+                position: relative;
+                z-index: 1001;
+                box-shadow: none;
+                border-color: transparent;
+                background-color: #FFF;
+
+                
+            }
+        }
+
+        .dropdown-menu {
+            border:none;
+            width: 100%;
+            top: 47px;
+            bottom: auto;
+
+            border-radius: $border-radius-default;
+            margin:0;
+
+            .form-group {
+                &:last-child {
+                    margin-bottom:0;
+                }
+            }
+        }
+    }
+
+    .icon-btn {
+        color: $Siemens_Stone_7;
+    }
+}
+
+// listview grid
+.listview-row-grid {
+    .flex-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .field-wrapper {
+        vertical-align: middle;
+        flex: 1;
+    }
+
+    .form-group {
+        @extend %presentation-form-group;
+        margin-bottom: 0;
+    }
+    .graph-form-group {
+        .control-label {
+            display: inline-block;
+            
+        }
+    }
+
+    [class*='col-'] {
+        &:first-child {
+            .mx-checkbox {
+                display: inline-block;
+                margin-right: $spacing-default;
+            }
+        }
+        &:last-child {
+            .mx-checkbox {
+                display: inline-block;
+                margin-left: $spacing-default;
+            }
+        }
+    }
+    
+
+    .inline-block {
+        vertical-align: middle;
+    }
+
+    .profile-block {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: $spacing-default;
+    }
+    [class*='col-']:first-child {
+        .profile-block {
+            margin-left:0;
+            margin-right: $spacing-default;
+        }
+    }
+    .profile-img-block-small {
+        margin-top: -3px;
+        margin-bottom: -3px;
+    }
+}
+
+.listview-mobile {
+    margin: (-$spacing-default) (-$spacing-default) 0 (-$spacing-default); 
+​
+    .mx-listview-searchbar {
+        padding: 0 $spacing-default $spacing-default $spacing-default;
+        background-color: $bg-color-secondary;
+        margin-bottom: 0;
+​
+        .btn {
+            right: $spacing-default + 1px;
+            bottom: $spacing-default + 1px;
+            top: 1px;
+            height: auto;
+        }
+    }
+​
+    li {
+        
+        &:first-child {
+            border-top: none;
+        }
+    }
+}
+
+/* ==========================================================================
+   Special content listviews
+
+   with minor rule additions
+========================================================================== */
+.activity-listview {
+    .mx-listview-empty {
+        &:before {
+            content:"No recent activity";
+        }
+        label {
+            display: none;
+        }
+    }
+}

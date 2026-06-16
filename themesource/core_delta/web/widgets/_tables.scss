@@ -1,0 +1,48 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Tables
+
+   Default Mendix Table Widget. Tables can be used to lend structure to a page. They contain a number of rows (tr) and columns, the intersection of which is called a cell (td). Each cell can contain widgets
+========================================================================== */
+
+th {
+   //font-weight: $font-weight-bold;
+}
+
+.mx-table {
+    tr {
+
+    }
+    th {
+        padding: $padding-table-cell-top $padding-table-cell-right $padding-table-cell-bottom $padding-table-cell-left;
+    }
+    td {
+        padding: $padding-table-cell-top $padding-table-cell-right $padding-table-cell-bottom $padding-table-cell-left;
+    }
+}
+
+// Default Mendix Table Widget inside TemplateGrid
+.mx-templategrid .mx-table {
+    tr {
+
+    }
+    th ,td {
+        padding: $padding-table-cell-top $padding-table-cell-right $padding-table-cell-bottom $padding-table-cell-left;
+    }
+}
+
+// Default Mendix Table Widget inside Listview
+.mx-list table.mx-table {
+    tr {
+
+    }
+    th ,td {
+        padding: $padding-table-cell-top $padding-table-cell-right $padding-table-cell-bottom $padding-table-cell-left;
+    }
+}

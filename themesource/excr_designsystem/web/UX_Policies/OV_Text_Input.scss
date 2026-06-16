@@ -1,0 +1,184 @@
+@import "../../../datawidgets/web/datagrid-filters.scss";
+@import "../../../../theme/web/custom-variables";
+
+.mx-page {
+    div[class^="col"] {
+        select {
+            min-height: 32px !important;
+            padding: 0px;
+            height: 32px;
+            text-align: left;
+            font: normal normal normal 12px/16px Segoe UI;
+            letter-spacing: 0px;
+            color: #1e1e1e;
+            opacity: 1;
+            padding: 8px;
+        }
+
+        button[aria-label="Show date picker"] {
+            padding: 0px;
+            //   border-left: 1px solid hsl(0, 0%, 80%);
+        }
+
+        input[type="password"] {
+            //    padding: 2px 8px;
+            // font-size: 17px;
+            text-align: left;
+            font: normal normal normal 12px/16px Segoe UI;
+            letter-spacing: 0px;
+            color: #1e1e1e;
+            opacity: 1;
+            padding: 8px;
+
+            //Xi Ming Changes 2023/03/07 -start
+            background: normal 0% 0% no-repeat padding-box;
+            border: 1px solid #8c8c8c;
+            border-radius: 2px;
+            opacity: 1;
+
+            &:disabled {
+                background: #0000001a 0% 0% no-repeat padding-box;
+                border: 1px solid #0000004d;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:hover {
+                background: normal 0% 0% no-repeat padding-box;
+                border: 2px solid #8c8c8c;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:focus {
+                background: normal 0% 0% no-repeat padding-box;
+                border: 2px solid #3296b9;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:active {
+                background: normal 0% 0% no-repeat padding-box;
+                border: 2px solid #3296b9;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            //Xi Ming Changes 2023/03/07 -end
+        }
+
+        input[type="text"] {
+            // padding: 2px 8px;
+            // font-size: 17px;
+            text-align: left;
+            font: normal normal normal 12px/16px Segoe UI;
+            letter-spacing: 0px;
+            color: #1e1e1e;
+            opacity: 1;
+            padding: 8px;
+            max-height: 32px;
+            height: 32px;
+            //Xi Ming Changes 2023/03/07 -start
+            background: normal 0% 0% no-repeat padding-box;
+            border: 1px solid #8c8c8c;
+            border-radius: 2px;
+            opacity: 1;
+
+            &:disabled {
+                background: #0000001a 0% 0% no-repeat padding-box;
+                border: 1px solid #0000004d;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:hover {
+                background: normal 0% 0% no-repeat padding-box;
+                // border: 2px solid #8C8C8C;
+                border-color: transparent;
+                box-shadow: inset 0 0 0 2px #8c8c8c;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:focus {
+                background: normal 0% 0% no-repeat padding-box;
+                // border: 2px solid #3296B9;
+                border-color: transparent;
+                box-shadow: inset 0 0 0 2px #3296b9;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            &:enabled:active {
+                background: normal 0% 0% no-repeat padding-box;
+                // border: 2px solid #3296B9;
+                border-color: transparent;
+                box-shadow: inset 0 0 0 2px #3296b9;
+                border-radius: 2px;
+                opacity: 1;
+            }
+
+            //Xi Ming Changes 2023/03/07 -end
+        }
+    }
+
+    .mx-textarea .mx-textarea-noresize {
+        text-align: left;
+        font: normal normal normal 12px/16px Segoe UI;
+        letter-spacing: 0px;
+        color: #1e1e1e;
+        opacity: 1;
+        padding: 8px !important;
+    }
+
+    //Xi Ming Changes 2023/03/07 -start
+    textarea {
+        background: normal 0% 0% no-repeat padding-box;
+        border: 1px solid #8c8c8c;
+        border-radius: 2px;
+        opacity: 1;
+
+        &:disabled {
+            background: #0000001a 0% 0% no-repeat padding-box;
+            border: 1px solid #0000004d;
+            border-radius: 2px;
+            opacity: 1;
+        }
+
+        &:enabled:hover {
+            background: normal 0% 0% no-repeat padding-box;
+            // border: 2px solid #8C8C8C;
+            border-color: transparent;
+            box-shadow: inset 0 0 0 2px #8c8c8c;
+            border-radius: 2px;
+            opacity: 1;
+        }
+
+        &:enabled:focus {
+            background: normal 0% 0% no-repeat padding-box;
+            // border: 2px solid #3296B9;
+            border-color: transparent;
+            box-shadow: inset 0 0 0 2px #3296b9;
+            border-radius: 2px;
+            opacity: 1;
+        }
+
+        &:enabled:active {
+            background: normal 0% 0% no-repeat padding-box;
+            // border: 2px solid #3296B9;
+            border-color: transparent;
+            box-shadow: inset 0 0 0 2px #3296b9;
+            border-radius: 2px;
+            opacity: 1;
+        }
+    }
+
+    //Xi Ming Changes 2023/03/07 -end
+    .form-control {
+        padding: 0px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+}

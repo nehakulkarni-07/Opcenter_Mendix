@@ -1,0 +1,507 @@
+/* ==========================================================================
+   Inputs
+
+   Default Mendix & Apollo input elements
+========================================================================== */
+.form-control {
+    @extend %control-transition;
+    border-radius: $border-radius-default;
+    box-shadow: none;
+    font-size: $font-size-default;
+    line-height: $line-height-controls;
+
+    &:focus {
+        @extend %shadow-minimal;
+    }
+
+    @if ($dense-app) {
+        padding: $spacing-small;
+    } @else {
+        padding: ($spacing-small + 3px) ($spacing-small + $spacing-smaller);   
+    }
+
+    &.disabled, &[disabled],
+    &.readonly, &[readonly] {
+        border-color: $gray-medium;
+        background-color: $gray-lighter;
+    }
+
+}
+.control-label {
+    color: $gray-darker;
+}
+
+select.form-control {
+    min-height: $default-input-height;
+    height: $default-input-height;
+}
+
+.form-group {
+    @if ($dense-app == false) {
+        margin-bottom: $spacing-medium;
+    }
+    &.no-bottom-margin {
+        margin-bottom: 0;
+    }
+
+    &.ellipsis {
+       .form-control-static {
+           text-overflow: ellipsis;
+           white-space: nowrap;
+           overflow: hidden;
+       }
+    }
+}
+
+.form-group-nomargin {
+    margin-bottom:0;
+}
+
+%max-width-formgroup,
+.max-width-formgroup {
+    max-width: $max-width-size;
+}
+
+.mx-textarea {
+
+}
+.textarea-autogrow {
+    textarea {
+        min-height: calc((#{$spacing-small} + #{$spacing-smaller})*2 + (5em * #{$line-height-base}));
+    }
+}
+
+// TODO: Check the below
+%minified-form-group,
+.minified-form-group {
+    @if ($dense-app != true) {
+        font-size: $font-size-smallest;
+        .form-control {
+            font-size: $font-size-smaller;
+            padding: $spacing-small;
+        }
+        .form-control-static {
+            font-size: $font-size-smaller;
+        }
+        select {
+            min-height: 35px;
+            height: 35px;
+        }
+        
+    } @else {
+        .form-control {
+            padding: $spacing-small;
+        }
+        select {
+            min-height: 35px;
+            height: 35px;
+        }
+    }
+}
+
+%presentation-form-group,
+.presentation-form-group {
+    margin-bottom: $spacing-small;
+
+    .control-label {
+        display: block;
+        color: $Siemens_Stone_7;
+        margin-bottom: -2px;
+        font-size: $font-size-small;
+    }
+}
+
+// error states
+.has-error {
+    position: relative;
+
+    &:before {
+        @extend %glyphicon;
+        content: "\e209";
+        
+        color: $brand-danger;
+        text-align: right;
+        display: block;
+
+        position: absolute;
+        
+        @if ($dense-app) {
+            top: calc((1em * #{$line-height-base}) + #{$spacing-smaller} + #{$spacing-small} + (0.5 * 1em * #{$line-height-base}));
+            right: $spacing-small + 3px;
+        } @else {
+            top: calc((1em * #{$line-height-base}) + (2 * #{$spacing-smaller}) + #{$spacing-small} + (0.5 * 1em * #{$line-height-base}));
+            right: $spacing-small + $spacing-smaller + 3px;
+        }
+        
+        transform: translateY(-50%);
+    }
+
+    .form-control {
+        border-color: $brand-danger;
+
+        &:focus {
+            border-color: $brand-danger;
+            @extend %shadow-minimal;
+        }
+
+        
+    }
+
+    .alert {
+        @extend %shadow-medium;
+        position: relative;
+        
+        margin-bottom:0;
+        margin-top: $spacing-small - 4px;
+        text-align: right;
+
+        &:before, &:after {
+            content:"";
+            display: block;
+            border: solid transparent;
+            height:0;
+            width: 0;
+
+            position: absolute;
+            right: $spacing-small + 15px;
+            bottom: 100%;
+            pointer-events: none;
+        }
+
+        &:before {
+            border-color: transparent;
+            border-bottom-color: $Siemens_Red_15;
+            border-width: 8px;
+            margin-right: -8px;
+        }
+
+        &:after {
+            border-color: transparent;
+            border-bottom-color: $Siemens_Red_24;
+            border-width: 7px;
+            margin-right: -7px;
+        }
+    }
+}
+
+// readonly
+.form-control-static {
+    min-height: 1em;
+    padding: 0;
+}
+
+a.form-control-static {
+    display: block;
+}
+
+/* ==========================================================================
+   Readonly form fields - note: class should be a parent or on a formgroup
+    to be able to modify the actual form-control
+========================================================================== */
+.readonly {
+    .form-group,
+    &.form-group {
+        margin-bottom: $spacing-small + $spacing-smaller;
+
+        .control-label {
+            font-weight: normal;
+            color: $gray-medium;
+            font-size: $font-size-small;
+            margin-bottom: 0;
+        }
+
+        &.no-bottom-margin {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* ==========================================================================
+   Checkboxes and Radiobuttons
+========================================================================== */
+%checkradiobox {
+    @extend %transition;
+    content:"";
+    display:inline-block;
+    vertical-align: middle;
+
+    width: 18px;
+    height: 18px;
+    margin-right: $spacing-smaller;
+    
+    border: 1px solid $form-input-border-color;
+    background-color: transparent;
+
+    position: relative;
+    top: -2px;
+}
+
+.mx-radiobuttons {
+    input[type='radio'] {
+        margin:0;
+        position: absolute;
+    }
+
+    &.inline {
+        display: block;
+        .radio {
+            margin-right: $spacing-medium;
+        }
+    }
+}
+
+input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    margin:0;
+
+    & + label {
+        margin:0;
+        position: relative;
+        z-index: 1;
+
+        &:before {
+            @extend %checkradiobox;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        &:hover {
+            &:before {
+                border-color: $brand-default;
+            }
+        }
+    }
+
+    &:focus {
+        & + label {
+            &:before {
+                animation: checkboxShadowFocus 0.3s ease-out 1 backwards;
+                border-color: $brand-default;
+            }
+        }
+    }
+    &:active {
+        & + label {
+            &:before {
+                animation: checkboxShadowFocus 0.2s ease-out 1 backwards;
+                border-color: $brand-default;
+            }
+        }
+    }
+
+    &:checked {
+        & + label {
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 4px;
+                top: calc(0.5 * 1em * #{$line-height-base} - 5px);
+
+                width: 10px;
+                height: 10px;
+                border: 1px solid $brand-default;
+                border-radius: 50%;
+
+                background-color: $brand-default;
+            }
+        }
+    }
+    &.disabled, &[disabled] {
+        & + label {
+            &:before {
+                border-color: $gray-medium;
+                
+            }
+            &:after {
+                background-color: $gray-medium;
+                border-color: $gray-medium;
+            }
+        }
+    }
+}
+
+
+// TODO: create 3 versions: 1 for a checkbox with no label, one with label before and one for label after.
+input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    margin:0;
+
+    & + label {
+        color: $font-base-color;
+        font-weight: normal;
+        margin-left: 0;
+        position: relative;
+        z-index: 1;
+
+        &:before {
+            @extend %checkradiobox;
+            border-radius: $border-radius-default;
+        }
+
+        &:hover {
+            &:before {
+                border-color: $brand-default;
+            }
+        }
+    }
+
+    &:checked {
+        & + label {
+            &:before {
+                border-color: $brand-default;
+                background-color: $brand-default;
+                background: $brand-default url('images/svg/ok-symbol.svg') no-repeat center center;
+                background-size: 12px;
+            }
+        }
+    }
+
+    &:focus,&:active {
+        & + label {
+            &:before {
+                border-color: $brand-default;
+            }
+
+            &:after {
+                content:"";
+                display: block;
+                position: absolute;
+                left:0 - 8px;
+                top:3px - 8px;
+                z-index: -1;
+
+                width: 18px + 16px;
+                height: 18px + 16px;
+                border-radius: 50%;
+
+
+                transform-origin: center center;
+            }
+        }
+    }
+
+    &:focus {
+        & + label {
+            &:after {
+                animation: checkboxFocus 0.4s ease-out 1 forwards;
+            }
+        }
+    }
+    &:active {
+        & + label {
+            &:after {
+                animation: checkboxFocus 0.3s ease-out 1 forwards;
+            }
+        }
+    }
+
+    &.disabled, &[disabled] {
+        & + label {
+            &:before {
+                border-color: $gray-medium;
+                background-color: $gray-medium;
+            }
+        }
+    }
+
+    & + .control-label {
+        margin-left: 0;
+    }
+}
+
+.mx-checkbox input[type='checkbox'] {
+    position: absolute;
+    margin: 0;
+}
+
+.form-vertical {
+   
+    .mx-radiobuttons {
+        .mx-radiogroup {
+            @if ($dense-app) {
+                padding: $spacing-small 0;
+            } @else {
+                padding: ($spacing-small + 3px) 0;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Combined input boxes
+========================================================================== */
+.mx-imageuploader { 
+    .mx-compound-control {
+        flex-direction: row-reverse;
+    }
+
+    .btn {
+        @extend %btn-inverse;
+
+        border-color: $Siemens_Blue_13;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-left: 0;
+    }
+
+    .form-control {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: none;
+        padding-left: $spacing-default;
+
+        &:focus {
+            border-color: $form-input-border-focus-color;
+
+            & + .btn {
+                @extend %shadow-minimal;
+            }
+        }
+    }
+}
+
+%input-group-with-button {
+    .mx-compound-control {
+        display: block;
+        position: relative; 
+    }
+    .btn {
+        @extend %panel-btn;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        bottom: 1px;
+        height: calc(100% - 2px);
+
+        border:none;
+    }
+}
+
+/* ==========================================================================
+   Horizontal Form Section
+
+   For when overriding the standard vertical orientation. Note only for read only usage
+========================================================================== */
+.horizontal-form-section {
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: $spacing-small;
+    }
+    .control-label {
+        flex-basis: 25%;
+    }
+    .form-control-static {
+        flex: 1;
+    }
+}
+
+.horizontal-form-section-md6 {
+    .control-label {
+        flex-basis: 50%;
+    }
+}

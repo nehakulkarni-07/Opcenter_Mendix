@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Forms
+
+   Complete form pages
+========================================================================== */
+.layout-atlas .form-scrollcontainer,
+.form-scrollcontainer {
+    display: flex;
+    flex-direction: row;
+
+    .form-scrollcontainer-side {
+        flex-basis: calc((100% - #{$max-width-size}) / 2);
+        position: relative;
+        z-index: 10;
+
+    }
+    .form-scrollcontainer-content {
+        flex-basis: calc(100% - ((100% - #{$max-width-size}) / 2));
+        flex-shrink: 1;
+
+        .form-layoutgrid {
+            max-width: $max-width-size;
+            margin-left:0;
+        }
+        .form-layoutgrid-fullscreen {
+            max-width: none;
+        }
+
+        .page-layoutgrid {
+            padding-left: 0;
+        }
+
+        position: relative;
+        left: -1px;
+    }
+
+    .task-stepper-wrapper {
+        padding: $spacing-large 0 $spacing-large $spacing-large;
+    }
+}
+
+.form-header {
+    padding-bottom: $spacing-medium;
+}

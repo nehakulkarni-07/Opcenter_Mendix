@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Filedropper
+   
+   Rules and adjustments for the DISW file dropper element
+========================================================================== */
+
+// combination of both the custom widget as wel as the building block filedropper-results
+.filedropper,
+.filedropper-results {
+  .filedropper__item,
+  .filedropper-result {
+    @extend %transition;
+
+    padding: $spacing-default;
+    margin-bottom: $spacing-small;
+    background-color: $gray-lighter;
+
+    &:hover,
+    &:focus,
+    &:active {
+      @extend %shadow-medium-hover;
+    }
+
+    &:active {
+      background-color: $gray-light;
+    }
+  }
+
+  .filedropper-item-filesize,
+  .filedropper__item-filesize {
+    margin-right: $spacing-default;
+  }
+}
+
+//.filedropper__item,
+.filedropper-result {
+  font-size: 1em;
+  display: block;
+  height: 100%;
+  max-height: 7em;
+  background: #ececec;
+  position: relative;
+  overflow: hidden;
+}
+
+//.filedropper__item-name,
+.filedropper-item-name {
+  display: block;
+  font-weight: bold;
+  max-width: calc(-4em + 100%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//.filedropper__preview,
+.filedropper-preview {
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  max-width: 56px;
+  height: 100%;
+  min-height: 56px;
+  max-height: 56px;
+  float: left;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1em;
+  position: relative;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: hidden;
+}
+
+//.filedropper__button-zone,
+.filedropper-button-zone {
+  position: absolute;
+  height: 1.5em;
+  right: $spacing-default;
+  top: $spacing-default;
+}
+.filedropper-button-zone {
+  .btn {
+    height: 1em;
+    margin-left: 0.25em;
+    float: right;
+    opacity: 0.7;
+
+    color: $font-base-color;
+    border-radius: 0;
+    border: none;
+    padding: 1px 0px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+      opacity: 1;
+    }
+
+    .glyphicon {
+      font-size: 14px;
+      width: 1em;
+      top: 0;
+      margin: 0;
+    }
+  }
+}
+
+.filedropper {
+  margin-bottom: $spacing-default;
+  @if ($dense-app == false) {
+    margin-bottom: $spacing-medium;
+  }
+
+  .filedropper__dropzone {
+    @extend %control-transition;
+
+    border-color: $PL_Black_8;
+    color: $PL_Black_8;
+    border-radius: 2px;
+
+    &:before {
+      @extend %glyphicon;
+      content: "\e198";
+
+      display: block;
+      padding-bottom: $spacing-large;
+
+      font-size: $font-size-metric;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $Siemens_Blue_23;
+      border-color: $Siemens_Blue_7;
+      color: $Siemens_Blue_7;
+      border-style: solid;
+    }
+  }
+
+  .filedropper__alerts {
+    margin-bottom: 0;
+  }
+
+  .filedropper__list {
+    margin: 0;
+  }
+
+  .rc-progress-line-trail {
+    @extend %shadow-minimal;
+  }
+
+  .filedropper__button-zone {
+    right: $spacing-default;
+    top: $spacing-default;
+
+    .glyphicon {
+      font-size: $font-size-medium;
+    }
+
+    .glyphicon-remove-circle {
+      &:before {
+        content: "\e083";
+      }
+    }
+    .glyphicon-upload {
+      &:before {
+        content: "\e198";
+      }
+    }
+  }
+
+  .filedropper__item-info {
+  }
+  .glyphicon-warning-sign {
+    color: $brand-danger;
+  }
+
+  .filedropper__item-progress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .filedropper__item-progress__bar {
+    width: calc(100% - 4em);
+  }
+  .filedropper__item-filesize__label {
+    font-weight: 600;
+  }
+
+  .filedropper__alerts {
+    .alert {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+
+      .close {
+        @extend %icon-btn;
+        border-radius: $border-radius-default;
+        border: 1px solid transparent;
+        line-height: $line-height-controls;
+        font-size: $font-size-default;
+        opacity: 1;
+
+        @if ($dense-app) {
+          padding: $spacing-small ($spacing-small + 1px);
+          margin: -$spacing-small;
+        } @else {
+          padding: ($spacing-small + 3px)
+            ($spacing-small + 5px)
+            ($spacing-small + 2px)
+            ($spacing-small + 5px);
+          margin: -($spacing-small + $spacing-smaller);
+        }
+        margin-left: auto;
+
+        //padding: 11px 13px 10px 13px;
+
+        span {
+          display: none;
+        }
+
+        &:before {
+          @extend %glyphicon;
+          content: "\e014";
+          font-size: $font-size-medium;
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Filedropper existing listview building block
+   
+   For when 'adding' existing results to the filedropper building block
+========================================================================== */
+// preventing from files being shown twice the 'saved' state of the filedropper is hidden
+.filedropper-with-results {
+  .filedropper__item--state_saved {
+    display: none;
+  }
+}
+
+.filedropper-results {
+  margin-top: (-$spacing-medium + $spacing-small);
+
+  .filedropper-result {
+  }
+
+  &.mx-listview {
+    @extend %listview-clean;
+  }
+}

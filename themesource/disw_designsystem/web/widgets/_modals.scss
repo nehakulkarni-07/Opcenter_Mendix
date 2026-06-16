@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Modals
+
+   Default Mendix & DISW Modals
+========================================================================== */
+.modal-dialog {
+    .modal-content {
+        border: none;
+        border-radius: 0;
+
+       .modal-body {
+           padding: 0;
+       }
+    }
+    .modal-header {
+        border: none;
+        background-color: $brand-default; 
+        color: #FFF;
+        padding: $spacing-default;
+
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        .close {
+            color: transparent;
+            font-size: 0;
+            font-weight: normal;
+            
+            margin: 0;
+            float: none;
+            position: relative;
+            top: -3px;
+            opacity: 1;
+
+
+            &:before {
+                color: #FFF;
+                font-size: $spacing-default;
+                @extend %glyphicon;
+                content: "\e014";
+            }
+        }
+
+        h4 {
+            color: inherit;
+        }
+    }
+
+    .modal-footer {
+        @extend %mx-dataview-controls;
+    }
+
+    .mx-placeholder > .mx-dataview {
+        > .mx-dataview-content {
+            padding: $spacing-default 0;
+        }  
+    }
+
+    .page-layoutgrid {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .mx-tabcontainer {
+        .page-layoutgrid {
+            padding-top: $spacing-default;
+        }
+    }
+
+    .mx-dataview-controls {
+        padding: $spacing-default $spacing-default $spacing-small $spacing-default;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+
+        .btn {
+            margin-right:0;
+            margin-left: $spacing-small;
+            &:first-child {
+                margin-left: $spacing-small;
+            }
+        }
+    }
+
+    // fix for reference selector popups
+    .mx-placeholder > .mx-grid {
+        padding: $spacing-default;
+    }
+}
+
+.modal-content {
+    @extend %shadow-large;
+}
+
+.mx-dialog {
+    .mx-dialog-content {
+        .mx-dialog-body {
+            padding: $spacing-default $spacing-default ($spacing-default - 10px) $spacing-default;
+        }
+    }
+    .mx-dialog-footer {
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        .btn {
+            margin-bottom: $spacing-small;
+
+            & + .btn {
+                margin-left: 0;
+                margin-right: 5px;
+            }
+        }
+        
+    }
+    
+}
+
+.modal-wide {
+    width: 800px !important;
+    left: calc(50% - 400px) !important;
+}
+
+// not needed yet
+.mx-window-header-overlay {
+
+}
+
+/* ==========================================================================
+   Clean modal
+
+   Modal that does not use the strong blue header bar
+========================================================================== */
+%touch-modal,
+.clean-modal {
+    .modal-header {
+        background-color: transparent;
+        color: $font-color-default;
+
+        h4 {
+            font-size: $font-size-h3;
+        }
+
+        .close {
+            &:before {
+                color: $font-color-default;
+            }
+        }
+    }
+}
+
+%touch-modal {
+    .modal-header {
+        padding: $spacing-medium;
+
+        .close {
+            @extend %icon-btn;
+
+            margin: -11px -11px -11px 11px;
+
+            text-shadow: none;
+            line-height: $line-height-controls;
+            border: 1px solid transparent;
+            border-radius: $border-radius-default;
+
+            &:before {
+                @extend %glyphicon;
+                content: "\e014"; 
+                font-size: $font-size-medium;
+                line-height: ($spacing-medium + 1px);
+                color: $brand-default;
+            }
+        }
+    }
+
+    .mx-placeholder > .mx-dataview {
+        > .mx-dataview-content {
+            padding: 0 0 $spacing-medium 0;
+        }
+    }
+
+    .page-layoutgrid {
+        padding-left: $spacing-medium;
+        padding-right: $spacing-medium;
+    }
+}
+
+/* ==========================================================================
+   Side panel
+
+   Default DISW sidepanel modal
+========================================================================== */
+%sidepanel-popup {
+    //top: $topbar-minimalheight !important;
+    bottom: 0 !important;
+    height: calc(100% - #{$topbar-minimalheight});
+
+    // set default for right panel popup
+    right: ($toolbar-minimalwidth + 8px + 2px) !important;
+    left: auto !important;
+
+    .modal-content {
+        box-shadow: -8px 8px 16px #0000004D;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-body {
+        flex: 1;
+    }
+
+    .mx-placeholder {
+        height: 100%;
+        
+        > .mx-dataview {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            > .mx-dataview-content {
+                flex: 1;
+                max-height: 100%;
+        
+                overflow: auto;
+        
+                > .mx-tabcontainer {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+.panel-popup {
+    @extend %sidepanel-popup;
+    width: 360px;
+
+    // position: fixed;
+    // transition: right 1s;
+    // z-index: 2;
+    .horizontal-form-section,
+    &.horizontal-form-section {
+        .control-label {
+            flex-basis: 33.333333%;
+        }
+    }
+
+    .mx-placeholder > .mx-dataview {
+
+    }
+}
+
+.panel-popup-wide {
+    width: calc(50vw - #{$toolbar-minimalwidth});
+}
+
+.left-panel-popup {
+    left: $sidebar-minimalwidth !important;
+    right: auto !important;
+
+    .modal-content {
+        box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.25);
+    }
+}
+
+.panel-popup-no-sidebar {
+    right: 8px !important;
+
+    .modal-content {
+        border-top-right-radius: $border-radius-default;
+    }
+}
+
+/* ==========================================================================
+   Slide-in side panel
+
+   Slide-in sidepanel modal
+========================================================================== */
+// Note, refactoring is still needed, see below
+.slide-in-panel-popup {
+    @extend %sidepanel-popup;
+    @extend %touch-modal;
+
+    width: calc(33vw + #{$sidebar-minimalwidth});
+    //width: calc(50vw + #{$sidebar-minimalwidth});
+    min-width:360px;
+
+    .modal-header {
+
+    }
+
+    .mx-placeholder > .dataview-with-scrollcontainer,
+    .dataview-with-scrollcontainer {
+        > .mx-dataview-content {
+            padding-bottom: 0; 
+        }
+    }
+
+    .dataview-with-scrollcontainer {
+        .content-scrollcontainer {
+            height: 100%;
+        }
+
+        .mx-scrollcontainer-left,
+        .mx-scrollcontainer-center,
+        .mx-scrollcontainer-right,
+        .mx-scrollcontainer-wrapper {
+            height: 100%;
+        }
+    }
+
+    
+
+    // make the tabcontainer scrollable as well
+    .mx-scrollcontainer-wrapper > .mx-tabcontainer {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        min-height:0;
+
+        .mx-tabcontainer-content {
+            flex-grow: 1;
+            overflow: auto;
+            min-height: 0; 
+        }
+    }
+}
+
+// to refactor:
+.slide-in-panel-popup {
+    .bordered-dataview-with-scrollcontainer {
+        border-top: 1px solid $default-border-color;
+        padding-top: 2px;
+    }
+}
+.js-is-hidden{
+    z-index: -102 !important;
+}
+

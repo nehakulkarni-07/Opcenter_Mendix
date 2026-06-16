@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Autocomplete custom widget
+
+   Rules for a searchable dropdown widget
+========================================================================== */
+.autoCompleteMainContainer {
+    
+}
+
+.autoCompleteComboContainer {
+
+}
+
+.select2-container {
+    // the part that is in the actual form-group element
+    .select2-selection {
+        border-color: $form-input-border-color;
+        border-radius: $border-radius-default;
+        height: $default-input-height;
+
+        .select2-selection__rendered {
+            line-height: $line-height-controls;
+
+            @if ($dense-app) {
+                padding: $spacing-small;
+            } @else {
+                padding: ($spacing-small + 3px) ($spacing-small + $spacing-smaller);   
+            }
+        }
+
+        .select2-selection__arrow {
+            height: ($default-input-height - 2px);
+            width: auto;
+
+            // align with most browsers default caret down symbol
+            b {
+                border:none;
+                height: auto;
+                width: auto;
+                top: calc(50% - 13px);
+                left:0;
+                margin: 0 4px 0 0;
+
+                position: relative;
+                
+                &:before {
+                    @extend %glyphicon;
+                    font-family: 'Glyphicons Halflings';
+                    content: "\e259";
+                    font-size: 10px;
+                    
+                }
+            }
+        }
+
+        .select2-selection__clear {
+            float:none;
+            position:absolute;
+            top:1px;
+            right: 1px + $spacing-default;
+
+            color: transparent;
+            font-size:0px;
+
+            display: block;
+
+            @if ($dense-app) {
+                padding: ($spacing-small + 4px) $spacing-small;
+            } @else {
+                padding: ($spacing-small + 3px + 4px) ($spacing-small + $spacing-smaller);   
+            }
+
+            &:before {
+                @extend %glyphicon;
+                content: "\e083";
+                color: $font-base-color;
+                font-size: $font-size-default;
+            }
+            
+        }
+    }
+
+    &.select2-container--focus,
+    &.select2-container--open {
+        @extend %shadow-minimal;
+
+        .select2-selection {
+            border-color: $form-input-border-focus-color;
+            outline: none;
+        }
+    }
+
+    // the dropdown menu
+    .select2-dropdown {
+        box-shadow: 0 3px 5px rgba(0,0,0,0.125);    
+        border-color: $default-border-color;
+    }
+    .select2-search--dropdown {
+        padding: $spacing-small;
+
+        .select2-search__field {
+            padding: $spacing-small;
+        }
+    }
+
+    .select2-results {
+        > .select2-results__options {
+
+        }
+
+        .select2-results__option {
+            padding: $spacing-small $spacing-small;
+
+            &:hover, &:focus {
+                background-color: $grid-bg-hover;
+            }
+
+            &:active {
+                background-color: $grid-bg-active;
+            }
+        }
+
+        .select2-results__option[aria-selected='true'],
+        .select2-results__option--highlighted {
+            background-color: $grid-bg-selected;
+            color: $font-color-default;
+        }
+    }
+}
+

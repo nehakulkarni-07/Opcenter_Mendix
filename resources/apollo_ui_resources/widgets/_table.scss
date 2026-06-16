@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Table
+
+   Default table & combined table with listviews
+========================================================================== */
+.mx-table {
+
+}
+
+
+/* ==========================================================================
+   Combined tables
+
+   usage with listviews
+========================================================================== */
+.table-header {
+    th {
+        border-bottom: none;
+    }
+    
+    // fix padding in headers
+    .widget-header-sort {
+
+    }
+    .sort-header {
+        padding:0;
+        font-weight: 600;
+    }
+}
+
+.mx-listview .mx-table,
+.table-row {
+    td {
+        @if ($dense-app) {
+            padding: $spacing-smaller $spacing-small;
+        } @else {
+            padding: $spacing-small $spacing-default;
+        }
+
+        border: none;
+    }
+    tr {
+        border-left: 1px solid $grid-border-color;
+        border-right: 1px solid $grid-border-color;
+    }
+}
+
+/* ==========================================================================
+   Numerical table
+
+   table variant used for e.g. financial editing tables
+========================================================================== */
+.numerical-table {
+    text-align: center;
+    table-layout: fixed;
+    tr {
+        &:nth-child(even) {
+            background-color: $grid-alternating-bg;
+        }
+    }
+    .header-row {
+
+    }
+    th, td {
+        text-align: center;
+        border: none;
+        vertical-align: middle;
+    }
+    th {
+        background-color: transparent;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+    td {
+
+    }
+
+    .form-group {
+        margin-bottom:0;
+        text-align: center;
+    }
+
+    .form-control {
+        text-align: center;
+        margin: -$spacing-smaller;
+        width: calc(100% + (2 * #{$spacing-smaller}));
+
+    }
+
+}

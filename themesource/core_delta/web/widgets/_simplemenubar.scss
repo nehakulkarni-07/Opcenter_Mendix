@@ -1,0 +1,103 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Navigation
+
+   Default Mendix Simple Menu Bar
+========================================================================== */
+.mx-menubar {
+  padding: 0;
+  background-color: $navigation-bg;
+
+  .mx-menubar-item {
+    margin: 0;
+
+    a {
+      // display: flex;
+      //overflow: hidden;
+      //align-items: center;
+      //justify-content: center;
+      height: 100%;
+      padding: $navigation-item-padding;
+      //white-space: nowrap;
+      color: $navigation-color;
+      //border-radius: 0;
+      font-size: $navigation-font-size;
+      //font-weight: $font-weight-normal;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: $navigation-color-hover;
+        background-color: $navigation-bg-hover;
+      }
+      &:active {
+        color: $navigation-color-active;
+        background-color: $navigation-bg-active;
+      }
+    }
+
+    &.active {
+      a {
+        color: $navigation-color-active;
+        background-color: $navigation-bg-active;
+      }
+    }
+  }
+
+  /* remove focus */
+  &:focus {
+    //outline: 0;
+  }
+
+  img {
+    margin-right: 0.5em;
+  }
+  .glyphicon {
+    top: -1px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    font-size: $navigation-glyph-size;
+  }
+}
+
+.mx-menubar-list {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+}
+
+// Vertical variation specifics
+.mx-menubar-vertical {
+  background-color: $navigation-bg;
+  ul.mx-menubar-list {
+    display: flex;
+    li.mx-menubar-item {
+      display: block;
+      a {
+        border-bottom: 1px solid $navigation-border-color;
+      }
+    }
+  }
+}
+
+// Horizontal variation specifics
+.mx-menubar-horizontal {
+  //box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.14);
+  .mx-menubar-item {
+    width: auto;
+    a {
+      width: 100%;
+    }
+  }
+}
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mx-menubar {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

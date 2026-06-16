@@ -1,0 +1,175 @@
+/* =========================================================================
+   Groupbox
+
+   The default groupbox rules
+========================================================================== */
+.mx-groupbox {
+    margin-bottom: $spacing-default;
+
+    & + .mx-groupbox {
+        margin-top: -$spacing-small;
+    }
+}
+
+.mx-groupbox-header {
+    padding: ($spacing-small + $spacing-smaller) $spacing-default;
+    color: $font-color-header;
+    border-radius: $border-radius-default;
+    background-color: $gray-light;
+    background-color: $bg-color-light; // check this
+
+    .mx-groupbox-collapse-icon {
+        float:none;
+        margin-right: 12px;
+        transform-origin: center center;
+
+        transition: all $standard-transition-time ease-out;
+    }
+
+    .glyphicon-minus:before,
+    .glyphicon-plus:before {
+        content: "\e252"; //250
+    }
+
+    .glyphicon-plus {
+        transform: rotate(-90deg);
+    }
+}
+
+.mx-groupbox-body {
+    border:none;
+    padding: $spacing-small 0;
+}
+
+.mx-groupbox-collapsible {
+    .mx-groupbox-body {
+        padding-left: $spacing-large + ($spacing-small + $spacing-smaller);
+    }
+}
+
+.groupbox-transition {   
+    .mx-groupbox-body {
+        -webkit-transition: max-height 2s;
+        -moz-transition: max-height 2s;
+        -o-transition: max-height 2s;
+        transition: max-height 2s;
+
+        -webkit-transition: padding $standard-transition-time;
+        -moz-transition: padding $standard-transition-time;
+        -o-transition: padding $standard-transition-time;
+        transition: padding $standard-transition-time;
+
+        max-height: 2000px;
+        overflow: hidden;
+    
+    }
+
+    &.collapsed {
+        .mx-groupbox-body {
+            max-height: 0;
+            padding-top:0;
+            padding-bottom:0;
+            display:block;
+            
+        }
+        
+    }
+}
+
+/* =========================================================================
+   Variants
+
+   Variants on the groupbox
+========================================================================== */
+.groupbox-transparent {
+    .mx-groupbox-header {
+        background-color: transparent;
+        padding-left:0;
+    }
+
+    &.mx-groupbox-collapsible {
+        .mx-groupbox-body {
+            padding-left: $spacing-default + ($spacing-small + $spacing-smaller);
+        }
+    }
+}
+
+.groupbox-accordion {
+    .mx-groupbox-header {
+        transition: background-color $standard-transition-time;
+    }
+    &:not(.collapsed) {
+        .mx-groupbox-header {
+            background-color: $bg-color-hover;
+        }
+    }
+}
+
+.accordion-listview {
+    
+    > ul > li {
+        &, &:hover, &:focus, &:active {
+            background-color: transparent;
+            border:none;
+
+        }
+
+        &:last-child {
+            border:none;
+        }
+    }
+}
+
+.section-groupbox {
+    .mx-groupbox-header {
+        padding:$spacing-default 0 $spacing-small 0;
+        font-size: $font-size-h3;
+        background-color: transparent;
+        border-bottom: 1px solid $default-border-color;
+    }
+}
+
+.accent-groupbox {
+    background-color: $bg-color-light;
+
+    .mx-groupbox-header {
+        font-size: $font-size-h3;
+        border-bottom: 1px solid #FFF;
+    }
+    
+    .mx-groupbox-body {
+        padding: $spacing-default;
+    }
+
+    .icon-block {
+        @extend %inverse-icon-block;
+    }
+}
+
+.content-groupbox,
+.dashboard-groupbox {
+    border: 1px solid $default-border-color;
+    background-color: #FFF;
+
+    .mx-groupbox-header,
+    .mx-groupbox-body {
+        background-color: transparent;
+    }
+
+    .mx-groupbox-header {
+        font-size: $font-size-h3;
+
+        & + .mx-groupbox-body {
+            padding-top: 0;
+        }
+    }
+    .mx-groupbox-body {
+        padding: $spacing-default;
+    }
+    
+    .mx-listview {
+        li:last-child {
+            border-bottom: none;
+        }
+    }
+}

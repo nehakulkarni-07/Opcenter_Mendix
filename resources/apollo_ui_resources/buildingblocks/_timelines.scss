@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Timelines
+
+   Different timeline patterns
+========================================================================== */
+.timeline-listview {
+    @extend %listview-clean;
+    @extend %listview-static;
+
+    li {
+        margin-bottom: $spacing-default;
+
+        &:first-child {
+            .timeline-item {
+                @extend .timeline-item-current;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    ul {
+        position: relative;
+        &:before {
+            content:"";
+            display: block;
+
+            position: absolute;
+            top: $spacing-default;
+            bottom: $spacing-default;
+            left: ($spacing-default + 1px + ($spacing-medium/2));
+            width: 1px;
+            background-color: $default-border-color;
+        }
+    }
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    border: 1px solid $default-border-color;
+    padding: $spacing-default;
+    background-color: #FFF;
+}
+
+.timeline-icon {
+    min-width: $spacing-medium;
+    height: $spacing-medium;
+    border-radius: ($spacing-medium/2);
+    background-color: $gray-light;
+
+    text-align: center;
+    font-size: $font-size-small;
+    line-height: $spacing-medium;
+    color: $brand-default;
+
+    margin-right: $spacing-default;
+    position: relative;
+    top: -4px;
+}
+
+.timeline-item-current {
+    background-color: $bg-color-secondary;
+
+    .timeline-icon {
+        color: #FFF;
+        background-color: $brand-default;
+    }
+}

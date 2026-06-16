@@ -1,0 +1,290 @@
+/* ==========================================================================
+   Profile block
+
+   Profile block addons
+========================================================================== */
+.profile-block {
+    .profile-img-block {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .profile-name {
+        margin-left: $spacing-small;
+    }
+
+}
+
+.center-align .profile-block {
+    display: inline-block;
+
+    .profile-img-block {
+        margin: 0 auto;
+    }
+}
+
+.form-group .profile-block {
+    .profile-img-block {
+        margin-bottom: $spacing-small;
+    }
+    
+}
+.listview-row-grid {
+    .form-group .profile-block {
+        .profile-img-block {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.form-group .listview-row-grid .profile-block {
+    .profile-img-block {
+        margin-bottom: -3px;
+    }
+}
+
+.profile-img-block {
+    width: 64px;
+    height: 64px;
+    position: relative;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background-color: $gray-lighter;
+    font-size: 32px;
+
+    &:before {
+        @extend %glyphicon;
+        content: "\e008";
+
+        position: absolute;
+        top: (64px - 32px) / 2;
+        left: (64px - 32px) / 2;
+    }
+
+    .mx-image {
+        min-width: 100%;
+        width: 100%;
+        min-height: 100%;
+
+        position: relative;
+        object-fit: cover;
+    }
+
+    .profile-img-initials {
+        
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 64px;
+        font-size: 30px;
+        
+        
+        background-color: inherit;
+
+        position: absolute;
+        left:0;
+        top:0;
+    }
+}
+
+%profile-img-block-small,
+.profile-img-block-small {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+
+    &:before {
+        top: (48px - 24px) / 2;
+        left: (48px - 24px) / 2;
+    }
+
+    .profile-img-initials {
+        font-size: 22px;
+        line-height: 48px;
+        margin-top: 0;
+    }
+}
+%profile-img-block-smaller,
+.profile-img-block-smaller {
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+
+    &:before {
+        top: (32px - 16px) / 2;
+        left: (32px - 16px) / 2;
+    }
+    .profile-img-initials {
+        font-size: 14px;
+        line-height: 32px;
+    }
+}
+
+%profile-img-block-large,
+.profile-img-block-large {
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
+
+    &:before {
+        top: (80px - 48px) / 2;
+        left: (80px - 48px) / 2;
+    }
+    .profile-img-initials {
+        font-size: 46px;
+        line-height: 48px;
+    }
+}
+
+%profile-img-block-xlarge,
+.profile-img-block-xlarge {
+    font-size: 52px;
+    width: 96px;
+    height: 96px;
+
+    &:before {
+        top: (96px - 52px) / 2;
+        left: (96px - 52px) / 2;
+    }
+    .profile-img-initials {
+        font-size: 50px;
+        line-height: 52px;
+    }
+}
+
+%profile-img-block-xxlarge,
+.profile-img-block-xxlarge {
+    font-size: 64px;
+    width: 128px;
+    height: 128px;
+
+    &:before {
+        top: (128px - 64px) / 2;
+        left: (128px - 64px) / 2;
+    }
+    .profile-img-initials {
+        font-size: 60px;
+        line-height: 64px;
+    }
+}
+
+%nav-profile-block {
+    .profile-img-block {
+        background-color: #FFF;
+    }
+
+    .profile-img-block-smaller {
+        width: 34px;
+        height: 34px;
+
+        &:before {
+            top: (34px - 16px) / 2;
+            left: (34px - 16px) / 2;
+        }
+        .profile-img-initials {
+            font-size: 14px;
+            line-height: 34px;
+        }
+    }
+}
+
+
+%inverse-profile-img-block {
+    background-color: #FFF;
+}
+
+.pageheader .profile-img-block {
+    @extend %inverse-profile-img-block;
+}
+
+/* ==========================================================================
+   Profile dropdown
+
+   when clicking on the profile block you get a dropdown menu with details
+========================================================================== */
+.profile-dropdown-block {
+    position: relative;
+
+    .profile-dropdown {
+        position: absolute;
+        top:0;
+        left:0;
+    }
+
+    .dropdown-toggle {
+        padding:0;
+        border: none;
+        width: 64px;
+        height: 64px;
+        border-radius: 32px;
+        background-color: transparent;
+
+        .caret {
+            display: none;
+        }
+
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+        }
+    }
+
+    .open {
+        .dropdown-toggle {
+            box-shadow: 0 3px 5px rgba(0,0,0,0.125);
+            background-color: transparent;
+        }
+    }
+
+    .profile-img-block-smaller + .profile-dropdown,
+    .profile-img-block-smaller + script + .profile-dropdown {
+        .dropdown-toggle {
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+        }
+    }
+
+    .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%);
+
+        text-align: center;
+    
+        &:before, &:after {
+            left: 50%;
+        }
+
+        .profile-img-block {
+            display: block;
+            background-color: $gray-lighter;
+            margin: 0 auto $spacing-default auto;
+        }
+
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    
+}
+/* ==========================================================================
+   Profile block listview
+
+   used for team overviews
+========================================================================== */
+.profile-listview {
+    @extend %listview-clean;
+    @extend %listview-flex; 
+
+    li {
+        margin-left: $spacing-small;
+
+        &:hover, &:focus, &:active {
+            background-color: $grid-bg;
+        }
+    }
+}

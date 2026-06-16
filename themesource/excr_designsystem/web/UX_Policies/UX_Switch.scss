@@ -1,0 +1,155 @@
+/*Applied Widget - Container, Targeted Widget - Switch*/
+/*UX Policies class - Required apply into widgets class manually*/
+.widget-switch-brand-primary{
+    display: flex;
+    
+    .form-group{
+        margin: 0px auto;
+        align-items: center;
+        display: flex;
+        justify-content: left;
+        
+        gap: 8px;
+        height: 24px;
+        border: 2px solid transparent;
+        
+        [class*=col-],
+        div[class*=col-]{
+            padding: 0px !important;
+        }
+
+        label{
+            flex: 0 0 65%;
+            // flex-basis: 65%;
+            max-width: 65%;
+
+            padding-top: 4px;
+            padding-bottom: 4px;
+
+            text-align: left;
+        }
+
+        .col-sm-9{
+            flex: 0 1 35%;
+            // flex-basis: 35%;
+            max-width: 35%;
+        }
+
+        /*This class appear when Show label set to No*/
+        &.no-columns{
+            padding: 0px;
+            justify-content: left;
+            flex-direction: row-reverse !important;
+
+            margin-right: -1px;
+        }
+
+        &:focus-within{
+            border: 2px solid #0F789B;
+        }
+    }
+
+    .widget-switch{
+        opacity: 1;
+
+        width: 40px;
+        height: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .widget-switch-btn-wrapper{
+            width: 32px;
+            height: 16px;
+
+            &.un-checked {
+                box-shadow: #828282 0px 0px 0px 16px inset;
+                background: #828282 0% 0% no-repeat padding-box;
+                border: none #828282;
+                outline: none;
+
+                &.disabled {
+                    box-shadow: #00000012 0px 0px 0px 16px inset;
+                    background: #00000012 0% 0% no-repeat padding-box;
+                }
+            }
+
+            &.checked {
+                box-shadow: #197FA2 0px 0px 0px 16px inset;
+                background: #197FA2 0% 0% no-repeat padding-box;
+                border: none #197FA2;
+                border-radius: 25px !important;
+                outline: none; 
+
+                &.disabled {
+                    box-shadow: #197FA240 0px 0px 0px 16px inset;
+                    background: #197FA240 0% 0% no-repeat padding-box;
+                }
+            }
+
+            .widget-switch-btn{
+                width: 12px;
+                height: 12px;
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                box-shadow: none;
+  
+                top: 2px;
+
+                &.right {
+                    left: 18px;
+                }
+
+                &.left {
+                    left: 2px;
+                }
+            }
+        }
+    }
+}
+
+/*Applied Widget - Container, Targeted Widget - Switch*/
+/*UX Policies class - Required apply into widgets class manually*/
+/*Switch label default will on left side, apply this class for label on right side*/
+.ux-switch-reverse{
+    .form-group{
+        flex-direction: row-reverse !important;
+
+        /*This class appear when Show label set to No*/
+        &.no-columns{
+            padding: 0px;
+            justify-content: start;
+            flex-direction: row !important;
+
+            margin-left: -1px;
+        }
+    }
+}
+
+/*Applied Widget - Container, Targeted Widget - Switch*/
+/*UX Policies class - Required apply into widgets class manually*/
+/*This class is for Touch-friendly layout to Switch*/
+.ux-switch-touch-friendly{
+    .form-group{
+        height: 32px;
+
+        .widget-switch{
+            width: 48px;
+            height: 24px;
+
+            .widget-switch-btn-wrapper{
+                width: 48px !important;
+                height: 24px !important;
+
+                .widget-switch-btn{
+                    width: 20px !important;
+                    height: 20px !important;
+
+                    &.right {
+                        left: 26px;
+                    }
+                }
+            }
+        }
+    }
+}

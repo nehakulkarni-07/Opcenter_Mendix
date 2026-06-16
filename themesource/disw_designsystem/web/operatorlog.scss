@@ -1,0 +1,424 @@
+@import '../../../theme/web/custom-variables';
+//do not copy and paste classes elsewhere - a lot of important tags to override default mendix style
+.oplog-fullpage{
+    .cancel-btn{
+        display: none !important;
+    }
+}
+.LogDocAttach-Page{
+    min-height: 550px;
+      max-width: 80%;
+      min-width: 400px !important;
+    overflow: hidden !important;
+      max-height: 80vh;
+      width:700px !important;
+    block-size: fit-content;
+    padding: 4px;
+    height: 60%;
+    font-family: "Segoe UI", "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+    .OpDocAttach{
+        padding: 8px;
+     
+    }
+    .modal-body{
+        overflow-x: hidden ;
+    }
+       .OpDocAttach-Fields{
+            
+            padding-bottom: 16px;
+           
+
+        }
+    label{
+        font-size: 12px;
+        
+    }
+    .widget-opcoretextbox-holder{
+        width: 300px !important;
+        
+    }
+    .OpLog-Buttons{
+       position: sticky !important;
+       align-content: flex-end;
+       justify-content: flex-end;
+        width: fit-content;
+        
+       margin-top: 16px;
+      
+    
+       margin-bottom:-8px !important;
+       margin-right:-24px;
+       margin-left: 16px ;
+    }
+    .doc-attach-upload{
+        .mx-compound-control,.form-control{
+            min-height: 32px !important;
+            width: 300px !important;
+            position: relative;
+        }
+      
+      
+    }
+}
+   @media screen and (max-height: 800px){
+         .op-doc-button{
+            margin-bottom: 8px;
+            margin-top: 8px !important;
+        }
+
+     }
+.OperatorLog-PopUp{
+    overflow-y: hidden;
+    min-height: 80vh;
+    max-height: 80vh;
+    height: 80vh !important;
+    min-width: 80vw !important;
+    max-width: 80vw;
+    width: 80%;
+    .modal-body{
+        overflow-y: hidden ;
+    }
+   .btn-calendar{
+       display: none;
+   }
+   .op-doc-button{
+       margin-left:  -15px;
+   }
+   .OpLog-Entry{
+       height:40px ;
+      
+  
+   }
+    .infinite-loading{
+        max-height: 25vh !important;
+    }
+    .filter-selectors{
+        max-height: 18vh !important; 
+    }
+    .OpLog-List{
+        margin-top: 8px;
+       overflow-x:visible !important;
+    }
+        @media screen and (max-height: 800px){
+        .op-doc-button{
+
+        margin-top: 24px !important;
+    }
+
+     }
+        @media screen and (max-height: 900px){
+         .filter-selectors{
+        max-height: 10vh !important; 
+     
+        }
+        .infinite-loading{
+            height: 20vh !important ;
+        }
+         .op-doc-button{
+       margin-left:  16px;
+        }
+ 
+         .OpLog-Entry{
+             margin-right: 16px;
+             max-width:300px !important;
+             margin-bottom: 16px;
+            textarea{
+                width:300px !important;
+                
+            }
+        }
+ 
+    }
+}
+.operatorLogButton{
+    width: 256px;
+    height: 40px;
+    margin-top: 16px;
+    font-family: "Segoe UI", "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 17.28px;
+    font-weight: 600;
+    img{
+         -webkit-filter:  brightness(0%) invert(1);
+  filter: brightness(0%) invert(1);
+     width: 24px;
+    height: 24px;
+    }
+}
+.OperatorLog,.OpDocAttach{
+    font-family: "Segoe UI", "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+
+    height:99%;
+    max-height:99% ;
+
+ .OpLog-Header{
+        max-height: 25vh;
+        label{
+        font-weight: 600;
+        font-style: Semibold;
+        font-size: 12px;
+        line-height: 16px;
+        }
+        padding:8px 16px;
+        margin-bottom: 8px;
+        .row{
+            height: fit-content;
+            
+        }
+        .form-group{
+            margin-bottom: 8px !important;
+        }
+        
+    }
+    .OpLog-Entry-Row{
+        .op-doc-button{
+            margin-top: 26px //label line height + bottom margin + comment top margin;
+        }
+          .OpLog-Entry{
+            
+            textarea{
+                //calculated from drop down heights + spacing
+                //width of drop down (300) + space between + padding - textarea's padding
+                width:630px;
+                
+            }
+        }
+        
+    }
+    //copied
+      .form-control{
+            
+        background: normal 0% 0% no-repeat padding-box;
+        border: 1px solid #828282;
+        border-radius: 2px;
+        opacity: 1;
+
+        &:hover {
+          // border: 2px solid #8C8C8C;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #828282;
+        }
+
+        &:focus {
+          // border: 2px solid #3296B9;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #0F789B;
+        }
+
+        &:active {
+          // border: 2px solid #3296B9;
+          border-color: transparent;
+          box-shadow: inset 0 0 0 2px #0F789B;
+        }
+            }
+    .OpLogType-Selection,.OpLog-Selection{
+        font-size:16px ;
+        
+        .mx-compound-control{
+            width: 300px ;
+            height: 32px ;
+            max-height: 32px;
+           
+        }
+      
+    }
+    .OpLog-Main{
+       
+        height: 55vh ;
+        max-height: 55vh;
+
+        padding-bottom: 16px;
+
+    }
+   
+   .infinite-loading{
+       padding-right: 8px; //leave room for the scrollbar
+   }
+    @media screen and (max-height: 900px){
+        .infinite-loading{
+        min-height: 20vh; 
+        height: 30vh;
+        max-height: 30vh;
+         flex:1;
+        }
+        .filter-selectors{
+            max-height: 20vh !important; 
+        }
+         .react-datepicker__day{
+             height:16px !important; 
+             }
+        .react-datepicker__header__dropdown{
+            max-height: 20px !important;
+            .react-datepicker__month-select,.react-datepicker__year-select{
+                //overriding styles so the date picker is visible in smaller screens
+                max-height: 20px!important;
+                min-height: 20px !important;
+                height: 20px !important;
+         
+                padding:1px !important;
+            }
+        }
+ 
+    }
+     @media screen and (min-height: 901px){
+    .infinite-loading{
+        min-height: 20vh; //height of filter controls
+        height: 35vh;
+        max-height: 35vh;
+         flex:1;
+         
+    }
+     }
+
+      .OpLog-List{
+
+          display: flex;
+           max-height: 35vh;
+           overflow: visible;
+          flex:1;
+          
+          .widget-datagrid-grid{
+              padding-right:8px !important;
+              
+
+          }
+      
+        //   .column-container{
+        //       padding-left:8px;
+        //       padding-right: 8px;
+        //   }
+          .table:has(.th .column-container .filter:not(:empty)) .th{
+              padding-top:0px !important;
+                height: min-content;
+        
+               input[type=text]:enabled:active{
+                   border:none !important;
+               }
+               input[type=text]:enabled:focus{
+                   border:none !important;
+               }
+               input[type=text]:enabled:hover{
+                   border:none !important;
+               }
+               .filter-selector{
+                   
+                   
+                   overflow:visible;
+               }
+              .filter-selector .filter-selector-content .filter-selector-button{
+                  display: flex;
+                
+              }
+           
+                .react-datepicker__navigation--previous{
+                    left:2px !important;
+                    height:16px !important;
+                }
+                .react-datepicker__navigation--next{
+                    right:2px !important;
+                    height:16px !important;
+
+                }
+                .btn-calendar{
+                    padding: 8px !important;
+                }
+              .react-datepicker-popper{
+                
+                position: absolute !important;
+                left: 56px !important;
+                top:63px !important;
+                // top: calc(25vh + 63px + 48px)!important;
+                transform: unset !important;
+                .react-datepicker{
+                  position: fixed;
+                  z-index:210;
+                }
+                // .react-datepicker__day{
+                //     height:20px !important;
+                   
+                // }
+                .react-datepicker__day-names{
+                    margin-bottom:-16px !important;
+                }
+                .react-datepicker__month{
+                    margin-top:0px !important;
+                }
+              
+              }
+              
+              .filter-selectors{
+                  position: absolute !important;
+                  left:16px !important;
+                  top:unset !important;
+                  z-index: 200;
+                  overflow: auto;
+                  max-height: 25vh;
+                 
+              }
+          }
+            .th{
+                .column-header{
+                    
+                    font-weight: 600;
+                    font-style: Semibold;
+                    font-size: 12px ;
+                    line-height: 16px;
+                    padding-bottom: 8px;
+                    padding-left: 0px;
+                    padding-top: 8px !important;
+                  
+                }
+
+            }
+            .tr{
+                font-weight: 400;
+                font-style: Regular;
+                font-size: 12px;
+                line-height: 16px;
+            }
+           
+        }
+  
+        .OpLog-Buttons{
+            max-height: 5vh ;
+            position: absolute;
+            bottom:16px;
+            right:16px;
+            button{
+                height: 40px;
+                padding-left: 16px;
+                padding-right: 16px;
+                width: 98px;
+       
+
+            }
+            .col{
+                padding-left: 0px !important;
+            }
+            .col-auto{
+                padding-right: 0px !important;
+            }
+        }
+     
+        .DocAttachInput{
+            display: flex;
+            flex-direction: column;
+            padding:4px;
+            padding-left: 8px;
+           
+            max-width: 530px;
+            .control-label{
+                white-space: nowrap;
+                text-align: left;
+                position: relative;
+        
+               
+                
+            }
+            .form-control,.mx-compound-control{
+                min-width: 360px;
+                max-width: 360px;
+            }
+            
+            
+        }
+}

@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Mixins
+
+   Mixins for Mendix & Apollo blocks
+========================================================================== */
+@mixin multiline-ellipsis($mixin-number-of-lines, $mixin-background-color: #FFF, $mixin-font-size: $font-size-default, $mixin-line-height: $line-height-base) {
+    display: block;
+    position: relative;
+
+    max-height: calc(#{$mixin-number-of-lines} * #{$mixin-line-height} * #{$mixin-font-size});
+    text-align: justify;
+    //margin-right: -0.8em;
+    //padding-right: 0.8em;
+
+    overflow: hidden;
+
+    &:before {
+        content:"...";
+        position: absolute;
+        right:0;
+        bottom:0;
+    }
+    &:after {
+        content:"";
+        position: absolute;
+        right: 0;
+        //bottom: 0; // for testing the bg color
+        width: 0.75em;
+        height: 1em;
+        margin-top: 0.2em;
+        background: $mixin-background-color;
+    }
+}

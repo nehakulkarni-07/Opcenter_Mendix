@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Icon Blocks
+
+   Default settings for Apollo Icon blocks
+========================================================================== */
+.checkbox-block, .icon-block {
+    @extend %control-transition;
+    min-width: $spacing-large;
+    text-align: center;
+    padding: $spacing-smaller $spacing-small;
+}
+.icon-block {
+    @extend %control-transition;
+    background-color: $Siemens_Stone_24;
+    color: $brand-default; 
+    
+    .glyphicon {
+        font-size: 16px;
+    }
+}
+
+.checkbox-block {
+    .checkbox-placeholder {
+        @extend %checkradiobox;
+        border-radius: $border-radius-default;
+        border-color: $bg-color-secondary;
+        border-color: $bg-color-hover;
+        background-color: $bg-color-light;
+
+
+        
+
+        &.checked {
+            border-color: $brand-default;
+            background-color: $brand-default;
+            background: $brand-default url('images/svg/ok-symbol.svg') no-repeat center center;
+            background-size: 12px;
+        }
+    }
+
+}
+
+%inverse-icon-block {
+    background-color: #FFF;
+}
+
+%icon-block-large,
+.icon-block-large {
+    //min-width: $spacing-xlarge;
+
+    .glyphicon {
+        font-size: 24px;
+    }
+    padding: ($spacing-small + 2px) ($spacing-small + $spacing-smaller);
+}
+
+.icon-block-primary {
+    background-color: $brand-primary;
+    color: #FFF;
+}
+.icon-block-accent {
+    background-color: $brand-inverse;
+    color: #FFF;
+}
+.icon-block-default {
+    background-color: $brand-default;
+    color: #FFF;
+}
+.icon-block-warning {
+    background-color: $Siemens_Yellow_24;
+    color: $brand-warning;
+}
+.icon-block-danger {
+    background-color: $Siemens_Red_24;
+    color: $brand-danger;
+}
+.icon-block-info {
+    background-color: $brand-info;
+    color: #FFF;
+}
+.icon-block-success {
+    background-color: $Siemens_Green_24;
+    color: $brand-success;
+}
+
+
+// for usage withing listview rows
+.mx-listview {
+    &:not(.listview-static) {
+
+    }
+
+    .selected {
+        .icon-block {
+            @extend %inverse-icon-block;
+        }
+    }
+}
+
+.listview-row-grid {
+    .icon-block, .checkbox-block {
+        display: inline-block; 
+        margin-right: $spacing-default;
+        vertical-align: middle;
+    } 
+
+    .icon-block {
+        @extend %icon-block-large;
+    }
+}

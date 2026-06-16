@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        {{themecss}} {{appicons}} {{manifest}} {{startupimages}}
+    </head>
+
+    <body>
+        <div class="mx-scrollcontainer-wrapper">
+            <div data-mx-placeholder="f24a271c-597d-46a6-b097-7b334b8481c7" class="mx-placeholder">
+                <div class="login-background" style="height: 100vh;">
+                    <div class="mx-layoutgrid mx-layoutgrid-fluid container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-xs-12 login-left-column ">
+                                <div class="login-left-wrapper">
+                                    <div class="app-payoff">
+                                        <img class="img-responsive"
+                                            src="http://localhost:8080/img/DISW_DesignSystem$Layout$siemens_logo_full.png?637698165103926839"
+                                            role="presentation" />
+                                    </div>
+    
+                                    <div class="app-form">
+                                        <form id="loginForm" autocomplete="off">
+                                            <div class="login-header">
+                                                <img class="-responsive "
+                                                    src="http://localhost:8080/img/Atlas_Core$Layout$logo.svg?637698165103926839"
+                                                    role="presentation" />
+                                                <h3>DISW Design System</h3>
+                                            </div>
+                                            <div>
+                                                <div id="loginMessage" class="alert alert-danger"></div>
+                                                <div class="form-group">
+                                                    <label class="control-label" id="usernameLabel" for="usernameInput">User
+                                                        name</label>
+                                                    <div class="inputwrapper">
+                                                        <input id="usernameInput" class="form-control" type="text"
+                                                            placeholder="User name" autocorrect="off" autocapitalize="none"
+                                                            autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" id="passwordLabel"
+                                                        for="passwordInput">Password</label>
+                                                    <div class="inputwrapper">
+                                                        <input id="passwordInput" class="form-control" type="password"
+                                                            placeholder="Password" autocorrect="off" autocapitalize="none"
+                                                            autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-toolbar">
+                                                    <button id="loginSSOButton" type="submit" class="btn btn-default">
+                                                        Sign in with SSO
+                                                    </button>
+                                                    <span class="text-divider">or</span>
+                                                    <button id="loginButton" type="submit" class="btn btn-primary">
+                                                        Sign in
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="login-footer">
+                                            <a class="mx-link" href="#" role="button" title=""
+                                                data-button-id="50.DISWAtlasWorkspace.Login.actionButton1"
+                                                data-disabled="false">
+                                                Forgot password</a><a class="mx-link mx-name-actionButton2" href="#"
+                                                role="button" title=""
+                                                data-button-id="50.DISWAtlasWorkspace.Login.actionButton2"
+                                                data-disabled="false">
+                                                Create new account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-6 col-xs-12 login-right-column">
+                                <div class="login-right-wrapper">
+                                    <div class="version-number">
+                                        <h4>Version 2.01</h4>
+                                    </div>
+                                    <div class="description">
+                                        <h1>Siemens DISW Mendix Design System</h1>
+                                        <h4>Design system for Mendix 9</h4>
+                                    </div>
+                                    <div class="slogan">
+                                        <span>powered by Mendix<sup>TM</sup></span>
+                                    </div>
+                                    <div class="copyright">
+                                        <span>Copyright 2020 Siemens</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <script src="js/login_i18n.js?{{cachebust}}"></script>
+        <script src="js/login.js?{{cachebust}}"></script>
+        <script>
+            function togglePassword() {
+                const icon = document.querySelector("[class*=glyphicon-eye]");
+                if (icon.classList.contains("glyphicon-eye-close"))
+                    icon.classList.replace("glyphicon-eye-close", "glyphicon-eye-open");
+                else icon.classList.replace("glyphicon-eye-open", "glyphicon-eye-close");
+
+                const input = document.querySelector("#passwordInput");
+                if (input.type === "password") input.type = "text";
+                else input.type = "password";
+            }
+        </script>
+    </body>
+</html>

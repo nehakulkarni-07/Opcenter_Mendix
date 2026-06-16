@@ -1,0 +1,120 @@
+/* =========================================================================
+   Breadcrumb
+
+   The default Siemens breadcrumb
+========================================================================== */
+%breadcrumb-item {
+    display: inline-block;
+    margin: 0;
+
+    color: $link-color;
+    outline-color: transparent;
+
+    &:hover, &:focus {
+        color: $link-hover-color;
+        text-decoration: underline;
+    }
+    &:active {
+        color: $link-active-color;
+    }
+
+    &.active {
+        &, &:hover, &:focus, &:active {
+            color: $font-color-default;
+            text-decoration: none;
+            cursor: default;
+        }
+    }
+}
+
+%inverse-breadcrumb-item {
+    //color: $Siemens_Blue_23;
+    color: rgba(255,255,255,0.75);
+
+    &:hover, &:focus, &:active {
+        color: #FFF;
+    }
+
+    &.active {
+        &, &:hover, &:focus, &:active {
+            color: #FFF;
+        }
+    }
+
+    & + .breadcrumb-item,
+    & + a {
+        &::before {
+            color: #FFF;
+        }
+    }
+}
+
+.breadcrumb-item-main {
+    font-size: $font-size-h3;
+}
+
+// main container
+.breadcrumb {
+    padding: $spacing-small 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: transparent;
+
+    a {
+        @extend %breadcrumb-item;
+    }
+}
+
+.breadcrumb-item {
+    @extend %breadcrumb-item;
+}
+
+.breadcrumb a + a,
+.breadcrumb-item + .breadcrumb-item {
+    &::before {
+        @extend %glyphicon;
+        content: "\e258";
+        color: $PL_Black_4;
+        font-size: $font-size-smaller;
+
+        margin-left: $spacing-small;
+        margin-right: ($spacing-small - 5px); // visual adjustment
+    }
+}
+
+/* =========================================================================
+   Variations
+========================================================================== */
+%breadcrumb-inverse,
+.breadcrumb-inverse {
+    a, .breadcrumb {
+        @extend %inverse-breadcrumb-item;
+    }
+}
+
+.breadcrumb-large {
+
+}
+.breadcrumb-small {
+    .breadcrumb-item,
+    a {
+        @if($dense-app){
+            font-size: $font-size-default;
+        } @else {
+            font-size: $font-size-smaller;
+        }
+
+        & + .breadcrumb-item,
+        & + a {
+            &:before {
+                @if($dense-app){
+                    font-size: $font-size-smaller;
+                } @else {
+                    font-size: $font-size-smallest;
+                }
+            }
+            
+        }
+        
+    }
+}

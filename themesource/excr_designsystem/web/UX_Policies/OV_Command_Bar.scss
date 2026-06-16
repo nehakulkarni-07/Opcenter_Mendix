@@ -1,0 +1,14 @@
+@import "../../../../theme/web/custom-variables";
+
+//Common styling for command bar
+.command-bar {
+    button {
+        margin: 0px !important;
+        margin-top: 2px !important;
+    }
+
+    .command-bar-listview {
+        border: none;
+        display: flex;
+    }
+}

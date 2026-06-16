@@ -1,0 +1,23 @@
+/*Widget - Tooltip*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.widget-tooltip {
+    width: fit-content !important;
+    max-width: 100% !important;
+
+    .widget-tooltip-trigger{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  
+    .widget-tooltip-content{
+        background: #ffffff !important;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3) !important;
+        border-radius: 3px !important;
+        margin-top: 0px !important;
+        padding: 8px 16px !important;
+
+        font: normal normal normal 12px/16px Segoe UI !important;
+        color: #1E1E1E !important;
+    }
+}

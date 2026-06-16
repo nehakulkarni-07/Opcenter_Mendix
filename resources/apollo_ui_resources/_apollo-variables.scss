@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Apollo Variables
+
+   The core variables of Apollo
+========================================================================== */
+// Siemens colors
+@import 'base/siemenscolors';
+
+//== Gray Shades
+//## Different gray shades to be used for our variables and components
+$gray-darker:                                       $PL_Black_4;
+$gray-dark:                                         $PL_Black_8;
+$gray:                                              $PL_Black_13;
+$gray-medium:                                       $PL_Black_18;
+$gray-light:                                        $PL_Black_23;
+$gray-lighter:                                      $PL_Black_25;
+$gray-primary:                                      $gray-light;
+
+//== Step 1: Brand Colors
+$brand-default:                                     $Siemens_Blue_7;
+$brand-primary:                                     $Siemens_Yellow_11;
+$brand-inverse:                                     $Siemens_Blue_1;
+$brand-info:                                        $Siemens_Blue_13;
+$brand-success:                                     $Siemens_Status_Green;
+$brand-warning:                                     $Siemens_Yellow_11;
+$brand-danger:                                      $Siemens_Status_Red;
+
+$brand-default-hover:                               $Siemens_Blue_9;
+$brand-default-active:                              $Siemens_Blue_11;
+$brand-primary-hover:                               $Siemens_Yellow_9;
+$brand-primary-active:                              $Siemens_Yellow_11;
+
+// Used for other variables
+$default-border-color:                              $gray-primary;
+$border-color-light:                                $gray-light;
+
+//== Step 3: Typography
+$dense-app:                                         false;
+$font-family-import:                                "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700";
+$font-family-base:                                  'Segoe UI','selawik','Open Sans', Arial, sans-serif;
+$font-family-header:                                $font-family-base;
+$font-size-default:                                 16px !default;
+$font-size-h1:                                      2.125rem; // 34 px
+$font-size-h2:                                      1.75rem; // 28
+$font-size-h3:                                      1.5rem; // 24
+$font-size-h4:                                      1.25rem; // 20
+$font-size-huge:                                    2.5rem;// 40
+$font-size-metric:                                  3rem; // 48
+$font-size-large:                                   $font-size-h2;
+$font-size-medium:                                  $font-size-h4;
+$font-size-small:                                   0.875rem; // 14
+$font-size-smaller:                                 0.75rem; // 12
+$font-size-smallest:                                0.625rem; //10
+$line-height-base:                                  1.5;
+//$line-height-controls:                              1.42857143;
+$line-height-controls:                              1.5;
+
+$font-size-small-default:                           12px;
+
+@if ($dense-app) {
+    $font-size-default:                             $font-size-small-default;
+    $line-height-base:                              1.42857143;
+    $font-size-h1:                                  2.16666667rem;// 26
+    $font-size-medium:                              1.33333333rem;// 16
+    $font-size-small:                               0.83333333rem; // 10
+    $font-size-smaller:                             0.66666667rem; // 8
+    $font-size-smallest:                            $font-size-smaller;
+} @else {
+    $font-size-default:                             16px;
+}
+
+$font-base-color:                                   $gray-dark;
+$font-color-header:                                 $gray-darker;
+$link-color:                                        $brand-default;
+
+// spacing
+$spacing-smaller:                                   4px;
+$spacing-small:                                     8px;
+$spacing-default:                                   16px;
+$spacing-medium:                                    24px;
+$spacing-large:                                     32px;
+$spacing-xlarge:                                    48px;
+
+$max-width-size:                                    860px;
+@if ($dense-app) {
+    $max-width-size:                                800px;
+}
+
+// responsive breakpoints
+$breakpoint-xs:                                     768px;
+$breakpoint-sm:                                     992px;
+$breakpoint-md:                                     1200px;
+$breakpoint-lg:                                     1600px;
+
+//== Step 2: UI Customization
+
+// Backgrounds
+$bg-color:                                          #FFFFFF;
+$bg-color-secondary:                                $Siemens_Stone_24;
+$bg-color-light:                                    $Siemens_Stone_25;
+
+$brand-gradient:                                    radial-gradient(ellipse farthest-side at 75% top, #55a0b9 -100%, #0077a1 40%, #006b91 75%, #006487 calc(100%-68px));
+$login-page-bg-path:                                'images/login-page-bg.jpeg';
+$login-page-img-overlay:                            true;
+
+// Selection Background Colors
+$bg-color-hover:                                    $Siemens_Blue_10_Old;
+$bg-color-active:                                   $Siemens_Blue_9_Old;
+$bg-color-selected:                                 $Siemens_Blue_10_Old;
+$bg-color-selected-hover:                           $Siemens_Blue_8_5_Old;
+
+// Global Border Color
+$border-color-default:                              $gray-light;
+$border-radius-default:                             3px;
+
+// Topbar
+$topbar-bg:                                         transparent;
+$navtopbar-border-color:                            transparent;
+$topbar-border-color:                               transparent;
+$topbar-minimalheight:                              48px;
+$sidebar-minimalwidth:                              64px;
+$sidebar-maxwidth:                                  264px;
+$toolbar-minimalwidth:                              54px;
+$navtopbar-color:                                   $font-base-color;
+$navbar-brand-name:                                 #FFF;
+$brand-logo:                                        false;
+$brand-logo-official:                               false; // changed the default square mx logo to official Siemens Solution Logo
+$brand-logo-height:                                 30px;
+$brand-logo-width:                                  30px;
+@if ($brand-logo-official) {
+    $brand-logo-height:                             32px;
+    $brand-logo-width:                              32px;
+}
+
+// Mobile topbar & footer
+$m-header-bg:                                       transparent;
+$m-header-height:                                   $topbar-minimalheight;
+$m-header-color:                                    #FFF;
+$m-header-title-size:                               $font-size-h4;
+@if($dense-app) {
+    $m-header-title-size:                           $font-size-h2;                        
+}
+$m-footer-height:                                   $topbar-minimalheight;
+
+// Sidebar
+$sidebar-bg:                                        $brand-inverse;
+$navsidebar-color:                                  #FFFFFF;
+$navsidebar-color-hover:                            $navsidebar-color;
+$navigation-color:                                  $navsidebar-color;
+$navigation-color-hover:                            $navsidebar-color;
+$navigation-color-active:                           $navsidebar-color;
+$navigation-sub-color:                              $navsidebar-color;
+$navigation-sub-color-hover:                        $navsidebar-color;
+$navigation-sub-color-active:                       $navsidebar-color;
+$navigation-sub-color-selected:                     $navsidebar-color;
+$navigation-bg:                                     transparent;
+$navigation-bg-hover:                               $Natural_Blue_5;
+$navigation-bg-active:                              $Natural_Blue_6;
+$navigation-bg-selected:                            $Siemens_Blue_1;
+$navigation-sub-bg:                                 $Siemens_Blue_1;
+$navigation-sub-bg-hover:                           transparent;
+$navigation-sub-bg-active:                          transparent;
+$navigation-sub-bg-selected:                        transparent;
+$navigationtree-sub-box-shadow:                     inset 6px 0 10px rgba(0, 0, 0, 0.25);
+
+// Buttons and links
+$btn-font-size:                                     $font-size-default;
+$btn-default-color:                                 $brand-default;
+$btn-default-color-active:                          $brand-default;
+$btn-default-bg:                                    transparent;
+$btn-default-bg-hover:                              #D9E7ED; // 10% default color
+$btn-default-bg-active:                             #BFD7E1; // 25% default color
+$btn-default-border-color:                          $brand-default;
+
+$link-color:                                        $brand-default;
+$link-hover-color:                                  $brand-default;
+$link-active-color:                                 $brand-default-hover;
+
+// animation, transitions
+$standard-transition-time:                          0.25s;
+$standard-control-transition-time:                  0.15s;
+
+// inputs
+$default-input-height:                              36px;
+$form-group-margin-bottom:                          ($spacing-smaller + $spacing-small);
+@if ($dense-app != true) {
+    $default-input-height:                          48px;
+    $form-group-margin-bottom:                      $spacing-default;
+}
+$form-label-color:                                  $gray-darker;
+$form-input-border-color:                           $gray-medium;
+$form-input-padding-y:                              $spacing-small;
+$form-input-padding-x:                              $spacing-small;
+$form-input-focus-color:                            $brand-info;
+
+// grids
+$grid-border-color:                                 $border-color-light;
+$grid-bg:                                           #FFF;
+$grid-bg-selected:                                  $Siemens_Natural_Blue_10;
+$grid-bg-hover:                                     $Siemens_Blue_9_5_Old;
+$grid-bg-active:                                    $Siemens_Blue_9_Old;
+$grid-alternating-bg:                               $gray-lighter;
+
+// tabs
+$tabs-color:                                        $font-base-color;
+$tabs-color-active:                                 $brand-default;
+$tabs-color-hover:                                  $brand-default-hover;
+$tabs-bg:                                           transparent;
+$tabs-bg-hover:                                     transparent;
+$tabs-bg-active:                                    transparent;

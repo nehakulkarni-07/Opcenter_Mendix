@@ -1,0 +1,40 @@
+{
+  "excludes": {
+      "Atlas_Core": {
+          "layouts": true,
+          "pageTemplates": true,
+          "designProperties": false,
+          "styling": true
+      },
+      "Atlas_Web_Content": {
+          "layouts": true,
+          "pageTemplates": true,
+          "buildingBlocks": true,
+          "styling": true
+      },
+      "Encryption": {
+          "layouts": true,
+          "pageTemplates": true,
+          "buildingBlocks": true,
+          "styling": true
+      },
+      "MxModelReflection": {
+          "layouts": true,
+          "pageTemplates": true,
+          "buildingBlocks": true,
+          "styling": true
+      },
+      "EmailTemplate": {
+          "layouts": true,
+          "pageTemplates": true,
+          "buildingBlocks": true,
+          "styling": true
+      },
+      "OIDC": {
+          "layouts": true,
+          "pageTemplates": true,
+          "buildingBlocks": true,
+          "styling": true
+      }
+  }
+}

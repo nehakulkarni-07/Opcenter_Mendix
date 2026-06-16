@@ -1,0 +1,33 @@
+.widget-dynamictable-wrapper {
+
+    * {
+        border-color: $grid-border-color;
+    }
+
+    .ant-table {
+        font-size: $font-size-default;
+        &.ant-table-small {
+            border-radius: 0;
+        }
+        table {
+            border-radius: 0;
+        }
+
+        .ant-table-thead {
+            tr {
+                th {
+                    border-right: 1px solid $grid-border-color;
+                    background-color: $PL_Black_24!important;
+                }
+            }
+            > tr:first-child > th:first-child {
+                border-top-left-radius: 0;
+            }
+        }
+    }
+
+    .first-column {
+        border-right: 1px solid $grid-border-color;
+    }
+
+}

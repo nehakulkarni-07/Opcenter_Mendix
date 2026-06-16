@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Listviewtextsearch
+
+   the settings for the text-box-search widget for custom listview search
+========================================================================== */
+.widget-text-box-search {
+    .search-bar {
+        position: relative; 
+
+        // 'faking the search button'
+        &:after {
+            content: '\e003';
+            @extend %glyphicon;
+            @extend %panel-btn;
+            
+            display: block;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+
+            
+        }
+    }
+}

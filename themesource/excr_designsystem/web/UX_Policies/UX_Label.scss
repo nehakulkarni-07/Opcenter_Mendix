@@ -1,0 +1,63 @@
+/*Widget - Label (Property)*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+label{
+    font: normal normal var(--font-weight-default) var(--font-size-default)/var(--line-height-default) Segoe UI;
+    letter-spacing: 0px;
+    color: #1E1E1E;
+    opacity: 1;
+}
+
+/*Widget - Text (Value)*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+span.mx-text{
+    font: normal normal normal var(--font-size-default)/var(--line-height-default) Segoe UI;
+    letter-spacing: 0px;
+    color: #464646;
+    opacity: 1;
+}
+
+/*Widget - Container (Property Value)*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-property-value{
+    // display: flex;
+
+    /*Widget - Container (Property group)*/
+    .ux-label-property{
+        margin-right: 4px;
+
+        label:first-child{
+            margin-top: 0px;
+        }
+
+        label{
+            margin-top: 4px;
+        }
+    }
+
+    /*Widget - Container (Value group)*/
+    .ux-text-value{
+        margin-left: 4px;
+
+        .mx-text:first-child{
+            margin-top: 0px;
+        }
+
+        .mx-text{
+            margin-top: 4px;
+        }
+    }
+}
+
+/*Widget - Label*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-rquired-input-field:before{
+    content: '';
+    background: url("/img/EXCR_DesignSystem$Icon_Repository$indicatorRequired16.svg");
+    background-size: var(--icon-width-compact) var(--icon-height-compact);
+    background-repeat: no-repeat;
+    background-position-y: 20%;
+    width: 11px;
+    height: 32px;
+    display: inline-block;
+    margin-bottom: -20px;
+}

@@ -1,0 +1,279 @@
+/* ==========================================================================
+   Apollo and Mendix Cards
+
+   Default rules for cards and metric cards
+========================================================================== */
+.card {
+    background-color: #FFF;
+    padding: $spacing-default $spacing-medium $spacing-default $spacing-default;
+
+    h3 {
+        margin-top:0;
+    }
+
+    // TODO: redesign and refactor
+    .card-icon {
+        font-size: 32px;
+        display: inline-block;
+        margin: $spacing-large auto;
+        text-align: center;
+
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+
+        padding: 32px;
+        background-color: $grid-bg-hover;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .custom-card-icon {
+
+    }
+}
+
+.bordered-card {
+    border: 1px solid $default-border-color;
+}
+.metric-card, .dashboard-card {
+    position: relative;
+    margin-bottom: $spacing-default;
+    padding-top: $spacing-small;
+    h2, h3 {
+        margin:0 8px 0 0;
+        color: $brand-default;
+
+        &.text-danger {
+            color: $brand-danger;
+        }
+        &.text-warning {
+            color: $brand-warning;
+        }
+        &.text-success {
+            color: $brand-success;
+        }
+    }
+
+    h2 {
+        font-size: $font-size-metric;
+    }
+    h3 {
+        font-size: $font-size-h3;
+    }
+
+    .metric-unit {
+        position: absolute;
+        right: 12px;
+        top: 8px;
+    }
+
+    .flex-container {
+        justify-content: space-between;
+        align-items: center;
+
+        h2, h3 {
+            text-align: right;
+        }
+    }
+}
+
+.dashboard-card {
+    padding: $spacing-small $spacing-medium $spacing-default $spacing-default;
+}
+
+.metric-label,
+.metric-unit {
+    color: $Siemens_Stone_7;
+}
+
+/* ==========================================================================
+   Message cards
+
+   Default rules for notification and message cards
+========================================================================== */
+.message-block {
+    padding: $spacing-default;
+
+    .icon-block,
+    .profile-img-block {
+        display: inline-block;
+        margin-right: $spacing-default;
+        vertical-align: top;
+    }
+
+    .icon-block {
+        @extend %icon-block-large;
+    }
+    .profile-img-block {
+        @extend %profile-img-block-small;
+    }
+
+    
+}
+
+.message-card {
+    @extend %transition;
+
+    border: 1px solid $default-border-color;
+    border-radius: $border-radius-default;
+    background-color: #FFF;
+
+    &:hover, &:focus, &:active {
+        @extend %shadow-medium-hover;
+    }
+
+    & + .message-card {
+        margin-top: $spacing-small;
+    }
+}
+
+.message-card-default {
+    border-left: 4px solid $brand-default;
+    padding-left: ($spacing-default - 4px);
+}
+
+.message-card-warning {
+    border-left: 4px solid $brand-warning;
+    padding-left: ($spacing-default - 4px);
+
+    .message-card-header {
+        h2, h3, h4 {
+            color: $brand-warning;
+        }
+    }
+
+    .icon-block {
+        @extend .icon-block-warning;
+    }
+}
+.message-card-danger {
+    border-left: 4px solid $brand-danger;
+    padding-left: ($spacing-default - 4px);
+
+    .message-card-header {
+        h2, h3, h4 {
+            color: $brand-danger;
+        }
+    }
+
+    .icon-block {
+        @extend .icon-block-danger;
+    }
+}
+.message-card-success {
+    border-left: 4px solid $brand-success;
+    padding-left: ($spacing-default - 4px);
+
+    .message-card-header {
+        h2, h3, h4 {
+            color: $brand-success;
+        }
+    }
+
+    .icon-block {
+        @extend .icon-block-success;
+    }
+}
+
+.message-block-header {
+    display: flex;
+    align-items: flex-start;
+
+    h3, h4, h2 {
+        font-size: $font-size-h4;
+        color: $brand-default;
+        margin:0;
+    }
+    span {
+        display: inline-block;
+        margin-top: ($spacing-small - 2px);
+    }
+
+    .btn {
+        .glyphicon, span {
+            margin-top: 0;
+        }
+    }
+
+    .close-btn {
+        @extend %icon-btn;
+        
+        margin: (-$spacing-default) (-$spacing-default) 0 $spacing-small;
+    }
+
+    & + .message-block-body {
+        margin-top: $spacing-small;
+    }
+}
+
+.message-block-body {
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .btn-toolbar {
+        margin-top: $spacing-medium;
+        margin-left: 0;
+        margin-right: -5px;
+        text-align: right;
+
+        .btn, .mx-link {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+    }
+}
+
+.message-block-footer {
+    border-top: 1px solid $default-border-color;
+    padding-top: $spacing-default;
+    margin-top: $spacing-default;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message-block-listview {
+    @extend %listview-clean;
+
+    li {
+        margin-bottom: $spacing-smaller;
+
+        &:hover, &:focus {
+            .multiline-ellipsis {
+                &:after {
+                    background-color: $grid-bg-hover;
+                }
+            }
+        }
+
+        &:active, &.selected {
+            .message-block-footer {
+                border-color: #FFF;
+            }
+
+
+            .multiline-ellipsis {
+                &:after {
+                    background-color: $grid-bg-selected;
+                }
+            }
+        }
+    }
+
+    .multiline-ellipsis {
+        @include multiline-ellipsis(2);
+
+        &:after {
+            @extend %control-transition;
+        }
+        
+    }
+}

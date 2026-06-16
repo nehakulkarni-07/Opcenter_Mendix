@@ -1,0 +1,251 @@
+/* ==========================================================================
+   Comments & Chat
+
+   Building blocks for comments & chat
+========================================================================== */
+%comment,
+.comment {
+    .date-field {
+        color: $gray-medium;
+        font-size: $font-size-small;
+    }
+}
+
+.comment-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: $spacing-small + $spacing-smaller;
+}
+
+.comment-content {
+    position: relative;
+    border: 1px solid $default-border-color;
+    border-radius: $border-radius-default;
+    padding: $spacing-small;
+
+    background-color: #FFF;
+
+    &:before,
+    &:after {
+        content:"";
+        display: block;
+        width: 0;
+        height: 0;
+        border: solid transparent;
+
+        position: absolute;
+        bottom: 100%;
+        left: ($spacing-default - 1px);
+
+    }
+
+    &:before {
+        border-color: transparent;
+        border-bottom-color: $default-border-color;
+        border-width: $spacing-small;
+        margin-left: -$spacing-small;
+    }
+
+    &:after {
+        border-color: transparent;
+        border-bottom-color: #FFF;
+        border-width: ($spacing-small - 1px);
+        margin-left: -($spacing-small - 1px);
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// use for determining whether is comment is mine yes or no
+.comment-my-own {
+    display: none;
+
+    & + .comment,
+    & + script + .comment {
+        margin-left: auto;
+
+        .comment-header {
+            flex-direction: row-reverse;
+        }
+
+        .profile-block {
+            .mx-dataview-content {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+            }
+            .profile-name {
+                margin-right:$spacing-small;
+                margin-left:0;
+            }
+        }
+
+        .comment-content {
+            background-color: $gray-lighter;
+
+            &:before {
+                left: auto;
+                right: ($spacing-default - 1px);
+                margin-left:0;
+                margin-right: -$spacing-small;
+            }
+
+            &:after {
+                border-bottom-color: $gray-lighter;
+                left: auto;
+                right: ($spacing-default - 1px);
+                margin-left:0;
+                margin-right: -($spacing-small - 1px);
+            }
+        }
+        
+    }
+}
+
+.new-comment-container {
+    border-bottom: 1px solid $default-border-color;
+
+    .mx-dataview-content {
+        position: relative;
+    }
+
+    .send-btn {
+        @extend %icon-btn;
+
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right:0;
+    }
+
+    .mx-textarea {
+        
+    }
+
+    .form-control {
+        padding-right: $spacing-xlarge;
+    }
+
+    & + .comments-listview {
+        margin-top: $spacing-default;
+    }
+}
+
+.comments-listview {
+    @extend %listview-clean;
+    @extend %listview-static;
+
+    
+
+    li {
+        margin-bottom: $spacing-large;
+    }
+
+    .mx-listview-empty {
+        &:before {
+            content:"no comments placed yet";
+        }
+        label {
+            display: none;
+        }
+    }
+
+    .comment {
+        width: 80%;
+        max-width: $max-width-size;
+    }
+}
+
+%reverse-comments-listview {
+    > ul {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    li {
+        &:last-child {
+            margin-top: $spacing-large;
+        }
+    }
+}
+
+.comments-layoutgrid {
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    > .row {
+        height: 100%;
+        // row level
+        > div {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .comments-listview {
+        @extend %reverse-comments-listview;
+
+        flex-basis: 100%;
+        flex-shrink: 1;
+        overflow: auto;
+        padding-top: $spacing-large;
+
+        display: flex;
+        flex-direction: column-reverse;
+        
+    }
+
+    .new-comment-container {
+        border-bottom: none;
+        border-top: 1px solid $default-border-color;
+        padding-top: $spacing-large;
+        padding-bottom: $spacing-large;
+        
+        .mx-textarea {
+            //margin-bottom: $spacing-large;
+            margin-bottom:0;
+        }
+    }
+
+    &.page-layoutgrid {
+        .comments-listview {
+            margin-right: -$spacing-large;
+            padding-right: $spacing-large;
+        }
+    }
+}
+
+.modal-dialog .comments-layoutgrid {
+    border-top: 1px solid $default-border-color;
+    margin-top: -$spacing-default;
+    height: calc(100% + #{$spacing-default});
+    
+
+    .comments-listview {
+
+    }
+    .new-comment-container {
+        padding: $spacing-default $spacing-default 0 $spacing-default;
+    }
+    .section-content {
+        margin-left: -$spacing-default;
+        margin-right: -$spacing-default;
+    }
+    &.page-layoutgrid {
+        .comments-listview {
+            margin-right: -$spacing-large;
+            padding-right: $spacing-large;
+        }
+    }
+}
+
+
+
+

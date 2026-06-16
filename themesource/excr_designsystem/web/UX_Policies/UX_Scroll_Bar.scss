@@ -1,0 +1,30 @@
+/*Widget - Scroll Bar*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-standard-scrollbar{
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #0000000A 0% 0% no-repeat padding-box;
+        border-radius: 8px;
+        opacity: 1;
+        padding: 3px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #0000004D 0% 0% no-repeat padding-box;
+        border-radius: 5px;
+        opacity: 1;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #00000080 0% 0% no-repeat padding-box;
+        border-radius: 5px;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,456 @@
+/* ==========================================================================
+   Progress blocks
+
+   Default Mendix & Apollo wizards, progress bars and progress steps
+========================================================================== */
+.progress-stepper,
+.progress-stepper-mobile,
+.progress-stepper-listview ul,
+.progress-stepper-fluid-listview ul  {
+    display: flex;
+    flex-direction: row;
+}
+.progress-step {
+    position: relative;
+    padding: 0 (75px - ($spacing-large / 2));
+
+
+    label,
+    .mx-text:not(.progress-step-number) {
+        display: block;
+        font-weight: normal;
+        margin-top: $spacing-small;
+        text-align: center;
+
+        width: $spacing-large;
+        overflow: visible;
+    }
+
+    .mx-link {
+        color: $brand-default;
+
+        &:hover, &:focus, &:active {
+            text-decoration: none;
+            background-color: $brand-default;
+            color: #FFF;
+        }
+    }
+
+    // track
+    &:before,
+    &:after {
+        display: block;
+        position: absolute;
+        
+        left: 0;
+        right: 0;      
+        background-color: $bg-color-secondary;
+    }
+
+    &:before {
+        content:"";
+        height: $spacing-small;
+        top: calc((#{$spacing-large} / 2) - (#{$spacing-small} / 2));
+    }
+    &:after {
+        height: $spacing-smaller;
+        top: calc((#{$spacing-large} / 2) - (#{$spacing-smaller} / 2)); 
+        background-color: $brand-default-active;
+    }
+
+    &:first-child {
+        padding-left: 0;
+
+        &:before,
+        &:after {
+            left: ($spacing-large / 2);
+        }
+    }
+    &:last-child {
+        padding-right: 0;
+
+        &:before,
+        &:after {
+            right: ($spacing-large / 2);
+        }
+    }
+}
+.progress-step-number {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: auto;
+    
+    background-color: $bg-color-secondary;
+    min-width: $spacing-large;
+    border-radius: ($spacing-large / 2);
+
+    text-align: center;
+    height: $spacing-large;
+    line-height: $spacing-large;
+    color: $brand-default-active;
+}
+.progress-step-visited,
+.progress-step-active {
+    .progress-step-number {
+        background-color: $brand-default-active;
+        color: #FFF;
+    }
+
+    &:after {
+        content:"";
+    }
+}
+.progress-step-active {
+    label,
+    .mx-text:not(.progress-step-number) {
+        color: $brand-default;
+
+    }
+    &:after {
+        right: 50%;
+    }
+
+    &:last-child {
+        &:after {
+            left: ($spacing-large / 2);
+        }
+    }
+}
+
+.progress-stepper-fluid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .progress-step {
+        flex: 1;
+        padding:0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .progress-step-number {
+            position: relative;
+            transform: translateX(50%);
+        }
+
+        label,
+        .mx-text:not(.progress-step-number) {
+            width: auto;
+            position: relative;
+            transform: translateX(50%);
+        }
+
+        &:before,
+        &:after {
+            left: 0;
+            right: auto;
+            width: 100%;
+        }
+
+        &:first-child {
+            flex-basis: 0;
+            flex:0;
+            width: 0px;
+            overflow: visible;
+            align-items: flex-start;
+            
+            .progress-step-number, label, .mx-text {
+                transform: none;
+            }
+            
+        }
+
+        &:last-child {
+            .progress-step-number, label, .mx-text {
+                transform: none;
+            }
+        }
+    }
+}
+
+.progress-stepper-fluid-original {
+    .progress-step {
+        flex: 1;
+        padding:0;
+        text-align: center;
+
+        &:first-child {
+            &:before,
+            &:after {
+                left: 50%;
+            }
+        }
+
+        &:last-child {
+            &:before,
+            &:after {
+                right: 50%;
+            }
+        }
+
+        label,
+        .mx-text:not(.progress-step-number) {
+            width: auto;
+        }
+    }
+}
+
+.progress-stepper-vertical {
+    display: inline-block; // TEMP
+    flex-direction: column;
+
+    .progress-step {
+        padding: (75px / 2) 0;
+
+        label,
+        .mx-text:not(.progress-step-number) {
+            display: inline-block;
+            width: auto;
+            margin-left: $spacing-small;
+            margin-top:0;
+        }
+
+        &:before,
+        &:after {
+            left: $spacing-large / 2;
+            transform: translateX(-50%);
+            right: auto;
+            height: auto;
+            top: 0;
+            bottom: 0;
+        }
+
+        &:before {
+            width: $spacing-small;
+        }
+
+        &:after {
+            width: $spacing-smaller;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    .progress-step-active {
+        &:after {
+            bottom: 50%;
+        }
+    }
+}
+
+.progress-stepper-fluid-listview {
+    @extend %listview-clean;
+
+    ul {
+        justify-content: space-between;
+    }
+
+    li {
+        flex: 1;
+
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+        }
+
+        &:first-child {
+            width: 0px;
+            flex-basis: 0;
+            flex: 0;
+            overflow: visible;
+
+            .progress-step {
+                align-items: flex-start;
+
+                .progress-step-number,
+                label, .mx-text {
+                    transform: none;
+                }
+            }
+        }
+        &:last-child {
+            .progress-step {
+                .progress-step-number,
+                label, .mx-text {
+                    transform: none;
+                }
+            }
+        }
+    }
+
+    .progress-step {
+        padding:0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &:before, &:after {
+            left:0;
+            right: auto;
+            width: 100%;
+        }
+
+        .progress-step-number {
+            position: relative;
+            transform: translateX(50%);
+        }
+    
+        label,
+        .mx-text:not(.progress-step-number) {
+            width: auto;
+            position: relative;
+            transform: translateX(50%);
+        }
+    }  
+}
+
+.progress-stepper-listview {
+    @extend %listview-clean;
+
+    .progress-step {
+        padding-left: (75px - ($spacing-large / 2));
+        padding-right: (75px - ($spacing-large / 2));
+
+        &:before,
+        &:after {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    li {
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+        }
+
+        &:first-child {
+            .progress-step {
+                padding-left: 0;
+
+                &:before,
+                &:after {
+                    left: ($spacing-large / 2);
+                }
+            }
+        }
+        &:last-child {
+            .progress-step {
+                padding-right: 0;
+
+                &:before,
+                &:after {
+                    right: ($spacing-large / 2);
+                }
+            }
+        }
+    }
+}
+
+.pageheader {
+    .progress-step {
+        &:before {
+            background-color: #FFF;
+        }
+
+        .mx-link {
+            &:hover, &:focus, &:active {
+                text-decoration: none;
+                background-color: $brand-default;
+            }
+        }
+        
+    }
+    .progress-step-number {
+        background-color: #FFF;
+    }
+    .progress-step-active,
+    .progress-step-visited {
+        .progress-step-number {
+            background-color: $brand-default-active;
+
+            &:hover, &:focus {
+
+            }
+        }
+        
+    }
+}
+
+.progress-stepper-mobile {
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    .progress-step {
+        padding:0;
+        margin:0 $spacing-smaller;
+        width: $spacing-small;
+        height: $spacing-small;
+
+        border-radius: 50%;
+        background-color: $bg-color-secondary;
+
+
+
+        &:before, &:after {
+            content:none;
+        }
+    }
+    .progress-step-active,
+    .progress-step-visited {
+        background-color: $brand-default-active;
+    }
+
+    
+}
+
+.progress-stepper-mobile-wrapper {
+    padding-bottom: $spacing-small;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: calc(100% + 2 * #{$spacing-default});
+    margin: 0 (-$spacing-default);
+
+    .btn {
+        border:none;
+        border-radius: 0;
+        flex: 1;
+        margin:0;
+        padding: $spacing-small $spacing-small;
+
+        &:first-child {
+            margin-right: auto;
+            text-align: left;
+        }
+
+        &:last-child {
+            margin-left: auto;
+            text-align: right;
+        }
+    }
+}
+
+.mx-dataview-controls {
+    .progress-stepper-mobile {
+        .progress-step {
+            background-color: $btn-default-bg-hover;
+        }
+        .progress-step-active,
+        .progress-step-visited {
+            background-color: $brand-default-active;
+        }
+    }
+}
+
+.progress-stepper-mobile-form {
+    background-color: #FFF;
+    margin-top: -$spacing-small;
+    padding-top: $spacing-smaller;
+}

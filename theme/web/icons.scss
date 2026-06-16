@@ -1,0 +1,188 @@
+@import './custom-variables';
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?yiod18');
+  src:  url('fonts/icomoon.eot?yiod18#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?yiod18') format('truetype'),
+    url('fonts/icomoon.woff?yiod18') format('woff'),
+    url('fonts/icomoon.svg?yiod18#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'cmdMore24';
+  src:  url('fonts/cmdMore24/cmdMore24.eot?yiod18');
+  src:  url('fonts/cmdMore24/cmdMore24.eot?yiod18#iefix') format('embedded-opentype'),
+    url('fonts/cmdMore24/cmdMore24.ttf?yiod18') format('truetype'),
+    url('fonts/cmdMore24/cmdMore24.woff?yiod18') format('woff'),
+    url('fonts/cmdMore24/cmdMore24.svg?yiod18#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cmdAddDependency:before {
+  content: "\e901" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdViewVTwo:before {
+  content: "\e902" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdTreeSummary:before {
+  content: "\e903" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdListSummaryView:before {
+  content: "\e904" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdTableView:before {
+  content: "\e905" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdWorkProcessChangeStatus:before {
+  content: "\e906" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdCheckValidity:before {
+  content: "\e907" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-cmdPartLotAssign:before {
+  content: "\e900" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-typeWorkflowStep48:before {
+  content: "\e908" !important;
+  color: #000000;
+  font-size:24px;
+}
+
+.icon-typeWorkflowStep_New{
+  .path1:before {
+  content: "\e909" !important;
+  color: rgb(96, 96, 96);
+  font-size:24px;
+}
+.path2:before {
+  content: "\e90a" !important;
+  margin-left: -1em;
+  color: rgb(96, 96, 96);
+  font-size:24px;
+}
+.path3:before {
+  content: "\e90b" !important;
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+  font-size:24px;
+}
+.path4:before {
+  content: "\e90c" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+.path5:before {
+  content: "\e90d" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+.path6:before {
+  content: "\e90e" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+.path7:before {
+  content: "\e90f" !important;
+  margin-left: -1em;
+  color: rgb(96, 96, 96);
+  font-size:24px;
+}
+.path8:before {
+  content: "\e910" !important;
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+  font-size:24px;
+}
+.path9:before {
+  content: "\e911" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+.path10:before {
+  content: "\e912" !important;
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+  font-size:24px;
+}
+.path11:before {
+  content: "\e913" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+.path12:before {
+  content: "\e914" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+.path13:before {
+  content: "\e915" !important;
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+  font-size:24px;
+}
+.path14:before {
+  content: "\e916" !important;
+  margin-left: -1em;
+  color: rgb(20, 115, 145);
+  font-size:24px;
+}
+}
+
+.icon-cmdMore24 {
+    font-family: 'cmdMore24' !important;
+    &:before {
+      content: "\e900";
+      color: #464646 !important;
+    }
+}

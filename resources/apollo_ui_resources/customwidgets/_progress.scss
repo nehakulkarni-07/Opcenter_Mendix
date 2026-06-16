@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Progress
+
+   Default settings for featured Mendix progress widget
+========================================================================== */
+.progress {
+    @extend %shadow-minimal;
+    background-color: $Siemens_Blue_23;
+    height: 6px;
+    margin-bottom: 32px;
+    border-radius: 3px;
+    overflow: visible;
+
+    .progress-bar {
+        background-color: $brand-default-active;
+        font-size: $font-size-default;
+        color: $gray;
+        box-shadow: none;
+        border-radius: 3px;
+        text-align: right;
+        line-height: 36px;
+    }
+
+    .progress-bar-default {
+        background-color: $brand-default-active;
+    }
+
+    .progress-bar-success {
+        background-color: $brand-success;
+    }
+    .progress-bar-danger {
+        background-color: $brand-danger;
+    }
+}
+
+.widget-progress-bar {
+   
+    &.has-error {
+        display: flex;
+        flex-direction: row-reverse;
+        &:before {
+            position: relative;
+            margin-left: $spacing-default;
+            transform: none;
+            right: 0;
+            top: -2px;
+        }
+
+
+        .progress {
+            background-color: $Siemens_Red_24;
+            flex: 1;
+        }
+    }
+
+    &.progress-paused {
+        .progress {
+            background-color: $gray-light;
+        }
+        .progress-bar {
+            background-color: $gray-medium;
+        }
+    }
+
+
+}

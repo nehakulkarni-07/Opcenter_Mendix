@@ -1,0 +1,104 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Navigation
+
+   Default Mendix Navigation Bar
+========================================================================== */
+.mx-navbar {
+	margin: 0;
+	border-style: none;
+	border-radius: 0;
+	background-color: $navigation-bg;
+	.nav {
+		margin: 0; // weird -margin if screen gets small (bootstrap)
+
+		.mx-navbar-item {
+			a {
+				//display: flex;
+				//align-items: center;
+				min-height: $topbar-minimalheight;
+				padding: $navigation-item-padding;
+				vertical-align: middle;
+				color: $navigation-color;
+				//border-radius: 0;
+				font-size: $navigation-font-size;
+				//font-weight: $font-weight-normal;
+
+				/* Dropdown arrow */
+				.caret {
+					border-top-color: $navigation-color;
+					border-bottom-color: $navigation-color;
+				}
+				// Image
+				img {
+					width: 20px; // Default size (so it looks good)
+					height: auto;
+					margin-right: 0.5em;
+				}
+				.glyphicon {
+					top: 0;
+					margin-right: 0.5em;
+					vertical-align: middle;
+					font-size: $navigation-glyph-size;
+				}
+				&:hover,
+				&:focus,
+				&:active,
+				&.active {
+					text-decoration: none;
+					color: $navigation-color-hover;
+					background-color: $navigation-bg-hover;
+					.caret {
+						border-top-color: $navigation-color-active;
+						border-bottom-color: $navigation-color-active;
+					}
+				}
+				&:active,
+				&.active {
+					color: $navigation-color-active;
+					background-color: $navigation-bg-active;
+				}
+			}
+
+			&.active,
+			&.open {
+				a {
+					text-decoration: none;
+					color: $navigation-color-hover;
+					background-color: transparent;
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.1);
+					}
+					.caret {
+						border-top-color: $navigation-color-hover;
+						border-bottom-color: $navigation-color-hover;
+					}
+				}
+			}
+		}
+
+		.mx-navbar-subitem {
+			&.active {
+				a {
+					color: $navigation-sub-color-active;
+					background-color: rgba(255, 255, 255, 0.1);
+					.caret {
+						border-top-color: $navigation-sub-color-active;
+						border-bottom-color: $navigation-sub-color-active;
+					}
+				}
+			}
+		}
+	}
+
+	/* remove focus */
+	&:focus {
+		//outline: 0;
+	}
+}

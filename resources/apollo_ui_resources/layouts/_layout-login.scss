@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Apollo login layout
+   
+   The structure and rules for the loginpage
+========================================================================== */
+// NOTE: This entire page needs to be redesigned and remodeled
+.loginpage {
+    .loginpage-left {
+        .loginpage-image {
+            @if ($login-page-bg-path != false and $login-page-img-overlay == false) {
+                background-image: url($login-page-bg-path);
+            } @else if ($login-page-bg-path != false and $login-page-img-overlay == true) {
+                background: left / cover no-repeat url($login-page-bg-path); // Microsoft EDGE
+                background: left / cover no-repeat linear-gradient(to right, rgba($brand-default, 0.9) 0%, rgba($brand-default, 0.6) 100%), left / cover no-repeat url($login-page-bg-path);
+                background: left / cover no-repeat -moz-linear-gradient(left, rgba($brand-default, 0.9) 0%, rgba($brand-default, 0.6) 100%), left / cover no-repeat url($login-page-bg-path);
+                background: left / cover no-repeat -webkit-gradient(linear, left bottom, right bottom, color-stop(0%, rgba($brand-default, 0.9)), color-stop(100%, rgba($brand-primary, 0.6))), left / cover no-repeat url($login-page-bg-path);
+                background: left / cover no-repeat -webkit-linear-gradient(left, rgba($brand-default, 0.9) 0%, rgba($brand-default, 0.6) 100%), left / cover no-repeat url($login-page-bg-path);
+                background: left / cover no-repeat -o-linear-gradient(left, rgba($brand-default, 0.9) 0%, rgba($brand-default, 0.6) 100%), left / cover no-repeat url($login-page-bg-path);
+                background: left / cover no-repeat -ms-linear-gradient(left, rgba($brand-default, 0.9) 0%, rgba($brand-default, 0.6) 100%), left / cover no-repeat url($login-page-bg-path);
+            }
+        }
+    }
+
+    .loginpage-right {
+        position: relative;
+    }
+
+    .loginpage-logo {
+        width: auto;
+    }
+
+    .loginpage-logo-img {
+        height: 100px;
+    }
+
+    .login-credits {
+        text-align: center;
+
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+
+        color: $brand-default;
+    }
+
+
+    .loginpage-form {
+        .form-group {
+            .control-label {
+                font-weight: normal;
+                font-size: $font-size-default;
+                margin-bottom: $spacing-smaller;
+            }
+    
+            .inputwrapper {
+                .form-control {
+                    padding: $spacing-small $spacing-small $spacing-small 40px;
+            
+                    @if ($dense-app != true) {
+                        padding: ($spacing-small + $spacing-smaller);
+                        padding-left: 40px;
+                    }
+    
+                    &:focus {
+                        & ~ .glyphicon:before {
+                            color: $brand-default;
+                        }
+                    }
+                }
+    
+                .glyphicon {
+                    left: ($spacing-small + $spacing-smaller);
+                }
+            }
+        }
+    
+        .btn {
+            margin-top: $spacing-medium;
+            border-radius: $border-radius-default;
+            width: 100%;
+        }
+        
+    }
+}
+
+
+@media screen and (max-width:456px) {
+    .loginpage {
+        .loginpage-formwrapper {
+            width: 100%;
+            padding: 0 $spacing-default;
+        }
+
+        .loginpage-logo {
+            top: $spacing-default;
+            right: $spacing-default;
+        }
+        .loginpage-logo-img {
+            height: 75px;
+        }
+
+        .login-credits {
+            right: $spacing-default;
+            bottom: $spacing-default;
+        }
+    }
+    
+}

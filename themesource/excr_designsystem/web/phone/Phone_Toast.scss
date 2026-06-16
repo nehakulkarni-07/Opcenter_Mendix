@@ -1,0 +1,83 @@
+@import "../../../disw_designsystem/web/_disw-variables.scss";
+
+@media only screen and (max-width: 600px) and (orientation: portrait), (max-width: 800px) and (orientation: landscape) {
+//toast
+.mx-dialog-error, .mx-dialog-info, .mx-dialog-warning {
+    opacity: 1 !important;
+    top: $topbar-minimalheight + 240px !important;
+    right: $sidebar-minimalwidth + 20px !important;
+    left: 20px !important;
+    box-shadow: 0px 8px 16px #00000066 !important;
+    border-radius: 3px !important;
+    width: 280px !important;
+    min-height: 64px !important;
+    max-height: 140px !important;
+    .modal-header {
+        min-height: 0 !important;
+        padding: 0 !important;
+        .caption {
+            display: none;
+        }
+        .close {
+            z-index: 2;
+            position: absolute !important;
+            top: 12px !important;
+            right: 12px !important;
+            &:before {
+                color: #464646;
+                font-size: 8px;
+                font-weight: bold;
+            }
+        }
+    }
+    .modal-footer {
+        display: none;
+    }
+    .modal-body {
+        padding: 16px 56px 16px 18px !important;
+        display: flex;
+        align-items: center;
+    }
+    .modal-content {
+        border-radius: 3px !important;
+        line-height: 16px !important;
+        width: 280px !important;
+        min-height: 64px !important;
+        max-height: 140px !important;
+        height: auto !important;
+        margin-right: 0 !important;
+        p {
+            text-align: left !important;
+            font: normal normal normal 12px/16px Segoe UI !important;
+            letter-spacing: 0px !important;
+            color: #464646 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+        }
+    }
+}
+
+.mx-dialog-error {
+    .modal-content {
+        background: #FBEEED 0% 0% no-repeat padding-box !important;
+        border: 1px solid #E38984 !important;
+        border-left: 4px solid #DC0000 !important;
+    }
+}
+
+.mx-dialog-info {
+    .modal-content {
+        background: #E3FAFF 0% 0% no-repeat padding-box;
+        border: 1px solid #66C8DE !important;
+        border-left: 4px solid #005F87 !important;
+    }
+}
+
+.mx-dialog-warning {
+    .modal-content {
+        background: #FFF7CD 0% 0% no-repeat padding-box;  
+        border: 1px solid #FFC328 !important;
+        border-left: 4px solid #DC6914 !important;
+    }
+}
+}

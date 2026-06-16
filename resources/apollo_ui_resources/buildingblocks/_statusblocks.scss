@@ -1,0 +1,158 @@
+/* ==========================================================================
+   Status blocks
+
+   Status patterns for lists and other types.
+========================================================================== */
+
+// status bar used in tables and listviews
+%status-bar {
+    width: $spacing-small;
+    height: 100%;
+    min-height: ($spacing-large + $spacing-small);
+    background-color: $bg-color-secondary;
+
+    margin-right: $spacing-small;
+    margin-left: -$spacing-small;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    &[data-status='open'] {
+
+    }
+    &[data-status='inprogress'] {
+        background-color: $brand-default;
+    }
+    &[data-status='critical'],
+    &[data-status='danger'] {
+        background-color: $brand-danger;
+    }
+    &[data-status='high'],
+    &[data-status='warning'] {
+        background-color: $brand-warning;
+    }
+    &[data-status='success'] {
+        background-color: $brand-success;
+    }
+}
+
+%table-status-bar {
+    @extend %status-bar;
+
+    width: $spacing-smaller;
+    min-height: $spacing-medium;
+}
+
+
+// listview implementations
+.mx-listview {
+    .status-bar {
+        @extend %status-bar;
+    }
+}
+
+.listview-row-grid {
+    .status-bar {
+        margin-left: -$spacing-default;
+    }
+    .status-column {
+        [data-status='normal'],
+        [data-status='inprogress']  {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-default;
+            }
+        }
+
+        [data-status='high'],
+        [data-status='warning'] {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-warning;
+            }
+        }
+
+        [data-status='critical'],
+        [data-status='danger'] {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-danger;
+            }
+        }
+
+        [data-status='success'] {
+            .form-control-static {
+                font-weight: 600;
+                color: $brand-success;
+            }
+        }
+
+    }
+}
+
+// datagrid implementations
+.mx-datagrid {
+    .status-bar-column {
+        padding-left: $spacing-small;
+        padding-right: 0;
+
+        .mx-datagrid-data-wrapper {
+            display: none;
+        }
+
+        .mx-datagrid-sort-icon {
+            padding-left:0;
+        }
+
+        &:before {
+            content:"";
+            @extend %table-status-bar;
+
+            margin:0 0 0 $spacing-smaller;
+        }
+
+        &[title='inprogress'] {
+            &:before {
+                background-color: $brand-default;
+            }
+        }
+
+        &[title='high'],
+        &[title='warning'] {
+            &:before {
+                background-color: $brand-warning;
+            }
+        }
+        &[title='critical'],
+        &[title='danger'] {
+            &:before {
+                background-color: $brand-danger;
+            }
+        }
+        
+    }
+    th.status-bar-column {
+        &:before {
+            content:none;
+        }
+    }
+
+    .status-column {
+        &:not(th) {
+            font-weight: 600;
+            color: $brand-default;
+
+            &[title='inprogress'] {
+                color: $brand-default;
+            }
+            &[title='high'],
+            &[title='warning'] {
+                color: $brand-warning;
+            }
+            &[title='critical'],
+            &[title='danger'] {
+                color: $brand-danger;
+            }
+        }
+    }
+}

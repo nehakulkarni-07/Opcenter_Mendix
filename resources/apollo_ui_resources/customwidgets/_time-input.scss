@@ -1,0 +1,78 @@
+.time-input-widget {
+    &-panel {
+        li.time-input-widget-panel-select-option-selected {
+            background-color: $grid-bg-selected;
+        }
+        li.time-input-widget-panel-select li:hover {
+            background-color: $grid-bg-selected;
+        }
+
+        &-input {
+            font-size: $font-size-default;
+        }
+
+        &-select {
+            font-size: $font-size-default - 2;
+
+            li {
+                padding: 0 0 0 8px;
+            }
+        }
+    }
+
+    &-input {
+        @extend %control-transition;
+        border-radius: $border-radius-default;
+        border-color: $form-input-border-color;
+        box-shadow: none;
+        font-size: $font-size-default;
+        line-height: $line-height-controls;
+        flex: 1;
+        height: auto;
+    
+        &:focus {
+            @extend %shadow-minimal;
+        }
+    
+        @if ($dense-app) {
+            padding: $spacing-small;
+        } @else {
+            padding: ($spacing-small + 3px) ($spacing-small + $spacing-smaller);   
+        }
+    
+        &.disabled, &[disabled],
+        &.readonly, &[readonly] {
+            border-color: $gray-medium;
+            background-color: $gray-lighter;
+        }
+    }
+
+    &.focus {
+        .time-input-widget-input {
+            border-color: $form-input-border-focus-color;
+            outline: 0;
+            background-color: $form-input-bg-focus;
+            @extend %shadow-minimal;
+        }
+        .time-input-widget-icon {
+            &:before {
+                color: $font-base-color;
+            }
+        }
+    }
+
+    &-icon {
+        &::before {
+            @extend %control-transition;
+            font-family: 'apollo-icons', 'Glyphicons Halflings';
+            content: "\e023";
+            position: absolute;
+            right: 5px;
+            top: $font-size-default / 2;
+            height: 2 * $font-size-default;
+            width: 2 * $font-size-default;
+            font-size: 1.5 * $font-size-default;
+            color: $grid-border-color;
+        }
+    }
+}

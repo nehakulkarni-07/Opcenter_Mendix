@@ -1,0 +1,108 @@
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-group-cell{
+    padding: 8px;
+}
+
+/*Widget - Container*/
+/*UX Policies class - Required apply into widgets class manually*/
+.ux-default-cell{
+    background: #F0F0F0 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+    padding: 8px 8px;
+
+    display: flex;
+    flex-direction: row;
+
+    /*Widget - Container*/
+    .col-img{
+        padding-left: 8px;
+        padding-right: 4px;
+
+        max-width: 20%;
+
+        img{
+            width: 48px;
+            height: 48px;
+
+            max-width: none;
+        }
+    }
+
+    /*Widget - Container*/
+    .col-detail{
+        padding: 0px 4px;
+
+        display: flex;
+        flex-direction: column;
+
+        flex-grow: 1;
+
+        max-width: 70%;
+
+        /*Widget - Container*/
+        /*Title*/
+        > div:first-child{
+            &:has(img){
+                display: flex;
+                align-items: center;
+            }
+
+            /*Title*/
+            span{
+                text-align: left;
+                font: normal normal var(--font-weight-default) var(--font-size-cell)/var(--line-height-cell) Segoe UI;
+                letter-spacing: 0px;
+                color: #1E1E1E;
+                opacity: 1;
+            }
+
+            img{
+                width: var(--icon-width-compact);
+                height: var(--icon-height-compact);
+            }
+        }
+
+        /*Widget - Container*/
+        /*Details*/
+        > div:not(:first-child){
+            margin-top: 4px;
+
+            line-height: 0;
+        }
+
+        /*Widget - Container*/
+        /*Command Icons*/
+        > div:last-child{
+            line-height: 0;
+        }
+    }
+
+    /*Widget - Container*/
+    .col-action{
+        display: flex;
+        justify-content: flex-end;
+
+        padding-left: 4px;
+        padding-right: 8px;
+
+        max-width: 10%;
+
+        img{
+            width: var(--icon-width-compact);
+            height: var(--icon-height-compact);
+        }
+
+        .ux-notification-badge{
+            /*Dynamic value - Rewrite style value on own styling file*/
+            position: absolute;
+            top: 0px;
+            right: 12px;
+        }
+    }
+
+    margin-bottom: 1px;
+    border-bottom: 1px;
+    border-color: white;
+}

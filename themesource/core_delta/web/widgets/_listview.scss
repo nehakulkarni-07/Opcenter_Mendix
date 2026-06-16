@@ -1,0 +1,75 @@
+//
+// DISCLAIMER:
+// Do not change this file because it is core styling.
+// Customizing core files will make updating Atlas much more difficult in the future.
+// To customize any core styling, copy the part you want to customize to styles/web/sass/app/ so the core styling is overwritten.
+//
+
+/* ==========================================================================
+   Listview
+
+   Default Mendix Listview Widget. The list view shows a list of objects arranged vertically. Each object is shown using a template
+========================================================================== */
+
+.mx-listview {
+  // Remove widget padding
+  padding: 0;
+  /* Clear search button (overrides load more button stying) */
+
+  /* Load more button */ // NOTE: change this to loadmorebutton! TODO
+  & > .btn {
+    width: 100%;
+    margin: 10px auto;
+  }
+  ul {
+    margin: 0;
+    .mx-listview-empty {
+      border-style: none;
+      background-color: transparent;
+    }
+  }
+  li {
+    padding: $listview-padding-top $listview-padding-right
+      $listview-padding-bottom $listview-padding-left;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: $grid-border-color;
+    background-color: $grid-bg;
+
+    &:first-child {
+      //border-radius: 0; // Reset mxui listview style
+    }
+    &:last-child {
+      border-bottom: 1px solid $grid-border-color;
+      //border-radius: 0; // Reset mxui listview style
+    }
+    &:nth-child(2n + 1) {
+      //background-color: $grid-bg;
+    }
+    &:hover,
+    &:focus {
+      background-color: $grid-bg-hover;
+    }
+
+    &:active {
+      background-color: $grid-bg-selected;
+    }
+    &.selected {
+      background-color: $grid-bg-selected; // NOTE: fix the initial important statement
+    }
+  }
+}
+
+// Search bar
+.mx-listview-searchbar {
+  margin-bottom: $gutter-size;
+
+  .btn {
+    width: auto;
+  }
+}
+
+//== Phone specific
+//-------------------------------------------------------------------------------------------------------------------//
+.profile-phone .mx-listview {
+}

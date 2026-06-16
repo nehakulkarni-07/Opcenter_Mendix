@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Apollo
+
+   Default Apollo layer
+========================================================================== */
+
+//@import 'apollo-variables';
+
+// base
+@import 'base/mixins';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/loader';
+
+// widgets
+@import 'widgets/layoutgrid';
+@import 'widgets/buttons';
+@import 'widgets/alerts';
+@import 'widgets/inputs';
+@import 'widgets/datepicker';
+@import 'widgets/image';
+@import 'widgets/groupbox';
+@import 'widgets/dataview';
+@import 'widgets/grid';
+@import 'widgets/datagrid';
+@import 'widgets/table';
+@import 'widgets/listview';
+@import 'widgets/navigation';
+@import 'widgets/mobileheader';
+@import 'widgets/tabcontainer';
+@import 'widgets/modals';
+
+// custom widgets
+@import 'customwidgets/listviewtextsearch';
+@import 'customwidgets/dropdowndiv';
+@import 'customwidgets/filedropper';
+@import 'customwidgets/progress';
+@import 'customwidgets/treetable';
+@import 'customwidgets/treeview';
+@import 'customwidgets/matrix';
+@import 'customwidgets/time-input';
+@import 'customwidgets/attributehelper';
+
+// building blocks
+@import 'buildingblocks/advancedinputs';
+@import 'buildingblocks/breadcrumb';
+@import 'buildingblocks/profileblocks';
+@import 'buildingblocks/iconblocks';
+@import 'buildingblocks/progressblocks';
+@import 'buildingblocks/taskblocks';
+@import 'buildingblocks/statusblocks';
+@import 'buildingblocks/tags';
+@import 'buildingblocks/card';
+@import 'buildingblocks/tiles';
+@import 'buildingblocks/timelines';
+@import 'buildingblocks/teams';
+@import 'buildingblocks/notifications';
+@import 'buildingblocks/groupboxblocks';
+@import 'buildingblocks/visualisation';
+@import 'buildingblocks/pageheader';
+@import 'buildingblocks/taskui.scss';
+@import 'buildingblocks/commandbar';
+@import 'buildingblocks/sidetoolbar';
+@import 'buildingblocks/columns';
+@import 'buildingblocks/launchpadblocks';
+@import 'buildingblocks/forms';
+@import 'buildingblocks/comments';
+
+// layouts
+@import 'layouts/layout-apollo';
+@import 'layouts/layout-launchpad';
+@import 'layouts/layout-login';

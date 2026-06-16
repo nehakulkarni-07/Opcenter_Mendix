@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Columns
+
+   Default rules for page columns
+========================================================================== */
+.column-header {
+    padding: 19px $spacing-default;
+
+    // 58 - 60px
+    h2, h3 {
+        margin:0;
+        font-size: $font-size-h3;
+    }
+    .mx-title {
+        font-size: $font-size-h3;
+        margin:0;
+    }
+
+    .btn-toolbar {
+        margin-right: -5px;
+        text-align: right;
+
+        .btn, .mx-link, .mx-dataview, .widget-text-box-search {
+            margin-right: 5px;
+        }
+    }
+}
+
+.flex-column-header {
+    display: flex;
+
+    h2, h3 {
+        margin: 0;
+        font-size: $font-size-h3;
+    }
+
+    .column-header-toolbar {
+        margin-left: auto;
+        padding-left: $spacing-default;
+    }
+}
+
+.column-header-main {
+    flex: 1;
+}
+
+.column-header-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+    margin-right: -5px;
+
+    .btn, .mx-link, .mx-dataview, .widget-text-box-search, .form-group {
+        margin-right: 5px;
+    }
+
+    .widget-text-box-search, .form-group {
+        flex: 1;
+    }
+
+}
+.page-layoutgrid {
+    .column-header {
+        padding: 0 0 19px 0;
+        margin-top: -($spacing-large - 19px);
+    }
+}

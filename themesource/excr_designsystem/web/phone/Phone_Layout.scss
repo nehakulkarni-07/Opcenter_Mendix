@@ -1,0 +1,434 @@
+@media only screen and (max-width: 600px) and (orientation: portrait), (max-width: 800px) and (orientation: landscape) {
+$brand-gradient: radial-gradient(
+	ellipse farthest-side at 75% top,
+	#55a0b9 -100%,
+	#0077a1 40%,
+	#006b91 75%,
+	#006d94 calc(100% - 68px)
+);
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */ 
+  :root{
+    --max-height-full: 100svh;
+    --max-height-header: 15svh;
+    --max-height-top: 12svh;
+    --max-height-footer: 8svh;
+    --max-height-toolbar: 5svh;
+  }
+}
+
+@supports not (-webkit-touch-callout: none) {
+  /* CSS for other than iOS devices */ 
+  :root{
+    --max-height-full: 100svh;
+    --max-height-header: 15svh;
+    --max-height-top: 11svh;
+    --max-height-footer: 8svh;
+    --max-height-toolbar: 1svh;
+  }
+}
+
+.layout-atlas-phone {
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    min-height: var(--max-height-full);
+    justify-content:space-between;
+
+    background-color: #006487;
+    background-image: $brand-gradient;
+
+    .mx-scrollcontainer-wrapper.mx-scrollcontainer-nested {
+        overflow:hidden;
+        //height: 100% !important;
+    }
+
+    .mx-scrollcontainer-fixed > .mx-scrollcontainer-center > .mx-scrollcontainer-wrapper{
+        overflow:hidden;
+    }
+
+    .mx-scrollcontainer-fixed > .mx-scrollcontainer-middle > .mx-scrollcontainer-wrapper{
+        overflow:hidden;
+        //height: 100% !important;
+    }
+
+    .mx-scrollcontainer-fixed > .mx-scrollcontainer-left > .mx-scrollcontainer-wrapper{
+        overflow:hidden;
+        //height: 100% !important;
+    }
+
+    .mx-scrollcontainer-open {
+        display: block;
+    }
+
+    // Sidebar region
+    .region-sidebar {
+        background-color: #006487;
+        color: #FFF; 
+        height: var(--max-height-full);
+        z-index: 101;
+        position: relative;
+
+        .mx-navigationtree {
+            width: 100%;
+        }
+
+        .mx-name-sidebar_prod_logo {
+            margin-right: 5%;
+        }
+
+        .mx-navigationtree a {
+            display: flex;
+            font-size: medium;
+
+            .glyphicon {
+                margin-right: 4%;
+            }
+        }
+    }
+
+    .page-sidebar{
+        width: 100vw;
+        height: var(--max-height-full);
+
+        .app-icon{
+            margin: 8px 16px;
+        }
+
+        .header-title{
+            text-align: left;
+            font: normal normal normal 16px/21px Segoe UI;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+            display: flex;
+            align-items: center;
+            //justify-content: center;
+
+            span{
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                        line-clamp: 2; 
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        .toggle-menu{
+            text-align: right;
+            margin: 16px;
+
+            span{
+                padding: 0;
+            }
+        }
+
+        .sidebar-nav{
+            margin: 8px 16px;
+
+            li > a{
+                text-align: left;
+                font: normal normal normal 12px/16px Segoe UI;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                opacity: 1;
+                display: flex;
+                align-items: center;
+                //justify-content: center;
+
+                span{
+                    display: flex;
+                    align-items: center;
+                }
+
+                .glyphicon{
+                    margin: 8px 24px;
+
+                    &::before{
+                        font-size: 24px;
+                    }
+                }
+
+                img{
+                    margin: 8px 24px;
+                    width: 24px;
+                    height: 24px;
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+
+    // Topbar region
+    .region-topbar {
+        color: #FFF;
+        max-width: 100vw;
+        max-height: var(--max-height-header);
+
+        .header-content {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .mx-name-subHeader_cont {
+            display: inline-block;
+        }
+
+        .mx-name-headerTitle_cont {
+            font-size: larger;
+        }
+
+        .mx-name-toggle_header_cont {
+            display: inline-block;
+        }
+
+        .mx-name-subHeader_cont {
+            display: inline-block;
+        }
+
+        .mx-name-subHeader_cont {
+            font-size: larger;
+        }
+    }
+
+    .page-header{
+        width: 96vw;
+        padding: 0;
+        margin: 0;
+        border: none;
+
+        .app-icon{
+            margin: 8px 16px;
+        }
+
+        .header-title > div{
+            text-align: left;
+            font: normal normal normal 16px/21px Segoe UI;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+            display: flex;
+            align-items: center;
+            //justify-content: center;
+
+            span{
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                        line-clamp: 2; 
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        .siemens-logo{
+            margin: 16px;
+        }
+
+        .subheader-toggle{
+            text-align: center;
+            
+            span > span{
+                position: relative;
+                top: 1vh;
+
+                &::before{
+                    font-size: 24px;
+                }
+            }
+
+            a{
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                top: -0.1vh;
+                left: -0.5vw;
+                font: normal normal normal 10px/14px Segoe UI;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                opacity: 1;
+            }
+        }
+
+        .subheader-title > div{
+            text-align: left;
+            font: normal normal normal 16px/21px Segoe UI;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+            display: flex;
+            align-items: center;
+            //justify-content: center;
+
+            span{
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                        line-clamp: 2; 
+                -webkit-box-orient: vertical;
+            }
+        }
+    }
+
+    // Content region
+    .region-content {
+        // background-image: -ms-radial-gradient(75% top, ellipse farthest-side, #55A0B9 -100%, #0077A1 40%, #006B91 75%,  #006487 calc(100% - 68px));
+        // background-image: -moz-radial-gradient(75% top, ellipse farthest-side, #55A0B9 -100%, #0077A1 40%, #006B91 75%,  #006487 calc(100% - 68px));
+        // background-image: -o-radial-gradient(75% top, ellipse farthest-side, #55A0B9 -100%, #0077A1 40%, #006B91 75%, #006487 calc(100% - 68px));
+        // background-image: -webkit-gradient(radial, 75% top, 0, center top, 258, color-stop(-100, #55A0B9), color-stop(40, #0077A1), color-stop(75, #006B91), color-stop(100, #006487));
+        // background-image: -webkit-radial-gradient(75% top, ellipse farthest-side, #55A0B9 -100%, #0077A1 40%, #006B91 75%, #006487 calc(100% - 68px));
+        // background-image: radial-gradient(ellipse farthest-side at 75% top, #55A0B9 -100%, #0077A1 40%, #006B91 75%,  #006487 calc(100% - 68px));
+
+        width: 100%;
+        height: 100%;
+        padding: 0px 8px;
+        
+        .menu-background {
+            background: none;
+        }
+    }
+
+    // Page Content
+    .page-content{
+        width: 100%;
+        height: 100%;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        opacity: 1;
+    }
+
+    // Page Footer
+    .page-footer{
+        width: 100%;
+        // height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        //background-color: grey;
+        margin: 0px 8px;
+
+        button{
+            margin-top: 8px;
+            //padding: 0px;
+        }
+    }
+
+    // Page alignment
+    .flex-row-compact{
+        width: 100%;
+        max-width: 100vw;
+        display: flex;  
+    }
+
+    .flex-row{
+        width: 100%;
+        max-width: 100vw;
+        display: flex;
+        padding: 4px 1px;
+    }
+
+    .flex-col-float{
+        float: left;
+    }
+
+    .flex-col-20{
+        width: 20%;
+    }
+
+    .flex-col-25{
+        width: 25%;
+    }
+
+    .flex-col-30{
+        width: 30%;
+    }
+
+    .flex-col-40{
+        width: 40%;
+    }
+
+    .flex-col-50{
+        width: 50%;
+    }
+
+    .flex-col-60{
+        width: 60%;
+    }
+
+    .flex-col-70{
+        width: 70%;
+    }
+
+    .flex-col-75{
+        width: 75%;
+    }
+
+    .flex-col-95{
+        width: 95%;
+    }
+
+    // Common
+    .textcenter{
+        text-align: center;
+        padding: 1vh 0vw;
+    }
+}
+
+.phone-panel-popup {
+    width: 100% !important;
+    height: 100% !important;
+    position: fixed;
+    left: 0 !important;
+    top:0 !important;
+    right: auto !important;
+    padding: 0;
+
+    .mx-groupbox-collapsible .mx-groupbox-body {
+        padding: 2% 6%;
+    }
+
+    .mx-listview li {
+        border: none;
+    }
+
+    // Page Footer
+    .page-footer{
+        width: 95vw;
+        height: 6vh;
+        position: fixed;
+        display: flex;
+        justify-content: flex-end;
+        left: 0;
+        bottom: 0;
+        background-color: white;
+        margin: 0px 8px;
+
+        button{
+            margin-top: 8px;
+            padding: 0px;
+        }
+    }
+}
+
+.phone-popup {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+
+    .mx-groupbox-collapsible .mx-groupbox-body {
+        padding: 2% 6%;
+    }
+
+    .mx-listview li {
+        border: none;
+    }
+}
+
+// .MfgOrderMng-Heading
+// {
+//     font: normal normal normal 21px/27px Segoe UI;
+// }
+
+.MfgOrderMng-Button
+{
+    font: normal normal 600 12px/16px Segoe UI;
+}
+}

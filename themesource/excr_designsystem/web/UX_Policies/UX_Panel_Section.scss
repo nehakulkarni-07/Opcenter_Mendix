@@ -1,0 +1,46 @@
+/*Widget - Group Box*/
+/*Mendix Existing class - Overrides Mendix's existing style*/
+.mx-groupbox{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 3px;
+    opacity: 1;
+
+    /*Panel Sections have an 8 pixel gap both vertically and horizontally when they are placed on a page.*/
+    margin: 4px 4px;
+
+    .mx-groupbox-header{
+        height: 32px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        display: flex;
+        align-items: center;
+        padding: 0px;
+
+        i{
+            margin: 14px 12px;
+            width: var(--icon-width-compact);
+            height: var(--icon-height-compact);
+
+            &.mx-icon-substract{
+                content: url("/img/EXCR_DesignSystem$Icon_Repository$miscDownArrowBlack16.svg");
+            }
+
+            &.mx-icon-add{
+                content: url("/img/EXCR_DesignSystem$Icon_Repository$miscRightArrow16.svg");
+            }
+        }
+
+        text-align: left;
+        font: normal normal var(--font-weight-default) var(--font-size-panel)/var(--line-height-panel) Segoe UI;
+        letter-spacing: 0px;
+        color: #1E1E1E;
+        opacity: 1;
+    }
+
+    .mx-groupbox-body{
+        padding-top: 4px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

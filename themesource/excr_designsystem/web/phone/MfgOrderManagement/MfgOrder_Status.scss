@@ -1,0 +1,231 @@
+@media only screen and (max-width: 600px) and (orientation: portrait), (max-width: 800px) and (orientation: landscape) {
+// Status color
+$statusColorBorder: #e6e6e6;
+$statusColorBackground: white;
+$statusColorCompleted: #2a932a;
+$statusColorFailed: #bf1b1b;
+$statusColorInProgress: #ffb900;
+$statusColorNotStart: #f0f0f0;
+$statusColorUnconfigured: white;
+
+.status-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+
+    .mx-name-dv_status_mfgorder{
+        > .mx-dataview-content{
+            height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-footer) - var(--max-height-toolbar));
+            //max-height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-footer) - var(--max-height-toolbar));
+            overflow: auto;
+        }
+
+        .mx-dataview-controls{
+            box-shadow: none;
+        }
+    }
+
+    .mx-name-dv_scannerHelper{
+        > .mx-dataview-content{
+            height: calc(var(--max-height-full) - var(--max-height-header) - var(--max-height-footer) - var(--max-height-toolbar));
+            overflow: auto;
+        }
+    }
+}
+
+// Product image background
+.status-product-background{
+    background-color: $statusColorNotStart;
+    text-align: center;
+
+    img{
+        display: inline;
+    }
+}
+
+// Progress Bar Breadcrumbs
+.status-breadcrumb-notstarted{
+    // background-color: $statusColorNotStart;
+    // box-shadow: 0 0 0 1px $statusColorBorder;
+    background: $statusColorNotStart 0% 0% no-repeat padding-box;
+}
+
+.status-breadcrumb-completed{
+    //background-color: $statusColorCompleted;
+    background: $statusColorCompleted 0% 0% no-repeat padding-box;
+}
+
+.status-breadcrumb-progress{
+    //background-color: $statusColorInProgress;
+    background: $statusColorInProgress 0% 0% no-repeat padding-box;
+}
+
+.status-breadcrumb-issue{
+    //background-color: $statusColorFailed;
+    background: $statusColorFailed 0% 0% no-repeat padding-box;
+}
+
+.status-breadcrumb-unconfigured{
+    // background-color: $statusColorUnconfigured;
+    // box-shadow: 0 0 0 1px $statusColorBorder;
+    background: $statusColorUnconfigured 0% 0% no-repeat padding-box;
+}
+
+.status-breadcrumb-round-corner{ 
+    //height: 46px;
+    width: 30vw;
+    border-radius: 16px;
+    opacity: 1;
+    //display: inline-block;
+    //border: 1px solid $statusColorBorder;
+    //position: relative;
+    top: 5%;
+    //margin-top: -1.5%;
+}
+
+.status-breadcrumb-line-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .progress-step-number > img{
+        filter: brightness(0) invert(1);
+    }
+}
+
+.status-breadcrumb-line-border{
+    //top: 100px;
+    //left: 28px;
+    width: 50vw;
+    height: 4px;
+
+    margin-left: -2vw;
+    //margin-top: 2vh;
+    //position: relative;
+    //font-weight:bold;
+
+    //background: $statusColorBorder 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+// Mfg Order Info
+.status-mfgordergroup{
+    margin: auto;
+    width: 90%;
+    text-align: left;
+}
+
+.status-optime-group{
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.status-optime-inTime{
+    label{
+        color: #1D731C;
+    }
+
+    span{
+        color: #1D731C;
+
+        &:before{
+            content: "On Time in ";
+        }
+    }
+}
+
+.status-optime-progressTime{
+    label{
+        color: #B64C24;
+    }
+
+    span{
+        color: #B64C24;
+
+        &:before{
+            content: "Running ";
+        }
+    }
+}
+
+.status-optime-delayTime{
+    label{
+        color: #DC0000;
+    }
+
+    span{
+        color: #DC0000;
+
+        &:before{
+            content: "Overtime in ";
+        }
+    }
+}
+
+.status-optime-notStarted{
+    label{
+        color: #686868;
+    }
+
+    span{
+        color: #686868;
+
+        &:before{
+            content: "Not Started ";
+        }
+    }
+}
+
+.status-optime-unconfigured{
+    visibility: hidden;
+}
+
+.status-completedqty-orderqty{
+    font: normal normal normal 12px/13px Segoe UI;
+}
+
+.status-mfgorder-details-label{
+    text-align: left;
+    font: normal normal 600 12px/16px Segoe UI;
+    letter-spacing: 0px;
+    color: #1E1E1E;
+    opacity: 1;
+    margin-right: 16px;
+}
+
+.status-mfgorder-details-value{
+    text-align: left;
+    font: normal normal normal 12px/16px Segoe UI;
+    letter-spacing: 0px;
+    color: #464646;
+    opacity: 1;
+    //padding-left: 16px;
+}
+
+.status-ontime-inTime{
+    //color: $statusColorCompleted;
+    color: #1D731C;
+}
+
+.status-ontime-delayTime{
+    //color: $statusColorFailed;
+    color: #DC0000;
+}
+
+.status-ontime-notStarted{
+    //color: $statusColorNotStart;
+    color: #686868;
+}
+
+//Start Button
+.status-startbutton-hide{
+    display: none;
+}
+}

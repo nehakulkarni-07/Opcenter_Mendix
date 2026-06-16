@@ -1,0 +1,56 @@
+@import "./custom-variables";
+ .techjobcontainer {
+     .mx-scrollcontainer {
+         position: absolute;
+         height: 96%;
+         top: 2rem;
+         overflow: hidden;
+    }
+     .mx-scrollcontainer-center {
+         width:96.5%;
+         overflow: hidden !important;
+         padding-right: 0px !important;
+         padding-bottom: 0px !important;
+         padding-top: 16px !important;
+         padding-left: 0px !important;
+         height: 100%;
+         .mx-scrollcontainer-wrapper {
+             height: 100% !important;
+             overflow: auto;
+        }
+    }
+     .mx-scrollcontainer-right {
+         position: fixed;
+         right: 10px;
+         top: 87px;
+    }
+     .mx-scrollcontainer-top {
+         position: fixed;
+         width: 100%;
+         z-index: 100;
+    }
+}
+ @media only screen and (min-width: 1200) and (max-width: 2000px){
+     .techjobcontainer{
+         .mx-scrollcontainer-center {
+             width:96%;
+        }
+    }
+}
+ @media only screen and (min-width: 1024px) and (max-width: 1199px){
+     .techjobcontainer{
+         .mx-scrollcontainer-center {
+             width:94%;
+        }
+    }
+}
+.Techn-grid{
+  .mx-layoutgrid{
+      padding-left: 0px !important;
+  }
+}
+.TechnAlign{
+    .widget-gallery-filter{
+        z-index: 1 !important;
+    }
+}
