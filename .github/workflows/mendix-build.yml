@@ -98,7 +98,10 @@ jobs:
           Copy-Item "$extractPath\native" "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force
           Copy-Item "$extractPath\sass" "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force
 
-          Write-Host "Deployment files updated successfully."
+          Write-Host "Restoring mxclientsystem from Mendix Runtime installation..."
+          Copy-Item "C:\Program Files\Mendix\10.24.4.77222\runtime\mxclientsystem" "$env:SERVICE_PROJECT_DIR\web\mxclientsystem" -Recurse -Force
+
+          Write-Host "Deployment files updated successfully."          Write-Host "Deployment files updated successfully."
         env:
           APP_NAME: ${{ env.APP_NAME }}
           VERSION: ${{ env.VERSION }}
