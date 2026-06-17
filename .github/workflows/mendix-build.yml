@@ -1,5 +1,4 @@
-
-name: Opcenter Mendix CI - Build, Deploy Local, Restart Runtime
+name: Opcenter Mendix CI - Build, Deploy to Mendix Core App Service
 
 on:
   push:
@@ -13,8 +12,9 @@ env:
   MENDIX_VERSION: 10.24.4.77222
   JAVA_VERSION_DIR: jdk-21.0.5.11-hotspot
   VERSION: 1.0.0
-  PROJECT_DIR: C:\Users\Neha Kulkarni\Mendix\Opcenter_EXCR_MX_Core_2510_1_0_0001-main
   CAMSTAR_DEPLOY_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\MDA\Core
+  SERVICE_PROJECT_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\Apps\Mendix Core App\Project
+  SERVICE_NAME: Mendix Core App
 
 jobs:
   build:
@@ -23,26 +23,12 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Stop running Mendix Runtime
-        shell: cmd
-        run: |
-          echo Checking for running javaw.exe (Mendix Runtime)...
-          tasklist | findstr /i "javaw.exe"
-          if errorlevel 1 (
-            echo No running javaw.exe found.
-          ) else (
-            echo Stopping existing Mendix Runtime process...
-            taskkill /F /IM javaw.exe
-            timeout /t 5
-          )
-          exit /b 0
-
       - name: Build .mda package
         shell: cmd
         run: |
           set MXBUILD="C:\Program Files\Mendix\%MENDIX_VERSION%\modeler\mxbuild.exe"
-          set JAVA="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%\bin\java.exe"
-          set JAVAHOME="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%"
+          set JAVA="C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot\bin\java.exe"
+          set JAVAHOME="C:\Program Files\Microsoft\jdk-21.0.10.7-hotspot"
           if not exist releases mkdir releases
           echo N | %MXBUILD% --target=package ^
             --output=releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda ^
@@ -66,7 +52,6 @@ jobs:
         run: |
           if not exist "%CAMSTAR_DEPLOY_DIR%\backup" mkdir "%CAMSTAR_DEPLOY_DIR%\backup"
           for %%f in ("%CAMSTAR_DEPLOY_DIR%\*.mda") do (
-            echo Backing up %%~nxf
             move "%%f" "%CAMSTAR_DEPLOY_DIR%\backup\%%~nf-backup-%GITHUB_RUN_NUMBER%.mda"
           )
 
@@ -74,22 +59,59 @@ jobs:
         shell: cmd
         run: |
           copy "releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda" "%CAMSTAR_DEPLOY_DIR%\%APP_NAME%.mda"
-          dir "%CAMSTAR_DEPLOY_DIR%"
 
-      - name: Build deployment folder for local runtime
+      - name: Stop Mendix Core App service
         shell: cmd
         run: |
-          set MXBUILD="C:\Program Files\Mendix\%MENDIX_VERSION%\modeler\mxbuild.exe"
-          set JAVA="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%\bin\java.exe"
-          set JAVAHOME="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%"
-          echo N | %MXBUILD% --target=deploy ^
-            --java-home=%JAVAHOME% ^
-            --java-exe-path=%JAVA% ^
-            "%PROJECT_DIR%\%APP_NAME%.mpr"
+          echo Stopping service...
+          net stop "%SERVICE_NAME%"
+          timeout /t 5
 
-      - name: Start Mendix Runtime (localhost:8082)
+      - name: Backup service Project folder
+        shell: powershell
+        run: |
+          $backupDir = "$env:SERVICE_PROJECT_DIR\..\Project-backups"
+          if (-not (Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir }
+          $timestamp = "build${env:GITHUB_RUN_NUMBER}"
+          Compress-Archive -Path "$env:SERVICE_PROJECT_DIR\model","$env:SERVICE_PROJECT_DIR\web","$env:SERVICE_PROJECT_DIR\native","$env:SERVICE_PROJECT_DIR\sass" -DestinationPath "$backupDir\project-backup-$timestamp.zip" -Force
+        env:
+          SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
+
+      - name: Deploy new build to service Project folder
+        shell: powershell
+        run: |
+          $mdaPath = "releases\${env:APP_NAME}-${env:VERSION}-build${env:GITHUB_RUN_NUMBER}.mda"
+          $zipPath = "releases\temp_extract.zip"
+          Copy-Item $mdaPath $zipPath -Force
+          $extractPath = "releases\extracted"
+          if (Test-Path $extractPath) { Remove-Item $extractPath -Recurse -Force }
+          Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
+
+          Remove-Item "$env:SERVICE_PROJECT_DIR\model" -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item "$env:SERVICE_PROJECT_DIR\web" -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force -ErrorAction SilentlyContinue
+
+          Copy-Item "$extractPath\model" "$env:SERVICE_PROJECT_DIR\model" -Recurse -Force
+          Copy-Item "$extractPath\web" "$env:SERVICE_PROJECT_DIR\web" -Recurse -Force
+          Copy-Item "$extractPath\native" "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force
+          Copy-Item "$extractPath\sass" "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force
+
+          Write-Host "Deployment files updated successfully."
+        env:
+          APP_NAME: ${{ env.APP_NAME }}
+          VERSION: ${{ env.VERSION }}
+          SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
+
+      - name: Start Mendix Core App service
         shell: cmd
         run: |
-          set JAVA="C:\Program Files\Eclipse Adoptium\%JAVA_VERSION_DIR%\bin\javaw.exe"
-          set LAUNCHER="C:\Program Files\Mendix\%MENDIX_VERSION%\runtime\launcher\runtimelauncher.jar"
-          start "" %JAVA% -DMX_LOG_LEVEL=INFO -Djava.library.path="%PROJECT_DIR%\deployment\model\lib\userlib" -Dfile.encoding=UTF-8 -Djava.io.tmpdir="%PROJECT_DIR%\deployme
+          echo Starting service...
+          net start "%SERVICE_NAME%"
+          timeout /t 10
+
+      - name: Verify service is running
+        shell: cmd
+        run: |
+          sc query "%SERVICE_NAME%"
+          netstat -ano | findstr :8080
