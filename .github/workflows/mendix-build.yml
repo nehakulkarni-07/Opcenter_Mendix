@@ -69,7 +69,7 @@ jobs:
           exit /b 0
 
       - name: Backup service Project folder
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
           $backupDir = "$env:SERVICE_PROJECT_DIR\..\Project-backups"
           if (-not (Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir }
@@ -79,7 +79,7 @@ jobs:
           SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
 
       - name: Deploy new build to service Project folder
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
           $mdaPath = "releases\${env:APP_NAME}-${env:VERSION}-build${env:GITHUB_RUN_NUMBER}.mda"
           $zipPath = "releases\temp_extract.zip"
