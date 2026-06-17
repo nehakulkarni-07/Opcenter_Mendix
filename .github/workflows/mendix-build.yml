@@ -65,7 +65,8 @@ jobs:
         run: |
           echo Stopping service...
           net stop "%SERVICE_NAME%"
-          timeout /t 5
+          ping -n 5 127.0.0.1 >nul
+          exit /b 0
 
       - name: Backup service Project folder
         shell: powershell
@@ -108,7 +109,7 @@ jobs:
         run: |
           echo Starting service...
           net start "%SERVICE_NAME%"
-          timeout /t 10
+          ping -n 5 127.0.0.1 >nul
 
       - name: Verify service is running
         shell: cmd
