@@ -1,12 +1,12 @@
 name: Opcenter Mendix CI - Build, Deploy to Mendix Core App Service
-
+ 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-
+ 
 env:
   APP_NAME: Opcenter_EXCR_MX_Core_2510_1_0_0001
   MENDIX_VERSION: 10.24.4.77222
@@ -15,14 +15,14 @@ env:
   CAMSTAR_DEPLOY_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\MDA\Core
   SERVICE_PROJECT_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\Apps\Mendix Core App\Project
   SERVICE_NAME: Mendix Core App
-
+ 
 jobs:
   build:
     runs-on: self-hosted
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
-
+ 
       - name: Build .mda package
         shell: cmd
         run: |
@@ -35,18 +35,18 @@ jobs:
             --java-home=%JAVAHOME% ^
             --java-exe-path=%JAVA% ^
             %APP_NAME%.mpr
-
+ 
       - name: Validate build output
         shell: cmd
         run: if not exist releases\*.mda ( echo BUILD FAILED & exit 1 )
-
+ 
       - name: Upload .mda artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.APP_NAME }}-mda-${{ github.run_number }}
           path: releases/*.mda
           retention-days: 30
-
+ 
       - name: Backup existing Camstar .mda
         shell: cmd
         run: |
@@ -54,12 +54,12 @@ jobs:
           for %%f in ("%CAMSTAR_DEPLOY_DIR%\*.mda") do (
             move "%%f" "%CAMSTAR_DEPLOY_DIR%\backup\%%~nf-backup-%GITHUB_RUN_NUMBER%.mda"
           )
-
+ 
       - name: Replace Camstar .mda
         shell: cmd
         run: |
           copy "releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda" "%CAMSTAR_DEPLOY_DIR%\%APP_NAME%.mda"
-
+ 
       - name: Stop Mendix Core App service
         shell: cmd
         run: |
@@ -67,7 +67,7 @@ jobs:
           net stop "%SERVICE_NAME%"
           ping -n 5 127.0.0.1 >nul
           exit /b 0
-
+ 
       - name: Backup service Project folder
         shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
@@ -77,7 +77,7 @@ jobs:
           Compress-Archive -Path "$env:SERVICE_PROJECT_DIR\model","$env:SERVICE_PROJECT_DIR\web","$env:SERVICE_PROJECT_DIR\native","$env:SERVICE_PROJECT_DIR\sass" -DestinationPath "$backupDir\project-backup-$timestamp.zip" -Force
         env:
           SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
-
+ 
       - name: Deploy new build to service Project folder
         shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
@@ -87,33 +87,31 @@ jobs:
           $extractPath = "releases\extracted"
           if (Test-Path $extractPath) { Remove-Item $extractPath -Recurse -Force }
           Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
-
+ 
           Remove-Item "$env:SERVICE_PROJECT_DIR\model" -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:SERVICE_PROJECT_DIR\web" -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force -ErrorAction SilentlyContinue
-
+ 
           Copy-Item "$extractPath\model" "$env:SERVICE_PROJECT_DIR\model" -Recurse -Force
           Copy-Item "$extractPath\web" "$env:SERVICE_PROJECT_DIR\web" -Recurse -Force
           Copy-Item "$extractPath\native" "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force
           Copy-Item "$extractPath\sass" "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force
-
+ 
           Write-Host "Restoring mxclientsystem from Mendix Runtime installation..."
           Copy-Item "C:\Program Files\Mendix\10.24.4.77222\runtime\mxclientsystem" "$env:SERVICE_PROJECT_DIR\web\mxclientsystem" -Recurse -Force
-
-          Write-Host "Deployment files updated successfully."          Write-Host "Deployment files updated successfully."
+ 
+          Write-Host "Deployment files updated successfully."
         env:
           APP_NAME: ${{ env.APP_NAME }}
           VERSION: ${{ env.VERSION }}
           SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
-
-      - name: Start Mendix Core App service
-        shell: cmd
+ 
+      - name: Sync database and start Mendix Core App service
+        shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
-          echo Starting service...
-          net start "%SERVICE_NAME%"
-          ping -n 5 127.0.0.1 >nul
-
+          C:\runner-op\sync-database.ps1 -DatabasePassword "${{ secrets.MENDIX_DB_PASSWORD }}"
+ 
       - name: Verify service is running
         shell: cmd
         run: |
