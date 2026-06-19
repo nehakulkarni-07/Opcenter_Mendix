@@ -100,7 +100,9 @@ jobs:
  
           Write-Host "Restoring mxclientsystem from Mendix Runtime installation..."
           Copy-Item "C:\Program Files\Mendix\10.24.4.77222\runtime\mxclientsystem" "$env:SERVICE_PROJECT_DIR\web\mxclientsystem" -Recurse -Force
- 
+          Write-Host "Restoring IIS web.config with reverse proxy rule..."
+          $webConfig = '<?xml version="1.0" encoding="UTF-8"?><configuration><system.webServer><httpProtocol><customHeaders><add name="X-Test-Header" value="ConfigIsBeingRead" /></customHeaders></httpProtocol><rewrite><rules><rule name="ReverseProxyToMendix" patternSyntax="Wildcard" stopProcessing="true"><match url="*" /><action type="Rewrite" url="http://localhost:8080/{R:0}" /></rule></rules></rewrite></system.webServer></configuration>'
+          Set-Content -Path "$env:SERVICE_PROJECT_DIR\web\web.config" -Value $webConfig -Encoding UTF8
           Write-Host "Deployment files updated successfully."
         env:
           APP_NAME: ${{ env.APP_NAME }}
