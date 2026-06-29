@@ -167,3 +167,50 @@ jobs:
 
           Write-Host ""
           Write-Host "All smoke tests passed! Deployment verified successfully."
+
+      - name: API tests - verify OData endpoints
+        shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
+        run: |
+          Write-Host "Running OData API tests..."
+
+          # Get token from database
+          $connectionString = "Server=localhost;Database=Mendix;User Id=Mendix;Password=${{ secrets.MENDIX_DB_PASSWORD }};TrustServerCertificate=True"
+          $connection = New-Object System.Data.SqlClient.SqlConnection($connectionString)
+          $connection.Open()
+          $query = "SELECT TOP 1 accesstoken FROM [excr_commons`$configuration] WHERE accesstoken IS NOT NULL ORDER BY id DESC"
+          $cmd = New-Object System.Data.SqlClient.SqlCommand($query, $connection)
+          $token = $cmd.ExecuteScalar()
+          $connection.Close()
+
+          if (-not $token) {
+            throw "FAILED: Could not retrieve API token from database"
+          }
+          Write-Host "Token retrieved successfully from database"
+
+          $headers = @{
+            "CoreURL"       = "https://localhost"
+            "CoreToken"     = $token
+            "Authorization" = "Basic " + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("camstaradmin:${{ secrets.MENDIX_DB_PASSWORD }}"))
+          }
+          $baseUrl = "http://localhost:8080/odata/entityfactoryservice/v1"
+
+          # Test each OData endpoint
+          foreach ($endpoint in @("Resources", "Operations", "Specs", "ResourceLayouts", "OpDashContainers")) {
+            $r = Invoke-WebRequest -Uri "$baseUrl/$endpoint" -Headers $headers -UseBasicParsing
+            $count = ($r.Content | ConvertFrom-Json).value.Count
+            if ($r.StatusCode -ne 200) {
+              throw "FAILED: $endpoint returned status $($r.StatusCode)"
+            }
+            Write-Host "PASSED: $endpoint - Status 200 - Records: $count"
+          }
+
+          # Specific test: Resources must have at least 1 record
+          $resourceResponse = Invoke-WebRequest -Uri "$baseUrl/Resources" -Headers $headers -UseBasicParsing
+          $resourceCount = ($resourceResponse.Content | ConvertFrom-Json).value.Count
+          if ($resourceCount -lt 1) {
+            throw "FAILED: Resources endpoint returned 0 records - expected at least 1"
+          }
+          Write-Host "PASSED: Resources has $resourceCount record(s) - data confirmed"
+
+          Write-Host ""
+          Write-Host "All OData API tests passed!"
