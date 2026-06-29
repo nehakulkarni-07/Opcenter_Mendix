@@ -135,14 +135,16 @@ jobs:
           }
           Write-Host "PASSED: App responding on port 8080 (Status: 200)"
 
-         # Test 2: Check IIS reverse proxy on port 85
+        # Test 2: Check IIS reverse proxy on port 85
           Write-Host "Test 2: Checking IIS reverse proxy on port 85..."
-          $curlResult = & curl.exe -k -s -o NUL -w "%{http_code}" https://localhost:85
+          $curlFormat = '%{http_code}'
+          $curlResult = & curl.exe -k -s -o NUL -w $curlFormat https://localhost:85
           if ($curlResult -eq "200") {
             Write-Host "PASSED: App responding on port 85 (Status: 200)"
           } else {
             throw "FAILED: App not responding on port 85 (Status: $curlResult)"
           }
+
           # Test 3: Check the xas/ API endpoint (Mendix client API)
           Write-Host "Test 3: Checking Mendix client API endpoint..."
           try {
