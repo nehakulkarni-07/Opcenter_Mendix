@@ -1,12 +1,12 @@
 name: Opcenter Mendix CI - Build, Deploy to Mendix Core App Service
- 
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
- 
+
 env:
   APP_NAME: Opcenter_EXCR_MX_Core_2510_1_0_0001
   MENDIX_VERSION: 10.24.4.77222
@@ -15,14 +15,14 @@ env:
   CAMSTAR_DEPLOY_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\MDA\Core
   SERVICE_PROJECT_DIR: C:\Program Files (x86)\Camstar\Mendix Solutions\Apps\Mendix Core App\Project
   SERVICE_NAME: Mendix Core App
- 
+
 jobs:
   build:
     runs-on: self-hosted
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
- 
+
       - name: Build .mda package
         shell: cmd
         run: |
@@ -35,18 +35,18 @@ jobs:
             --java-home=%JAVAHOME% ^
             --java-exe-path=%JAVA% ^
             %APP_NAME%.mpr
- 
+
       - name: Validate build output
         shell: cmd
         run: if not exist releases\*.mda ( echo BUILD FAILED & exit 1 )
- 
+
       - name: Upload .mda artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.APP_NAME }}-mda-${{ github.run_number }}
           path: releases/*.mda
           retention-days: 30
- 
+
       - name: Backup existing Camstar .mda
         shell: cmd
         run: |
@@ -54,12 +54,12 @@ jobs:
           for %%f in ("%CAMSTAR_DEPLOY_DIR%\*.mda") do (
             move "%%f" "%CAMSTAR_DEPLOY_DIR%\backup\%%~nf-backup-%GITHUB_RUN_NUMBER%.mda"
           )
- 
+
       - name: Replace Camstar .mda
         shell: cmd
         run: |
           copy "releases\%APP_NAME%-%VERSION%-build%GITHUB_RUN_NUMBER%.mda" "%CAMSTAR_DEPLOY_DIR%\%APP_NAME%.mda"
- 
+
       - name: Stop Mendix Core App service
         shell: cmd
         run: |
@@ -67,7 +67,7 @@ jobs:
           net stop "%SERVICE_NAME%"
           ping -n 5 127.0.0.1 >nul
           exit /b 0
- 
+
       - name: Backup service Project folder
         shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
@@ -77,7 +77,7 @@ jobs:
           Compress-Archive -Path "$env:SERVICE_PROJECT_DIR\model","$env:SERVICE_PROJECT_DIR\web","$env:SERVICE_PROJECT_DIR\native","$env:SERVICE_PROJECT_DIR\sass" -DestinationPath "$backupDir\project-backup-$timestamp.zip" -Force
         env:
           SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
- 
+
       - name: Deploy new build to service Project folder
         shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
@@ -87,80 +87,83 @@ jobs:
           $extractPath = "releases\extracted"
           if (Test-Path $extractPath) { Remove-Item $extractPath -Recurse -Force }
           Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
- 
+
           Remove-Item "$env:SERVICE_PROJECT_DIR\model" -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:SERVICE_PROJECT_DIR\web" -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force -ErrorAction SilentlyContinue
- 
+
           Copy-Item "$extractPath\model" "$env:SERVICE_PROJECT_DIR\model" -Recurse -Force
           Copy-Item "$extractPath\web" "$env:SERVICE_PROJECT_DIR\web" -Recurse -Force
           Copy-Item "$extractPath\native" "$env:SERVICE_PROJECT_DIR\native" -Recurse -Force
           Copy-Item "$extractPath\sass" "$env:SERVICE_PROJECT_DIR\sass" -Recurse -Force
- 
+
           Write-Host "Restoring mxclientsystem from Mendix Runtime installation..."
           Copy-Item "C:\Program Files\Mendix\10.24.4.77222\runtime\mxclientsystem" "$env:SERVICE_PROJECT_DIR\web\mxclientsystem" -Recurse -Force
+
           Write-Host "Restoring IIS web.config with reverse proxy rule..."
           $webConfig = '<?xml version="1.0" encoding="UTF-8"?><configuration><system.webServer><httpProtocol><customHeaders><add name="X-Test-Header" value="ConfigIsBeingRead" /></customHeaders></httpProtocol><rewrite><rules><rule name="ReverseProxyToMendix" patternSyntax="Wildcard" stopProcessing="true"><match url="*" /><action type="Rewrite" url="http://localhost:8080/{R:0}" /></rule></rules></rewrite></system.webServer></configuration>'
           Set-Content -Path "$env:SERVICE_PROJECT_DIR\web\web.config" -Value $webConfig -Encoding UTF8
+
           Write-Host "Deployment files updated successfully."
         env:
           APP_NAME: ${{ env.APP_NAME }}
           VERSION: ${{ env.VERSION }}
           SERVICE_PROJECT_DIR: ${{ env.SERVICE_PROJECT_DIR }}
- 
+
       - name: Sync database and start Mendix Core App service
         shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
         run: |
           C:\runner-op\sync-database.ps1 -DatabasePassword "${{ secrets.MENDIX_DB_PASSWORD }}"
- 
+
       - name: Verify service is running
         shell: cmd
         run: |
           sc query "%SERVICE_NAME%"
           netstat -ano | findstr :8080
-- name: Smoke test - verify app is responding
-  shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
-  run: |
-    Write-Host "Running post-deployment smoke tests..."
-    
-    # Test 1: Check app responds on port 8080
-    Write-Host "Test 1: Checking Mendix Runtime on port 8080..."
-    $response = Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing
-    if ($response.StatusCode -ne 200) {
-      throw "FAILED: App not responding on port 8080 (Status: $($response.StatusCode))"
-    }
-    Write-Host "PASSED: App responding on port 8080 (Status: 200)"
 
-    # Test 2: Check IIS reverse proxy on port 85
-    Write-Host "Test 2: Checking IIS reverse proxy on port 85..."
-    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
-    $response2 = Invoke-WebRequest -Uri "https://localhost:85" -UseBasicParsing
-    if ($response2.StatusCode -ne 200) {
-      throw "FAILED: App not responding on port 85 (Status: $($response2.StatusCode))"
-    }
-    Write-Host "PASSED: App responding on port 85 (Status: 200)"
+      - name: Smoke test - verify app is responding
+        shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
+        run: |
+          Write-Host "Running post-deployment smoke tests..."
 
-    # Test 3: Check the xas/ API endpoint (Mendix client API)
-    Write-Host "Test 3: Checking Mendix client API endpoint..."
-    try {
-      $response3 = Invoke-WebRequest -Uri "http://localhost:8080/xas/" -UseBasicParsing
-      Write-Host "PASSED: API endpoint /xas/ is reachable (Status: $($response3.StatusCode))"
-    } catch {
-      if ($_.Exception.Response.StatusCode -eq 400 -or $_.Exception.Response.StatusCode -eq 401) {
-        Write-Host "PASSED: API endpoint /xas/ is reachable (requires authentication - expected)"
-      } else {
-        throw "FAILED: API endpoint /xas/ not reachable"
-      }
-    }
+          # Test 1: Check app responds on port 8080
+          Write-Host "Test 1: Checking Mendix Runtime on port 8080..."
+          $response = Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing
+          if ($response.StatusCode -ne 200) {
+            throw "FAILED: App not responding on port 8080 (Status: $($response.StatusCode))"
+          }
+          Write-Host "PASSED: App responding on port 8080 (Status: 200)"
 
-    # Test 4: Check login page is served
-    Write-Host "Test 4: Checking login page content..."
-    $response4 = Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing
-    if ($response4.Content -notmatch "mendix") {
-      throw "FAILED: Login page does not contain expected Mendix content"
-    }
-    Write-Host "PASSED: Login page contains expected content"
+          # Test 2: Check IIS reverse proxy on port 85
+          Write-Host "Test 2: Checking IIS reverse proxy on port 85..."
+          [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+          $response2 = Invoke-WebRequest -Uri "https://localhost:85" -UseBasicParsing
+          if ($response2.StatusCode -ne 200) {
+            throw "FAILED: App not responding on port 85 (Status: $($response2.StatusCode))"
+          }
+          Write-Host "PASSED: App responding on port 85 (Status: 200)"
 
-    Write-Host ""
-    Write-Host "All smoke tests passed! Deployment verified successfully."
+          # Test 3: Check the xas/ API endpoint (Mendix client API)
+          Write-Host "Test 3: Checking Mendix client API endpoint..."
+          try {
+            $response3 = Invoke-WebRequest -Uri "http://localhost:8080/xas/" -UseBasicParsing
+            Write-Host "PASSED: API endpoint /xas/ is reachable (Status: $($response3.StatusCode))"
+          } catch {
+            if ($_.Exception.Response.StatusCode -eq 400 -or $_.Exception.Response.StatusCode -eq 401) {
+              Write-Host "PASSED: API endpoint /xas/ is reachable (requires authentication - expected)"
+            } else {
+              throw "FAILED: API endpoint /xas/ not reachable"
+            }
+          }
+
+          # Test 4: Check login page content
+          Write-Host "Test 4: Checking login page content..."
+          $response4 = Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing
+          if ($response4.Content -notmatch "mendix") {
+            throw "FAILED: Login page does not contain expected Mendix content"
+          }
+          Write-Host "PASSED: Login page contains expected content"
+
+          Write-Host ""
+          Write-Host "All smoke tests passed! Deployment verified successfully."
