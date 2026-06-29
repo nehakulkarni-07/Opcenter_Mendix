@@ -119,3 +119,48 @@ jobs:
         run: |
           sc query "%SERVICE_NAME%"
           netstat -ano | findstr :8080
+- name: Smoke test - verify app is responding
+  shell: powershell -ExecutionPolicy Bypass -Command "& '{0}'"
+  run: |
+    Write-Host "Running post-deployment smoke tests..."
+    
+    # Test 1: Check app responds on port 8080
+    Write-Host "Test 1: Checking Mendix Runtime on port 8080..."
+    $response = Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing
+    if ($response.StatusCode -ne 200) {
+      throw "FAILED: App not responding on port 8080 (Status: $($response.StatusCode))"
+    }
+    Write-Host "PASSED: App responding on port 8080 (Status: 200)"
+
+    # Test 2: Check IIS reverse proxy on port 85
+    Write-Host "Test 2: Checking IIS reverse proxy on port 85..."
+    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+    $response2 = Invoke-WebRequest -Uri "https://localhost:85" -UseBasicParsing
+    if ($response2.StatusCode -ne 200) {
+      throw "FAILED: App not responding on port 85 (Status: $($response2.StatusCode))"
+    }
+    Write-Host "PASSED: App responding on port 85 (Status: 200)"
+
+    # Test 3: Check the xas/ API endpoint (Mendix client API)
+    Write-Host "Test 3: Checking Mendix client API endpoint..."
+    try {
+      $response3 = Invoke-WebRequest -Uri "http://localhost:8080/xas/" -UseBasicParsing
+      Write-Host "PASSED: API endpoint /xas/ is reachable (Status: $($response3.StatusCode))"
+    } catch {
+      if ($_.Exception.Response.StatusCode -eq 400 -or $_.Exception.Response.StatusCode -eq 401) {
+        Write-Host "PASSED: API endpoint /xas/ is reachable (requires authentication - expected)"
+      } else {
+        throw "FAILED: API endpoint /xas/ not reachable"
+      }
+    }
+
+    # Test 4: Check login page is served
+    Write-Host "Test 4: Checking login page content..."
+    $response4 = Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing
+    if ($response4.Content -notmatch "mendix") {
+      throw "FAILED: Login page does not contain expected Mendix content"
+    }
+    Write-Host "PASSED: Login page contains expected content"
+
+    Write-Host ""
+    Write-Host "All smoke tests passed! Deployment verified successfully."
