@@ -27,3 +27,4 @@ javascriptsource/**/node_modules/
 .DS_Store
 /.svn/
 /mprcontents/mprjournal*
+cookies.txt
